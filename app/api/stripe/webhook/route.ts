@@ -1,3 +1,4 @@
+import { createShopifyOrder } from "@/data/shopify/customer";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -38,12 +39,10 @@ export async function POST(req: NextRequest) {
       }
   
       // ➜ Créer une commande sur Shopify
-      /**
       const createOrder = await createShopifyOrder(customerEmail, lineItems);
       if(!createOrder) {
         return NextResponse.json({ error: `Erreur Creation de la commande, ${createOrder}` }, { status: 400 });
       }
-      */
 
     }
     return NextResponse.json({ received: true, message: "Le Webhook a bien été envoyé !" }, { status: 200 });
