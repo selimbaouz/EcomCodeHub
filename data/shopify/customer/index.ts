@@ -1,6 +1,6 @@
 import Stripe from "stripe";
-import { draftOrderCreate, OrderCreate } from "./mutations/order";
-import { ShopifyDraftOrder, ShopifyOrderCreate } from "@/types/types";
+import { OrderCreate } from "./mutations/order";
+import { CartItem, ShopifyOrderCreate } from "@/types/types";
 import { isShopifyError } from "@/types/type-guards";
 import { ensureStartsWith } from "@/lib/utils";
 import { SHOPIFY_GRAPHQL_ADMIN_API_ENDPOINT } from "@/lib/constants";
@@ -114,36 +114,47 @@ export async function createShopifyOrder(
     return response.body.data.orderCreate.order?.id || null;
   }
 
-  export async function createDraftShopifyOrder(
+  export async function createTestShopifyOrder(
     email: string | null,
-    stripeLineItems: Stripe.Response<Stripe.ApiList<Stripe.LineItem>>
+    lineCartItems: CartItem[]
   ): Promise<string | null> {
     if (!email) throw new Error("L'email du client est requis");
-  
-    const lineItems = stripeLineItems.data.map((item) => ({
-      variantId: `gid://shopify/ProductVariant/${item.price?.product}`, // Vérifie que Shopify a bien l'ID du produit
-      title: item.description || "Produit",
-      price: item.amount_total ? item.amount_total / 100 : 0, // Stripe stocke en centimes
+
+    const lineItems = lineCartItems.map((item) => ({
+      title: item.merchandise.title || "Produit",
+      variantId: item.merchandise.id, // Vérifie que Shopify a bien l'ID du produit
+      price: item.cost.totalAmount.amount ? Number(item.cost.totalAmount.amount) / 100 : 0, // Stripe stocke en centimes
       quantity: item.quantity ?? 1,
     }));
   
-    const draftOrderInput = {
+    // 📌 Construction de l'objet de commande Shopify
+    const orderInput = {
       input: {
         email,
         lineItems,
+        currencyCode: "EUR", // Change selon la boutique
+        financialStatus: "PAID", // Commande déjà payée
+        transactions: [
+          {
+            kind: "SALE",
+            status: "SUCCESS",
+            amount: lineItems.reduce((acc, item) => acc + item.price * (item.quantity ?? 1), 0),
+            currencyCode: "EUR",
+          },
+        ],
       },
     };
   
     // 📌 Envoi à l'API Shopify
-    const response = await shopifyFetch<ShopifyDraftOrder>({
-      query: draftOrderCreate,
-      variables: draftOrderInput,
+    const response = await shopifyFetch<ShopifyOrderCreate>({
+      query: OrderCreate,
+      variables: orderInput,
       cache: "no-store",
     });
   
-    if (response.body.data.draftOrderComplete.userErrors.length > 0) {
-      throw new Error(response.body.data.draftOrderComplete.userErrors[0].message);
+    if (response.body.data.orderCreate.userErrors.length > 0) {
+      throw new Error(response.body.data.orderCreate.userErrors[0].message);
     }
   
-    return response.body.data.draftOrderComplete.draftOrder?.id || null;
+    return response.body.data.orderCreate.order?.id || null;
   }
