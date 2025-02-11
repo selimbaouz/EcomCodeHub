@@ -1,0 +1,56 @@
+'use server';
+
+import { z } from "zod";
+import Stripe from "stripe";
+
+
+// Initialisation de Stripe
+const stripe = new Stripe(process.env.STRIPE_SECRET_TEST_KEY!, {
+    apiVersion: "2025-01-27.acacia",
+  });
+  
+  // Schéma Zod pour valider les données d'entrée
+  const checkoutSessionSchema = z.object({
+    variantId: z.string(),
+    type: z.enum(["one_time", "bundle", "subscription"]), // Type de paiement
+    successUrl: z.string().url(), // URL de succès après paiement
+    cancelUrl: z.string().url(), // URL d'annulation
+  });
+  
+  // Server Action sécurisée
+  export const createCheckoutSession = (async (data: unknown) => {
+    // Validation des données d'entrée avec Zod
+    const validatedData = checkoutSessionSchema.parse(data);
+  
+    // Déterminer le price_id en fonction du type de produit
+    let priceId;
+    if (validatedData.type === "one_time") {
+      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME;
+    } else if (validatedData.type === "bundle") {
+      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE;
+    } else if (validatedData.type === "subscription") {
+      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION;
+    }
+  
+    try {
+      // Créer une session de paiement Stripe
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items: [
+          {
+            price: priceId,
+            quantity: 1,
+          },
+        ],
+        mode: validatedData.type === "subscription" ? "subscription" : "payment",
+        success_url: validatedData.successUrl,
+        cancel_url: validatedData.cancelUrl,
+        metadata: { variantId: validatedData.variantId }
+      });
+  
+      return { url: session.url };
+    } catch (error) {
+      console.error("Erreur lors de la création de la session :", error);
+      throw new Error("Impossible de créer la session de paiement.");
+    }
+  });
