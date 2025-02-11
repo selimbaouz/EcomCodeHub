@@ -22,23 +22,27 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_TEST_KEY!, {
     // Validation des données d'entrée avec Zod
     const validatedData = checkoutSessionSchema.parse(data);
   
-    // Déterminer le price_id en fonction du type de produit
-    let priceId;
-    if (validatedData.type === "one_time") {
-      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME;
-    } else if (validatedData.type === "bundle") {
-      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE;
-    } else if (validatedData.type === "subscription") {
-      priceId = process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION;
-    }
-  
     try {
       // Créer une session de paiement Stripe
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        line_items: [
+        line_items: validatedData.type === "bundle"
+      ? [
           {
-            price: priceId,
+            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME,
+            quantity: 1,
+          },
+          {
+            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_STORE,
+            quantity: 1,
+          },
+        ]
+      : [
+          {
+            price:
+              validatedData.type === "subscription"
+                ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION
+                : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME,
             quantity: 1,
           },
         ],

@@ -74,7 +74,7 @@ export async function createShopifyOrder(
     stripeLineItems: Stripe.Response<Stripe.ApiList<Stripe.LineItem>>
   ): Promise<string | null> {
     if (!email) throw new Error("L'email du client est requis");
-  
+
     const lineItems = stripeLineItems.data.map((item) => ({
       title: item.description || "Produit",
       variantId: item.price?.metadata?.variantId, // Vérifie que Shopify a bien l'ID du produit
