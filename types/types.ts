@@ -341,7 +341,6 @@ export type ShopifySendInvite = {
 };
 };
 
-
 export type ShopifyOrderCreate = {
   data: {
     orderCreate: {
@@ -370,6 +369,16 @@ export type ShopifyOrderCreate = {
                   currencyCode: string;
                 };
               }
+            }
+          }
+        }[];
+        transactions: {
+          kind: string;
+          status: string;
+          amountSet: {
+            shopMoney: {
+              amount: number;
+              currencyCode: string;
             }
           }
         }[];

@@ -27,7 +27,8 @@ export default function Cart() {
       createCartAndSetCookie();
     }
   }, [cart, isOpenCart]);
-
+  console.log("cart", cart);
+  
   useEffect(() => {
     if (
       cart?.quantity &&
