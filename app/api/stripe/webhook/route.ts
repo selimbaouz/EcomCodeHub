@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const customerEmail = session.customer_details?.email;
+      const variantId = session.metadata?.variantId;
       const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
 
       if(!session) {
@@ -36,6 +37,10 @@ export async function POST(req: NextRequest) {
 
       if(!lineItems) {
         return NextResponse.json({ error: `Aucune line Items` }, { status: 400 });
+      }
+
+      if(!variantId) {
+        return NextResponse.json({ error: `Aucune variante Id` }, { status: 400 });
       }
   
       // ➜ Créer une commande sur Shopify

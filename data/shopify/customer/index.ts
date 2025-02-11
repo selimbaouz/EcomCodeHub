@@ -76,9 +76,8 @@ export async function createShopifyOrder(
     if (!email) throw new Error("L'email du client est requis");
 
     const lineItems = stripeLineItems.data.map((item) => ({
-      title: item.description || "Produit",
-      variantId: item.price?.metadata?.variantId, // Vérifie que Shopify a bien l'ID du produit
-      price: item.amount_total ? item.amount_total / 100 : 0, // Stripe stocke en centimes
+      variantId: "gid://shopify/ProductVariant/49721525764432",//item.price?.metadata?.variantId, // Vérifie que Shopify a bien l'ID du produit
+      price: 3490 / 100,//item.amount_total ? item.amount_total / 100 : 0, // Stripe stocke en centimes
       quantity: item.quantity ?? 1,
     }));
   
@@ -93,7 +92,7 @@ export async function createShopifyOrder(
           {
             kind: "SALE",
             status: "SUCCESS",
-            amount: lineItems.reduce((acc, item) => acc + item.price * (item.quantity ?? 1), 0),
+            amount: 3490 / 100, //lineItems.reduce((acc, item) => acc + item.price * (item.quantity ?? 1), 0),
             currencyCode: "EUR",
           },
         ],

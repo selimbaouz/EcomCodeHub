@@ -358,7 +358,6 @@ export type ShopifyOrderCreate = {
               id: string;
             }
             id: string;
-            title: string;
             quantity: string;
             taxLines: {
               title: string;
@@ -393,7 +392,6 @@ export type ShopifyOrderCreate = {
     input: {
       email: string;
       lineItems: {
-        title: string | null;
         variantId?: string | Stripe.Product | Stripe.DeletedProduct
         price: number;
         quantity: number | null;
