@@ -344,6 +344,10 @@ export type ShopifySendInvite = {
 export type ShopifyOrderCreate = {
   data: {
     orderCreate: {
+      userErrors: Array<{
+        field: string[];
+        message: string;
+      }>;
       order: {
         id: string;
         totalTaxSet: {
@@ -371,21 +375,7 @@ export type ShopifyOrderCreate = {
             }
           }
         }[];
-        transactions: {
-          kind: string;
-          status: string;
-          amountSet: {
-            shopMoney: {
-              amount: number;
-              currencyCode: string;
-            }
-          }
-        }[];
       };
-      userErrors: Array<{
-        field: string[];
-        message: string;
-      }>;
     };
   };
   variables: {
@@ -393,17 +383,20 @@ export type ShopifyOrderCreate = {
       email: string;
       lineItems: {
         variantId?: string | Stripe.Product | Stripe.DeletedProduct
-        price: number;
         quantity: number | null;
     }[] | undefined
-      currencyCode?: string;
+      currency?: string;
       financialStatus: string;
       transactions: {
         kind: string;
         status: string;
-        amount: number;
-        currencyCode: string;
-    }[]
+        amountSet: { 
+          shopMoney: {
+            amount: number;
+            currencyCode: string;
+          }
+        };
+      }[]
     };
 };
 };

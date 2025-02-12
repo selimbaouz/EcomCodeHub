@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
       }
   
       // ➜ Créer une commande sur Shopify
-      const createOrder = await createShopifyOrder(customerEmail, lineItems);
+      const createOrder = await createShopifyOrder(customerEmail, variantId, lineItems);
       if(!createOrder) {
         return NextResponse.json({ error: `Erreur Creation de la commande, ${createOrder}` }, { status: 400 });
       }
