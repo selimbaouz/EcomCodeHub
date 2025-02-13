@@ -89,11 +89,6 @@ export default function Cart() {
         window.location.href = url;
       }
 
-      /**const res = await createTestShopifyOrder(
-        "sejiux@gmail.com",
-        cart.lines,
-      )**/
-
     } catch (error) {
       console.error("Erreur lors du démarrage du paiement :", error);
       alert("Une erreur est survenue. Veuillez réessayer.");

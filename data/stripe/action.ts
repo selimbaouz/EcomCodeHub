@@ -12,7 +12,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_TEST_KEY!, {
   // Schéma Zod pour valider les données d'entrée
   const checkoutSessionSchema = z.object({
     variantId: z.string(),
-    title: z.string(),
     type: z.enum(["one_time", "bundle", "subscription"]), // Type de paiement
     successUrl: z.string().url(), // URL de succès après paiement
     cancelUrl: z.string().url(), // URL d'annulation

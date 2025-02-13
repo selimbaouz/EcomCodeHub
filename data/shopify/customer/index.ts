@@ -102,14 +102,33 @@ export async function createShopifyOrder(
     };*/
   
     const orderInput = {
-      input: { 
+      order: { 
         currency: "EUR",
         financialStatus: "PAID",
         email,
         lineItems: [
           {
+            title: "Big Brown Bear Boots",
+            priceSet: {
+              shopMoney: {
+                amount: 0.0,
+                currencyCode: "EUR"
+              }
+            },
             variantId,
             quantity: 1,
+            taxLines: [
+              {
+                priceSet: {
+                  shopMoney: {
+                    amount: 0.0,
+                    currencyCode: "EUR"
+                  }
+                },
+                rate: 0.0,
+                title: "State tax"
+              }
+            ]
           }
         ],
         transactions: [

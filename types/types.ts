@@ -362,6 +362,7 @@ export type ShopifyOrderCreate = {
               id: string;
             }
             id: string;
+            title: string;
             quantity: string;
             taxLines: {
               title: string;
@@ -379,13 +380,30 @@ export type ShopifyOrderCreate = {
     };
   };
   variables: {
-    input: {
-      email: string;
+    order: {
+      currency?: string;
       lineItems: {
+        title: string;
+        priceSet: {
+          shopMoney: {
+            amount: number;
+            currencyCode: string;
+          };
+        }
         variantId?: string | Stripe.Product | Stripe.DeletedProduct
         quantity: number | null;
+        taxLines: {
+          priceSet: {
+            shopMoney: {
+              amount: number;
+              currencyCode: string;
+            }
+          },
+          rate: number,
+          title: string;
+        }[]
     }[] | undefined
-      currency?: string;
+      email: string;
       financialStatus: string;
       transactions: {
         kind: string;
