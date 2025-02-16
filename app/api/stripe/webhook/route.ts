@@ -13,6 +13,24 @@ import { NextRequest, NextResponse } from "next/server";
   4490: 90, // Pro - Abonnement
 };*/
 
+const createCustomerInStripe = async ({
+  email,
+  name
+}: {
+  email: string;
+  name?: string;
+}) => {
+  try {
+    const stripeCustomer = await stripe.customers.create({
+      email,
+      name
+    });
+    return stripeCustomer;
+  } catch {
+    return null;
+  }
+}
+
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature")!;
   let event;
@@ -58,37 +76,39 @@ export async function POST(req: NextRequest) {
       let user = await db.user.findUnique({ where: { email: customerEmail } });
 
       if (!user) {
-        const stripeCustomer = await stripe.customers.create({
-          email: customerEmail,
-          name: customerName ?? undefined
-      });
+        const stripeCustomer = await createCustomerInStripe({email: customerEmail, name: customerName ?? ""})
+
+        if (!stripeCustomer) {
+          return NextResponse.json({ error: "Erreur dans la création de compte sur stripe" }, { status: 400 });
+        }
 
         user = await db.user.create({
           data: {
-            email: customerEmail,
+            email: stripeCustomer.email,
+            name: stripeCustomer.name,
             stripeCustomerId: stripeCustomer.id,
             credits: 60,
             plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
           },
         });
-      } else if(!user.stripeCustomerId) {
-          const stripeCustomer = await stripe.customers.create({
-            email: customerEmail,
-            name: customerName ?? undefined
-          });
+      } else {
+          const stripeCustomer = await createCustomerInStripe({email: customerEmail, name: customerName ?? ""})
 
-            user = await db.user.update({
-                where: { email: customerEmail },
-                data: { stripeCustomerId: stripeCustomer.id }
-            });
-        } else {
-            if (!subscription) {
-              await db.user.update({
-                where: { email: customerEmail },
-                data: { credits: user.credits + 60 }, 
-              });
-            }
+          if (!stripeCustomer) {
+            return NextResponse.json({ error: "Erreur dans la création de compte sur stripe" }, { status: 400 });
           }
+
+          await db.user.update({
+            where: { email: customerEmail },
+            data: {
+              email:  stripeCustomer.email,
+              name:  stripeCustomer.name,
+              stripeCustomerId: stripeCustomer.id,
+              credits: user.credits + 60,
+              plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
+             }, 
+          });
+        }
 
       // ➜ Créer une commande sur Shopify
       const createOrder = await createShopifyOrder(customerEmail, variantId, lineItems);
