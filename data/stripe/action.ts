@@ -1,13 +1,7 @@
 'use server';
 
+import { stripe } from "@/lib/stripe";
 import { z } from "zod";
-import Stripe from "stripe";
-
-
-// Initialisation de Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_TEST_KEY!, {
-    apiVersion: "2025-01-27.acacia",
-  });
   
   // Schéma Zod pour valider les données d'entrée
   const checkoutSessionSchema = z.object({

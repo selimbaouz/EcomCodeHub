@@ -1,10 +1,17 @@
 import { createShopifyOrder } from "@/data/shopify/customer";
+import { db } from "@/lib/db";
+import { stripe } from "@/lib/stripe";
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_TEST_KEY!, {
-  apiVersion: "2025-01-27.acacia",
-});
+// Correspondance prix -> crédits
+/**const creditMapping: { [key: number]: number } = {
+  1990: 20, // Débutant - Achat ponctuel (19,90€ en cents)
+  990: 20, // Débutant - Abonnement (9,90€ en cents)
+  3990: 60, // Avancé - Achat ponctuel
+  2490: 60, // Avancé - Abonnement
+  7990: 90, // Pro - Achat ponctuel
+  4490: 90, // Pro - Abonnement
+};*/
 
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature")!;
@@ -26,23 +33,50 @@ export async function POST(req: NextRequest) {
       const customerEmail = session.customer_details?.email;
       const variantId = session.metadata?.variantId;
       const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
-
-      if(!session) {
-      return NextResponse.json({ error: `Aucune session` }, { status: 400 });
-      }
+      const amountPaid = session.amount_total; // Montant payé en cents
+      const subscription = session.subscription ? true : false; // Si c'est un abonnement
 
       if(!customerEmail) {
-        return NextResponse.json({ error: `Aucun email` }, { status: 400 });
-      }
-
-      if(!lineItems) {
-        return NextResponse.json({ error: `Aucune line Items` }, { status: 400 });
+        return NextResponse.json({ error: `Aucun email fourni` }, { status: 400 });
       }
 
       if(!variantId) {
-        return NextResponse.json({ error: `Aucune variante Id` }, { status: 400 });
+        return NextResponse.json({ error: `Aucune VariantId fourni` }, { status: 400 });
       }
-  
+
+      if(!amountPaid) {
+        return NextResponse.json({ error: `Aucun montant fourni` }, { status: 400 });
+      }
+
+      // Vérifier si le montant correspond à un pack
+      /**const credits = creditMapping[amountPaid];
+      if (!credits) {
+        return NextResponse.json({ error: "Montant invalide" }, { status: 400 });
+      }*/
+      
+      // Vérifier si l'utilisateur existe déjà
+      let user = await db.user.findUnique({ where: { email: customerEmail } });
+
+      if (!user) {
+        // Créer un nouvel utilisateur s'il n'existe pas
+        user = await db.user.create({
+          data: {
+            email: customerEmail,
+            stripeCustomerId: session.customer?.toString(),
+            credits: 60,
+            plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
+          },
+        });
+      } else {
+        // Ajouter les crédits si c'est un achat ponctuel
+        if (!subscription) {
+          await db.user.update({
+            where: { email: customerEmail },
+            data: { credits: user.credits + 60 }, // Ajouter les crédits
+          });
+        }
+      }
+
       // ➜ Créer une commande sur Shopify
       const createOrder = await createShopifyOrder(customerEmail, variantId, lineItems);
       if(!createOrder) {
