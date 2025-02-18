@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const customerEmail = session.customer_details?.email;
+      const customerName = session.customer_details?.name;
       const variantId = session.metadata?.variantId;
       const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
       const amountPaid = session.amount_total; // Montant payé en cents
@@ -54,28 +55,40 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Montant invalide" }, { status: 400 });
       }*/
       
-      // Vérifier si l'utilisateur existe déjà
       let user = await db.user.findUnique({ where: { email: customerEmail } });
 
       if (!user) {
-        // Créer un nouvel utilisateur s'il n'existe pas
+        const stripeCustomer = await stripe.customers.create({
+          email: customerEmail,
+          name: customerName ?? undefined
+      });
+
         user = await db.user.create({
           data: {
             email: customerEmail,
-            stripeCustomerId: session.customer?.toString(),
+            stripeCustomerId: stripeCustomer.id,
             credits: 60,
             plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
           },
         });
-      } else {
-        // Ajouter les crédits si c'est un achat ponctuel
-        if (!subscription) {
-          await db.user.update({
-            where: { email: customerEmail },
-            data: { credits: user.credits + 60 }, // Ajouter les crédits
+      } else if(!user.stripeCustomerId) {
+          const stripeCustomer = await stripe.customers.create({
+            email: customerEmail,
+            name: customerName ?? undefined
           });
-        }
-      }
+
+            user = await db.user.update({
+                where: { email: customerEmail },
+                data: { stripeCustomerId: stripeCustomer.id }
+            });
+        } else {
+            if (!subscription) {
+              await db.user.update({
+                where: { email: customerEmail },
+                data: { credits: user.credits + 60 }, 
+              });
+            }
+          }
 
       // ➜ Créer une commande sur Shopify
       const createOrder = await createShopifyOrder(customerEmail, variantId, lineItems);
