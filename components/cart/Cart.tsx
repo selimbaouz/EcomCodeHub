@@ -70,15 +70,28 @@ export default function Cart() {
     setIsLoading(true);
 
     try {
-      const type =
-      cart.lines[0].merchandise.title === "Abonnement mensuel" ? "subscription"
-          : cart.lines[0].merchandise.title === "Bundle"
-          ? "bundle"
-          : "one_time";
+      const firstItem = cart.lines[0].merchandise;
+      const [purchaseType, packName] = firstItem.title.split(" / ");
 
-      const variantId = cart.lines[0].merchandise.id;
+      const type =
+      purchaseType === "Abonnement mensuel" ? "subscription"
+        : firstItem.title === "Bundle" ? "bundle"
+        : "one_time";
+
+      const variantId = firstItem.id;
+      const packNameWithBundle = type === "bundle" ? cart.lines[1].merchandise.selectedOptions[1].value : packName;
+      
+      const uniqueQuantity = cart.lines.find(item => item.merchandise.title.includes("Achat unique"))?.quantity || 1;
+      const bundleQuantity = cart.lines.find(item => item.merchandise.title.includes("Bundle"))?.quantity || 1;
+      const subscriptionQuantity = cart.lines.find(item => item.merchandise.title.includes("Abonnement mensuel"))?.quantity || 1;
+
+      const quantities = type === "bundle" 
+      ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
+      : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
 
       const { url } = await createCheckoutSession({
+        packNameWithBundle,
+        quantities,
         variantId,
         type,
         successUrl: `${window.location.origin}?success=true`,
@@ -96,6 +109,7 @@ export default function Cart() {
       setIsLoading(false);
     }
   };
+
 
   return (
     <Sheet open={isOpenCart} onOpenChange={setIsOpenCart}>

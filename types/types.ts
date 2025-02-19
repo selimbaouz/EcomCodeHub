@@ -73,6 +73,8 @@ export type Money = {
     featuredImage: ImageProduct;
   };
 
+  export type StripePayment = "subscription" | "bundle" | "one_time";
+
   export type VariantsProduct = {
     node: {
       id: string;

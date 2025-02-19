@@ -169,7 +169,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                                             </div>
                                             {index !== 0 && (
                                                 <div>
-                                                    <p className="text-sm font-bold text-primary">+ Boutique offerte</p>
+                                                    {selectedPackName === "Pro" && <p className="text-sm font-bold text-primary">+ Boutique offerte</p>}
                                                     <p className="text-sm">Sans engagement</p>
                                                     {selectedVariant.title === data.node.title && (
                                                         <div className="space-y-1 pt-4">

@@ -1,6 +1,7 @@
 import { GoStarFill, GoStar } from "react-icons/go";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { Cart } from "@/types/types";
 
 export default function GetRatings({ value, className }: { value: number; className: string }) {
   const totalRatings = [0, 0, 0, 0, 0];
@@ -22,7 +23,6 @@ export default function GetRatings({ value, className }: { value: number; classN
 export function removeSuffix(input: string) {
   return input.replace(/ \/ .+$/, ""); // Remplace " / ..." par une chaîne vide
 }
-
 
 /**
  * Calcule une plage de dates de livraison.

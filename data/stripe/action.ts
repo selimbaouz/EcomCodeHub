@@ -2,9 +2,56 @@
 
 import { stripe } from "@/lib/stripe";
 import { z } from "zod";
-  
+
+const getVariantWithPacks = (type: string, level: string) => {
+  switch (level) {
+  case "Débutant":
+    return {
+      priceId: type === "bundle" ? 
+        [
+          process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
+          process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+        ] 
+        : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
+        : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!],
+    };
+  case "Avancé":
+    return {
+      priceId: type === "bundle" ? 
+      [
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!,
+      ] 
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_ADVANCED!] 
+      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!]
+    };
+  case "Pro":
+    return {
+      priceId: type === "bundle" ? 
+      [
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!,
+      ] 
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_PRO!] 
+      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!]
+    };
+  default:
+    return {
+      priceId: type === "bundle" ? 
+      [
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+      ] 
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
+      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!]
+    };
+  }
+};
+
   // Schéma Zod pour valider les données d'entrée
   const checkoutSessionSchema = z.object({
+    packNameWithBundle: z.string(),
+    quantities: z.array(z.number()),
     variantId: z.string(),
     type: z.enum(["one_time", "bundle", "subscription"]), // Type de paiement
     successUrl: z.string().url(), // URL de succès après paiement
@@ -15,35 +62,22 @@ import { z } from "zod";
   export const createCheckoutSession = (async (data: unknown) => {
     // Validation des données d'entrée avec Zod
     const validatedData = checkoutSessionSchema.parse(data);
+    const { priceId } = getVariantWithPacks(validatedData.type, validatedData.packNameWithBundle);
+
+    const lineItems = priceId.map((id, index) => ({
+      price: id,
+      quantity: validatedData.quantities[index] ?? 1,  // On prend la quantité associée
+    }));
   
     try {
       // Créer une session de paiement Stripe
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
-        line_items: validatedData.type === "bundle"
-      ? [
-          {
-            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME,
-            quantity: 1,
-          },
-          {
-            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE,
-            quantity: 1,
-          },
-        ]
-      : [
-          {
-            price:
-              validatedData.type === "subscription"
-                ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION
-                : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME,
-            quantity: 1,
-          },
-        ],
+        line_items: lineItems,
         mode: validatedData.type === "subscription" ? "subscription" : "payment",
         success_url: validatedData.successUrl,
         cancel_url: validatedData.cancelUrl,
-        metadata: { variantId: validatedData.variantId }
+        metadata: { variantId: validatedData.variantId, packName: validatedData.packNameWithBundle }
       });
   
       return { url: session.url };

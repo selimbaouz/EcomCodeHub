@@ -3,15 +3,26 @@ import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
 import { NextRequest, NextResponse } from "next/server";
 
-// Correspondance prix -> crédits
-/**const creditMapping: { [key: number]: number } = {
-  1990: 20, // Débutant - Achat ponctuel (19,90€ en cents)
-  990: 20, // Débutant - Abonnement (9,90€ en cents)
-  3290: 60, // Avancé - Achat ponctuel (-19%)
-  1990: 60, // Avancé - Abonnement
-  4490: 90, // Pro - Achat ponctuel (-25%)
-  2490: 90, // Pro - Abonnement
-};*/
+const getCredits = (pack: string) => {
+  switch (pack) {
+  case "Débutant":
+    return {
+      credits: 30
+    };
+  case "Avancé":
+    return {
+      credits: 60
+    };
+  case "Pro":
+    return {
+      credits: 90
+    };
+  default:
+    return {
+      credits: 30
+    };
+  }
+};
 
 const createCustomerInStripe = async ({
   email,
@@ -51,8 +62,8 @@ export async function POST(req: NextRequest) {
       const customerEmail = session.customer_details?.email;
       const customerName = session.customer_details?.name;
       const variantId = session.metadata?.variantId;
+      const packName = session.metadata?.packName;
       const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
-      const amountPaid = session.amount_total; // Montant payé en cents
       const subscription = session.subscription ? true : false; // Si c'est un abonnement
 
       if(!customerEmail) {
@@ -63,15 +74,15 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: `Aucune VariantId fourni` }, { status: 400 });
       }
 
-      if(!amountPaid) {
+      if(!packName) {
         return NextResponse.json({ error: `Aucun montant fourni` }, { status: 400 });
       }
 
-      // Vérifier si le montant correspond à un pack
-      /**const credits = creditMapping[amountPaid];
+      // Obtenir le bon nombre de crédits en fonction du pack acheté
+      const credits = getCredits(packName).credits;
       if (!credits) {
         return NextResponse.json({ error: "Montant invalide" }, { status: 400 });
-      }*/
+      }
       
       let user = await db.user.findUnique({ where: { email: customerEmail } });
 
@@ -87,7 +98,7 @@ export async function POST(req: NextRequest) {
             email: stripeCustomer.email,
             name: stripeCustomer.name,
             stripeCustomerId: stripeCustomer.id,
-            credits: 60,
+            credits: credits,
             plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
           },
         });
@@ -104,7 +115,7 @@ export async function POST(req: NextRequest) {
               email:  stripeCustomer.email,
               name:  stripeCustomer.name,
               stripeCustomerId: stripeCustomer.id,
-              credits: user.credits + 60,
+              credits: user.credits + credits,
               plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
              }, 
           });
