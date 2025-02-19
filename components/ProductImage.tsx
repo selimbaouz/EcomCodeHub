@@ -1,6 +1,6 @@
 "use client";
-import { checkProduct, detailsProduct } from "@/data";
-import GetRatings from "@/lib/fn";
+import { checkProduct, detailsProduct, PacksSelected } from "@/data";
+import GetRatings, { removeSuffix } from "@/lib/fn";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Product } from "@/types/types";
@@ -13,23 +13,58 @@ import { CheckIcon } from "lucide-react";
 import ImageLoader from "./ImageLoader";
 import { Switch } from "./ui/switch";
 
+interface Variant {
+    id: string;
+    price: number;
+    title: string;
+  }
+  
+  interface GroupedVariants {
+    [packName: string]: {
+      [frequency: string]: Variant;
+    };
+  }
+
 interface ProductImageProps {
     product: Product;
     bundle?: Product | undefined
 }
 
 const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
-    const [selectedVariant, setSelectedVariant] = useState({
-        title: product.variants.edges[0].node.title,
-        price: product.variants.edges[0].node.price?.amount
-    });
     const [bundleActive, setBundleActive] = useState(false);
+    const [selectedPack, setSelectedPack] = useState(0);
+    const [selectedPackName, setSelectedPackName] = useState("Débutant");
+    const filteredVariant = product.variants.edges.filter((value) => value.node.title.includes(selectedPackName));
+    const [selectedVariant, setSelectedVariant] = useState({
+        title: filteredVariant[0].node.title,
+        price: filteredVariant[0].node.price?.amount
+    });
+
 
     useEffect(() => {
-        if (selectedVariant.title === "Abonnement mensuel") {
+        if (removeSuffix(selectedVariant.title) === "Abonnement mensuel") {
             setBundleActive(false);
         }
     }, [selectedVariant.title]);
+
+    /* useEffect(() => {
+        if (filteredVariant.length > 0 && !filteredVariant.some(v => v.node.title === selectedVariant.title)) {
+            setSelectedVariant({
+                title: filteredVariant[0].node.title,
+                price: filteredVariant[0].node.price?.amount,
+            });
+        }
+    }, [filteredVariant, selectedPackName]); */
+
+    useEffect(() => {
+        const matchingVariant = product.variants.edges.find(v => v.node.title.includes(selectedPackName));
+        if (matchingVariant) {
+            setSelectedVariant({
+                title: matchingVariant.node.title,
+                price: matchingVariant.node.price?.amount
+            });
+        }
+    }, [selectedPackName]);
 
     return (
         <div className={cn("space-y-6 py-6 lg:py-12 lg:space-y-5 max-w-xl")}>
@@ -48,12 +83,12 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                 <div className={cn("flex items-center gap-2")}> 
                     <p className={cn("font-medium text-sm text-foreground")}>4.8/5</p>
                     <GetRatings value={5} className={cn("text-base sm:text-md text-primary", "md:text-lg", "xl:text-sm")} />
-                    <Link href="#avis" className={cn("font-medium text-xs text-foreground")}>
+                    <Link href="#avis" className={cn("font-medium text-[13px] text-foreground", "lg:text-sm")}>
                         Basé sur <strong>650 e-commercants</strong>
                     </Link>
                 </div>
             </div>
-            <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez plus de <strong>600 e-commerçants</strong> qui ont faits <strong>exploser leurs ventes</strong> grâce à notre <strong>pack pro conversion</strong> 🚀.</p>
+            <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez plus de <strong>600 e-commerçants</strong> qui ont faits <strong>exploser leurs ventes</strong> grâce à nos <strong>packs conversion Shopify</strong> 🚀.</p>
 
             <ul className={cn("flex flex-col py-4 gap-4")}>
                 {checkProduct.map((data, index) => (
@@ -65,6 +100,125 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
             </ul>
             <div className={cn("space-y-10 py-4")}>    
                 <div className={cn("space-y-6")}>
+                    <div className={cn("flex items-center justify-between")}>
+                        <h6 className={cn("font-bold uppercase")}>Nos Packs :</h6>
+                        <p className={cn("text-[13px] font-medium", "lg:text-sm")}>{PacksSelected(selectedPack).content}</p>
+                    </div>
+                    <div className={cn("relative w-full flex items-center justify-stretch gap-2")}>
+                        {[
+                            {
+                                title: "Débutant",
+                                credits: 30
+                            },
+                            {
+                                title: "Avancé",
+                                credits: 60,
+                                discount: "-7%"
+                            },
+                            {
+                                title: "Pro",
+                                credits: 90,
+                                discount: "-23%"
+                            },
+                        ].map((data, index) => (
+                        <div 
+                            key={index} 
+                            onClick={() => {
+                                setSelectedPack(index);
+                                setSelectedPackName(data?.title)
+                            }} 
+                            className={cn(
+                                "flex items-center font-semibold uppercase py-4 justify-center text-center rounded-md w-full border-2 cursor-pointer",
+                                selectedPack !== index ? "bg-background border-gray-200 dark:border-gray-200/10" : "border-2 border-r-2 border-l-2 bg-secondary/30 dark:bg-[#324e58] border-primary"
+                            )}
+                            >
+                                {data.discount && <div className={cn("absolute -top-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{data.discount}</div>}
+                            <div className="space-y-1">
+                                <h6 className={cn("text-sm", "lg:text-base")}>
+                                    {data.title}
+                                </h6>
+                                <p className={cn("text-xs font-medium", "lg:text-sm")}>
+                                    {data.credits} Crédits
+                                </p>
+                            </div>
+                        </div>
+
+                        ))}
+                    </div>
+                    <h6 className={cn("font-bold uppercase")}>Fréquence :</h6>
+                    <RadioGroup 
+                        value={selectedVariant.title}
+                        className={cn("flex flex-col items-center justify-between text-center gap-0")}
+                        >
+                        {filteredVariant.map((data, index) => {
+                            const cleanedTitle = removeSuffix(data.node.title);
+                            return (
+                                <div key={index} className={cn(
+                                    "p-4 md:p-5 w-full flex items-start gap-4 cursor-pointer relative", 
+                                    selectedVariant.title !== data.node.title && index === 0 ? "border-t-2 border-r-2 border-l-2" : "border-b-2 border-r-2 border-l-2" , 
+                                    selectedVariant.title !== data.node.title ? "bg-background border-gray-200 dark:border-gray-200/10" : "border-2 border-r-2 border-l-2 bg-secondary/30 dark:bg-[#324e58] border-primary", 
+                                    index === 0 ? "rounded-t-lg" : "rounded-b-lg")} 
+                                    onClick={() => setSelectedVariant({
+                                        title: data.node.title,
+                                        price: data.node.price?.amount
+                                    })}>
+                                    <RadioGroupItem 
+                                        value={data.node.title} 
+                                        id={data.node.title} 
+                                        checked={selectedVariant.title === data.node.title} 
+                                        onChange={(e) => setSelectedVariant({
+                                            title: e.currentTarget.value,
+                                            price: data.node.price?.amount
+                                        })}
+                                    />
+                                    <div className="flex items-center w-full">
+                                    {selectedPack !== 0 && index !== 0 && <div className={cn("absolute -top-4 right-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{selectedPack === 1 ? "La plus populaire" : "La plus rentable"}</div>}
+                                        <div className={cn("flex flex-col items-start text-left w-full")}>
+                                            <div className={cn(index !== 0 && "flex items-center w-full justify-between")}>
+                                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}>{parseFloat(data.node.price?.amount ?? "").toFixed(2)} € - {cleanedTitle}</h4>
+                                                {data.node.compareAtPrice && index !== 0 && (
+                                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>{parseFloat(data.node.compareAtPrice.amount).toFixed(2)}€</p>
+                                                )}
+                                            </div>
+                                            {index !== 0 && (
+                                                <div>
+                                                    <p className="text-sm font-bold text-primary">+ Boutique offerte</p>
+                                                    <p className="text-sm">Sans engagement</p>
+                                                    {selectedVariant.title === data.node.title && (
+                                                        <div className="space-y-1 pt-4">
+                                                            {[
+                                                                {title: "Économisez  30% sur chaque commande"},
+                                                                {title: "Annulez, modifiez, mettez en pause à tout moment"},
+                                                                {title: "Support client prioritaire"},
+                                                                {title: "Accès à notre groupe VIP"},
+                                                                {title: "Recevez de nouveaux codes chaque mois"},
+                                                                {title: "Audits et conseils pour améliorer votre boutique"},
+                                                            ].map((data, index) => (
+                                                                <div key={index}>
+                                                                    <div className="flex gap-2 items-center">
+                                                                        <div>
+                                                                            <CheckIcon className="text-primary size-5"/>
+                                                                        </div>
+                                                                        <p className={cn("text-sm font-bold text-primary dark:text-foreground")}>{data.title}</p>
+                                                                    </div>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </RadioGroup>
+                    <AddToCart
+                        state={selectedVariant} 
+                        product={product} 
+                        bundle={bundleActive ? bundle : undefined}  
+                        size="fullWidth" 
+                    />
                     <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
                             <div>
@@ -93,90 +247,9 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                             className="dark:b-[#2c4049]" 
                             checked={bundleActive}
                             onCheckedChange={setBundleActive}
-                            disabled={selectedVariant.title === "Abonnement mensuel"}
+                            disabled={removeSuffix(selectedVariant.title) === "Abonnement mensuel"}
                         />
                     </div>
-                    <AddToCart
-                        state={selectedVariant} 
-                        product={product} 
-                        bundle={bundleActive ? bundle : undefined}  
-                        size="fullWidth" 
-                    />
-                    <RadioGroup 
-                        defaultValue={product.variants.edges[0].node.title} 
-                        defaultChecked={selectedVariant.title === product.variants.edges[0].node.title} 
-                        className={cn("flex flex-col items-center justify-between text-center gap-0")}
-                        >
-                        {product.variants.edges.map((data, index) => {
-                            return (
-                                <div key={index} className={cn(
-                                    "px-6 py-8 w-full flex items-start gap-4 cursor-pointer", 
-                                    "lg:p-6",  
-                                    selectedVariant.title !== data.node.title && index === 0 ? "border-t-2 border-r-2 border-l-2" : "border-b-2 border-r-2 border-l-2" , 
-                                    selectedVariant.title !== data.node.title ? "bg-background border-gray-200 dark:border-gray-200/10" : "border-2 border-r-2 border-l-2 bg-secondary/30 dark:bg-[#324e58] border-primary", 
-                                    index === 0 ? "rounded-t-lg" : "rounded-b-lg")} 
-                                    onClick={() => setSelectedVariant({
-                                        title: data.node.title,
-                                        price: data.node.price?.amount
-                                    })}>
-                                    <RadioGroupItem 
-                                        value={data.node.title} 
-                                        id={data.node.title} 
-                                        checked={selectedVariant.title === data.node.title} 
-                                        onChange={(e) => setSelectedVariant({
-                                            title: e.currentTarget.value,
-                                            price: data.node.price?.amount
-                                        })}
-                                    />
-                                    <div className="flex items-center w-full">
-                                        <div className={cn("flex flex-col items-start text-left w-full")}>
-                                            <div className={cn(index !== 0 && "flex items-center w-full justify-between")}>
-                                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}>{parseFloat(data.node.price?.amount ?? "").toFixed(2)} € - {data.node.title}</h4>
-                                                {index !== 0 && (
-                                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>{parseFloat(data.node.compareAtPrice.amount).toFixed(2)}€</p>
-                                                )}
-                                            </div>
-                                            {index !== 0 && (
-                                                <div>
-                                                    <p className="text-sm font-bold text-primary">+ Boutique offerte</p>
-                                                    <p className="text-sm">Sans engagement</p>
-                                                    {selectedVariant.title === data.node.title && (
-                                                        <div className="space-y-1 pt-4">
-                                                            {[
-                                                                {title: "Économisez  15%"},
-                                                                {title: "Annulez, modifiez, mettez en pause à tout moment"},
-                                                                {title: "Support client prioritaire pour les abonnés"},
-                                                                /* {title: "Accès à des tutoriels et guides exclusifs"}, */
-                                                                {title: "Rejoignez notre groupe VIP"},
-                                                                {title: "month"},
-                                                                {title: "Recevez de nouveaux codes"},
-                                                                {title: "Une nouvelle boutique"},
-                                                                {title: "Un audit design"},
-                                                                {title: "Des conseils pour améliorer votre boutique"},
-                                                            ].map((data, index) => (
-                                                                <div key={index}>
-                                                                {data.title === "month" ? (
-                                                                    <p className={cn("text-sm py-2 text-foreground dark:text-foreground")}>Mais aussi, <span className="font-bold">chaque mois :</span></p>
-                                                                ) : (
-                                                                    <div className="flex gap-2 items-center">
-                                                                        <div>
-                                                                            <CheckIcon className="text-primary size-5"/>
-                                                                        </div>
-                                                                        <p className={cn("text-sm font-bold text-primary dark:text-foreground")}>{data.title}</p>
-                                                                    </div>
-                                                                )}
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </RadioGroup>
                 </div>
                 <Accordion type="single" collapsible className="w-full">
                     {detailsProduct.map((data, index) => (

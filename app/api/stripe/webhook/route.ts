@@ -7,10 +7,10 @@ import { NextRequest, NextResponse } from "next/server";
 /**const creditMapping: { [key: number]: number } = {
   1990: 20, // Débutant - Achat ponctuel (19,90€ en cents)
   990: 20, // Débutant - Abonnement (9,90€ en cents)
-  3990: 60, // Avancé - Achat ponctuel
-  2490: 60, // Avancé - Abonnement
-  7990: 90, // Pro - Achat ponctuel
-  4490: 90, // Pro - Abonnement
+  3290: 60, // Avancé - Achat ponctuel (-19%)
+  1990: 60, // Avancé - Abonnement
+  4490: 90, // Pro - Achat ponctuel (-25%)
+  2490: 90, // Pro - Abonnement
 };*/
 
 const createCustomerInStripe = async ({

@@ -19,6 +19,10 @@ export default function GetRatings({ value, className }: { value: number; classN
   );
 }
 
+export function removeSuffix(input: string) {
+  return input.replace(/ \/ .+$/, ""); // Remplace " / ..." par une chaîne vide
+}
+
 
 /**
  * Calcule une plage de dates de livraison.

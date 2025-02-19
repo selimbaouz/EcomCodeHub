@@ -394,6 +394,27 @@ export const productModeSelected = (selected: number) => {
   }
 };
 
+export const PacksSelected = (selected: number) => {
+  switch (selected) {
+  case 0:
+    return {
+      content: "Pour débloquer des codes simples"
+    };
+  case 1:
+    return {
+      content: "Pour débloquer des codes avancés"
+    };
+    case 2:
+    return {
+      content: "Pour débloquer des codes complexes"
+    };
+  default:
+    return {
+      content: "Pour débloquer des codes simples"
+    };
+  }
+};
+
 export const selectSnippetData = [
   {
     title: "Aperçu",
