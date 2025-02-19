@@ -116,7 +116,7 @@ export const getProductByIdQuery = /* GraphQL */ `
           currencyCode
         }
       }
-      variants(first: 3) {
+      variants(first: 7) {
         edges {
           node {
             id

@@ -27,7 +27,7 @@ import { z } from "zod";
             quantity: 1,
           },
           {
-            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_STORE,
+            price: process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE,
             quantity: 1,
           },
         ]

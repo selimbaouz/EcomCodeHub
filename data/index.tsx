@@ -406,7 +406,7 @@ export const PacksSelected = (selected: number) => {
     };
     case 2:
     return {
-      content: "Pour débloquer des codes complexes"
+      content: "Pour débloquer des codes pro"
     };
   default:
     return {

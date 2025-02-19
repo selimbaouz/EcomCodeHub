@@ -13,18 +13,6 @@ import { CheckIcon } from "lucide-react";
 import ImageLoader from "./ImageLoader";
 import { Switch } from "./ui/switch";
 
-interface Variant {
-    id: string;
-    price: number;
-    title: string;
-  }
-  
-  interface GroupedVariants {
-    [packName: string]: {
-      [frequency: string]: Variant;
-    };
-  }
-
 interface ProductImageProps {
     product: Product;
     bundle?: Product | undefined
@@ -34,12 +22,11 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
     const [bundleActive, setBundleActive] = useState(false);
     const [selectedPack, setSelectedPack] = useState(0);
     const [selectedPackName, setSelectedPackName] = useState("Débutant");
-    const filteredVariant = product.variants.edges.filter((value) => value.node.title.includes(selectedPackName));
+    const filteredVariant = product.variants.edges.filter(v => v.node.title.includes(selectedPackName));
     const [selectedVariant, setSelectedVariant] = useState({
         title: filteredVariant[0].node.title,
         price: filteredVariant[0].node.price?.amount
     });
-
 
     useEffect(() => {
         if (removeSuffix(selectedVariant.title) === "Abonnement mensuel") {

@@ -73,9 +73,12 @@ export function AddToCart({
   const { setIsOpenFloatingBar } = useVisibleFloatingCartStore();
   const [message] = useFormState(addItem, null);
 
-  const variant = variants.find((variant: VariantsProduct) =>
-    variant.node.selectedOptions?.every((option) => option.value.toLocaleLowerCase() === state?.title.toLocaleLowerCase())
-  );
+  const stateValues = state?.title.split(" / ").map(s => s.trim());
+
+  const variant = product.variants.edges.find((variant) =>
+      variant.node.selectedOptions?.map(option => option.value.trim().toLowerCase()).join(" / ") === stateValues?.join(" / ").toLowerCase()
+    );
+
   
   /* const variantId = variants[0].node.id;
   const actionWithVariant = formAction.bind(null, variantId); */
