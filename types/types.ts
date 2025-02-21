@@ -1,4 +1,6 @@
+import { LoginSchema } from "@/schemas";
 import Stripe from "stripe";
+import { z } from "zod";
 
 export type Money = {
     amount: string;
@@ -141,6 +143,8 @@ export type Money = {
       } */
     },
   };
+
+export type Login = z.infer<typeof LoginSchema>;
 
 export type SEO = {
   title: string;

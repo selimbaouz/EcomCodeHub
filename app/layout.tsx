@@ -5,6 +5,10 @@ import { Providers } from "@/components/Providers";
 import LayoutClient from "@/components/LayoutClient";
 import { auth } from "@/auth";
 import { SessionProvider } from 'next-auth/react';
+import { VscError } from "react-icons/vsc";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { CiWarning } from "react-icons/ci";
+import { Toaster } from "@/components/ui/sonner";
 
 const montserrat = Montserrat({
   weight: [
@@ -38,8 +42,9 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html lang="en">
         <body
-          className={`${montserrat.variable} font-montserrat relative text-foreground`}
+          className={`${montserrat.variable} font-montserrat relative text-foreground size-full`}
         >
+          <Toaster position="bottom-right" />
           <Providers>
             <LayoutClient>
               {children}

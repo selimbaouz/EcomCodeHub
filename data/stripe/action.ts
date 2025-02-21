@@ -1,6 +1,7 @@
 'use server';
 
 import { stripe } from "@/lib/stripe";
+import { checkoutSessionSchema } from "@/schemas";
 import { z } from "zod";
 
 const getVariantWithPacks = (type: string, level: string) => {
@@ -48,19 +49,7 @@ const getVariantWithPacks = (type: string, level: string) => {
   }
 };
 
-  // Schéma Zod pour valider les données d'entrée
-  const checkoutSessionSchema = z.object({
-    packNameWithBundle: z.string(),
-    quantities: z.array(z.number()),
-    variantId: z.string(),
-    type: z.enum(["one_time", "bundle", "subscription"]), // Type de paiement
-    successUrl: z.string().url(), // URL de succès après paiement
-    cancelUrl: z.string().url(), // URL d'annulation
-  });
-  
-  // Server Action sécurisée
   export const createCheckoutSession = (async (data: unknown) => {
-    // Validation des données d'entrée avec Zod
     const validatedData = checkoutSessionSchema.parse(data);
     const { priceId } = getVariantWithPacks(validatedData.type, validatedData.packNameWithBundle);
 
@@ -86,3 +75,10 @@ const getVariantWithPacks = (type: string, level: string) => {
       throw new Error("Impossible de créer la session de paiement.");
     }
   });
+
+  export const checkPurchaseStatus = async (customerId: string) => {
+    const charges = await stripe.charges.list({ customer: customerId });
+    const paidCharges = charges.data.filter(charge => charge.status === "succeeded");
+    
+    return paidCharges.length > 0;
+  };
