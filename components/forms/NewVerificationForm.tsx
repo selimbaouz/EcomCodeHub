@@ -35,8 +35,11 @@ const NewVerificationForm = () => {
     const onSubmit = async () => {
         newVerification({ token })
         .then((data) => {
-          setMessage({ type: 'success', key: data?.data?.success ?? "" });
-          setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          if(data?.data?.success) {
+            setMessage({ type: 'success', key: data?.data?.success ?? "" });
+          } else {
+            setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          }
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'somethingWentWrong' });

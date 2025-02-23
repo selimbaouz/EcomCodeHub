@@ -59,14 +59,16 @@ export function LoginForm() {
     startTransition(async () => {
       verifyEmail(values)
         .then((response) => {
-          toast.error(response?.data?.error);
-          toast.success(response?.data?.success);
+          if(response?.data?.error) {
+            toast.error(response?.data?.error);
+          }
           if (response?.data?.success) {
             if(!emailChecked) {
               if (response?.data?.user?.stripeCustomerId && response.data?.user.plan && response?.data?.user.email) {
                 if(response.data?.user?.emailVerified && !response.data?.mailsend) {
                   setEmailChecked(true);
                 } else {
+                  toast.success(response?.data?.success);
                   setIsMailSended(true);
                   setMailOfUser(values.email);
                 }

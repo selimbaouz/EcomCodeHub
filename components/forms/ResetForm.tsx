@@ -34,10 +34,11 @@ export function ResetForm() {
       setIsLoading(true);
       reset(values)
         .then((data) => {
-          toast.error(data?.data?.error);
-          toast.success(data?.data?.success);
           if(data?.data?.success) {
             setIsSuccess(true);
+            toast.success(data?.data?.success);
+          } else {
+            toast.error(data?.data?.error);
           }
         });
       setIsLoading(false);

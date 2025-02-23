@@ -45,10 +45,17 @@ const PasswordContent = (messageKey: string | undefined) => {
       buttonHref: `/auth/login`,
     };
   case 'server':
-  default:
     return {
       icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
       title: "Erreur TEST",
+      description: "Quelque chose s'est mal passé. Veuillez réessayer plus tard ou contacter le support si le problème persiste.",
+      buttonLabel: "Contacter le support",
+      buttonHref: "mailto:tailwindliquid@gmail.com",
+    };
+  default:
+    return {
+      icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
+      title: "Erreur",
       description: "Quelque chose s'est mal passé. Veuillez réessayer plus tard ou contacter le support si le problème persiste.",
       buttonLabel: "Contacter le support",
       buttonHref: "mailto:tailwindliquid@gmail.com",

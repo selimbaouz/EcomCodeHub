@@ -15,34 +15,30 @@ import { action } from "@/lib/safe-action";
 export const verifyEmail = action
 .schema(LoginSchema) 
 .action(async ({ parsedInput: { email } }) => {
-  try {
-    const existingUser = await getUserByEmail(email.toLocaleLowerCase());
-    
-    if (!existingUser) {
-      return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
-    }
-
-    /* if (email !== existingUser?.email) {
-      return { error: "L'adresse e-mail est invalide. Veuillez entrer une adresse valide." };
-    } */
-
-    if (!existingUser.emailVerified) {
-      const verificationToken = await generateVerificationToken(
-        existingUser.email ?? "",
-      );
+  const existingUser = await getUserByEmail(email.toLocaleLowerCase());
   
-      await sendVerificationEmail(
-        verificationToken.email,
-        verificationToken.token,
-      );
-  
-      return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
-    }
-
-    return { success: true, user: existingUser };
-  } catch (error) {
-    return { error: "Une erreur est survenue, veuillez réessayer." };
+  if (!existingUser) {
+    return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
   }
+
+  /* if (email !== existingUser?.email) {
+    return { error: "L'adresse e-mail est invalide. Veuillez entrer une adresse valide." };
+  } */
+
+  if (!existingUser.emailVerified) {
+    const verificationToken = await generateVerificationToken(
+      existingUser.email ?? "",
+    );
+
+    await sendVerificationEmail(
+      verificationToken.email,
+      verificationToken.token,
+    );
+
+    return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
+  }
+
+  return { success: true, user: existingUser };
 });
 
 export const updateOrLogin = action
@@ -114,7 +110,7 @@ export const updateOrLogin = action
       const isMatch = await bcrypt.compare(password ?? "", existingUser.password);
       if (!isMatch) return { error: "Le mot de passe est incorrect. Veuillez réessayer." };
 
-      await signIn("credentials", { email, password, redirectTo: "/docs" });
+      await signIn("credentials", { email, password, redirect: false, callbackUrl: "/docs" });
       return { success: "Connexion réussie !" };
     } else {
       // L'utilisateur n'a pas encore de mot de passe -> Mise à jour
@@ -124,7 +120,7 @@ export const updateOrLogin = action
         data: { password: hashedPassword ?? "" },
       });
 
-      await signIn("credentials", { email, password, redirectTo: "/docs" });
+      await signIn("credentials", { email, password, redirect: false, callbackUrl: "/docs" });
 
       return { success: "Mot de passe enregistré, vous pouvez vous connecter !" };
     }

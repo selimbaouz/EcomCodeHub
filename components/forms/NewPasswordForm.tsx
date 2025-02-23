@@ -63,8 +63,11 @@ const NewPasswordForm = () => {
     const validateToken = async () => {
       newVerificationPasswordtoken({ token })
         .then((data) => {
-          toast.success(data?.data?.success);
-          setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          if(data?.data?.success) {
+            toast.success(data?.data?.success);
+          } else {
+            setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          }
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'server' });
@@ -92,9 +95,12 @@ const NewPasswordForm = () => {
         token
       })
         .then((data) => {
-          setMessage({ type: 'success', key: data?.data?.success ?? "" });
-          /* toast.error(data?.data?.error); */
-          setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          if(data?.data?.success) {
+            setMessage({ type: 'success', key: data?.data?.success ?? "" });
+          } else {
+            /* toast.error(data?.data?.error); */
+            setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          }
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'server' });

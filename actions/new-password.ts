@@ -12,33 +12,29 @@ import { sendSuccessPasswordChanged } from "@/lib/mail";
 export const newVerificationPasswordtoken = action
 .schema(NewPasswordTokenSchema) 
 .action(async ({ parsedInput: { token } }) => {
-  try {
-    if (!token) {
-      return { error: "tokenMissing" };
-    }
-  
-    const existingToken = await getPasswordResetTokenByToken(token);
-  
-    if (!existingToken) {
-      return { error: "tokenInvalid" };
-    }
-  
-    const hasExpired = new Date(existingToken.expires) < new Date();
-  
-    if (hasExpired) {
-      return { error: "tokenExpired" };
-    }
-  
-    const existingUser = await getUserByEmail(existingToken.email);
-  
-    if (!existingUser) {
-      return { error: "emailNotExist" }
-    }
-  
-    return { success: "Votre e-mail a été vérifié avec succès." };
-  } catch (error) {
-    return { error: "server" }
+  if (!token) {
+    return { error: "tokenMissing" };
   }
+
+  const existingToken = await getPasswordResetTokenByToken(token);
+
+  if (!existingToken) {
+    return { error: "tokenInvalid" };
+  }
+
+  const hasExpired = new Date(existingToken.expires) < new Date();
+
+  if (hasExpired) {
+    return { error: "tokenExpired" };
+  }
+
+  const existingUser = await getUserByEmail(existingToken.email);
+
+  if (!existingUser) {
+    return { error: "emailNotExist" }
+  }
+
+  return { success: "Votre e-mail a été vérifié avec succès." };
 });
 
 
