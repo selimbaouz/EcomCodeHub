@@ -44,7 +44,6 @@ export const verifyEmail = action
 export const updateOrLogin = action
 .schema(LoginSchema) 
 .action(async ({ parsedInput: { email, password, code } }) => {
-  try {
     const existingUser = await getUserByEmail(email.toLocaleLowerCase());
 
     if (!existingUser || !existingUser.email) {
@@ -61,11 +60,7 @@ export const updateOrLogin = action
           existingUser.email
         );
   
-        if (!twoFactorToken) {
-          return { error: "Le code de vérification est invalide. Veuillez vérifier et réessayer." };
-        }
-  
-        if (twoFactorToken.token !== code) {
+        if (!twoFactorToken || twoFactorToken.token !== code) {
           return { error: "Le code de vérification est invalide. Veuillez vérifier et réessayer." };
         }
   
@@ -106,13 +101,26 @@ export const updateOrLogin = action
     }
 
     if (existingUser.password) {
+      try {
       // L'utilisateur a un mot de passe -> Connexion
       const isMatch = await bcrypt.compare(password ?? "", existingUser.password);
       if (!isMatch) return { error: "Le mot de passe est incorrect. Veuillez réessayer." };
 
-      await signIn("credentials", { email, password, redirect: false, callbackUrl: "/docs" });
-      return { success: "Connexion réussie !" };
+      await signIn("credentials", { email, password, redirectTo: "/docs" });
+      } catch (error) {
+        if (error instanceof AuthError) {
+          switch (error.type) {
+            case "CredentialsSignin":
+              return { error: "Invalid credentials!" }
+            default:
+              return { error: "Something went wrong!" }
+          }
+        }
+    
+        throw error;
+      }
     } else {
+      try {
       // L'utilisateur n'a pas encore de mot de passe -> Mise à jour
       const hashedPassword = await bcrypt.hash(password ?? "", 10);
       await db.user.update({
@@ -120,18 +128,17 @@ export const updateOrLogin = action
         data: { password: hashedPassword ?? "" },
       });
 
-      await signIn("credentials", { email, password, redirect: false, callbackUrl: "/docs" });
-
-      return { success: "Mot de passe enregistré, vous pouvez vous connecter !" };
-    }
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return { error: "Informations d'identification non valides !" }
-        default:
-          return { error: "Une erreur est survenue." }
+      await signIn("credentials", { email, password, redirectTo: "/docs" });
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case "CredentialsSignin":
+            return { error: "Invalid credentials!" }
+          default:
+            return { error: "Something went wrong!" }
+        }
       }
+      throw error;
     }
-  }
+    }
 });

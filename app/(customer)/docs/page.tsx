@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import Footer from "@/components/Footer";
 import NavBar from "@/components/navigation/NavBar";
 import Snippets from "@/components/snippets";
 import { getUserByEmail, getUserByUserName } from "@/data/auth/user";
@@ -18,9 +19,10 @@ export default async function DocsPage() {
         <div className="sticky top-0 w-full z-50">
               <NavBar menu={[]} />
           </div>
-          <div className="w-full max-w-screen-xl mx-auto">
+          <div className="px-4 mb-10 w-full mx-auto bg-gray-100 dark:bg-[#324e58] h-screen">
               <Snippets />
           </div>
+          <Footer footerMenu={[]} />
       </Suspense>
     );
 };

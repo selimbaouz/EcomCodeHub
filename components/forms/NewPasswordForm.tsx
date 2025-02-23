@@ -28,9 +28,8 @@ import { newPassword, newVerificationPasswordtoken } from "@/actions/new-passwor
 const NewPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
-  const [, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const searchParams = useSearchParams();
   const token = searchParams?.get("token");
@@ -56,7 +55,6 @@ const NewPasswordForm = () => {
   useEffect(() => {    
     if (!token) {
       setMessage({ type: 'warning', key: 'tokenInvalid' });
-      setIsLoading(false);
       return;
     }
 
@@ -72,7 +70,6 @@ const NewPasswordForm = () => {
         .catch(() => {
           setMessage({ type: 'error', key: 'server' });
         }).finally(() => {
-          setIsLoading(false);
         })
     };
 
@@ -80,11 +77,9 @@ const NewPasswordForm = () => {
   }, [token]);
   
   const onSubmit = (values: NewPassword) => {
-    setIsLoading(true);
 
     if (!token) {
       setMessage({ type: 'warning', key: 'tokenInvalid' });
-      setIsLoading(false);
       return;
     }
 
@@ -98,14 +93,12 @@ const NewPasswordForm = () => {
           if(data?.data?.success) {
             setMessage({ type: 'success', key: data?.data?.success ?? "" });
           } else {
-            /* toast.error(data?.data?.error); */
             setMessage({ type: 'error', key: data?.data?.error ?? "" });
           }
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'server' });
         }).finally(() => {
-          setIsLoading(false);
         })
     });
   };
@@ -115,11 +108,6 @@ const NewPasswordForm = () => {
 
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
-      {isLoading ? (
-        <div className="flex justify-center items-center h-full">
-          <PulseLoader size={7} />
-        </div>
-      ) : (
         <CardAuthWrapper
            title="Mise à jour du mot de passe"
         >
@@ -140,7 +128,7 @@ const NewPasswordForm = () => {
                           <FormControl>
                             <Input
                               {...field}
-                              disabled={isLoading}
+                              disabled={isPending}
                               icon={<CiLock className="text-lg opacity-80" />} 
                               placeholder="Mot de passe"
                               type={showPassword ? "text" : "password"}
@@ -163,7 +151,7 @@ const NewPasswordForm = () => {
                           <FormControl>
                             <Input
                               {...field}
-                              disabled={isLoading}
+                              disabled={isPending}
                               icon={<CiLock className="text-lg opacity-80" />} 
                               placeholder="Confirmation"
                               type={showConfirmPassword ? "text" : "password"}
@@ -182,10 +170,10 @@ const NewPasswordForm = () => {
                   <Button 
                     size="xl" 
                     className={cn("w-full font-medium mt-2", "lg:text-base")}
-                    disabled={isLoading}
+                    disabled={isPending}
                     type="submit"
                   >
-                    {isLoading ? (
+                    {isPending ? (
                       <PulseLoader
                         size={7}
                         color="white"
@@ -200,7 +188,6 @@ const NewPasswordForm = () => {
             <GetAPiMesssage {...messageContent} />
           )}
         </CardAuthWrapper>
-      )}
     </div>
   );
 };

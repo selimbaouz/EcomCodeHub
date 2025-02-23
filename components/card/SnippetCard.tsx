@@ -20,14 +20,13 @@ const SnippetCard = ({
     const [selectedTab, setSelectedTab] = useState(0);
 
     return (
-        <div className={cn("flex flex-col gap-2 w-full border p-4 rounded-lg shadow-md")}>
+        <div className={cn("bg-background relative flex flex-col gap-2 w-full border p-4 rounded-2xl shadow-md", "dark:border-[#324e58]")}>
             <div className="flex justify-between items-center">
                 <h6 className="font-semibold">{name}</h6>
-                
                 <div className="flex gap-4">
                     {isPrivate ? (
                         <div className={cn("flex gap-4 items-center")}>
-                            <p className='font-bold'>Réservé au membre premium</p>
+                            <p className='font-bold text-sm'>Débloquez ?</p>
                             <FaLock className='text-lg' />
                         </div>
                     ) : 
@@ -42,7 +41,7 @@ const SnippetCard = ({
                     )))}
                 </div>
             </div>
-            <div className="w-full min-h-[350px] flex justify-center items-center border rounded-lg p-4">
+            <div className="w-full min-h-[350px] flex justify-center items-center border rounded-lg p-4 dark:border-[#324e58]">
                 {isPrivate ? content : (
                     selectedTab === 0 ? content : (
                         <Highlight theme={themes.nightOwl} code={code} language="tsx">

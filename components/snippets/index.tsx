@@ -6,7 +6,7 @@ import { SnippetSelected } from "@/data";
 
 const Snippets = () => {
     return (
-        <div className={cn("grid grid-cols-2 gap-10 py-20")}>
+        <div className={cn("space-y-4", "lg:grid lg:grid-cols-2 lg:gap-10 py-20 max-w-screen-xl mx-auto")}>
             {SnippetSelected().map((data, index) => (
                 <SnippetCard
                     key={index}

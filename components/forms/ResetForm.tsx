@@ -18,9 +18,8 @@ import ResetContent from "../content/auth/ResetContent";
 import { reset } from "@/actions/reset";
 
 export function ResetForm() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const [, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const form = useForm<Reset>({
     resolver: zodResolver(ResetSchema),
@@ -31,7 +30,6 @@ export function ResetForm() {
 
   const onSubmit = (values: Reset) => {
     startTransition(() => {
-      setIsLoading(true);
       reset(values)
         .then((data) => {
           if(data?.data?.success) {
@@ -41,7 +39,6 @@ export function ResetForm() {
             toast.error(data?.data?.error);
           }
         });
-      setIsLoading(false);
     });
   };
   
@@ -68,7 +65,7 @@ export function ResetForm() {
                     <FormControl>
                       <Input
                         {...field}
-                        disabled={isLoading}
+                        disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
                         placeholder="Adresse e-mail"
                         type="email"
@@ -81,10 +78,10 @@ export function ResetForm() {
               <Button 
                 size="xl" 
                 className={cn("w-full font-medium mt-2", "lg:text-base")}
-                disabled={isLoading}
+                disabled={isPending}
                 type="submit"
               >
-                {isLoading ? (
+                {isPending ? (
                   <PulseLoader
                     size={7}
                     color="white"

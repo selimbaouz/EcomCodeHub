@@ -426,13 +426,13 @@ export const selectSnippetData = [
 
 export const SnippetSelected = () => [
   {
-    title: "Aperçu",
+    title: "Button1",
     content: <BestReviews />,
     code: `<div>BestReview1</div>`,
     private: false,
   },
   {
-    title: "Code",
+    title: "Button2",
     content: <BestReviews />,
     code: `<div>BestReview2</div>`,
     private: true,

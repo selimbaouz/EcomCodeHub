@@ -49,7 +49,7 @@ export function BestReviews({productPage}: {productPage?: boolean}) {
           }),
         ]}
         setApi={setApi} 
-        className={cn("w-full cursor-pointer mx-auto", productPage ? "min-w-full" : "max-w-md", "md:max-w-lg", "lg:max-w-xs", "xl:max-w-md", "3xl:max-w-xl")}>
+        className={cn("w-full cursor-pointer mx-auto", productPage ? "min-w-full" : "max-w-xs", "md:max-w-lg", "lg:max-w-xs", "xl:max-w-md", "3xl:max-w-xl")}>
         <CarouselContent>
           {bestReviewsData.map((data, index) => (
             <CarouselItem key={index}>

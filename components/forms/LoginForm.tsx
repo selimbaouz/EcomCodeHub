@@ -20,10 +20,9 @@ import { PulseLoader } from "react-spinners";
 import { toast } from "sonner";
 import { Login } from "@/types/types";
 import CardAuthWrapper from "../card/CardAuthWrapper";
-import { useCurrentUser } from "@/hook/use-current-user";
-import { redirect } from "next/navigation";
 import { updateOrLogin, verifyEmail } from "@/actions/login";
 import { IoIosMail } from "react-icons/io";
+import { redirect } from "next/navigation";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -32,13 +31,7 @@ export function LoginForm() {
   const [mailOfUser, setMailOfUser] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showTwoFactor, setShowTwoFactor] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [, startTransition] = useTransition();
-  const user = useCurrentUser();
-  
-  if(user) {
-    redirect("/");
-  }
+  const [isPending, startTransition] = useTransition();
   
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -55,7 +48,6 @@ export function LoginForm() {
   };
   
   const onSubmit = (values: Login) => {
-    setIsLoading(true);
     startTransition(async () => {
       verifyEmail(values)
         .then((response) => {
@@ -67,6 +59,7 @@ export function LoginForm() {
               if (response?.data?.user?.stripeCustomerId && response.data?.user.plan && response?.data?.user.email) {
                 if(response.data?.user?.emailVerified && !response.data?.mailsend) {
                   setEmailChecked(true);
+                  setIsLogin(!!response?.data?.user?.password);
                 } else {
                   toast.success(response?.data?.success);
                   setIsMailSended(true);
@@ -83,15 +76,15 @@ export function LoginForm() {
           } 
         });
       });
-    setIsLoading(false);
   };
 
   const handleUpdateOrLogin = (values: Login) => {
     startTransition(async () => {
       updateOrLogin(values)
       .then((response) => {
-        toast.error(response?.data?.error);
-        toast.success(response?.data?.success);
+        if(response?.data?.error) {
+          toast.error(response?.data?.error);
+        }
       });
     });
   };
@@ -156,7 +149,7 @@ export function LoginForm() {
                     <FormControl>
                       <Input
                         {...field}
-                        disabled={isLoading}
+                        disabled={isPending}
                         placeholder="Code à deux facteurs"
                       />
                     </FormControl>
@@ -174,7 +167,7 @@ export function LoginForm() {
                     <FormControl>
                       <Input
                         {...field}
-                        disabled={isLoading}
+                        disabled={isPending}
                         icon={<CiLock className="text-lg opacity-80" />} 
                         placeholder="Créer un nouveau mot de passe"
                         type={showPassword ? "text" : "password"}
@@ -199,7 +192,7 @@ export function LoginForm() {
                     <FormControl>
                       <Input
                         {...field}
-                        disabled={isLoading}
+                        disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
                         placeholder="Adresse e-mail"
                         type="email"
@@ -220,7 +213,7 @@ export function LoginForm() {
                       <FormControl>
                         <Input
                           {...field}
-                          disabled={isLoading}
+                          disabled={isPending}
                           icon={<CiMail className="text-lg opacity-80" />}
                           placeholder="Adresse e-mail"
                           type="email"
@@ -238,7 +231,7 @@ export function LoginForm() {
                       <FormControl>
                         <Input
                           {...field}
-                          disabled={isLoading}
+                          disabled={isPending}
                           icon={<CiLock className="text-lg opacity-80" />} 
                           placeholder={"Mot de passe"}
                           type={showPassword ? "text" : "password"}
@@ -268,10 +261,10 @@ export function LoginForm() {
             <Button 
               size="xl" 
               className={cn("w-full font-medium mt-2 text-white", "lg:text-base")}
-              disabled={isLoading}
+              disabled={isPending}
               type="submit"
             >
-              {isLoading ? (
+              {isPending ? (
                 <PulseLoader
                   size={7}
                   color="white"
