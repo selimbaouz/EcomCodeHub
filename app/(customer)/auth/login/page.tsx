@@ -1,9 +1,8 @@
 import Footer from "@/components/Footer";
-import { LoginForm } from "@/components/forms/login-form";
+import { LoginForm } from "@/components/forms/LoginForm";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
 import { getMenu } from "@/data/shopify";
-import { cn } from "@/lib/utils";
 
 export default async function Login () {
   const menu = await getMenu("main-menu");

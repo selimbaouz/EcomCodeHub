@@ -1,6 +1,10 @@
-import { LoginSchema } from "@/schemas";
+import { LoginSchema, NewPasswordSchema, ResetSchema } from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
+
+export type Login = z.infer<typeof LoginSchema>;
+export type NewPassword = z.infer<typeof NewPasswordSchema>;
+export type Reset = z.infer<typeof ResetSchema>;
 
 export type Money = {
     amount: string;
@@ -75,7 +79,7 @@ export type Money = {
     featuredImage: ImageProduct;
   };
 
-  export type StripePayment = "subscription" | "bundle" | "one_time";
+  export type StripePayment = "subscription" | "bundle" | "one_time"
 
   export type VariantsProduct = {
     node: {
@@ -144,7 +148,6 @@ export type Money = {
     },
   };
 
-export type Login = z.infer<typeof LoginSchema>;
 
 export type SEO = {
   title: string;

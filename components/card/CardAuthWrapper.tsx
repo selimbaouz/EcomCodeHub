@@ -17,7 +17,7 @@ interface CardAuthWrapperProps {
 
 export default function CardAuthWrapper (props: CardAuthWrapperProps) {
   return (
-    <Card className={cn("shadow-md lg:w-[450px] w-full h-auto m-auto rounded-2xl", "md:border",  "dark:border-[#324e58]", props.className)}>
+    <Card className={cn("bg-background font-montserrat text-foreground shadow-md lg:w-[450px] w-full h-auto m-auto rounded-2xl", "md:border",  "dark:border-[#324e58]", props.className)}>
       <CardHeader className="text-center">
         <CardTitle className="text-[22px] mx-auto">{props.title}</CardTitle>
         <CardDescription className="mx-auto pt-2">{props.description}</CardDescription>
