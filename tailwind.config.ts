@@ -131,7 +131,7 @@ const config: Config = {
   		xl: '1400px',
 		'2xl': '1700px',
   		'3xl': '2500px'
-  	}
+  	},
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate"), 

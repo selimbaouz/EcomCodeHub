@@ -19,7 +19,7 @@ export default async function DocsPage() {
         <div className="sticky top-0 w-full z-50">
               <NavBar menu={[]} />
           </div>
-          <div className="px-4 mb-10 w-full mx-auto bg-gray-100 dark:bg-[#324e58] h-screen">
+          <div className="px-4 w-full mx-auto bg-gray-100 dark:bg-[#324e58] h-full">
               <Snippets />
           </div>
           <Footer footerMenu={[]} />

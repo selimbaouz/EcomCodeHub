@@ -33,7 +33,7 @@ const SnippetCard = ({
                     (selectSnippetData.map((data, index) => (
                         <button
                             key={index}
-                            className={cn("text-sm font-bold cursor-pointer", selectedTab === index ? "text-blue-500" : "text-gray-500")}
+                            className={cn("text-sm font-bold cursor-pointer", selectedTab === index ? "text-primary" : "text-gray-500")}
                             onClick={() => setSelectedTab(index)}
                         >
                             {data.title}
@@ -43,20 +43,26 @@ const SnippetCard = ({
             </div>
             <div className="w-full min-h-[350px] flex justify-center items-center border rounded-lg p-4 dark:border-[#324e58]">
                 {isPrivate ? content : (
-                    selectedTab === 0 ? content : (
-                        <Highlight theme={themes.nightOwl} code={code} language="tsx">
-                            {({ style, tokens, getLineProps, getTokenProps }) => (
-                                <pre className="p-4 bg-gray-900 text-white text-sm rounded-lg overflow-x-auto size-full" style={style}>
-                                    {tokens.map((line, i) => (
-                                        <div key={i} {...getLineProps({ line })}>
-                                            {line.map((token, key) => (
-                                                <span key={key} {...getTokenProps({ token })} />
-                                            ))}
-                                        </div>
-                                    ))}
-                                </pre>
-                            )}
-                        </Highlight>
+                    selectedTab === 0 ? (
+                        <div className="h-full max-h-[350px]">
+                            {content}
+                        </div>
+                    ) : (
+                        <div className="w-full h-[350px] flex-1 overflow-hidden">
+                            <Highlight theme={themes.nightOwl} code={code} language="tsx">
+                                {({ style, tokens, getLineProps, getTokenProps }) => (
+                                    <pre className="p-4 bg-gray-900 text-white text-sm rounded-lg overflow-auto size-full" style={style}>
+                                        {tokens.map((line, i) => (
+                                            <div key={i} {...getLineProps({ line })}>
+                                                {line.map((token, key) => (
+                                                    <span key={key} {...getTokenProps({ token })} />
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </pre>
+                                )}
+                            </Highlight>
+                        </div>
                     )
                 )}
             </div>
