@@ -1,10 +1,13 @@
-import { LoginSchema, NewPasswordSchema, ResetSchema } from "@/schemas";
+import { LoginSchema, NewPasswordSchema, ResetSchema, snippetSchema, snippetsSchema, userSchema } from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
 
 export type Login = z.infer<typeof LoginSchema>;
+export type User = z.infer<typeof userSchema>;
 export type NewPassword = z.infer<typeof NewPasswordSchema>;
 export type Reset = z.infer<typeof ResetSchema>;
+export type SnippetsType = z.infer<typeof snippetsSchema>;
+export type SnippetType = z.infer<typeof snippetSchema>;
 
 export type Money = {
     amount: string;

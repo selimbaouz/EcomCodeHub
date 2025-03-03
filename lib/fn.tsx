@@ -46,3 +46,66 @@ export function calculateDeliveryDates(startDays: number, endDays: number): stri
   
     return [formattedStartDate, formattedEndDate];
   }
+  
+  /**
+   * Calcule les dates de commande, d'expédition et de livraison.
+   * @param {number} readyMinDays - Nombre minimum de jours avant que la commande soit prête.
+   * @param {number} readyMaxDays - Nombre maximum de jours avant que la commande soit prête.
+   * @param {number} deliveryMinDays - Nombre minimum de jours pour la livraison après l'expédition.
+   * @param {number} deliveryMaxDays - Nombre maximum de jours pour la livraison après l'expédition.
+   * @returns {string[]} - Tableau contenant les dates formatées.
+   */
+  export function calculateDeliverySteps(
+    readyMinDays: number,
+    readyMaxDays: number,
+    deliveryMinDays: number,
+    deliveryMaxDays: number
+  ): string[] {
+    const today = new Date();
+  
+    // Mapping des mois abrégés personnalisés
+    const monthAbbreviations: { [key: string]: string } = {
+      janvier: "jan",
+      février: "fev",
+      mars: "mars",
+      avril: "avr",
+      mai: "mai",
+      juin: "juin",
+      juillet: "juil",
+      août: "août",
+      septembre: "sep",
+      octobre: "oct",
+      novembre: "nov",
+      décembre: "dec",
+    };
+  
+    // Fonction pour formater une date avec les mois abrégés personnalisés
+    const formatCustomDate = (date: Date) => {
+      const formatted = format(date, "d MMMM", { locale: fr });
+      return formatted.replace(
+        /(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/,
+        (match) => monthAbbreviations[match]
+      );
+    };
+  
+    // Date de commande (aujourd'hui)
+    const orderDate = formatCustomDate(today);
+  
+    // Dates où la commande est prête à être expédiée
+    const readyStartDate = new Date(today);
+    readyStartDate.setDate(today.getDate() + readyMinDays);
+    const readyEndDate = new Date(today);
+    readyEndDate.setDate(today.getDate() + readyMaxDays);
+  
+    const formattedReadyDate = `${formatCustomDate(readyStartDate)} - ${formatCustomDate(readyEndDate)}`;
+  
+    // Dates de livraison estimée
+    const deliveryStartDate = new Date(readyEndDate);
+    deliveryStartDate.setDate(readyEndDate.getDate() + deliveryMinDays);
+    const deliveryEndDate = new Date(readyEndDate);
+    deliveryEndDate.setDate(readyEndDate.getDate() + deliveryMaxDays);
+  
+    const formattedDeliveryDate = `${formatCustomDate(deliveryStartDate)} - ${formatCustomDate(deliveryEndDate)}`;
+  
+    return [orderDate, formattedReadyDate, formattedDeliveryDate];
+  }  

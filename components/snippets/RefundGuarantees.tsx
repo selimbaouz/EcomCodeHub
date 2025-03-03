@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductWarranty = () => {
+const RefundGuarantees = () => {
     return (
         <div className='w-full rounded-2xl bg-[#e4f7f1] flex items-center gap-4 p-3 max-w-sm'>
             <img 
@@ -17,4 +17,4 @@ const ProductWarranty = () => {
     );
 };
 
-export default ProductWarranty;
+export default RefundGuarantees;

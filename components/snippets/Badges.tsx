@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const ProductBadges = () => {
+const Badges = () => {
     return (
         <div className={cn("flex items-center gap-2")}>
             <div className={cn("text-xs text-white font-semibold bg-primary px-2 py-1 rounded-lg")}>
@@ -14,4 +14,4 @@ const ProductBadges = () => {
     );
 };
 
-export default ProductBadges;
+export default Badges;

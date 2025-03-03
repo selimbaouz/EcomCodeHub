@@ -1,7 +1,6 @@
-import { cn } from '@/lib/utils';
 import React from 'react';
 
-const ProductInformations = () => {
+const GuaranteeIcons = () => {
     return (
         <div className="grid grid-cols-3 items-center gap-2 w-full justify-between text-center">
             <div className="p-2 lg:p-4 h-full max-w-xs bg-[#e4f7f1] rounded-xl border border-[#2c4049] flex flex-col justify-center gap-1">
@@ -28,4 +27,4 @@ const ProductInformations = () => {
     );
 };
 
-export default ProductInformations;
+export default GuaranteeIcons;

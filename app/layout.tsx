@@ -5,9 +5,6 @@ import { Providers } from "@/components/Providers";
 import LayoutClient from "@/components/LayoutClient";
 import { auth } from "@/auth";
 import { SessionProvider } from 'next-auth/react';
-import { VscError } from "react-icons/vsc";
-import { IoIosInformationCircleOutline } from "react-icons/io";
-import { CiWarning } from "react-icons/ci";
 import { Toaster } from "@/components/ui/sonner";
 
 const montserrat = Montserrat({

@@ -2,7 +2,7 @@ import GetRatings from '@/lib/fn';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const ProductTrustReview = () => {
+const RatingSummary = () => {
     return (
         <div className={cn("flex items-center gap-2")}> 
             <p className={cn("font-medium text-xs text-foreground", "lg:text-sm")}>4.8/5</p>
@@ -14,4 +14,4 @@ const ProductTrustReview = () => {
     );
 };
 
-export default ProductTrustReview;
+export default RatingSummary;

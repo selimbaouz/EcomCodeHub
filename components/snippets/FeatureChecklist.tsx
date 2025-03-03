@@ -2,7 +2,7 @@ import { checkProduct } from '@/data';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-const ProductCheck = () => {
+const FeatureChecklist = () => {
     return (
         <ul className={cn("flex flex-col py-2 gap-2 lg:py-4 lg:gap-4 max-w-xs")}>
             {checkProduct.map((data, index) => (
@@ -15,4 +15,4 @@ const ProductCheck = () => {
     );
 };
 
-export default ProductCheck;
+export default FeatureChecklist;
