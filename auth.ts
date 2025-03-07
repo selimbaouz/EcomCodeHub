@@ -48,7 +48,7 @@ export const {
   unstable_update,
 } = NextAuth({
   pages: {
-    signIn: "/account/login",
+    signIn: "/auth/login",
     error: "/not-found",
   },
   events: {
@@ -61,6 +61,7 @@ export const {
     createUser: async (message) => {
       const userId = message.user.id;
       const email = message.user.email;
+      const name = message.user.name;
       if(!userId || !email) {
         return;
       }

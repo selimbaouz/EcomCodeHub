@@ -23,6 +23,7 @@ import CardAuthWrapper from "../card/CardAuthWrapper";
 import { updateOrLogin, verifyEmail } from "@/actions/login";
 import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
+import { useCurrentUser } from "@/hook/use-current-user";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -32,6 +33,7 @@ export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [isPending, startTransition] = useTransition();
+  const currentUser = useCurrentUser();
   
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -116,7 +118,7 @@ export function LoginForm() {
           <p>Nous envoyons simplement un lien de vérification à {mailOfUser || form.getValues("email")}.</p>
           <Button 
               size="xl" 
-              className={cn("w-max font-medium mt-8 text-white", "lg:text-base")}
+              className={cn("w-max font-medium mt-8", "lg:text-base")}
               type="button"
               onClick={() => setIsMailSended(false)}
             >
@@ -126,6 +128,11 @@ export function LoginForm() {
       </div>
     )
   }
+
+  if(currentUser) {
+    redirect("/docs");
+  }
+  
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
       <CardAuthWrapper

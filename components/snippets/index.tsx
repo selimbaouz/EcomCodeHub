@@ -3,10 +3,10 @@
 import { cn } from "@/lib/utils";
 import SnippetCard from "../card/SnippetCard";
 import { FC } from "react";
-import { SnippetsType, User } from "@/types/types";
+import { SnippetsType, UserType } from "@/types/types";
 
 interface SnippetsProps {
-    user: User;
+    user: UserType;
     snippets: SnippetsType;
 }
 const Snippets: FC<SnippetsProps> = ({user, snippets}) => {

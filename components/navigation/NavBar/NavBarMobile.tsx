@@ -12,13 +12,32 @@ import { StaticImageData } from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useIsHydrated } from "@/hook/useIsHydrated";
+import { User } from "next-auth";
+import { UserType } from "@/types/types";
+import MenuDropdown from "../MenuDropdown";
+import { signOut } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
+import { useRouter } from "next/navigation";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
+import { useOpenSidebarStore } from "@/store/sidebar";
 
-const NavBarMobile = () => {
+interface NavBarMobileProps {
+    currentUser: User | undefined;
+    user?: UserType | null;
+    isAccount?: boolean;
+}
+const NavBarMobile = ({
+    currentUser,
+    user,
+    isAccount
+}: NavBarMobileProps) => {
     const { cart } = useCartStore();
     const { setIsOpenCart } = useOpenCartStore();
     const {systemTheme, theme} = useTheme();
     const currentTheme = theme === "system" ? systemTheme : theme;
     const [imageInTheme, setImageInTheme] = useState<StaticImageData>();
+    const { setIsOpenSidebar } = useOpenSidebarStore();
+    const router = useRouter();
 
     const isHydrated = useIsHydrated();
     
@@ -30,17 +49,57 @@ const NavBarMobile = () => {
     if(!isHydrated){
         return;
     }
+
+
+    if(isAccount) {
+        return (
+            <div className={cn("px-3 py-2 flex justify-between items-center max-w-screen-2xl mx-auto", "md:p-4", "lg:hidden")}>
+                <div className="flex items-center gap-2">
+                    <ImageLoader
+                            src={imageInTheme ?? ""}
+                            alt='Main Images of Bidet-Wc'
+                            className={cn('size-8 rounded-lg')}
+                            width={500}
+                            height={500}
+                        />
+                        <Link href="/" className="xs:absolute xs:left-1/2 xs:transform xs:-translate-x-1/2 cursor-pointer text-lg font-bold xs:text-xl sm:text-2xl">
+                    {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
+                    Tailwind<span className="text-primary">Liquid</span>
+                </Link>
+                </div>
+                {!currentUser ? (
+                    <div className={cn("cursor-pointer flex items-center gap-1")}>
+                    <CgProfile className="text-2xl" onClick={() => router.push("/auth/login")} />
+                </div>
+                ) : (
+                    <MenuDropdown
+                items={[
+                    {href: `/#credits`, label: "Acheter des crédits"},
+                    {href: `/#plans`, label: "Passer au plan supérieur"},
+                    {href: `/#sponsor`, label: "Parrainage", separator: true},
+                    {href: `/account`, label: "Compte"},
+                    ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 
+                ]}
+                handleLogOut={() => signOut()}
+                isLogOut={currentUser ? true : false}
+                >
+                <div className={cn("cursor-pointer flex items-center gap-1")}>
+                <CgProfile className="text-2xl" />
+                </div>
+                </MenuDropdown>
+                )}
+            </div>
+        )
+    }
     
     return (
         <div className={cn("px-3 py-2 flex justify-between items-center max-w-screen-2xl mx-auto", "md:p-4", "lg:hidden")}>
             <div className="flex items-center gap-2">
-                <ImageLoader
-                        src={imageInTheme ?? ""}
-                        alt='Main Images of Bidet-Wc'
-                        className={cn('size-8 rounded-lg')}
-                        width={500}
-                        height={500}
-                    />
+                <div 
+                    onClick={() => setIsOpenSidebar(true)}
+                >
+                    <HiOutlineMenuAlt4 className={cn("text-2xl uppercase text-foreground hover:text-foreground", "xs:text-3xl")} />
+                </div>
                     <Link href="/" className="xs:absolute xs:left-1/2 xs:transform xs:-translate-x-1/2 cursor-pointer text-lg font-bold xs:text-xl sm:text-2xl">
                 {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
                 Tailwind<span className="text-primary">Liquid</span>

@@ -12,7 +12,7 @@ export default async function NewVerification() {
       <LoaderSpinner>
         <div className="relative size-full">
           <div className="sticky top-0 w-full z-50">
-            <NavBar menu={[]} />
+            <NavBar menu={[]} isAccount />
           </div>
           <NewPasswordForm />
           <Footer footerMenu={footerMenu} />

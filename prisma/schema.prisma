@@ -48,6 +48,7 @@ model User {
   password              String?
   emailVerified         DateTime?
   stripeCustomerId      String?
+  subscriptionId        String?
   credits               Int
   plan                  PlanType?  
   purchases             Purchase[]

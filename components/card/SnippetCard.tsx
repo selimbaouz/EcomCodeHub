@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import React, { startTransition, useState, useTransition } from 'react';
 import { FaCheck, FaCoins, FaLock, FaRegCopy, FaUnlock } from 'react-icons/fa6';
 import CodeBlock from '../CodeBlock';
-import { SnippetType, User } from '@/types/types';
+import { SnippetType, UserType } from '@/types/types';
 import ComponentsSnippet from '../snippets/ComponentsSnippet';
 import { onPurchaseSnippet } from '@/data/snippets';
 import ConfirmModal from '../modals/ConfirmModal';
@@ -15,7 +15,7 @@ import { useRouter } from 'next/navigation';
 
 interface SnippetCardProps {
     snippet: SnippetType;
-    user: User
+    user: UserType
 }
 const SnippetCard = ({
     snippet,
@@ -94,7 +94,7 @@ const SnippetCard = ({
                     {hasPurchased && (
                     <button
                         onClick={handleCopy}
-                        className="p-2 bg-gray-800 border text-white rounded-lg hover:bg-gray-700 transition"
+                        className="p-2 bg-gray-100 border text-foreground rounded-lg hover:bg-gray-200 transition"
                     >
                         {copied ? <FaCheck className="text-green-400" /> : <FaRegCopy />}
                     </button>

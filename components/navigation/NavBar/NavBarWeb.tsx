@@ -3,32 +3,41 @@ import { cn } from "@/lib/utils";
 import { useCartStore, useOpenCartStore } from "@/store/cart";
 import Link from "next/link";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import { Menu } from "@/types/types";
+import { Menu, UserType } from "@/types/types";
 import { FC, useEffect, useState } from "react";
 import ToggleMode from "@/components/ToggleMode";
 import { useOpenSidebarStore } from "@/store/sidebar";
-import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import ImageLoader from "@/components/ImageLoader";
 import Logo from '@/public/images/Logo.png';
 import LogoDark from '@/public/images/LogoDark.png';
 import { useTheme } from "next-themes";
 import { StaticImageData } from "next/image";
 import { useIsHydrated } from "@/hook/useIsHydrated";
+import { User } from "next-auth";
+import { Button } from "@/components/ui/button";
+import MenuDropdown from "../MenuDropdown";
+import { signOut } from "next-auth/react";
+import { IoIosArrowDown } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
+import { usePathname, useRouter } from "next/navigation";
 
 interface NavBarWebProps {
     menu: Menu[];
-    isHome?: boolean;
+    isAccount?: boolean;
+    currentUser: User | undefined;
+    user?: UserType | null;
 }
-const NavBarWeb: FC<NavBarWebProps> = ({ menu, isHome }) => {
-    console.log(menu);
+const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, user }) => {
+    const classLink = "font-light text-foreground text-base hover:text-primary";
     const {systemTheme, theme} = useTheme();
     const currentTheme = theme === "system" ? systemTheme : theme;
     const [imageInTheme, setImageInTheme] = useState<StaticImageData>();
     const { cart } = useCartStore();
     const { setIsOpenCart } = useOpenCartStore();
-    const { setIsOpenSidebar, isOpenSidebar } = useOpenSidebarStore();
+    const router = useRouter();
 
     const isHydrated = useIsHydrated();
+    const pathname = usePathname();
     
     useEffect(() => {
         const images = currentTheme === "dark" ? LogoDark : Logo;
@@ -39,31 +48,44 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isHome }) => {
         return;
     }
 
-    if (isHome) {
+    if(isAccount) {
         return (
-            <div className={cn("hidden", "relative max-w-screen-2xl lg:flex lg:justify-between lg:items-center lg:mx-auto lg:py-4")}>
-               <div className="flex items-center gap-4">
+            <div className={cn("hidden px-3 py-2 justify-between items-center max-w-screen-xl mx-auto", "md:p-4", "lg:flex")}>
+                <div className="flex items-center gap-2">
                     <ImageLoader
-                        src={imageInTheme ?? ""}
-                        alt='Main Images of Bidet-Wc'
-                        className={cn('size-10 rounded-lg')}
-                        width={500}
-                        height={500}
-                    />
-                    <Link href="/" className={cn("text-white font-bold cursor-pointer z-50 font-regular", "lg:text-2xl", "xl:text-3xl")}>
-                        {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} className={cn("lg:w-32", "xl:w-44")} /> */}
-                        Tailwind<span className="text-foreground">Liquid</span>
-                    </Link>
+                            src={imageInTheme ?? ""}
+                            alt='Main Images of Bidet-Wc'
+                            className={cn('size-8 rounded-lg')}
+                            width={500}
+                            height={500}
+                        />
+                        <Link href="/" className="cursor-pointer text-lg font-bold xs:text-xl sm:text-2xl">
+                    {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
+                    Tailwind<span className="text-primary">Liquid</span>
+                </Link>
                 </div>
-                <div className={cn("flex gap-4 items-center")}>
-                    <ToggleMode />
-                    <div 
-                        onClick={() => setIsOpenSidebar(true)}
-                        className={cn("cursor-pointer bg-foreground flex items-center gap-3 text-background py-3 px-6 rounded-full", "hover:bg-primary", isOpenSidebar && "bg-primary")}
-                    >
-                        <p className={cn("text-sm", "3xl:text-xl")}>menu</p>
-                        <HiOutlineMenuAlt4 className={cn("text-lg uppercase text-background", "sm:text-xl", "3xl:text-2xl")} />
-                    </div>
+                <div className="lg:flex lg:items-center lg:gap-4">
+                <ToggleMode />
+                {!currentUser ? (
+                <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push("/auth/login")} />
+                ) : (
+                    <MenuDropdown
+                items={[
+                    {href: `/#credits`, label: "Acheter des crédits"},
+                    {href: `/#plans`, label: "Passer au plan supérieur"},
+                    {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
+                    {href: `/account`, label: "Compte"},
+                    ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 
+                ]}
+                handleLogOut={() => signOut()}
+                isLogOut={currentUser ? true : false}
+                >
+                <div className={cn("lg:py-2 lg:cursor-pointer lg:flex lg:items-center lg:gap-1")}>
+                    <CgProfile className="text-2xl" />
+                    <IoIosArrowDown />
+                </div>
+                </MenuDropdown>
+                )}
                 </div>
             </div>
         )
@@ -71,21 +93,40 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isHome }) => {
 
     return (
         <div className={cn("hidden", "relative max-w-screen-xl lg:p-6 lg:flex lg:justify-between lg:items-center lg:mx-auto lg:py-2 lg:h-20", "xl:px-0")}>
-            <div className="flex items-center gap-4">
-                <ImageLoader
-                    src={imageInTheme ?? ""}
-                    alt='Main Images of Bidet-Wc'
-                    className={cn('size-8 rounded-lg')}
-                    width={500}
-                    height={500}
-                />
-                <Link href="/" className={cn("text-foreground font-bold cursor-pointer z-50 font-regular", "lg:text-xl", "xl:text-2xl")}>
-                    {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} className={cn("lg:w-32", "xl:w-44")} /> */}
-                    Tailwind<span className="text-primary">Liquid</span>
-                </Link>
+            <div className="flex items-center gap-14">
+                <div className="flex items-center gap-4">
+                    <ImageLoader
+                        src={imageInTheme ?? ""}
+                        alt='Main Images of Bidet-Wc'
+                        className={cn('size-8 rounded-lg')}
+                        width={500}
+                        height={500}
+                    />
+                    <Link href="/" className={cn("text-foreground font-bold cursor-pointer z-50 font-regular", "lg:text-xl", "xl:text-2xl")}>
+                        {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} className={cn("lg:w-32", "xl:w-44")} /> */}
+                        Tailwind<span className="text-primary">Liquid</span>
+                    </Link>
+                </div>
+                <ul className={cn("flex items-center gap-5", "xl:gap-6")}>
+                    {menu.map((data, i) => (
+                        <li key={i}>
+                            {data.path.includes("contact") ? (
+                                <Link 
+                                    href="mailto:im.sejiux@gmail.com"
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className={cn(classLink, data.path === pathname && "font-bold")}
+                                >Contact</Link>
+                            ) : (
+                                <Link href={data.path} className={cn(classLink, data.path === pathname && "font-bold text-primary")}>{data.title}</Link>
+                            )}
+                        </li>
+                    ))}
+                </ul>
             </div>
-            <div className={cn("flex gap-2 items-center")}>
+            <div className={cn("flex gap-3 items-center")}>
                 <ToggleMode />
+                <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push("/auth/login")} />
                 <div 
                     className="relative p-2 cursor-pointer group" 
                     onClick={() => setIsOpenCart(true)}

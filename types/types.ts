@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { z } from "zod";
 
 export type Login = z.infer<typeof LoginSchema>;
-export type User = z.infer<typeof userSchema>;
+export type UserType = z.infer<typeof userSchema>;
 export type NewPassword = z.infer<typeof NewPasswordSchema>;
 export type Reset = z.infer<typeof ResetSchema>;
 export type SnippetsType = z.infer<typeof snippetsSchema>;

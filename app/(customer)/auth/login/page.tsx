@@ -12,7 +12,7 @@ export default async function Login () {
     <LoaderSpinner>
       <div className="relative size-full">
         <div className="sticky top-0 w-full z-50">
-          <NavBar menu={[]} />
+          <NavBar menu={[]} isAccount />
         </div>
         <LoginForm />
         <Footer footerMenu={footerMenu} />
