@@ -6,7 +6,7 @@ import {
   FormItem,
   FormMessage,  
 } from "@/components/ui/form";
-import { useState, useTransition, MouseEventHandler, useEffect} from "react";
+import { useState, useTransition} from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
 import { LoginSchema } from "@/schemas";

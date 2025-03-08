@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { fetchUserByEmail } from "@/actions/user";
 
 interface NavBarProps {
-    menu: Menu[];
+    menu?: Menu[];
     isAccount?: boolean;
 }
 export default function NavBar(
@@ -35,13 +35,13 @@ export default function NavBar(
 
     return (
         <nav className={cn("bg-background border-b dark:border-white/10 z-[100]")}>
-            <NavBarMobile currentUser={currentUser} user={user} isAccount={isAccount} />
-            <NavBarWeb menu={menu} currentUser={currentUser} user={user} isAccount={isAccount} />
+            <NavBarMobile currentUser={currentUser} isAccount={isAccount} />
+            <NavBarWeb menu={menu ?? []} currentUser={currentUser} user={user} isAccount={isAccount} />
 
             {/* Panier */}
             <Cart />
             {/* Liens */}
-            <SideBar menu={menu} />
+            <SideBar menu={menu ?? []} isAccount={isAccount} />
         </nav>
     );
 };

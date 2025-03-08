@@ -6,7 +6,6 @@ import { RiShoppingBag3Fill } from "react-icons/ri";
 import { Menu, UserType } from "@/types/types";
 import { FC, useEffect, useState } from "react";
 import ToggleMode from "@/components/ToggleMode";
-import { useOpenSidebarStore } from "@/store/sidebar";
 import ImageLoader from "@/components/ImageLoader";
 import Logo from '@/public/images/Logo.png';
 import LogoDark from '@/public/images/LogoDark.png';
@@ -14,7 +13,6 @@ import { useTheme } from "next-themes";
 import { StaticImageData } from "next/image";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { User } from "next-auth";
-import { Button } from "@/components/ui/button";
 import MenuDropdown from "../MenuDropdown";
 import { signOut } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
@@ -51,8 +49,9 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
     if(isAccount) {
         return (
             <div className={cn("hidden px-3 py-2 justify-between items-center max-w-screen-xl mx-auto", "md:p-4", "lg:flex")}>
-                <div className="flex items-center gap-2">
-                    <ImageLoader
+                <div className="flex items-center gap-14">
+                    <div className="flex items-center gap-2">
+                        <ImageLoader
                             src={imageInTheme ?? ""}
                             alt='Main Images of Bidet-Wc'
                             className={cn('size-8 rounded-lg')}
@@ -60,9 +59,26 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                             height={500}
                         />
                         <Link href="/" className="cursor-pointer text-lg font-bold xs:text-xl sm:text-2xl">
-                    {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
-                    Tailwind<span className="text-primary">Liquid</span>
-                </Link>
+                            {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
+                            Tailwind<span className="text-primary">Liquid</span>
+                        </Link>
+                    </div>
+                    <ul className={cn("flex items-center gap-5", "xl:gap-6")}>
+                        {[
+                            {
+                                path: "/docs", 
+                                title: "Snippets",
+                            },
+                            {
+                                path: "/installation", 
+                                title: "Installation",
+                            }
+                        ]?.map((data, i) => (
+                            <li key={i}>
+                                <Link href={data.path} className={cn(classLink, data.path === pathname && "font-bold text-primary")}>{data.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <div className="lg:flex lg:items-center lg:gap-4">
                 <ToggleMode />
@@ -70,21 +86,21 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                 <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push("/auth/login")} />
                 ) : (
                     <MenuDropdown
-                items={[
-                    {href: `/#credits`, label: "Acheter des crédits"},
-                    {href: `/#plans`, label: "Passer au plan supérieur"},
-                    {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
-                    {href: `/account`, label: "Compte"},
-                    ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 
-                ]}
-                handleLogOut={() => signOut()}
-                isLogOut={currentUser ? true : false}
-                >
-                <div className={cn("lg:py-2 lg:cursor-pointer lg:flex lg:items-center lg:gap-1")}>
-                    <CgProfile className="text-2xl" />
-                    <IoIosArrowDown />
-                </div>
-                </MenuDropdown>
+                        items={[
+                            {href: `/#credits`, label: "Acheter des crédits"},
+                            {href: `/#plans`, label: "Passer au plan supérieur"},
+                            {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
+                            {href: `/account`, label: "Compte"},
+                            ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 
+                        ]}
+                        handleLogOut={() => signOut()}
+                        isLogOut={currentUser ? true : false}
+                        >
+                        <div className={cn("lg:py-2 lg:cursor-pointer lg:flex lg:items-center lg:gap-1")}>
+                            <CgProfile className="text-2xl" />
+                            <IoIosArrowDown />
+                        </div>
+                    </MenuDropdown>
                 )}
                 </div>
             </div>

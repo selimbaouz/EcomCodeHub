@@ -26,7 +26,7 @@ export default async function AmbassadorProgram() {
             )}>
                 <div className={cn('px-6 space-y-14', "md:px-0")}>
                     <h1 className="text-3xl font-bold">{page?.title}</h1>
-                    <Prose html={page.body as string} className='list-disc ml-5'/>
+                    <Prose html={page.body as string}/>
                 </div>
             </section>
             <section className="relative pt-10">
