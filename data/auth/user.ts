@@ -18,14 +18,3 @@ export const getUserById = async (id: string) => {
     return null;
   }
 };
-
-
-export const getUserByUserName = async (userName: string) => {
-  try {
-    const user = await db.user.findUnique({ where: { userName } });
-
-    return user;
-  } catch {
-    return null;
-  }
-};

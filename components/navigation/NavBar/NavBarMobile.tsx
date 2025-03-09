@@ -33,7 +33,7 @@ const NavBarMobile = ({
 
     if(isAccount) {
         return (
-            <div className={cn("px-3 py-2 flex justify-between items-center max-w-screen-2xl mx-auto", "md:p-4", "lg:hidden")}>
+            <div className={cn("px-3 py-4 flex justify-between items-center max-w-screen-2xl mx-auto", "md:p-4", "lg:hidden")}>
                 <div className="flex items-center gap-2">
                 <div 
                     onClick={() => setIsOpenSidebar(true)}
@@ -49,11 +49,11 @@ const NavBarMobile = ({
                     <ToggleMode />
                     {!currentUser ? (
                         <div className={cn("cursor-pointer flex items-center gap-1")}>
-                        <CgProfile className="text-2xl" onClick={() => router.push("/auth/login")} />
+                        <CgProfile className="text-3xl" onClick={() => router.push("/auth/login")} />
                     </div>
                     ) : (
                         <div className={cn("cursor-pointer flex items-center gap-1")}>
-                        <CgProfile className="text-2xl" onClick={() => router.push("/account")} />
+                        <CgProfile className="text-3xl" onClick={() => router.push("/account")} />
                         </div>
                     )}
                 </div>

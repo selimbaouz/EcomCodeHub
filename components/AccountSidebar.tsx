@@ -7,16 +7,15 @@ import { useState } from 'react';
 import { signOut } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { IoIosArrowForward } from 'react-icons/io';
-import { useCurrentUser } from "@/hook/use-current-user";
+import { useOpenAccountStore } from "@/store/account";
 
 const AccountSidebar = () => {
-  const currentUser = useCurrentUser();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const {setIsOpenAccount, isOpenAccount} = useOpenAccountStore();
   const pathname = usePathname();
 
   const categoriesWeb = [
-    { title: "Informations personnelles", link: "" },
-    { title: "Connexion et sécurité", link: "" },
+    { title: "Paramètres du compte", link: "/account" },
     { title: "Paiements et factures", link: "" },
     { title: "Notifications", link: "" },
   ];
@@ -34,15 +33,16 @@ const AccountSidebar = () => {
   };
 
   return (
-    <div className={cn("px-6 w-full border-r", "lg:max-w-sm lg:block", 'xl:py-14', !pathname?.endsWith("/account") && "hidden")}>
+    <div className={cn("px-6 w-full border-r", "lg:max-w-sm lg:block", 'xl:py-14', isOpenAccount === false ? !pathname?.endsWith("/account") && "hidden" : "hidden")}>
       <h3 className={cn('text-2xl font-bold py-10 lg:py-0 lg:pb-14')}>Paramètres</h3>
       <div className="space-y-4 py-4">
         {categoriesWeb.map((item, index) => (
           <Link
             key={index}
             href={item.link}
+            onClick={() => item.link === "/account" ? setIsOpenAccount(true) : setIsOpenAccount(false)}
             className={cn("flex items-center justify-between font-medium w-full text-foreground hover:font-semibold py-2",
-              pathname === item.link ? " font-semibold" : "font-medium"
+              pathname === item.link ? " font-bold" : "font-normal"
                 
             )}
           >
@@ -56,7 +56,7 @@ const AccountSidebar = () => {
               href={item.link}
               className={cn("flex items-center justify-between font-medium w-full text-foreground hover:font-semibold py-2",
                 "lg:hidden",
-                pathname === item.link ? " font-semibold" : "font-medium"
+                pathname === item.link ? " font-bold" : "font-normal"
                   
               )}
             >

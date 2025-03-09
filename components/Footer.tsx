@@ -8,15 +8,17 @@ import { usePathname } from "next/navigation";
 
 interface FooterProps {
     footerMenu: Menu[];
+    className?: string;
 }
 const Footer = ({
-    footerMenu
+    footerMenu,
+    className
 }: FooterProps) => {
     const classLink = "font-normal text-sm";
     const pathname = usePathname();
 
     return (
-        <>
+        <div className={className}>
             <footer className={cn('p-4 text-left py-10 text-white space-y-20 bg-[#1A2A32] dark:bg-background z-10 h-full', "lg:py-14 lg:px-0")}>
                 <div className={cn("max-w-screen-xl mx-auto space-y-14", "lg:p-6")}>
                     {/* <Image src={Logo} alt="Logo of HelloPurly" width={250} height={36} /> */}
@@ -57,7 +59,7 @@ const Footer = ({
                     </Link>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

@@ -3,7 +3,6 @@ import { z } from "zod";
 export const userSchema = z.object({
   id: z.string(),
   name: z.string().nullable(),
-  userName: z.string().nullable(),
   email: z.string().email().nullable(),
   password: z.string().nullable(),
   emailVerified: z.date().nullable(),
@@ -22,12 +21,17 @@ export const purchaseSchema = z.object({
   createdAt: z.date(),
 });
 
+export const categorySchema = z.object({
+  id: z.string(),
+  title: z.string(),
+});
+
 export const snippetSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string().nullable(),
+  category: categorySchema.nullable(),
   creditPrice: z.number(),
-  categories: z.array(z.string()),
   componentName: z.string(),
   code: z.string(),
   purchases: z.array(purchaseSchema),

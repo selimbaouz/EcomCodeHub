@@ -1,12 +1,22 @@
+import { auth } from "@/auth";
 import AccountSidebar from "@/components/AccountSidebar";
 import Footer from "@/components/Footer";
+import AccountForm from "@/components/forms/AccountForm";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
+import { getUserByEmail } from "@/data/auth/user";
 import { getMenu } from "@/data/shopify";
 import { cn } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 export default async function Account () {
   const footerMenu = await getMenu("footer");
+  const session = await auth();
+  const user = await getUserByEmail(session?.user?.email ?? "");
+  
+  if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
+      redirect("/auth/login");
+  }
 
   return (
     <LoaderSpinner>
@@ -15,12 +25,13 @@ export default async function Account () {
           <NavBar isAccount />
         </div>
         <div className={cn("h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
-        <AccountSidebar />
-        <div className={cn('hidden py-10 space-y-2 px-10 h-[90dvh] w-full', "xl:block xl:px-0 xl:py-14")}>
-          
-        </div>
+          <AccountSidebar />
+          {/* <div className={cn('hidden py-10 space-y-2 px-10 h-[90dvh] w-full', "xl:block xl:px-0 xl:py-14")}>
+            
+          </div> */}
+          <AccountForm />
       </div>
-        <Footer footerMenu={footerMenu} />
+        <Footer footerMenu={footerMenu} className="hidden lg:block" />
       </div>
     </LoaderSpinner>
   );

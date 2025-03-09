@@ -5,9 +5,14 @@ import { db } from "@/lib/db";
 export async function fetchSnippets() {
     return await db.snippet.findMany({
         include: {
-            purchases: true
+            purchases: true,
+            category: true,
         }
     });
+}
+
+export async function fetchCategoriesSnippets() {
+    return await db.category.findMany();
 }
 
 export async function onPurchaseSnippet (snippetId: string, userId: string, creditPrice: number) {
