@@ -1,4 +1,4 @@
-import { LoginSchema, NewPasswordSchema, ResetSchema, snippetSchema, snippetsSchema, userSchema } from "@/schemas";
+import { deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
 
@@ -8,6 +8,10 @@ export type NewPassword = z.infer<typeof NewPasswordSchema>;
 export type Reset = z.infer<typeof ResetSchema>;
 export type SnippetsType = z.infer<typeof snippetsSchema>;
 export type SnippetType = z.infer<typeof snippetSchema>;
+export type DeleteAccount = z.infer<typeof deleteAccountSchema>;
+export type Notifications = z.infer<typeof notificationSchema>;
+export type UpdatePassword = z.infer<typeof updatePasswordSchema>;
+export type UpdateEmail = z.infer<typeof updateEmailSchema>;
 
 export type Money = {
     amount: string;

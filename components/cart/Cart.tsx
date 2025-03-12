@@ -94,8 +94,8 @@ export default function Cart() {
         quantities,
         variantId,
         type,
-        successUrl: `${window.location.origin}?success=true`,
-        cancelUrl: `${window.location.origin}?cancel=true`,
+        successUrl: `${window.location.origin}/auth/login`,
+        cancelUrl: `${window.location.origin}products/pack-pro-conversion-shopify?cancel=true`,
       });
 
       if(url) {

@@ -2,14 +2,13 @@ import * as React from "react";
 import { Button, Container, Section, Text, Hr, Tailwind, Link, Head } from "@react-email/components";
 import { cn } from "@/lib/utils";
 
-interface EmailVerificationProps {
-    token: string;
-    isChange?: boolean;
+interface EmailChangeConfirmationProps {
+  token: string;
 }
-const EmailVerification = ({
+
+const EmailChangeConfirmation = ({
   token,
-  isChange = false
-}: EmailVerificationProps) => {
+}: EmailChangeConfirmationProps) => {
   return (
     <Tailwind>
       <Head>
@@ -33,7 +32,7 @@ const EmailVerification = ({
                 TailwindLiquid
             </Text>
             <Text className='text-3xl mt-8 text-foreground font-medium'>
-                {isChange ? "Confirmez votre nouvelle adresse e-mail" : "isChangeConfirmation de votre adresse e-mail"}
+                Confirmation de votre demande de changement d'adresse e-mail
             </Text>
           </Section>
           <Hr />
@@ -41,21 +40,13 @@ const EmailVerification = ({
             <Text className='text-base text-left mb:mb-5'>
             Bonjour,
             </Text>
-            {isChange ? (
-               <Text className='text-base text-left mb-5'>
-               Vous avez demandé à modifier votre adresse e-mail. Pour finaliser ce changement, veuillez confirmer votre nouvelle adresse en cliquant sur le bouton ci-dessous :
-             </Text>
-            ) : (
-              <>
-                <Text className='text-base text-left mb:mb-5'>
-                Bienvenue dans la communauté TailwindLiquid ! Nous sommes ravis de vous compter parmi nous.
-                </Text>
-                <Text className='text-base text-left mb:mb-5'>
-                Pour finaliser votre inscription et commencer à utiliser votre compte, veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous :
-                </Text>
-              </>
-            )}
-            <Button href={`https://tailwindliquid.com/auth/new-verification?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-full text-center mx-auto shadow text-base hover:bg-primary/90 py-4 rounded-md font-medium mt-4 mb-10')}>Confirmer mon adresse e-mail</Button>
+            <Text className='text-base text-left mb:mb-5'>
+            Nous avons reçu une demande de changement de votre adresse email pour votre compte TailwindLiquid. Si vous n'avez pas fait cette demande, veuillez ignorer ce message.
+            </Text>
+            <Text className='text-base text-left mb:mb-5'>
+            Sinon, veuillez cliquer sur le bouton ci-dessous pour modifier votre adresse email :
+            </Text>
+            <Button href={`https://tailwindliquid.com/auth/change-verification?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-full shadow text-base hover:bg-primary/90 py-4 rounded-md font-medium mt-4 mb-10')}>Réinitialiser mon mot de passe</Button>
             <Text className='text-base text-left mb:mb-5'>
               Ce lien est valable pendant 30 minutes. Si vous n'avez pas demandé cette vérification, veuillez ignorer ce message ou contacter notre support à l'adresse {" "}
               <Link href="mailto:tailwindliquid@gmail.com" target="_blank" className='underline'>
@@ -94,5 +85,5 @@ const EmailVerification = ({
   );
 };
 
-export default EmailVerification;
+export default EmailChangeConfirmation;
 

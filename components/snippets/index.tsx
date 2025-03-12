@@ -21,15 +21,15 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     }, [snippets, searchQuery, category]);
 
     return (
-        <div className={cn("space-y-4", "lg:grid lg:grid-cols-2 lg:items-start lg:gap-4 py-20 lg:space-y-0")}>
+        <div className={cn("w-full space-y-4 py-20", "lg:space-y-0")}>
             {filteredSnippets.length > 0 ? (
-                filteredSnippets.map((data, index) => (
-                    <SnippetCard key={index} user={user} snippet={data} />
-                ))
-            ) : ( category &&
-                <div className="flex justify-center items-center mx-auto w-full">
-                    <p>Aucun snippet trouvé</p>
+                <div className={cn(" border", "lg:grid lg:grid-cols-2 lg:items-start lg:gap-4")}>
+                    {filteredSnippets.map((data, index) => (
+                        <SnippetCard key={index} user={user} snippet={data} />
+                    ))}
                 </div>
+            ) : ( category &&
+                <div className="flex justify-center items-center w-full">Aucun snippet trouvé</div>
             )}
         </div>
     );

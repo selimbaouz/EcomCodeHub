@@ -16,14 +16,14 @@ const AccountSidebar = () => {
 
   const categoriesWeb = [
     { title: "Paramètres du compte", link: "/account" },
-    { title: "Paiements et factures", link: "" },
-    { title: "Notifications", link: "" },
+    { title: "Paiements et factures", link: "/account/payments-invoices" },
+    { title: "Notifications", link: "/account/notifications" },
   ];
 
   const categoriesMobile = [
-    { title: "Acheter des crédits", link: "" },
-    { title: "Passer au plan supérieur", link: "" },
-    { title: "Parrainage", link: "" },
+    { title: "Acheter des crédits", link: "/account/buy-credit" },
+    { title: "Passer au plan supérieur", link: "/account/plans" },
+    /* { title: "Parrainage", link: "/account/sponsorship" }, */
   ];
 
   const handleSignOut = async () => {

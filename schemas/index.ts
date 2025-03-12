@@ -6,6 +6,7 @@ export const userSchema = z.object({
   email: z.string().email().nullable(),
   password: z.string().nullable(),
   emailVerified: z.date().nullable(),
+  emailNotifications: z.boolean().default(false).nullable(),
   stripeCustomerId: z.string().nullable(),
   credits: z.number(),
   plan: z.enum(["ONE_TIME", "SUBSCRIPTION"]).nullable(),
@@ -47,7 +48,8 @@ export const LoginSchema = z.object({
     message: "L'email est obligatoire"
   }),
   password: z.string().optional(),
-  code: z.string().optional()
+  code: z.string().optional(),
+  isChange: z.boolean().optional(),
 });
 
 export const checkoutSessionSchema = z.object({
@@ -57,6 +59,35 @@ export const checkoutSessionSchema = z.object({
   type: z.enum(["one_time", "bundle", "subscription"]), // Type de paiement
   successUrl: z.string().url(), // URL de succès après paiement
   cancelUrl: z.string().url(), // URL d'annulation
+});
+
+export const notificationCodeSchema = z.object({
+  newCodes: z.number(),
+});
+
+export const notificationSchema = z.object({
+  emailNotifications: z.boolean(),
+});
+
+export const deleteAccountSchema = z.object({
+  password: z.string().min(6, "Le mot de passe est requis pour supprimer le compte"),
+});
+
+export const updateEmailSchema = z.object({
+  newEmail: z.string().email("Email invalide"),
+});
+
+export const NewVerificationEmailSchema = z.object({
+  newEmail: z.string().email("Email invalide"),
+  token: z.string(),
+});
+
+export const updatePasswordSchema = z.object({
+  newPassword: z.string().min(6, "Le nouveau mot de passe doit contenir au moins 6 caractères"),
+  confirmPassword: z.string().min(6, "Confirmez le nouveau mot de passe"),
+}).refine(data => data.newPassword === data.confirmPassword, {
+  message: "Les mots de passe ne correspondent pas",
+  path: ["confirmPassword"]
 });
 
 export const NewPasswordSchema = z.object({
@@ -84,5 +115,4 @@ export const ResetSchema = z.object({
   email: z.string().email({
     message: "L'email est obligatoire",
   }),
-  locale: z.optional(z.string().max(2)),
 });

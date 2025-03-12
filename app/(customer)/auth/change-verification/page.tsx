@@ -1,10 +1,10 @@
+import EmailChangeConfirmation from "@/components/email-verification/EmailChangeConfirmation";
 import Footer from "@/components/Footer";
-import EmailVerificationRequest from "@/components/email-verification/EmailVerificationRequest";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
 import { getMenu } from "@/data/shopify";
 
-export default async function NewVerification() {
+export default async function ChangeVerification() {
     const menu = await getMenu("main-menu");
     const footerMenu = await getMenu("footer");
     
@@ -14,7 +14,7 @@ export default async function NewVerification() {
           <div className="sticky top-0 w-full z-50">
             <NavBar menu={[]} isAccount />
           </div>
-          <EmailVerificationRequest />
+          <EmailChangeConfirmation />
           <Footer footerMenu={footerMenu} />
         </div>
       </LoaderSpinner>

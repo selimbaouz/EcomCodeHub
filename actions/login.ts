@@ -11,23 +11,15 @@ import { getTwoFactorConfirmationByUserId } from "@/data/auth/two-factor-confirm
 import { getTwoFactorTokenByEmail } from "@/data/auth/two-factor-token";
 import { AuthError } from "next-auth";
 import { action } from "@/lib/safe-action";
-import { stripe } from "@/lib/stripe";
 
 export const verifyEmail = action
 .schema(LoginSchema) 
-.action(async ({ parsedInput: { email } }) => {
+.action(async ({ parsedInput: { email, isChange } }) => {
   const existingUser = await getUserByEmail(email.toLocaleLowerCase());
-  /* const session = (await stripe.accounts.list({})).data.map((data) => {
-    data.
-  }); */
-  
+
   if (!existingUser) {
     return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
   }
-
-  /* if (email !== existingUser?.email) {
-    return { error: "L'adresse e-mail est invalide. Veuillez entrer une adresse valide." };
-  } */
 
   if (!existingUser.emailVerified) {
     const verificationToken = await generateVerificationToken(
@@ -37,6 +29,7 @@ export const verifyEmail = action
     await sendVerificationEmail(
       verificationToken.email,
       verificationToken.token,
+      isChange ?? false
     );
 
     return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };

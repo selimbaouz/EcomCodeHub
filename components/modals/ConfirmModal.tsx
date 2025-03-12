@@ -7,7 +7,7 @@ type ConfirmModalProps = {
   onClose?: (value: boolean) => void;
   title: string;
   description?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const ConfirmModal = ({ isOpen, onClose, title, children, description }: ConfirmModalProps) => {
@@ -18,7 +18,7 @@ const ConfirmModal = ({ isOpen, onClose, title, children, description }: Confirm
           <DialogTitle className={cn("text-lg font-semibold flex items-center gap-2")}>
             {title}
           </DialogTitle>
-          <DialogDescription className='pb-4 break-words whitespace-pre-line text-center'>
+          <DialogDescription className='pb-4 break-words whitespace-pre-line text-left'>
             {description}
           </DialogDescription>
         </DialogHeader>

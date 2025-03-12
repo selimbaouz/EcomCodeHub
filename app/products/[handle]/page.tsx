@@ -1,7 +1,7 @@
 import ProductImage from '@/components/ProductImage';
 import ImagesGallery from '@/components/ImagesGallery'; 
 import { getHandleOfProduct, getMenu, getProductById } from '@/data/shopify'; 
-import { redirect } from 'next/navigation';
+import { redirect, useSearchParams } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import StickyBar from '@/components/navigation/StickyBar';
 import NavBar from '@/components/navigation/NavBar';

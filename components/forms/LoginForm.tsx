@@ -24,6 +24,7 @@ import { updateOrLogin, verifyEmail } from "@/actions/login";
 import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
+import { useNewEmailStore } from "@/store/account";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -34,6 +35,7 @@ export function LoginForm() {
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [isPending, startTransition] = useTransition();
   const currentUser = useCurrentUser();
+  const {newEmail, setNewEmail} = useNewEmailStore();
   
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -51,7 +53,12 @@ export function LoginForm() {
   
   const onSubmit = (values: Login) => {
     startTransition(async () => {
-      verifyEmail(values)
+      verifyEmail({
+        email: values.email,
+        password: values.password,
+        code: values.code,
+        isChange: newEmail !== "" ? true : false
+      })
         .then((response) => {
           if(response?.data?.error) {
             toast.error(response?.data?.error);
@@ -75,6 +82,7 @@ export function LoginForm() {
             }  else {
               setIsLogin(!!response?.data?.user?.password);
             } 
+            setNewEmail("");
           } 
         });
       });

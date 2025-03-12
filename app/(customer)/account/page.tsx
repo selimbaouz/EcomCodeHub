@@ -1,13 +1,16 @@
 import { auth } from "@/auth";
 import AccountSidebar from "@/components/AccountSidebar";
 import Footer from "@/components/Footer";
-import AccountForm from "@/components/forms/AccountForm";
+import AccountWrapper from "@/components/AccountWrapper";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
 import { getUserByEmail } from "@/data/auth/user";
 import { getMenu } from "@/data/shopify";
 import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
+import UpdatePasswordForm from "@/components/forms/UpdatePasswordForm";
+import DeleteAccountForm from "@/components/forms/DeleteAccountForm";
+import UpdateEmailForm from "@/components/forms/UpdateEmailForm";
 
 export default async function Account () {
   const footerMenu = await getMenu("footer");
@@ -24,12 +27,19 @@ export default async function Account () {
         <div className="sticky top-0 w-full z-50">
           <NavBar isAccount />
         </div>
-        <div className={cn("h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
+        <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
           <AccountSidebar />
           {/* <div className={cn('hidden py-10 space-y-2 px-10 h-[90dvh] w-full', "xl:block xl:px-0 xl:py-14")}>
             
           </div> */}
-          <AccountForm />
+          <AccountWrapper 
+            title="Paramètres du compte"
+            isAccountSettings
+          >
+            <UpdateEmailForm currentUser={session?.user!} />
+            <UpdatePasswordForm />
+            <DeleteAccountForm />
+          </AccountWrapper>
       </div>
         <Footer footerMenu={footerMenu} className="hidden lg:block" />
       </div>

@@ -1,14 +1,7 @@
 import React from 'react';
-import { Button, Container, Section, Text, Hr, Tailwind, Link, Head } from "@react-email/components";
-import { cn } from '@/lib/utils';
+import { Container, Section, Text, Hr, Tailwind, Link, Head } from "@react-email/components";
 
-interface EmailConfirmProps {
-    token: string;
-}
-
-const ResetPassword = ({
-  token,
-}: EmailConfirmProps) => {
+const NewCodes = ({ codeCount }: { codeCount: number }) => {
   return (
     <Tailwind>
       <Head>
@@ -32,7 +25,7 @@ const ResetPassword = ({
               TailwindLiquid
             </Text>
             <Text className='text-3xl mt-8 text-foreground font-medium'>
-              Réinitialisation de votre mot de passe
+            🚀 De nouveaux codes sont disponibles !
             </Text>
           </Section>
           <Hr />
@@ -41,14 +34,10 @@ const ResetPassword = ({
             Bonjour,
             </Text>
             <Text className='text-base text-left md:mb-5'>
-            Nous avons reçu une demande de réinitialisation de votre mot de passe pour votre compte TailwindLiquid. Si vous n'avez pas fait cette demande, veuillez ignorer ce message.
-            </Text>
-            <Text className='text-base text-left md:mb-5'>
-            Sinon, veuillez cliquer sur le bouton ci-dessous pour réinitialiser votre mot de passe :
-            </Text>
-            <Button href={`https://tailwindliquid.com/auth/new-password?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-max mx-auto text-center shadow text-base hover:bg-primary/90 py-4 rounded-md font-medium mt-4 mb-10')}>Réinitialiser mon mot de passe</Button>
-            <Text className='text-base text-left md:mb-5'>
-            Ce lien est valable pendant 30 minutes. Si le lien expire, vous pouvez demander un nouveau lien de réinitialisation sur notre site.
+            Nous venons d'ajouter {codeCount} nouveaux codes sur TailwindLiquid. Connectez vous pour les découvrir ! 
+            <Link href="https://tailwindliquid.com" target="_blank" className='underline'>
+              Voir les nouveaux codes
+              </Link>.
             </Text>
             <Text className='text-base text-left md:mb-5'>
             Si vous avez des questions ou des préoccupations, n'hésitez pas à contacter notre support à l'adresse {" "}
@@ -77,7 +66,7 @@ const ResetPassword = ({
           </Text>
           <Text className='text-[12px]'>
         Voir notre{" "}
-            <Link href={`https://tailwindliquid.com/legal/privacy`} target="_blank" className='underline'>
+            <Link href={`https://foodnd.app/legal/privacy`} target="_blank" className='underline'>
           politique de confidentialité
             </Link>
           .
@@ -88,4 +77,4 @@ const ResetPassword = ({
   );
 };
 
-export default ResetPassword;
+export default NewCodes;
