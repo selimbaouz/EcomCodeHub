@@ -6,7 +6,7 @@ import { FaCheck, FaCoins, FaLock, FaRegCopy, FaUnlock } from 'react-icons/fa6';
 import CodeBlock from '../CodeBlock';
 import { SnippetType, UserType } from '@/types/types';
 import ComponentsSnippet from '../snippets/ComponentsSnippet';
-import { onPurchaseSnippet } from '@/data/snippets';
+import { onPurchaseSnippet } from '@/actions/snippets';
 import ConfirmModal from '../modals/ConfirmModal';
 import { Button } from '../ui/button';
 import { PulseLoader } from 'react-spinners';

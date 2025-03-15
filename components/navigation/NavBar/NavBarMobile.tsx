@@ -24,7 +24,6 @@ const NavBarMobile = ({
     const { setIsOpenCart } = useOpenCartStore();
     const { setIsOpenSidebar } = useOpenSidebarStore();
     const router = useRouter();
-
     const isHydrated = useIsHydrated();
 
     if(!isHydrated){

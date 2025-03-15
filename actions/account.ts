@@ -5,7 +5,6 @@ import bcrypt from "bcryptjs";
 import { deleteAccountSchema, NewVerificationEmailSchema, updateEmailSchema, updatePasswordSchema } from "@/schemas";
 import { db } from "@/lib/db";
 import { action } from "@/lib/safe-action";
-import { getUserByEmail } from "@/data/auth/user";
 import { sendEmailChangeConfirmation, sendEmailDeleteAccountConfirmation, sendSuccessAccountDeleted, sendSuccessEmailChanged, sendVerificationEmail } from "@/lib/mail";
 import { generateVerificationToken } from "@/lib/tokens";
 import { getVerificationTokenByToken } from "@/data/auth/verificiation-token";

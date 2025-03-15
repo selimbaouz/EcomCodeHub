@@ -97,7 +97,7 @@ const DeleteAccountForm = () => {
                                             {...field}
                                             disabled={isPending}
                                             icon={<CiLock className="text-lg opacity-80" />} 
-                                            placeholder="Créer un nouveau mot de passe"
+                                            placeholder="Confirmez avec votre mot de passe"
                                             type={showPassword ? "text" : "password"}
                                             endIcon={
                                             <Button type="button" variant="link" onClick={handleClickShowPassword}>

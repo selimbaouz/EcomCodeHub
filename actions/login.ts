@@ -126,6 +126,7 @@ export const updateOrLogin = action
       });
 
       await signIn("credentials", { email, password, redirectTo: "/docs" });
+      return { success: true };
     } catch (error) {
       if (error instanceof AuthError) {
         switch (error.type) {

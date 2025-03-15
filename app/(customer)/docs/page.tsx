@@ -5,11 +5,12 @@ import NavBar from "@/components/navigation/NavBar";
 import SearchBar from "@/components/SearchBar";
 import Snippets from "@/components/snippets";
 import { getUserByEmail } from "@/data/auth/user";
-import { fetchCategoriesSnippets, fetchSnippets } from "@/data/snippets";
+import { fetchCategoriesSnippets, fetchSnippets } from "@/actions/snippets";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa6";
+import DocsClient from "@/components/DocsClient";
 
 export default async function DocsPage() {
     const session = await auth();
@@ -22,7 +23,7 @@ export default async function DocsPage() {
     }
     
     return (
-        <>
+        <DocsClient>
             <div className="sticky top-0 w-full z-50">
               <NavBar menu={[]} isAccount />
             </div>
@@ -46,6 +47,6 @@ export default async function DocsPage() {
                 </div>
             </div>
             <Footer footerMenu={[]} />
-        </>
+        </DocsClient>
     );
 };

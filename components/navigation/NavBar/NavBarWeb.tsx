@@ -18,6 +18,7 @@ import { signOut } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { usePathname, useRouter } from "next/navigation";
+import { useModalStore } from "@/store/plans";
 
 interface NavBarWebProps {
     menu: Menu[];
@@ -33,9 +34,9 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
     const { cart } = useCartStore();
     const { setIsOpenCart } = useOpenCartStore();
     const router = useRouter();
-
     const isHydrated = useIsHydrated();
     const pathname = usePathname();
+    const {setModeSelected, setIsModal } = useModalStore();
     
     useEffect(() => {
         const images = currentTheme === "dark" ? LogoDark : Logo;
@@ -87,8 +88,14 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                 ) : (
                     <MenuDropdown
                         items={[
-                            {href: `/#credits`, label: "Acheter des crédits"},
-                            {href: `/#plans`, label: "Passer au plan supérieur"},
+                            {label: "Acheter des crédits", handleClick: () => {
+                                setIsModal(true); 
+                                setModeSelected(0);
+                            }},
+                            {label: "S'abonner", handleClick: () => {
+                                setIsModal(true); 
+                                setModeSelected(1);
+                            }},
                             {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
                             {href: `/account`, label: "Compte"},
                             ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 

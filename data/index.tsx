@@ -28,6 +28,67 @@ import DeliveryEstimate from "@/components/snippets/DeliveryEstimate";
 import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2";
 import SelectOptions from "@/components/snippets/SelectOptions";
 
+export const PricesFixeData = (modeSelected?: number) => [
+  {
+    title: "Pack Débutant", 
+    price: modeSelected ? "13.30" : "19.00",
+    discount: modeSelected ? "-30% d'économies" : "",
+    infoPrice: "", 
+    content: "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
+    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+    options: [
+      { title: "Augmenter vos conversions" },
+      { title: "Copier-coller facile" },
+      { title: "Gain de temps" },
+      { title: "Personnalisation rapide" },
+      { title: "Résultats immédiats" },
+      { title: "Code prêt à l'emploi" },
+      { title: "Design professionnel" },
+      { title: "Attractivité renforcée" },
+      { title: "Boost vos ventes" },
+    ],
+  },
+  {
+    title: "Pack Avancé", 
+    price:  modeSelected ? "24.50" : "35.00",
+    discount: modeSelected ? "-30% d'économies" : "-7% d'économies",
+    infoPrice: "Populaire",
+    content: "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
+    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!,
+    options: [
+      { title: "Augmenter vos conversions" },
+      { title: "Copier-coller facile" },
+      { title: "Gain de temps" },
+      { title: "Personnalisation rapide" },
+      { title: "Résultats immédiats" },
+      { title: "Code prêt à l'emploi" },
+      { title: "Design professionnel" },
+      { title: "Attractivité renforcée" },
+      { title: "Boost vos ventes" },
+    ], 
+  },
+  {
+    title: "Pack Pro", 
+    price:  modeSelected ? "30.80" : "44.00",
+    discount: modeSelected ? "-30% d'économies" : "-23% d'économies",
+    truePrice: "50 000",
+    infoPrice: "",
+    content: "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
+    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!,
+    options: [
+      { title: "Augmenter vos conversions" },
+      { title: "Copier-coller facile" },
+      { title: "Gain de temps" },
+      { title: "Personnalisation rapide" },
+      { title: "Résultats immédiats" },
+      { title: "Code prêt à l'emploi" },
+      { title: "Design professionnel" },
+      { title: "Attractivité renforcée" },
+      { title: "Boost vos ventes" },
+    ], 
+  },
+];
+
 export const bestReviewsData = [
   {
       name: "Anaïs", 
@@ -62,29 +123,6 @@ export const bestReviewsData = [
       rating: 5,
       content: "labore ipsum ex enim dolor adipiscing magna eiusmod tempor ullamco consequat consequat ea aliquipxxxx"
   },
-]
-
-export const benefitsFeelingData = [
-  {
-    icon: HiOutlineShieldCheck, 
-    title: "Confort", 
-    content: "Une fois fixé, il reste fermement en place et s'adapte à tous les sièges auto, quelle que soit leur forme."
-  },
-  {
-    icon: HiOutlineSparkles, 
-    title: "Efficacité", 
-    content: "Diminue le risque de complications graves lors d'accidents de 82,7% comparé aux ceintures standard."
-  },
-  {
-    icon: HiOutlineHeart, 
-    title: "Protection", 
-    content: "Design innovant répartissant la pression sur les cuisses, pour une protection et un confort optimal."
-  },
-  {
-    icon: HiOutlineHeart, 
-    title: "Protection", 
-    content: "Design innovant répartissant la pression sur les cuisses, pour une protection et un confort optimal."
-  }
 ]
 
 export const trustsDataGroup1 = [
@@ -190,31 +228,6 @@ export const trustsData2 = [
     title: "Boostez vos ventes",
   },
 ];
-
-export const productInstructionSelected = (selected: number) => {
-  switch (selected) {
-  case 0:
-    return {
-      content: "La ceinture de l'ajusteur doit être tirée à travers l'espace entre le siège et le dossier"
-    };
-  case 1:
-    return {
-      content: "Ensuite, la ceinture doit être tirée sous le siège, en veillant à ce que la ceinture ne soit pas tordue"
-    };
-  case 2:
-    return {
-      content: "L'extrémité de la ceinture doit être bouclée à travers les trous supérieur et inférieur de la boucle, respectivement"
-    };
-  case 3:
-    return {
-      content: "La ceinture doit être serrée fermement en la tirant vers le bas"
-    };
-  default:
-    return {
-      content: "La ceinture de l'ajusteur doit être tirée à travers l'espace entre le siège et le dossier"
-    };
-  }
-};
 
 export const reviewsData = [
   {

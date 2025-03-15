@@ -1,5 +1,5 @@
 
-const Price = ({
+const PriceCart = ({
   amount,
   className,
   currencyCode = 'EUR',
@@ -18,4 +18,4 @@ const Price = ({
   </p>
 );
 
-export default Price;
+export default PriceCart;

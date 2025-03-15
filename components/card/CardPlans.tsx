@@ -1,0 +1,73 @@
+import { cn } from '@/lib/utils';
+import React, { FC } from 'react';
+import Link from 'next/link';
+import { FaCheckCircle } from 'react-icons/fa';
+
+interface CardPriceProps {
+  planId: number;
+  title: string;
+  price: string;
+  content: string;
+  link: string;
+  options?: {
+    title: string;
+  }[];
+  modeSelected?: number;
+  infoPrice?: string;
+  discount: string;
+}
+
+const CardPrice: FC<CardPriceProps> = ({
+  planId,
+  title,
+  price,
+  content,
+  link,
+  options,
+  modeSelected,
+  infoPrice,
+  discount
+}) => {
+  return (
+    <div className={cn("w-full rounded-3xl flex flex-col justify-start items-center gap-2 p-6 border", "lg:px-8 lg:py-10", 
+      planId === 0 && "lg:border-r-0 lg:rounded-r-none",
+      planId === 1 ? `border-primary bg-[#E4F7F1] flex-grow lg:h-[720px]`
+      : "border-foreground bg-background",
+      planId === 2 && "lg:border-l-0 lg:rounded-l-none",
+    )}>
+      <div className={cn("space-y-2", "lg:space-y-3 text-left")}>
+        <div className="flex items-center gap-4">
+          <h3 className={cn('font-bold', "lg:text-2xl")}>{title}</h3>
+          {infoPrice && <div className={cn("text-xs py-1 px-2 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{infoPrice}</div>}
+        </div>
+        <div className='py-2 space-y-3'>
+          <h3 className={cn("text-5xl font-bold")}>{price}<span className='text-base'>{modeSelected === 1 ? "/mois €" : "€"}</span></h3>
+          {discount ? <div className={cn("text-xs bg-foreground text-background rounded-md py-0.5 px-2 w-max", "lg:text-sm lg:-top-4")}>{discount}</div> : <div className={cn("text-xs py-1.5 px-2 w-max", "lg:text-sm lg:-top-4")}/>}
+        </div>
+        <p className={cn("text-foreground font-normal pb-6")}>{content}</p>
+        <Link href={link} target="_blank" rel="preload" className={cn(
+          "text-white w-full", 
+          "h-12 mx-auto",
+          "md:h-14",
+          "xl:mx-0 xl:h-14 p-[1px]",
+          "*:transition ease-out *:hover:duration-300 *:hover:text-white", 
+          "transition-all ease-in ",
+          "backdrop-blur-xl flex items-center justify-center text-base antialiased rounded-[10px]",
+          planId === 1 ? "bg-primary hover:bg-primary/80" : "bg-foreground hover:bg-foreground/80"
+        )}>
+          Obtenir ce pack
+        </Link>
+        <div className={cn("space-y-2 py-4")}>
+          {options?.map((option, index) => (
+            <div key={index} className={cn('flex items-center mx-auto gap-4', "lg:mx-0")}>
+              <FaCheckCircle className='text-primary text-base' />
+              <div className={cn("text-sm text-foreground")}>{option.title}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CardPrice;

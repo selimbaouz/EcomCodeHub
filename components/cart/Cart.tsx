@@ -1,7 +1,6 @@
 "use client"
 import { useCartStore, useOpenCartStore } from '../../store/cart';
 import { ShoppingCartIcon } from 'lucide-react';
-import Price from '../Price';
 import { DeleteItemButton } from '@/components/cart/delete-item-button';
 import { EditItemQuantityButton } from './edit-item-quantity-button';
 import { createCartAndSetCookie } from './actions';
@@ -14,7 +13,8 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { MdLock } from 'react-icons/md';
 import CartTimer from './cart-timer';
 import FreeShippingBar from './FreeShippingBar';
-import { createCheckoutSession } from '@/data/stripe/action';
+import { createCheckoutSession } from '@/actions/stripe';
+import PriceCart from '../PriceCart';
 
 export default function Cart() {
   const { timeLeft, cart, updateCartItem } = useCartStore();
@@ -95,7 +95,7 @@ export default function Cart() {
         variantId,
         type,
         successUrl: `${window.location.origin}/auth/login`,
-        cancelUrl: `${window.location.origin}products/pack-pro-conversion-shopify?cancel=true`,
+        cancelUrl: `${window.location.origin}/products/pack-pro-conversion-shopify?cancel=true`,
       });
 
       if(url) {
@@ -170,7 +170,7 @@ export default function Cart() {
                           </div>
                           <div className={cn("flex flex-col justify-between h-auto items-end")}>
                             <DeleteItemButton item={item} optimisticUpdate={updateCartItem} />
-                            <Price
+                            <PriceCart
                                 className="text-sm text-foreground font-montserrat"
                                 amount={String(amount)}
                                 currencyCode={item.cost.totalAmount.currencyCode}
@@ -191,7 +191,7 @@ export default function Cart() {
             <div className="z-50 border-t dark:border-t-gray-200/10 p-4 pt-6 flex items-center justify-between dark:border-gray-200/10 border-neutral-200 dark:border-neutral-700">
                 <p className={cn("uppercase font-semibold")}>Total</p>
                 <span className='ml-1 inline'>
-                    <Price
+                    <PriceCart
                         className="flex justify-end space-y-2 text-right text-sm"
                         amount={cart.cost.totalAmount.amount}
                         currencyCode={cart.cost.totalAmount.currencyCode}

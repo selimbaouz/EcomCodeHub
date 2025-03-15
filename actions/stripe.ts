@@ -61,6 +61,9 @@ const getVariantWithPacks = (type: string, level: string) => {
     try {
       // Créer une session de paiement Stripe
       const session = await stripe.checkout.sessions.create({
+        invoice_creation: {
+          enabled: true,
+        },
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: validatedData.type === "subscription" ? "subscription" : "payment",

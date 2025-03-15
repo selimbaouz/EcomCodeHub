@@ -5,9 +5,9 @@ import NavBarWeb from "./NavBarWeb";
 import { Menu, UserType } from "@/types/types";
 import { cn } from "@/lib/utils";
 import Cart from "@/components/cart/Cart";
-import { useCurrentUser } from "@/hook/use-current-user";
 import { useEffect, useState } from "react";
 import { fetchUserByEmail } from "@/actions/user";
+import { useSession } from "next-auth/react";
 
 interface NavBarProps {
     menu?: Menu[];
@@ -18,8 +18,9 @@ export default function NavBar(
         menu,
         isAccount,
     }: NavBarProps) {
-        const currentUser = useCurrentUser();
+        const { data: session } = useSession();
         const [user, setUser] = useState<UserType>();
+        const currentUser = session?.user;
 
         useEffect(() => {
             if (!currentUser?.email) return;
@@ -31,7 +32,6 @@ export default function NavBar(
         
             fetchUser();
           }, [currentUser?.email]);
-
 
     return (
         <nav className={cn("bg-background border-b dark:border-white/10 z-[100]")}>
