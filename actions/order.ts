@@ -1,10 +1,13 @@
 "use server";
 
 import { auth } from "@/auth";
-import { getUserByEmail } from "@/data/auth/user";
+import { action } from "@/lib/safe-action";
 import { stripe } from "@/lib/stripe";
+import { userInvoicesSchema } from "@/schemas";
 
-export async function getUserInvoices(limit = 20, lastInvoiceId?: string) {
+export const getUserInvoices = action
+  .schema(userInvoicesSchema) 
+  .action(async ({ parsedInput: { limit = 20, lastInvoiceId } }) => {
   const session = await auth();
   if (!session || !session.user) return [];
 
@@ -22,9 +25,9 @@ export async function getUserInvoices(limit = 20, lastInvoiceId?: string) {
       starting_after: lastInvoiceId, // Permet d'obtenir la suite des résultats
     });
 
-    return payments.data;
+    return payments.data ?? [];
   } catch (error) {
     console.error("Erreur lors de la récupération des commandes :", error);
     return [];
   }
-}
+});

@@ -89,7 +89,7 @@ export default function Cart() {
       ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
       : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
 
-      const { url } = await createCheckoutSession({
+      const res = await createCheckoutSession({
         packNameWithBundle,
         quantities,
         variantId,
@@ -98,8 +98,8 @@ export default function Cart() {
         cancelUrl: `${window.location.origin}/products/pack-pro-conversion-shopify?cancel=true`,
       });
 
-      if(url) {
-        window.location.href = url;
+      if(res?.data?.url) {
+        window.location.href = res.data.url;
       }
 
     } catch (error) {

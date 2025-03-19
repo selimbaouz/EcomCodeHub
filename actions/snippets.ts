@@ -1,6 +1,8 @@
 "use server";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
+import { action } from "@/lib/safe-action";
+import { onPurchaseSnippetSchema } from "@/schemas";
 
 export async function fetchSnippets() {
     return await db.snippet.findMany({
@@ -15,7 +17,9 @@ export async function fetchCategoriesSnippets() {
     return await db.category.findMany();
 }
 
-export async function onPurchaseSnippet (snippetId: string, userId: string, creditPrice: number) {
+export const onPurchaseSnippet = action
+  .schema(onPurchaseSnippetSchema) 
+  .action(async ({ parsedInput: { userId, creditPrice, snippetId } }) => {
     const session = await auth();
     const user = await db.user.findUnique({ where: { id: userId } });
     if (!session?.user?.id || session?.user?.id !== user?.id) throw new Error("Utilisateur non authentifié.");
@@ -41,4 +45,4 @@ export async function onPurchaseSnippet (snippetId: string, userId: string, cred
     });
 
     return { success: "Bravo ! Vous avez débloquez un snippet" };
-}
+});

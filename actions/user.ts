@@ -1,9 +1,12 @@
 "use server";
-
+import { action } from "@/lib/safe-action";
 import { getUserByEmail, getUserById } from "@/data/auth/user";
+import { emailSchema, userIdSchema } from "@/schemas";
 
 
-export async function fetchUserByEmail(email: string) {
+export const fetchUserByEmail = action
+  .schema(emailSchema) 
+  .action(async ({ parsedInput: { email } }) => {
   if (!email) return null;
 
   try {
@@ -12,10 +15,12 @@ export async function fetchUserByEmail(email: string) {
   } catch {
     return null;
   }
-}
+})
 
 
-export async function fetchUserById(userId: string) {
+export const fetchUserById = action
+.schema(userIdSchema) 
+.action(async ({ parsedInput: { userId } }) => {
   if (!userId) return null;
 
   try {
@@ -24,4 +29,4 @@ export async function fetchUserById(userId: string) {
   } catch {
     return null;
   }
-}
+});

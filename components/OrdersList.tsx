@@ -4,7 +4,6 @@ import Link from "next/link";
 import Stripe from "stripe";
 import { useState, useEffect, useCallback } from "react";
 import { useInView } from "react-intersection-observer";
-import { getUserInvoices } from "@/actions/order";
 import { PulseLoader } from "react-spinners";
 
 interface OrdersListProps {
@@ -26,6 +25,7 @@ export default function OrdersList({initialInvoices}: OrdersListProps) {
     try {
       const res = await fetch(`/api/invoices?lastInvoiceId=${lastInvoiceId}`);
       const newInvoices = await res.json();
+      console.log(newInvoices)
   
       setInvoices((prev) => [...prev, ...newInvoices]);
   

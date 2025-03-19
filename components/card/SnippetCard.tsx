@@ -42,14 +42,14 @@ const SnippetCard = ({
 
     const handlePurchase = async () => {
         startTransition(async () => {
-            onPurchaseSnippet(snippet.id, user?.id ?? "", snippet.creditPrice)
+            onPurchaseSnippet({snippetId: snippet.id, userId: user?.id ?? "", creditPrice: snippet.creditPrice})
             .then((data) => {
-                if(data?.success) {
-                  toast.success(data?.success);
+                if(data?.data?.success) {
+                  toast.success(data?.data.success);
                   setIsModalOpen(false);
                   router.refresh();
                 } else {
-                  toast.error(data?.error);
+                  toast.error(data?.data?.error);
                 }
               })
               .catch(() => {

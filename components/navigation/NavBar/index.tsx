@@ -26,8 +26,8 @@ export default function NavBar(
             if (!currentUser?.email) return;
         
             const fetchUser = async () => {
-              const data = await fetchUserByEmail(currentUser.email ?? "");
-              setUser(data);
+              const data = await fetchUserByEmail({email: currentUser.email ?? ""});
+              setUser(data?.data);
             };
         
             fetchUser();

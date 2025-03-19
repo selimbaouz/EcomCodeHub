@@ -11,6 +11,7 @@ import { CgProfile } from "react-icons/cg";
 import { useRouter } from "next/navigation";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useOpenSidebarStore } from "@/store/sidebar";
+import { useOpenAccountStore } from "@/store/account";
 
 interface NavBarMobileProps {
     currentUser: User | undefined;
@@ -23,6 +24,7 @@ const NavBarMobile = ({
     const { cart } = useCartStore();
     const { setIsOpenCart } = useOpenCartStore();
     const { setIsOpenSidebar } = useOpenSidebarStore();
+    const { setIsOpenAccount } = useOpenAccountStore();
     const router = useRouter();
     const isHydrated = useIsHydrated();
 
@@ -52,7 +54,10 @@ const NavBarMobile = ({
                     </div>
                     ) : (
                         <div className={cn("cursor-pointer flex items-center gap-1")}>
-                        <CgProfile className="text-3xl" onClick={() => router.push("/account")} />
+                        <CgProfile className="text-3xl" onClick={() => {
+                            router.push("/account"); 
+                            setIsOpenAccount(false);
+                        }} />
                         </div>
                     )}
                 </div>

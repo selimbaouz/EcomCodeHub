@@ -10,12 +10,13 @@ import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import OrdersList from "@/components/OrdersList";
 import { getUserInvoices } from "@/actions/order";
+import Subscription from "@/components/Subscription";
 
 export default async function PaymentsInvoices() {
     const footerMenu = await getMenu("footer");
     const session = await auth();
     const user = await getUserByEmail(session?.user?.email ?? "");
-    const initialInvoices = await getUserInvoices(20);
+    const initialInvoices = await getUserInvoices({ limit: 20 });
     
     if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
         redirect("/auth/login");
@@ -29,13 +30,30 @@ export default async function PaymentsInvoices() {
                 </div>
                 <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
                 <AccountSidebar />
-                <AccountWrapper
+                {user && user.plan !== "SUBSCRIPTION" ? (
+                    <div className="flex flex-col gap-20 w-full">
+                        <div className={cn('px-6 w-full', "lg:block", "xl:px-0 xl:pt-14")}>   
+                            <h3 className={cn('text-2xl font-bold py-10 lg:py-0 lg:pb-14')}>Mon abonnement</h3>
+                            <div>
+                                <Subscription />
+                            </div>
+                        </div>
+                        <div className={cn('space-y-2 px-6 h-full w-full', "lg:block", "xl:px-0 xl:pt-14")}>   
+                            <h3 className={cn('text-2xl font-bold py-10 lg:py-0 lg:pb-14')}>Mes commandes</h3>
+                            <div className='space-y-20 pb-14'>
+                                <OrdersList initialInvoices={initialInvoices?.data ?? []} />
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <AccountWrapper
                     title="Mes commandes"
                 >
-                    <div>
-                        <OrdersList initialInvoices={initialInvoices} />
-                    </div>
-                </AccountWrapper>
+                        <div>
+                            <OrdersList initialInvoices={initialInvoices?.data ?? []} />
+                        </div>
+                    </AccountWrapper>
+                )}
             </div>
                 <Footer footerMenu={footerMenu} className="hidden lg:block" />
             </div>

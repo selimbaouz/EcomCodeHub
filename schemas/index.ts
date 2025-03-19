@@ -22,6 +22,47 @@ export const purchaseSchema = z.object({
   createdAt: z.date(),
 });
 
+export const subscriptionIdSchema = z.object({
+  subscriptionId: z.string(),
+});
+
+export const customerIdSchema = z.object({
+  customerId: z.string(),
+});
+
+export const upgradeSchema = z.object({
+  subscriptionId: z.string(),
+  newPriceId: z.string(),
+});
+
+export const emailSchema = z.object({
+  email: z.string().email(),
+});
+
+export const userIdSchema = z.object({
+  userId: z.string(),
+});
+
+export const userInvoicesSchema = z.object({
+  limit: z.number(),
+  lastInvoiceId: z.string().optional(),
+});
+
+export const onPurchaseSnippetSchema = z.object({
+  snippetId: z.string(), 
+  userId: z.string(), 
+  creditPrice: z.number()
+});
+
+export const createCheckoutSessionSchema = z.object({
+  packNameWithBundle: z.string(),
+  quantities: z.array(z.number()),
+  variantId: z.string(),
+  type: z.string(),
+  successUrl: z.string(),
+  cancelUrl: z.string(),
+});
+
 export const categorySchema = z.object({
   id: z.string(),
   title: z.string(),
