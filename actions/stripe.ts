@@ -50,41 +50,55 @@ const getVariantWithPacks = (type: string, level: string) => {
   }
 };
 
+
   export const createCheckoutSession = action
   .schema(createCheckoutSessionSchema) 
   .action(async ({ parsedInput: data }) => {
     const { priceId } = getVariantWithPacks(data.type, data.packNameWithBundle);
 
+    // ⚠ Vérifier si le prix est bien récurrent en mode subscription
+    if (data.type === "subscription") {
+      const prices = await Promise.all(
+        priceId.map(async (id) => await stripe.prices.retrieve(id))
+      );
+
+      const recurringPrices = prices.filter((price) => price.recurring);
+
+      if (recurringPrices.length === 0) {
+        throw new Error("Le mode 'subscription' nécessite au moins un prix récurrent.");
+      }
+    }
+    
     const lineItems = priceId.map((id, index) => ({
       price: id,
       quantity: data.quantities[index] ?? 1,  // On prend la quantité associée
     }));
 
-    // Définition du mode
-    const mode: Stripe.Checkout.SessionCreateParams.Mode =
-    data.type === "subscription" ? "subscription" : "payment";
-
-    const payment_method_types: Stripe.Checkout.SessionCreateParams.PaymentMethodType[] = ["card"]
-
-    // Construction de l'objet sessionData sans `invoice_creation` par défaut
-    const sessionData = {
-      invoice_creation: {enabled: false},
-      payment_method_types,
-      line_items: lineItems,
-      mode,
-      success_url: data.successUrl,
-      cancel_url: data.cancelUrl,
-      metadata: { variantId: data.variantId, packName: data.packNameWithBundle },
-    };
-
-    // Ajouter invoice_creation uniquement si le mode est "payment"
-    if (mode === "payment") {
-      sessionData.invoice_creation = { enabled: true };
-    }
+    const getsession = async (type: string) => {
+      if(type === "payment") {
+        return await stripe.checkout.sessions.create({
+          invoice_creation: { enabled: true },
+          payment_method_types: ["card"],
+          line_items: lineItems,
+          mode: data.type === "subscription" ? "subscription" : "payment",
+          success_url: data.successUrl,
+          cancel_url: data.cancelUrl,
+          metadata: { variantId: data.variantId, packName: data.packNameWithBundle }
+        });
+      } else {
+        return await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          line_items: lineItems,
+          mode: data.type === "subscription" ? "subscription" : "payment",
+          success_url: data.successUrl,
+          cancel_url: data.cancelUrl,
+          metadata: { variantId: data.variantId, packName: data.packNameWithBundle }
+        });
+      }
+    } 
   
     try {
-      // Créer une session de paiement Stripe
-      const session = await stripe.checkout.sessions.create(sessionData);
+      const session = await getsession(data.type);
   
       return { url: session.url };
     } catch (error) {
