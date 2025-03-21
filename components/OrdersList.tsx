@@ -25,7 +25,6 @@ export default function OrdersList({initialInvoices}: OrdersListProps) {
     try {
       const res = await fetch(`/api/invoices?lastInvoiceId=${lastInvoiceId}`);
       const newInvoices = await res.json();
-      console.log(newInvoices)
   
       setInvoices((prev) => [...prev, ...newInvoices]);
   
@@ -65,8 +64,15 @@ export default function OrdersList({initialInvoices}: OrdersListProps) {
             {invoices.map((invoice) => (
               <TableRow key={invoice.id} className="hover:bg-gray-200">
                 <TableCell>{new Date(invoice.created * 1000).toLocaleDateString()}</TableCell>
-                <TableCell>{(invoice.amount_due / 100).toFixed(2)} {invoice.currency.toUpperCase()}</TableCell>
-                <TableCell>{invoice.status}</TableCell>
+                <TableCell>{(invoice.amount_paid / 100).toFixed(2)} {invoice.currency.toUpperCase()}</TableCell>
+                <TableCell>
+                  {
+                    invoice.status === "paid" ? "Payé" :
+                    invoice.status === "draft" ? "Brouillon" :
+                    invoice.status === "open" ? "Ouvert" :
+                    invoice.status
+                  }
+              </TableCell>
                 <TableCell>
                   {invoice.invoice_pdf ? (
                     <Link href={invoice.invoice_pdf ?? ""} target="_blank" rel="noopener noreferrer" className="underline">

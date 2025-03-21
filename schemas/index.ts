@@ -44,6 +44,7 @@ export const userIdSchema = z.object({
 });
 
 export const userInvoicesSchema = z.object({
+  subscriptionId: z.string().optional(),
   limit: z.number(),
   lastInvoiceId: z.string().optional(),
 });

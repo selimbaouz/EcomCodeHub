@@ -99,6 +99,11 @@ const getVariantWithPacks = (type: string, level: string) => {
   
     try {
       const session = await getsession(data.type);
+      if (typeof session.invoice === "string") {
+        await stripe.invoices.finalizeInvoice(session.invoice);
+      } else {
+        console.error("L'ID de la facture n'est pas une chaîne valide :", session.invoice);
+      }
   
       return { url: session.url };
     } catch (error) {
@@ -106,6 +111,14 @@ const getVariantWithPacks = (type: string, level: string) => {
       throw new Error("Impossible de créer la session de paiement.");
     }
   });
+
+export const getSubscriptionStatus =  action
+.schema(subscriptionIdSchema) 
+.action(async ({ parsedInput: { subscriptionId } }) => {
+    const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    return subscription;
+});
+
 
 export const checkPurchaseStatus = action
 .schema(customerIdSchema) 

@@ -11,12 +11,15 @@ import { redirect } from "next/navigation";
 import OrdersList from "@/components/OrdersList";
 import { getUserInvoices } from "@/actions/order";
 import Subscription from "@/components/Subscription";
+import { getSubscriptionStatus } from "@/actions/stripe";
 
 export default async function PaymentsInvoices() {
     const footerMenu = await getMenu("footer");
     const session = await auth();
     const user = await getUserByEmail(session?.user?.email ?? "");
-    const initialInvoices = await getUserInvoices({ limit: 20 });
+    const initialInvoices = await getUserInvoices({ limit: 20, subscriptionId: user?.subscriptionId ?? "" });
+    const subscription = await getSubscriptionStatus({subscriptionId: user?.subscriptionId ?? ""});
+    const subscriptionData = subscription ? JSON.parse(JSON.stringify(subscription)) : null;
     
     if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
         redirect("/auth/login");
@@ -30,12 +33,12 @@ export default async function PaymentsInvoices() {
                 </div>
                 <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
                 <AccountSidebar />
-                {user && user.plan !== "SUBSCRIPTION" ? (
+                {user && user.plan === "SUBSCRIPTION" ? (
                     <div className="flex flex-col gap-20 w-full">
                         <div className={cn('px-6 w-full', "lg:block", "xl:px-0 xl:pt-14")}>   
                             <h3 className={cn('text-2xl font-bold py-10 lg:py-0 lg:pb-14')}>Mon abonnement</h3>
                             <div>
-                                <Subscription />
+                                <Subscription subscriptionId={user?.subscriptionId ?? ""} subscription={subscriptionData} />
                             </div>
                         </div>
                         <div className={cn('space-y-2 px-6 h-full w-full', "lg:block", "xl:px-0 xl:pt-14")}>   

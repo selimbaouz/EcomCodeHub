@@ -37,6 +37,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                 </div>
             </div>
             <div className='blur-xl pointer-events-none'>
+                
                 <div>
                     <section className={cn(
                         "w-full text-left mx-auto", 

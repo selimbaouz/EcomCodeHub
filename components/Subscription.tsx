@@ -1,36 +1,70 @@
 "use client";
 import { cn } from '@/lib/utils';
-import React, { useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import { PulseLoader } from 'react-spinners';
+import { cancelAtPeriodEnd, getSubscriptionStatus } from '@/actions/stripe';
+import { toast } from 'sonner';
+import Stripe from 'stripe';
 
-const Subscription = () => {
+interface SubscriptionProps {
+    subscriptionId: string;
+    subscription: Stripe.Response<Stripe.Subscription> | undefined;
+}
+const Subscription:FC<SubscriptionProps> = ({subscriptionId, subscription}) => {
     const [isLoading, setIsLoading] = useState(false);
+    const subscriptionItem = subscription?.items?.data[0];
+
+    const handleCancelSubscription = async () => {
+        setIsLoading(true);
+    
+        try {
+          const res = await cancelAtPeriodEnd({subscriptionId});
+    
+          if(res?.data?.success) {
+            toast.success(res.data.success);
+          }
+    
+        } catch (error) {
+          console.error("Erreur lors du démarrage du paiement :", error);
+          toast.error("Une erreur est survenue. Veuillez réessayer.");
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      
     return (
-        <div className={cn("w-full flex justify-between items-center")}>
+        <div className={cn("w-full lg:flex lg:justify-between lg:items-center")}>
             <div className={cn("space-y-2")}>
                 <h6 className='font-light'>Plan actuel</h6>
-                <h3 className={cn("font-bold text-2xl")}>Pack Pro</h3>
-                <p></p>
-                <p>Le prochain paiement de 34,95€ sera le Jan 1 2023</p>
+                <h3 className={cn("font-bold text-2xl")}>{subscriptionItem?.plan.nickname || "Pack Inconnu"}</h3>
+                <p>
+                  {subscription?.cancel_at_period_end 
+                    ? "L'abonnement a été annulé et ne se renouvellera pas."
+                    : subscription?.current_period_end 
+                      ? `Le prochain paiement de ${subscriptionItem?.price?.unit_amount && (subscriptionItem?.price.unit_amount / 100).toFixed(2)}€ sera le ${new Date(subscription.current_period_end * 1000).toLocaleDateString("fr-FR", { day: '2-digit', month: 'long', year: 'numeric' })}`
+                      : "Date de renouvellement inconnue"
+                    }
+                </p>
             </div>
-            <div>
+            <form action={handleCancelSubscription}>
                 <Button
                     size="xl" 
                     variant="default"
                     onClick={() => undefined} 
-                    disabled={isLoading}
+                    disabled={isLoading || subscription?.cancel_at_period_end}
+                    type="submit"
                     className={cn("w-full font-medium")}
                 >
-                    {isLoading ? (
-                    <PulseLoader
-                        size={7}
-                        color="white"
-                    />) : (
-                    "Annuler l'abonnement"
+                     {isLoading ? (
+                        <PulseLoader size={7} color="white" />
+                    ) : subscription?.cancel_at_period_end ? (
+                        "Abonnement annulé"
+                    ) : (
+                        "Annuler l'abonnement"
                     )}
                 </Button>
-            </div>
+            </form>
         </div>
     );
 };
