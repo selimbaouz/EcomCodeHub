@@ -1,19 +1,26 @@
 "use client";
 import { cn } from '@/lib/utils';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button } from './ui/button';
 import { PulseLoader } from 'react-spinners';
-import { cancelAtPeriodEnd, getSubscriptionStatus } from '@/actions/stripe';
+import { cancelAtPeriodEnd } from '@/actions/stripe';
 import { toast } from 'sonner';
-import Stripe from 'stripe';
 
 interface SubscriptionProps {
     subscriptionId: string;
-    subscription: Stripe.Response<Stripe.Subscription> | undefined;
+    cancel_at_period_end: boolean;
+    current_period_end: number;
+    nameOfPlan: string;
+    price: number;
 }
-const Subscription:FC<SubscriptionProps> = ({subscriptionId, subscription}) => {
+const Subscription:FC<SubscriptionProps> = ({
+  subscriptionId, 
+  cancel_at_period_end,
+  current_period_end,
+  nameOfPlan,
+  price
+}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const subscriptionItem = subscription?.items?.data[0];
 
     const handleCancelSubscription = async () => {
         setIsLoading(true);
@@ -32,40 +39,37 @@ const Subscription:FC<SubscriptionProps> = ({subscriptionId, subscription}) => {
           setIsLoading(false);
         }
       };
-      
+
     return (
-        <div className={cn("w-full lg:flex lg:justify-between lg:items-center")}>
-            <div className={cn("space-y-2")}>
-                <h6 className='font-light'>Plan actuel</h6>
-                <h3 className={cn("font-bold text-2xl")}>{subscriptionItem?.plan.nickname || "Pack Inconnu"}</h3>
-                <p>
-                  {subscription?.cancel_at_period_end 
-                    ? "L'abonnement a été annulé et ne se renouvellera pas."
-                    : subscription?.current_period_end 
-                      ? `Le prochain paiement de ${subscriptionItem?.price?.unit_amount && (subscriptionItem?.price.unit_amount / 100).toFixed(2)}€ sera le ${new Date(subscription.current_period_end * 1000).toLocaleDateString("fr-FR", { day: '2-digit', month: 'long', year: 'numeric' })}`
-                      : "Date de renouvellement inconnue"
-                    }
-                </p>
-            </div>
-            <form action={handleCancelSubscription}>
-                <Button
-                    size="xl" 
-                    variant="default"
-                    onClick={() => undefined} 
-                    disabled={isLoading || subscription?.cancel_at_period_end}
-                    type="submit"
-                    className={cn("w-full font-medium")}
-                >
-                     {isLoading ? (
-                        <PulseLoader size={7} color="white" />
-                    ) : subscription?.cancel_at_period_end ? (
-                        "Abonnement annulé"
-                    ) : (
-                        "Annuler l'abonnement"
-                    )}
-                </Button>
-            </form>
-        </div>
+      <div className={cn("w-full lg:flex lg:justify-between lg:items-center")}>
+          <div className={cn("space-y-2")}>
+              <h6 className='font-light'>Plan actuel</h6>
+              <h3 className={cn("font-bold text-2xl")}>{nameOfPlan || "Pack Inconnu"}</h3>
+              <p>
+                {cancel_at_period_end 
+                  ? "L'abonnement a été annulé et ne se renouvellera pas."
+                  : current_period_end
+                    ? `Le prochain paiement de ${price && (price / 100).toFixed(2)}€ sera le ${new Date(current_period_end * 1000).toLocaleDateString("fr-FR", { day: '2-digit', month: 'long', year: 'numeric' })}`
+                    : "Date de renouvellement inconnue"
+                  }
+              </p>
+          </div>
+          <form action={handleCancelSubscription}>
+              <Button
+                  size="xl" 
+                  variant="default"
+                  disabled={isLoading || cancel_at_period_end}
+                  type="submit"
+                  className={cn("w-full font-medium")}
+              >
+                  {isLoading ? (
+                      <PulseLoader size={7} color="white" />
+                  ) : (
+                      cancel_at_period_end ? "Abonnement annulé" : "Annuler l'abonnement"
+                  )}
+              </Button>
+          </form>
+      </div>
     );
 };
 

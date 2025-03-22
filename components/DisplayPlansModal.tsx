@@ -4,7 +4,7 @@ import PlansModal from './modals/PlansModal';
 import { useModalStore } from '@/store/plans';
 import Plans from './Plans';
 
-const DocsClient = ({children}: {children: React.ReactNode;}) => {
+const DisplayPlansModal = ({children}: {children: React.ReactNode;}) => {
     const {isModal, setIsModal } = useModalStore();
     
     return (
@@ -22,4 +22,4 @@ const DocsClient = ({children}: {children: React.ReactNode;}) => {
     );
 };
 
-export default DocsClient;
+export default DisplayPlansModal;

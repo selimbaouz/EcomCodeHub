@@ -2,6 +2,8 @@ import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { FaCheckCircle } from 'react-icons/fa';
+import Stripe from 'stripe';
+import { UserType } from '@/types/types';
 
 interface CardPriceProps {
   planId: number;
@@ -15,6 +17,8 @@ interface CardPriceProps {
   modeSelected?: number;
   infoPrice?: string;
   discount: string;
+  nameOfPack: string;
+  user: UserType;
 }
 
 const CardPrice: FC<CardPriceProps> = ({
@@ -26,7 +30,9 @@ const CardPrice: FC<CardPriceProps> = ({
   options,
   modeSelected,
   infoPrice,
-  discount
+  discount,
+  nameOfPack,
+  user
 }) => {
   return (
     <div className={cn("w-full rounded-3xl flex flex-col justify-start items-center gap-2 p-6 border", "lg:px-8 lg:py-10", 
@@ -55,7 +61,7 @@ const CardPrice: FC<CardPriceProps> = ({
           "backdrop-blur-xl flex items-center justify-center text-base antialiased rounded-[10px]",
           planId === 1 ? "bg-primary hover:bg-primary/80" : "bg-foreground hover:bg-foreground/80"
         )}>
-          Obtenir ce pack
+         {nameOfPack}
         </Link>
         <div className={cn("space-y-2 py-4")}>
           {options?.map((option, index) => (

@@ -1,7 +1,6 @@
 "use client";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../ui/dialog';
+import { Dialog, DialogContent } from '../ui/dialog';
 import { cn } from '@/lib/utils';
-import { DialogDescription } from '@radix-ui/react-dialog';
 import { FC } from "react";
 
 interface PlansModalProps {

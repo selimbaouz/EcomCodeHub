@@ -11,6 +11,7 @@ import { redirect } from "next/navigation";
 import UpdatePasswordForm from "@/components/forms/UpdatePasswordForm";
 import DeleteAccountForm from "@/components/forms/DeleteAccountForm";
 import UpdateEmailForm from "@/components/forms/UpdateEmailForm";
+import DisplayPlansModal from "@/components/DisplayPlansModal";
 
 export default async function Account () {
   const footerMenu = await getMenu("footer");
@@ -23,26 +24,28 @@ export default async function Account () {
 
   return (
     <LoaderSpinner>
-      <div className="relative size-full">
-        <div className="sticky top-0 w-full z-50">
-          <NavBar isAccount />
+      <DisplayPlansModal>
+        <div className="relative size-full">
+          <div className="sticky top-0 w-full z-50">
+            <NavBar isAccount />
+          </div>
+          <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
+            <AccountSidebar />
+            {/* <div className={cn('hidden py-10 space-y-2 px-10 h-[90dvh] w-full', "xl:block xl:px-0 xl:py-14")}>
+              
+            </div> */}
+            <AccountWrapper 
+              title="Paramètres du compte"
+              isAccountSettings
+            >
+              <UpdateEmailForm currentUser={session?.user!} />
+              <UpdatePasswordForm />
+              <DeleteAccountForm />
+            </AccountWrapper>
         </div>
-        <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
-          <AccountSidebar />
-          {/* <div className={cn('hidden py-10 space-y-2 px-10 h-[90dvh] w-full', "xl:block xl:px-0 xl:py-14")}>
-            
-          </div> */}
-          <AccountWrapper 
-            title="Paramètres du compte"
-            isAccountSettings
-          >
-            <UpdateEmailForm currentUser={session?.user!} />
-            <UpdatePasswordForm />
-            <DeleteAccountForm />
-          </AccountWrapper>
-      </div>
-        <Footer footerMenu={footerMenu} className="hidden lg:block" />
-      </div>
+          <Footer footerMenu={footerMenu} className="hidden lg:block" />
+        </div>
+      </DisplayPlansModal>
     </LoaderSpinner>
   );
 }

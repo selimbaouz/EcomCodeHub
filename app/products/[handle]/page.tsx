@@ -1,7 +1,7 @@
 import ProductImage from '@/components/ProductImage';
 import ImagesGallery from '@/components/ImagesGallery'; 
 import { getHandleOfProduct, getMenu, getProductById } from '@/data/shopify'; 
-import { redirect, useSearchParams } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import StickyBar from '@/components/navigation/StickyBar';
 import NavBar from '@/components/navigation/NavBar';
@@ -37,7 +37,6 @@ export default async function ProductPage({ params }: { params: { handle: string
                 </div>
             </div>
             <div className='blur-xl pointer-events-none'>
-                
                 <div>
                     <section className={cn(
                         "w-full text-left mx-auto", 

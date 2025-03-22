@@ -108,11 +108,11 @@ const getVariantWithPacks = (type: string, level: string) => {
       return { url: session.url };
     } catch (error) {
       console.error("Erreur lors de la création de la session :", error);
-      throw new Error("Impossible de créer la session de paiement.");
+      return { error: "Impossible de créer la session de paiement." };
     }
   });
 
-export const getSubscriptionStatus =  action
+export const getSubscriptions =  action
 .schema(subscriptionIdSchema) 
 .action(async ({ parsedInput: { subscriptionId } }) => {
     const subscription = await stripe.subscriptions.retrieve(subscriptionId);
@@ -123,32 +123,48 @@ export const getSubscriptionStatus =  action
 export const checkPurchaseStatus = action
 .schema(customerIdSchema) 
 .action(async ({ parsedInput: { customerId } }) => {
-  const charges = await stripe.charges.list({ customer: customerId });
-  const paidCharges = charges.data.filter(charge => charge.status === "succeeded");
-  
-  return paidCharges.length > 0;
+  try {
+    const charges = await stripe.charges.list({ customer: customerId });
+    const paidCharges = charges.data.filter(charge => charge.status === "succeeded");
+    
+    return paidCharges.length > 0;
+  } catch (error) {
+    return { error: "" };
+  }
 });
 
 export const cancelSubscription = action
 .schema(subscriptionIdSchema) 
 .action(async ({ parsedInput: { subscriptionId } }) => {
-  await stripe.subscriptions.cancel(subscriptionId);
-  return { success: `Subscription ${subscriptionId} canceled` };
+  try {
+    await stripe.subscriptions.cancel(subscriptionId);
+    return { success: `Subscription ${subscriptionId} canceled` };
+  } catch (error) {
+    return { error: "" };
+  }
 });
 
 export const cancelAtPeriodEnd = action
 .schema(subscriptionIdSchema) 
 .action(async ({ parsedInput: { subscriptionId } }) => {
-  await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
-  return { success: `Subscription ${subscriptionId} will be canceled at the end of the period` };
+  try {
+    await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
+    return { success: `Subscription ${subscriptionId} will be canceled at the end of the period` };
+  } catch (error) {
+    return { error: "" };
+  }
 });
 
 export const upgradeSubscription = action
 .schema(upgradeSchema) 
 .action(async ({ parsedInput: { subscriptionId, newPriceId } }) => {
-  await stripe.subscriptions.update(subscriptionId, {
-      items: [{ price: newPriceId }],
-      proration_behavior: "create_prorations", // Facultatif, voir ci-dessous
-  });
-  return { success: `Subscription ${subscriptionId} upgraded to ${newPriceId}` };
+  try {
+    await stripe.subscriptions.update(subscriptionId, {
+        items: [{ price: newPriceId }],
+        proration_behavior: "create_prorations", // Facultatif, voir ci-dessous
+    });
+    return { success: `Subscription ${subscriptionId} upgraded to ${newPriceId}` };
+  } catch (error) {
+    return { error: "" };
+  }
 });

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa6";
-import DocsClient from "@/components/DocsClient";
+import DisplayPlansModal from "@/components/DisplayPlansModal";
 
 export default async function DocsPage() {
     const session = await auth();
@@ -23,7 +23,7 @@ export default async function DocsPage() {
     }
     
     return (
-        <DocsClient>
+        <DisplayPlansModal>
             <div className="sticky top-0 w-full z-50">
               <NavBar menu={[]} isAccount />
             </div>
@@ -47,6 +47,6 @@ export default async function DocsPage() {
                 </div>
             </div>
             <Footer footerMenu={[]} />
-        </DocsClient>
+        </DisplayPlansModal>
     );
 };
