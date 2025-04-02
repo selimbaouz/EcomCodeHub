@@ -35,7 +35,7 @@ export const PricesFixeData = (modeSelected?: number) => [
     discount: modeSelected ? "-30% d'économies" : "",
     infoPrice: "", 
     content: "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -54,7 +54,7 @@ export const PricesFixeData = (modeSelected?: number) => [
     discount: modeSelected ? "-30% d'économies" : "-7% d'économies",
     infoPrice: "Populaire",
     content: "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -74,7 +74,7 @@ export const PricesFixeData = (modeSelected?: number) => [
     truePrice: "50 000",
     infoPrice: "",
     content: "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
