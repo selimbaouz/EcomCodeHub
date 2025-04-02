@@ -1,8 +1,8 @@
 "use client";
 import { selectSnippetData } from '@/data';
 import { cn } from '@/lib/utils';
-import React, { startTransition, useState, useTransition } from 'react';
-import { FaCheck, FaCoins, FaLock, FaRegCopy, FaUnlock } from 'react-icons/fa6';
+import React, { useState, useTransition } from 'react';
+import { FaCheck, FaCoins, FaRegCopy, FaUnlock } from 'react-icons/fa6';
 import CodeBlock from '../CodeBlock';
 import { SnippetType, UserType } from '@/types/types';
 import ComponentsSnippet from '../snippets/ComponentsSnippet';
@@ -61,7 +61,7 @@ const SnippetCard = ({
     return (
         <div className={cn("bg-background relative flex flex-col gap-2 w-full border p-4 rounded-2xl shadow-md", "dark:border-[#324e58]")}>
             <div className="flex justify-between items-center">
-                <h6 className="font-semibold">{snippet.title}</h6>
+                <h6 className="font-semibold lg:text-sm">{snippet.title}</h6>
                 <div className={cn("flex items-center gap-2", "lg:gap-4")}>
                     <div className="flex bg-gray-100 rounded-xl p-0.5">
                         {!hasPurchased ? (
@@ -86,8 +86,8 @@ const SnippetCard = ({
                                 className={cn("flex items-center gap-2 text-sm font-bold cursor-pointer py-2 px-3 rounded-xl", selectedTab === index ? "bg-white text-foreground" : "text-gray-500")}
                                 onClick={() => setSelectedTab(index)}
                             >
-                                <data.icon className='text-lg' />
-                                <h6 className={cn("hidden", "lg:block")}>{data.title}</h6>
+                                <data.icon className='text-lg lg:text-sm' />
+                                <h6 className={cn("hidden", "lg:block lg:text-sm")}>{data.title}</h6>
                             </button>
                         )))}
                     </div>

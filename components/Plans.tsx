@@ -1,44 +1,33 @@
 "use client";
 import { cn } from '@/lib/utils';
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { PricesFixeData } from '@/data';
 import CardPlans from './card/CardPlans';
 import { useModalStore } from '@/store/plans';
-import { getSubscriptions } from '@/actions/stripe';
 import { useCurrentUser } from '@/hook/use-current-user';
-import { getUserByEmail } from '@/data/auth/user';
-import Stripe from 'stripe';
 import { redirect } from 'next/navigation';
-import { UserType } from '@/types/types';
 
-const Plans = () => {
+interface PlansProps {
+  nameOfPlan: string;
+}
+
+const Plans: FC<PlansProps> = ({nameOfPlan}) => {
   const {modeSelected, setModeSelected} = useModalStore();
-  const [subscription, setSubscription] = useState<Stripe.Response<Stripe.Subscription> | undefined>(undefined);
-  const subscriptionItem = subscription?.items.data[0];
-  const [user, setUser] = useState<UserType>(null);
   const session = useCurrentUser();
+  const [currentPlanIndex, setCurrentPlanIndex] = useState<number | null>(null);
+  console.log(modeSelected)
   
   if(!session) {
     redirect("/auth/login")
   } 
 
   useEffect(() => {
-    const fetchSubscription = async () => {
-        try {
-            const user = await getUserByEmail(session?.email ?? "");
-            if(!user) {
-              redirect("/auth/login")
-            } 
-            setUser(user);
-            const sub = await getSubscriptions({subscriptionId: user?.subscriptionId ?? ""});
-            setSubscription(sub?.data); // Stocke l'état réel
-        } catch (error) {
-            console.error("Erreur lors de la récupération du statut de l'abonnement", error);
-        }
-    };
-
-    fetchSubscription();
-}, []);
+    if (modeSelected === 1) {
+          const planTitles = PricesFixeData(1).map(plan => plan.title);
+          const index = planTitles.findIndex(title => title === nameOfPlan);
+          setCurrentPlanIndex(index !== -1 ? index : null);
+    } 
+}, [modeSelected]);
 
   return (
     <section className={cn("flex flex-col justify-center max-w-7xl mx-auto items-center")}>
@@ -72,7 +61,12 @@ const Plans = () => {
           </div>
           <div className={cn("relative pt-7 w-full flex flex-col gap-4", "xl:flex-row xl:items-center xl:justify-center xl:gap-0")}>
             {PricesFixeData(modeSelected).map((data, index) => {
-              const isCurrentPlan = modeSelected === 1 && (subscriptionItem?.price.unit_amount ?? 0 / 100).toFixed(2) === data.price;
+              const isCurrentPlan = modeSelected === 1 && currentPlanIndex === index;
+              const buttonText = isCurrentPlan 
+                ? "Plan actuel" 
+                : modeSelected === 1 && currentPlanIndex !== null 
+                  ? (index < currentPlanIndex ? "Rétrograder" : "Mettre à niveau")
+                  : "Obtenir ce pack";
               
               return (
                 <CardPlans
@@ -86,8 +80,8 @@ const Plans = () => {
                   modeSelected={modeSelected}
                   infoPrice={data.infoPrice}
                   discount={data.discount}
-                  nameOfPack={isCurrentPlan ? "Plan actuel" : "Obtenir ce pack"}
-                  user={user}
+                  nameOfPack={buttonText}
+                  isCurrentPlan={isCurrentPlan}
                 />
               )
             })}

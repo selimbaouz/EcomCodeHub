@@ -2,11 +2,9 @@ import Footer from "@/components/Footer";
 import EmailVerificationRequest from "@/components/email-verification/EmailVerificationRequest";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
-import { getMenu } from "@/data/shopify";
 
 export default async function NewVerification() {
-    const menu = await getMenu("main-menu");
-    const footerMenu = await getMenu("footer");
+    /* const menu = await getMenu("main-menu"); */
     
     return (
       <LoaderSpinner>
@@ -15,7 +13,7 @@ export default async function NewVerification() {
             <NavBar menu={[]} isAccount />
           </div>
           <EmailVerificationRequest />
-          <Footer footerMenu={footerMenu} />
+          <Footer />
         </div>
       </LoaderSpinner>
     );

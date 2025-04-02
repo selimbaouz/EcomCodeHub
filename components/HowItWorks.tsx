@@ -1,7 +1,8 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import HeroVideoDialog from './ui/hero-video-dialog';
 import { HowItWorks1, HowItWorks2 } from '@/data';
+import ImageLoader from './ImageLoader';
+import Demo from "@/public/images/demo-video.gif";
 
 const HowItWorks = () => {
     return (
@@ -24,13 +25,13 @@ const HowItWorks = () => {
                             </li>
                         ))}
                     </ul>
-                    <div className={cn("order-1 relative z-10 space-y-6 py-6", "md:h-[433px] md:w-[661px] md:mx-auto", "lg:order-2 lg:space-y-10 lg:pt-10 lg:h-max lg:max-w-lg")}>
-                        <HeroVideoDialog
-                            className="block"
-                            animationStyle="from-center"
-                            videoSrc="https://www.youtube.com/embed/eg_taJ7b9rE"
-                            thumbnailSrc="/images/LogoDark.png"
-                            thumbnailAlt="Hero Video"
+                    <div className={cn("order-1 relative z-10 space-y-6 py-6", "md:h-[433px] md:w-[661px] md:mx-auto", "lg:order-2 lg:space-y-10 lg:pt-10 lg:size-full lg:max-w-2xl")}>
+                        <ImageLoader 
+                            height={Demo.height} 
+                            width={Demo.width} 
+                            src={Demo.src} 
+                            alt="Gif who show how it works"
+                            className='border rounded-2xl h-full'
                         />
                         <p className="text-base lg:text-xl font-medium max-w-5xl mx-auto">C{"'"}est incroyablement facile à ajouter sur votre boutique, vous verrez des améliorations instantanément</p>
                     </div>

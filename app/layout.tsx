@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import LayoutClient from "@/components/LayoutClient";
 import { auth } from "@/auth";
 import { SessionProvider } from 'next-auth/react';
 import { Toaster } from "@/components/ui/sonner";
+import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
   weight: [

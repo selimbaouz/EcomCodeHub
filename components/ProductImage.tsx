@@ -105,7 +105,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                             {
                                 title: "Pro",
                                 credits: 90,
-                                discount: "-23%"
+                                discount: "-11%"
                             },
                         ].map((data, index) => (
                         <div 
@@ -169,7 +169,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                                             </div>
                                             {index !== 0 && (
                                                 <div>
-                                                    {selectedPackName === "Pro" && <p className="text-sm font-bold text-primary">+ Boutique offerte</p>}
+                                                    {/* {selectedPackName === "Pro" && <p className="text-sm font-bold text-primary">+ Boutique offerte</p>} */}
                                                     <p className="text-sm">Sans engagement</p>
                                                     {selectedVariant.title === data.node.title && (
                                                         <div className="space-y-1 pt-4">
@@ -206,7 +206,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         bundle={bundleActive ? bundle : undefined}  
                         size="fullWidth" 
                     />
-                    <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
+                    {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
                             <div>
                                 <ImageLoader
@@ -236,7 +236,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                             onCheckedChange={setBundleActive}
                             disabled={removeSuffix(selectedVariant.title) === "Abonnement mensuel"}
                         />
-                    </div>
+                    </div> */}
                 </div>
                 <Accordion type="single" collapsible className="w-full">
                     {detailsProduct.map((data, index) => (

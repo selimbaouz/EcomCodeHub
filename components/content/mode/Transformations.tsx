@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
-import Image1 from "@/public/images/component1.png";
-import Image2 from "@/public/images/component2.png";
+import Image1 from "@/public/images/transformationimg1.png";
+import Image2 from "@/public/images/transformationimg2.png";
 
 const Transformations = () => {
     return (    

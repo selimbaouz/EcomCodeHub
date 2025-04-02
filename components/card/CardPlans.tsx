@@ -5,7 +5,7 @@ import { FaCheckCircle } from 'react-icons/fa';
 import Stripe from 'stripe';
 import { UserType } from '@/types/types';
 
-interface CardPriceProps {
+interface CardPlansProps {
   planId: number;
   title: string;
   price: string;
@@ -18,10 +18,10 @@ interface CardPriceProps {
   infoPrice?: string;
   discount: string;
   nameOfPack: string;
-  user: UserType;
+  isCurrentPlan: boolean;
 }
 
-const CardPrice: FC<CardPriceProps> = ({
+const CardPlans: FC<CardPlansProps> = ({
   planId,
   title,
   price,
@@ -32,7 +32,7 @@ const CardPrice: FC<CardPriceProps> = ({
   infoPrice,
   discount,
   nameOfPack,
-  user
+  isCurrentPlan
 }) => {
   return (
     <div className={cn("w-full rounded-3xl flex flex-col justify-start items-center gap-2 p-6 border", "lg:px-8 lg:py-10", 
@@ -51,7 +51,11 @@ const CardPrice: FC<CardPriceProps> = ({
           {discount ? <div className={cn("text-xs bg-foreground text-background rounded-md py-0.5 px-2 w-max", "lg:text-sm lg:-top-4")}>{discount}</div> : <div className={cn("text-xs py-1.5 px-2 w-max", "lg:text-sm lg:-top-4")}/>}
         </div>
         <p className={cn("text-foreground font-normal pb-6")}>{content}</p>
-        <Link href={link} target="_blank" rel="preload" className={cn(
+        <Link 
+          href={isCurrentPlan ? "#" : link} 
+          target={isCurrentPlan ? "_self" : "_blank"} 
+          rel="preload" 
+          className={cn(
           "text-white w-full", 
           "h-12 mx-auto",
           "md:h-14",
@@ -60,7 +64,9 @@ const CardPrice: FC<CardPriceProps> = ({
           "transition-all ease-in ",
           "backdrop-blur-xl flex items-center justify-center text-base antialiased rounded-[10px]",
           planId === 1 ? "bg-primary hover:bg-primary/80" : "bg-foreground hover:bg-foreground/80"
-        )}>
+        )}
+        onClick={isCurrentPlan ? (e) => e.preventDefault() : undefined}
+        >
          {nameOfPack}
         </Link>
         <div className={cn("space-y-2 py-4")}>
@@ -76,4 +82,4 @@ const CardPrice: FC<CardPriceProps> = ({
   );
 };
 
-export default CardPrice;
+export default CardPlans;

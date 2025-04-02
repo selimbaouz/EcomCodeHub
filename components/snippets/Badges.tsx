@@ -3,7 +3,7 @@ import React from 'react';
 
 const Badges = () => {
     return (
-        <div className={cn("flex items-center gap-2")}>
+        <div className={cn("flex items-center justify-center gap-2")}>
             <div className={cn("text-xs text-white font-semibold bg-primary px-2 py-1 rounded-lg")}>
                 Accès instantané
             </div>

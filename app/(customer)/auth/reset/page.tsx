@@ -2,11 +2,9 @@ import Footer from "@/components/Footer";
 import { ResetForm } from "@/components/forms/ResetForm";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
-import { getMenu } from "@/data/shopify";
 
 export default async function Reset() {
-    const menu = await getMenu("main-menu");
-    const footerMenu = await getMenu("footer");
+    /* const menu = await getMenu("main-menu"); */
     
     return (
       <LoaderSpinner>
@@ -15,7 +13,7 @@ export default async function Reset() {
             <NavBar menu={[]} isAccount />
           </div>
           <ResetForm />
-          <Footer footerMenu={footerMenu} />
+          <Footer />
         </div>
       </LoaderSpinner>
     );

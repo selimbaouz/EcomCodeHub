@@ -8,7 +8,7 @@ const FeatureChecklist = () => {
             {checkProduct.map((data, index) => (
                 <li key={index} className={cn("bg-secondary/30 flex w-max flex-wrap px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#324e58] rounded-lg")}>
                     <data.icon className={cn("text-lg text-foreground rounded-lg")} />
-                    <p className={cn("text-[10px] text-foreground font-medium", "lg:text-sm")}>{data.title}</p>
+                    <p className={cn("text-[10px] text-foreground font-medium", "lg:text-xs")}>{data.title}</p>
                 </li>
             ))}
         </ul>

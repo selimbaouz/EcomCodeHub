@@ -23,7 +23,7 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     return (
         <div className={cn("w-full space-y-4 py-20", "lg:space-y-0")}>
             {filteredSnippets.length > 0 ? (
-                <div className={cn(" border", "lg:grid lg:grid-cols-2 lg:items-start lg:gap-4")}>
+                <div className={cn("flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4")}>
                     {filteredSnippets.map((data, index) => (
                         <SnippetCard key={index} user={user} snippet={data} />
                     ))}

@@ -11,47 +11,47 @@ const getVariantWithPacks = (type: string, level: string) => {
     return {
       priceId: type === "bundle" ? 
         [
-          process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
-          process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+          process.env.NEXT_PUBLIC_LIVE_PRICE_ID_BUNDLE_STORE!,
+          process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
         ] 
-        : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
-        : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!],
+        : type === "subscription" ? [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
+        : [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!],
     };
   case "Avancé":
     return {
       priceId: type === "bundle" ? 
       [
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
       ] 
-      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_ADVANCED!] 
-      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!]
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED!] 
+      : [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!]
     };
   case "Pro":
     return {
       priceId: type === "bundle" ? 
       [
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
       ] 
-      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_PRO!] 
-      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!]
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO!] 
+      : [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!]
     };
   default:
     return {
       priceId: type === "bundle" ? 
       [
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_BUNDLE_STORE!,
-        process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_BUNDLE_STORE!,
+        process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
       ] 
-      : type === "subscription" ? [process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
-      : [process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!]
+      : type === "subscription" ? [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER!] 
+      : [process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!]
     };
   }
 };
 
 
-  export const createCheckoutSession = action
+  export const createCheckoutSessionCart = action
   .schema(createCheckoutSessionSchema) 
   .action(async ({ parsedInput: data }) => {
     const { priceId } = getVariantWithPacks(data.type, data.packNameWithBundle);

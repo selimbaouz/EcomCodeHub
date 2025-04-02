@@ -13,7 +13,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { MdLock } from 'react-icons/md';
 import CartTimer from './cart-timer';
 import FreeShippingBar from './FreeShippingBar';
-import { createCheckoutSession } from '@/actions/stripe';
+import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
 
 export default function Cart() {
@@ -89,7 +89,7 @@ export default function Cart() {
       ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
       : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
 
-      const res = await createCheckoutSession({
+      const res = await createCheckoutSessionCart({
         packNameWithBundle,
         quantities,
         variantId,

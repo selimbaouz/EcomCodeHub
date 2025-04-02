@@ -10,7 +10,6 @@ import React from 'react';
 export default async function AmbassadorProgram() {
     const page = await getPage("ambassador-program");
     const menu = await getMenu("main-menu");
-    const footerMenu = await getMenu("footer");
 
     if (!page) redirect("/");
 
@@ -30,9 +29,7 @@ export default async function AmbassadorProgram() {
                 </div>
             </section>
             <section className="relative pt-10">
-              <Footer
-                footerMenu={footerMenu}
-              />
+              <Footer />
             </section>
         </div>
     );

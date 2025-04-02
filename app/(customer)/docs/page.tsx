@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa6";
-import DisplayPlansModal from "@/components/DisplayPlansModal";
 
 export default async function DocsPage() {
     const session = await auth();
@@ -23,7 +22,7 @@ export default async function DocsPage() {
     }
     
     return (
-        <DisplayPlansModal>
+        <div>
             <div className="sticky top-0 w-full z-50">
               <NavBar menu={[]} isAccount />
             </div>
@@ -46,7 +45,7 @@ export default async function DocsPage() {
                     <Snippets user={user} snippets={snippets} />
                 </div>
             </div>
-            <Footer footerMenu={[]} />
-        </DisplayPlansModal>
+            <Footer />
+        </div>
     );
 };

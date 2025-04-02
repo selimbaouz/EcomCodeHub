@@ -18,7 +18,6 @@ import { Reviews } from '@/components/Reviews';
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
     const menu = await getMenu("main-menu");
-    const footerMenu = await getMenu("footer"); 
     
     if(!product) {
         redirect('/')
@@ -31,12 +30,13 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <StickyBar />
                 <NavBar menu={menu} />
             </div>
-            <div className="z-[100] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            {/* <div className="z-[100] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div className="p-20 lg:p-32 bg-background rounded-lg shadow-lg">
                     <p className="font-bold uppercase text-foreground">En cours de progression...</p>
                 </div>
             </div>
             <div className='blur-xl pointer-events-none'>
+            </div> */}
                 <div>
                     <section className={cn(
                         "w-full text-left mx-auto", 
@@ -64,8 +64,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <Mode />
                 <Reviews />
                 <FAQ />
-                <Footer footerMenu={footerMenu} />
-            </div>
+                <Footer />
         </div>
     );
 };

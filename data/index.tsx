@@ -799,55 +799,156 @@ export const tableData = [
   { feature: "Audit, Conseils et Support", pro: true, others: false },
 ];
 
-export const stacksData = [
+export const legalsLinksData = [
   {
-    icon: FaTruck,
-    title: "Livraison OFFERTE",
+    link: "/legals/legal-notice", label: "Mentions légales",
   },
   {
-    icon: IoIosPeople,
-    title: "+319 clients satisfaits",
+    link: "/legals/privacy-policy", label: "Politique de confidentialité",
   },
   {
-    icon: TbTruckReturn,
-    title: "Satisfait ou Remboursé",
+    link: "/legals/terms-and-conditions", label: "Conditions générales de vente",
   },
   {
-    icon: GiFrance,
-    title: "Support Français",
+    link: "/legals/terms-and-conditions-of-use", label: "Conditions générales d'utilisation",
   },
 ];
 
-export const beneficesData = [
-  {
-    icon: FaTruck,
-    title: "Protection garantie",
-  },
-  {
-    icon: IoIosPeople,
-    title: "Grossesse sereine",
-  },
-  {
-    icon: TbTruckReturn,
-    title: "82% de risques en moins",
-  },
-  {
-    icon: GiFrance,
-    title: "Adaptation parfaite",
-  },
-];
-
-export const beneficesProductData = [
-  {
-    icon: GoHeartFill,
-    title: "Support 24/7",
-  },
-  {
-    icon: MdVerified,
-    title: "Livraison Gratuite",
-  },
-  {
-    icon: FaUndo,
-    title: "Retours Gratuits",
-  },
-];
+export const legalsPagesData = (handle: string) => {
+  switch (handle) {
+    case "terms-and-conditions-of-use":
+      return {
+        title: "Conditions Générales d'Utilisation (CGU)",
+        data: [
+          {
+            title: "Dernière mise à jour : 02/04/2025",
+            content: "Bienvenue sur TailwindLiquid. En accédant et en utilisant notre site web, vous acceptez les présentes Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site."
+          },
+          {
+            title: "1. Objet",
+            content: "Les présentes CGU définissent les conditions d'utilisation du site TailwindLiquid et des services proposés."
+          },
+          {
+            title: "2. Accès au site",
+            content: "L'accès au site est réservé aux personnes majeures. En utilisant ce site, vous déclarez avoir au moins 18 ans."
+          },
+          {
+            title: "3. Propriété intellectuelle",
+            content: "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois sur la propriété intellectuelle."
+          },
+          {
+            title: "4. Responsabilités",
+            content: "Nous nous efforçons d'assurer l'exactitude des informations présentes sur ce site, mais nous ne pouvons garantir qu'elles soient toujours complètes ou à jour. L'utilisation des informations disponibles sur ce site se fait sous votre propre responsabilité."
+          },
+          {
+            title: "5. Modification des CGU",
+            content: "Nous nous réservons le droit de modifier ces CGU à tout moment. Les modifications entreront en vigueur dès leur publication sur le site."
+          }
+        ]
+      };
+    case "terms-and-conditions":
+      return {
+        title: "Conditions Générales de Vente (CGV)",
+        data: [
+          {
+            title: "Dernière mise à jour : 02/04/2025",
+            content: "Les présentes Conditions Générales de Vente régissent les ventes de produits et services effectuées sur le site TailwindLiquid."
+          },
+          {
+            title: "1. Produits et services",
+            content: "TailwindLiquid propose des snippets Liquid & TailwindCSS prêts à l'emploi pour améliorer les boutiques Shopify. L'accès à ces snippets se fait via un système de crédits, qui peuvent être achetés sous forme de packs."
+          },
+          {
+            title: "2. Packs et abonnements",
+            content: "Nous proposons trois packs de crédits, utilisés pour débloquer des snippets :\n- 1 crédit\n- 3 crédits\n- 5 crédits\nCes crédits peuvent être obtenus via un achat ponctuel ou un abonnement mensuel."
+          },
+          {
+            title: "3. Prix",
+            content: "Les prix des packs et abonnements sont indiqués en euros, toutes taxes comprises. Nous nous réservons le droit de modifier nos prix à tout moment."
+          },
+          {
+            title: "4. Commandes",
+            content: "Vous pouvez passer commande directement sur notre site. La validation de votre commande implique l'acceptation pleine et entière des présentes CGV."
+          },
+          {
+            title: "5. Paiement",
+            content: "Le paiement est exigible immédiatement à la commande. Les paiements sont gérés via Stripe."
+          },
+          {
+            title: "6. Livraison",
+            content: "Les crédits achetés sont ajoutés à votre compte immédiatement après confirmation du paiement."
+          },
+          {
+            title: "7. Droit de rétractation",
+            content: "Conformément à la législation en vigueur, le droit de rétractation ne peut être exercé pour les contenus numériques non fournis sur un support matériel."
+          },
+          {
+            title: "8. Responsabilité",
+            content: "Nous ne saurions être tenus responsables des dommages résultant d'une mauvaise utilisation de nos produits."
+          }
+        ]
+      };
+    case "privacy-policy":
+      return {
+        title: "Politique de Confidentialité",
+        data: [
+          {
+            title: "Dernière mise à jour : 02/04/2025",
+            content: "Chez TailwindLiquid, nous attachons une grande importance à la protection de vos données personnelles."
+          },
+          {
+            title: "1. Collecte des informations",
+            content: "Nous collectons des informations lorsque vous vous inscrivez sur notre site, passez une commande ou interagissez avec nos services."
+          },
+          {
+            title: "2. Utilisation des informations",
+            content: "Les informations collectées peuvent être utilisées pour :\n- Améliorer notre site web et nos services\n- Vous contacter par e-mail\n- Administrer un concours, une promotion ou une enquête"
+          },
+          {
+            title: "3. Protection des informations",
+            content: "Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles."
+          },
+          {
+            title: "4. Consentement",
+            content: "En utilisant notre site, vous consentez à notre politique de confidentialité."
+          }
+        ]
+      };
+    case "legal-notice":
+      return {
+        title: "Mentions Légales",
+        data: [
+          {
+            title: "Dernière mise à jour : 02/04/2025",
+            content: "Informations légales du site TailwindLiquid."
+          },
+          {
+            title: "1. Éditeur du site",
+            content: "TailwindLiquid\nConçu et développé par Sejiux Studio\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Sejiux Studio"
+          },
+          {
+            title: "2. Hébergement",
+            content: "Hébergeur Frontend : Vercel\nHébergeur Backend : Shopify"
+          },
+          {
+            title: "3. Propriété intellectuelle",
+            content: "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois françaises relatives à la propriété intellectuelle."
+          },
+          {
+            title: "4. Contact",
+            content: "Pour toute question ou demande d'information concernant le site, contactez nous à : tailwindliquid@gmail.com."
+          }
+        ]
+      };
+    default:
+      return {
+        title: "Page non trouvée",
+        data: [
+          {
+            title: "Erreur 404",
+            content: "La page demandée n'existe pas."
+          }
+        ]
+      };
+  }
+};

@@ -36,7 +36,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
     const router = useRouter();
     const isHydrated = useIsHydrated();
     const pathname = usePathname();
-    const {setModeSelected, setIsModal } = useModalStore();
+    const {setModeSelected} = useModalStore();
     
     useEffect(() => {
         const images = currentTheme === "dark" ? LogoDark : Logo;
@@ -54,7 +54,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                     <div className="flex items-center gap-2">
                         <ImageLoader
                             src={imageInTheme ?? ""}
-                            alt='Main Images of Bidet-Wc'
+                            alt='Logo of TailwindLiquid'
                             className={cn('size-8 rounded-lg')}
                             width={500}
                             height={500}
@@ -89,16 +89,23 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                     <MenuDropdown
                         items={[
                             {label: "Acheter des crédits", handleClick: () => {
-                                setIsModal(true); 
                                 setModeSelected(0);
+                                router.push("/plans");
                             }},
                             {label: "S'abonner", handleClick: () => {
-                                setIsModal(true); 
                                 setModeSelected(1);
+                                router.push("/plans");
                             }},
                             {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
                             {href: `/account`, label: "Compte"},
-                            ...(user?.plan === "SUBSCRIPTION" ? [{ href: `/account`, label: "Groupe Privé", separator: true }] : []), 
+                            ...(user?.plan === "SUBSCRIPTION" ? 
+                                [{ 
+                                    href: `https://www.facebook.com/groups/tailwindliquid`, 
+                                    label: "Groupe Privé", 
+                                    separator: true,
+                                    target: "_blank", 
+                                    rel: "noopener noreferrer" 
+                                }] : []), 
                         ]}
                         handleLogOut={() => signOut()}
                         isLogOut={currentUser ? true : false}

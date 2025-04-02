@@ -15,6 +15,8 @@ type MenuDropdownProps = PropsWithChildren<{
         label: string;
         separator?: boolean;
         handleClick?: () => void;
+        rel?: string;
+        target?: string;
     }[];
     handleLogOut?: MouseEventHandler<HTMLButtonElement>;
     isLogOut?: boolean;
@@ -31,7 +33,14 @@ const MenuDropdown = (props: MenuDropdownProps) => {
           <>
             <DropdownMenuItem key={index}>
               {item.href ? (
-                <Link href={item.href} className={cn("text-sm font-medium py-1")}>{item.label}</Link>
+                <Link 
+                  href={item.href} 
+                  className={cn("text-sm font-medium py-1")}
+                  target={item.target} 
+                  rel={item.rel}
+                >
+                  {item.label}
+                </Link>
               ) : (
                 <button onClick={item.handleClick} className={cn("text-sm font-medium py-1")}>{item.label}</button>
               )}

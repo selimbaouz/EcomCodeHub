@@ -1,17 +1,15 @@
 "use client"
+import { legalsLinksData } from "@/data";
 import { cn } from "@/lib/utils";
 /* import Logo from "@/public/images/logo.webp" */
-import { Menu } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface FooterProps {
-    footerMenu: Menu[];
     className?: string;
 }
 const Footer = ({
-    footerMenu,
     className
 }: FooterProps) => {
     const classLink = "font-normal text-sm";
@@ -32,9 +30,9 @@ const Footer = ({
                         <div className={cn("space-y-4")}>
                             <h6 className={cn("lg:text-xl font-medium")}>Pages Légales</h6>
                             <ul className="leading-relaxed text-sm">
-                                {footerMenu.map((data, i) => (
+                                {legalsLinksData.map((data, i) => (
                                     <li key={i}>
-                                        <Link href={data.path} className={cn(classLink, data.path === pathname && "font-bold")}>{data.title}</Link>
+                                        <Link href={data.link} className={cn(classLink, data.link === pathname && "font-bold")}>{data.label}</Link>
                                     </li>
                                 ))}
                             </ul>
@@ -42,7 +40,7 @@ const Footer = ({
                         <div className={cn("space-y-4")}>
                             <h6 className={cn("lg:text-xl font-medium")}>Contactez-nous</h6>
                             <div className="leading-relaxed space-y-2 text-sm">
-                                <Link href="mailto:im.sejiux@gmail.com" className={cn(classLink)}>im.sejiux@gmail.com</Link>
+                                <Link href="mailto:tailwindliquid@gmail.com" className={cn(classLink)}>tailwindliquid@gmail.com</Link>
                                 <p>Du lundi au vendredi: 09h00 - 17h30</p>
                             </div>
                         </div>
@@ -52,10 +50,10 @@ const Footer = ({
             <div className={cn("py-6 border-t bg-[#1A2A32] dark:bg-background text-white")}>
                 <div className={cn("max-w-screen-xl mx-auto flex flex-col px-6 items-start", "lg:flex-row lg:items-center lg:justify-between")}>
                     <p className={cn("text-sm hidden", "lg:block")}>
-                        © 2024 Tous droits réservés.
+                        © 2025 Tous droits réservés.
                     </p>
                     <Link href="https://sejiux.com" target="_blank" rel="noopener noreferrer" className={cn("border-b-2 w-max p-2 rounded-full border-white hover:border-t-2 hover:border-b-0")}>
-                        <Image src="/images/sejiux.webp" alt="Logo of HelloPurly" width={36} height={36} className="size-6" />
+                        <Image src="/images/sejiux.webp" alt="Logo of Sejiux" width={36} height={36} className="size-6" />
                     </Link>
                 </div>
             </div>
