@@ -13,19 +13,8 @@ export default async function PlansPage () {
     if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
         redirect("/auth/login");
     }
-
-    if (!user?.subscriptionId) {
-        console.log("L'utilisateur n'a pas d'abonnement actif");
-        return; // Sortir de la fonction si pas d'abonnement
-    }
     
-    const sub = await getSubscriptions({subscriptionId: user.subscriptionId});
-    
-    // Vérifier si sub et sub.data existent
-    if (!sub || !sub.data) {
-        console.log("Aucune donnée d'abonnement trouvée");
-        return;
-    }
+    const sub = await getSubscriptions({subscriptionId: user?.subscriptionId ?? ""});
 
     return (
       <div>
@@ -35,7 +24,7 @@ export default async function PlansPage () {
         <div className="px-4 w-full py-20 mx-auto bg-gray-100 dark:bg-[#324e58] h-full">
             <div className="max-w-screen-xl mx-auto w-full">
                 <Plans 
-                    nameOfPlan={sub.data.items.data[0].plan.nickname ?? ""}
+                    nameOfPlan={sub?.data?.items.data[0].plan.nickname ?? ""}
                 />
             </div>
         </div>

@@ -59,6 +59,7 @@ export async function POST(req: NextRequest) {
   try {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
+      const customerId = session.customer;
       const customerEmail = session.customer_details?.email;
       const customerName = session.customer_details?.name;
       const variantId = session.metadata?.variantId;
@@ -68,10 +69,6 @@ export async function POST(req: NextRequest) {
 
       if(!customerEmail) {
         return NextResponse.json({ error: `Aucun email fourni` }, { status: 400 });
-      }
-
-      if(!variantId) {
-        return NextResponse.json({ error: `Aucune VariantId fourni` }, { status: 400 });
       }
 
       if(!packName) {
@@ -86,48 +83,46 @@ export async function POST(req: NextRequest) {
       
       let user = await db.user.findUnique({ where: { email: customerEmail } });
 
-      if (!user) {
-        const stripeCustomer = await createCustomerInStripe({email: customerEmail, name: customerName ?? ""})
+      let stripeCustomerId = user?.stripeCustomerId;
+
+      if (!stripeCustomerId) {
+        const stripeCustomer = await createCustomerInStripe({ email: customerEmail, name: customerName ?? "" });
 
         if (!stripeCustomer) {
-          return NextResponse.json({ error: "Erreur dans la création de compte sur stripe" }, { status: 400 });
+          return NextResponse.json({ error: "Erreur dans la création de compte sur Stripe" }, { status: 400 });
         }
 
+        stripeCustomerId = stripeCustomer.id;
+      }
+
+      if (!user) {
         user = await db.user.create({
           data: {
-            email: stripeCustomer.email,
-            name: stripeCustomer.name,
-            stripeCustomerId: stripeCustomer.id,
+            email: customerEmail,
+            name: customerName,
+            stripeCustomerId: stripeCustomerId,
             subscriptionId: subscription ? session.subscription?.toString() : null,
             credits: credits,
             plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
           },
         });
       } else {
-          const stripeCustomer = await createCustomerInStripe({email: customerEmail, name: customerName ?? ""})
-
-          if (!stripeCustomer) {
-            return NextResponse.json({ error: "Erreur dans la création de compte sur stripe" }, { status: 400 });
-          }
-
           await db.user.update({
             where: { email: customerEmail },
             data: {
-              email:  stripeCustomer.email,
-              name:  stripeCustomer.name,
-              stripeCustomerId: stripeCustomer.id,
+              email:  customerEmail,
+              name:  customerName,
+              stripeCustomerId: stripeCustomerId,
               subscriptionId: subscription ? session.subscription?.toString() : null,
               credits: user.credits + credits,
               plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
              }, 
           });
         }
-
-      // ➜ Créer une commande sur Shopify
-      const createOrder = await createShopifyOrder(customerEmail, variantId, lineItems);
-      if(!createOrder) {
-        return NextResponse.json({ error: `Erreur Creation de la commande, ${createOrder}` }, { status: 400 });
-      }
+      if(variantId) {
+        // ➜ Créer une commande sur Shopify
+        await createShopifyOrder(customerEmail, variantId, lineItems);
+      } 
 
     }
     return NextResponse.json({ received: true, message: "Le Webhook a bien été envoyé !" }, { status: 200 });
