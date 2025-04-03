@@ -1,13 +1,8 @@
 import { MdOutlineCode, MdOutlineDesignServices, MdOutlineSell, MdVerified } from "react-icons/md";
-import { FaCheck, FaCopy, FaEye, FaTruck } from "react-icons/fa6";
+import { FaCheck, FaCopy, FaEye } from "react-icons/fa6";
 import { RiSecurePaymentLine } from "react-icons/ri";
-import { TbTruckReturn } from "react-icons/tb";
 import { BiRocket, BiTimeFive } from "react-icons/bi";
-import { GiFrance } from "react-icons/gi";
-import { IoIosPeople } from "react-icons/io";
-import { HiOutlineHeart, HiOutlineShieldCheck, HiOutlineSparkles } from "react-icons/hi";
-import { FaCheckSquare, FaUndo } from "react-icons/fa";
-import { GoHeartFill } from "react-icons/go";
+import { FaCheckSquare } from "react-icons/fa";
 import Description from "@/components/content/detailsProduct/Description";
 import WhyTL from "@/components/content/detailsProduct/WhyTL";
 import HowItWorks from "@/components/content/detailsProduct/HowItWorks";
@@ -31,11 +26,11 @@ import SelectOptions from "@/components/snippets/SelectOptions";
 export const PricesFixeData = (modeSelected?: number) => [
   {
     title: "Pack Débutant", 
-    price: modeSelected ? "13.30" : "19.00",
+    price: modeSelected ? "20.93" : "29.90",
     discount: modeSelected ? "-30% d'économies" : "",
     infoPrice: "", 
     content: "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_BEGINNER!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -50,11 +45,11 @@ export const PricesFixeData = (modeSelected?: number) => [
   },
   {
     title: "Pack Avancé", 
-    price:  modeSelected ? "24.50" : "35.00",
+    price:  modeSelected ? "38.43" : "54.90",
     discount: modeSelected ? "-30% d'économies" : "-7% d'économies",
     infoPrice: "Populaire",
     content: "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_ADVANCED!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -69,12 +64,11 @@ export const PricesFixeData = (modeSelected?: number) => [
   },
   {
     title: "Pack Pro", 
-    price:  modeSelected ? "30.80" : "44.00",
+    price:  modeSelected ? "55.93" : "79.90",
     discount: modeSelected ? "-30% d'économies" : "-23% d'économies",
-    truePrice: "50 000",
     infoPrice: "",
     content: "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_TEST_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_TEST_PRICE_ID_ONE_TIME_PRO!,
+    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -172,9 +166,9 @@ export const trustsDataGroup2 = [
 ];
 
 export const stickyBarData = [
-  {
+/*   {
     title: "🎁 Boutique offerte dès l'abonnement",
-  },
+  }, */
   {
     title: "💻 60+ codes prêts à l’emploi",
   },

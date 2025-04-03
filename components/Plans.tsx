@@ -15,7 +15,6 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
   const {modeSelected, setModeSelected} = useModalStore();
   const session = useCurrentUser();
   const [currentPlanIndex, setCurrentPlanIndex] = useState<number | null>(null);
-  console.log(modeSelected)
   
   if(!session) {
     redirect("/auth/login")
@@ -64,8 +63,8 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
               const isCurrentPlan = modeSelected === 1 && currentPlanIndex === index;
               const buttonText = isCurrentPlan 
                 ? "Plan actuel" 
-                : modeSelected === 1 && currentPlanIndex !== null 
-                  ? (index < currentPlanIndex ? "Rétrograder" : "Mettre à niveau")
+                : modeSelected === 1
+                  ? (index < currentPlanIndex! ? "Rétrograder" : "Mettre à niveau")
                   : "Obtenir ce pack";
               
               return (

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { FaCheckCircle } from 'react-icons/fa';
 import Stripe from 'stripe';
 import { UserType } from '@/types/types';
+import { buyOneTimePlan, upgradeSubscription } from '@/actions/stripe';
+import { toast } from 'sonner';
 
 interface CardPlansProps {
   planId: number;
@@ -34,6 +36,28 @@ const CardPlans: FC<CardPlansProps> = ({
   nameOfPack,
   isCurrentPlan
 }) => {
+  console.log(modeSelected);
+  const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault(); 
+    try {
+      if (modeSelected === 0) {
+        const test = await buyOneTimePlan({ priceId: link, nameOfPack: nameOfPack });
+        if(test?.data?.url) {
+          window.location.href = test.data.url
+        }
+      } else {
+        const upgrade = await upgradeSubscription({ newPriceId: link });
+        if(upgrade?.data?.success) {
+          toast.success(upgrade?.data?.success);
+        } else {
+          toast.error(upgrade?.data?.error);
+        }
+      }
+    } catch (error) {
+      toast.error("Erreur lors de l'achat, veuillez réessayer ou contacter le support.",);
+    }
+  };
+
   return (
     <div className={cn("w-full rounded-3xl flex flex-col justify-start items-center gap-2 p-6 border", "lg:px-8 lg:py-10", 
       planId === 0 && "lg:border-r-0 lg:rounded-r-none",
@@ -65,7 +89,7 @@ const CardPlans: FC<CardPlansProps> = ({
           "backdrop-blur-xl flex items-center justify-center text-base antialiased rounded-[10px]",
           planId === 1 ? "bg-primary hover:bg-primary/80" : "bg-foreground hover:bg-foreground/80"
         )}
-        onClick={isCurrentPlan ? (e) => e.preventDefault() : undefined}
+        onClick={isCurrentPlan ? (e) => e.preventDefault() : handleClick}
         >
          {nameOfPack}
         </Link>

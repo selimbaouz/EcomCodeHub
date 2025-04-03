@@ -1,9 +1,12 @@
 'use server';
 
 import { stripe } from "@/lib/stripe";
-import { createCheckoutSessionSchema, customerIdSchema, subscriptionIdSchema, upgradeSchema } from "@/schemas";
+import { createCheckoutSessionSchema, customerIdSchema, oneTimePurchaseIdSchema, subscriptionIdSchema, upgradeSchema } from "@/schemas";
 import { action } from "@/lib/safe-action";
-import Stripe from "stripe";
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { getUserByEmail } from "@/data/auth/user";
+import { db } from "@/lib/db";
 
 const getVariantWithPacks = (type: string, level: string) => {
   switch (level) {
@@ -138,9 +141,9 @@ export const cancelSubscription = action
 .action(async ({ parsedInput: { subscriptionId } }) => {
   try {
     await stripe.subscriptions.cancel(subscriptionId);
-    return { success: `Subscription ${subscriptionId} canceled` };
+    return { success: `Abonnement annulé` };
   } catch (error) {
-    return { error: "" };
+    return { error: "L'annulation de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
   }
 });
 
@@ -149,22 +152,84 @@ export const cancelAtPeriodEnd = action
 .action(async ({ parsedInput: { subscriptionId } }) => {
   try {
     await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
-    return { success: `Subscription ${subscriptionId} will be canceled at the end of the period` };
+    return { success: `L'abonnement sera annulé à la fin de la période.` };
   } catch (error) {
-    return { error: "" };
+    return { error: "L'annulation de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
   }
 });
 
 export const upgradeSubscription = action
-.schema(upgradeSchema) 
-.action(async ({ parsedInput: { subscriptionId, newPriceId } }) => {
-  try {
-    await stripe.subscriptions.update(subscriptionId, {
-        items: [{ price: newPriceId }],
-        proration_behavior: "create_prorations", // Facultatif, voir ci-dessous
-    });
-    return { success: `Subscription ${subscriptionId} upgraded to ${newPriceId}` };
-  } catch (error) {
-    return { error: "" };
-  }
+  .schema(upgradeSchema)
+  .action(async ({ parsedInput: { newPriceId } }) => {
+    const session = await auth();
+
+    try {
+      const user = await getUserByEmail(session?.user?.email ?? "");
+      if (!user) {
+        return { error: "Utilisateur introuvable." };
+      }
+
+      if (user.subscriptionId) {
+        // 🔄 L'utilisateur a déjà un abonnement → Mise à jour
+        const subscription = await stripe.subscriptions.retrieve(user.subscriptionId);
+        await stripe.subscriptions.update(user.subscriptionId, {
+          items: [
+            {
+              id: subscription.items.data[0].id,
+              price: newPriceId,
+            },
+          ],
+          proration_behavior: "create_prorations",
+        });
+
+        return { success: `L'abonnement a été mis à jour.` };
+      } else {
+        // 🆕 L'utilisateur n'a PAS d'abonnement → Création
+        if (!user.stripeCustomerId) {
+          return { error: "Aucun compte Stripe trouvé. Veuillez contacter le support." };
+        }
+
+        // Création d'un abonnement sur Stripe
+        const subscription = await stripe.subscriptions.create({
+          customer: user.stripeCustomerId,
+          items: [{ price: newPriceId }],
+          payment_behavior: "default_incomplete",
+          expand: ["latest_invoice.payment_intent"],
+        });
+
+        if (!subscription.id) {
+          return { error: "Erreur lors de la création de l'abonnement." };
+        }
+
+        // ✅ Mise à jour en BDD via Prisma
+        await db.user.update({
+          where: { id: user.id },
+          data: {
+            plan: "SUBSCRIPTION",
+            subscriptionId: subscription.id,
+          },
+        });
+
+        return { success: `L'abonnement a bien été souscrit.` };
+      }
+    } catch (error) {
+      console.error("Erreur Stripe :", error);
+      return { error: "La mise à jour de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
+    }
+  });
+
+
+export const buyOneTimePlan = action
+.schema(oneTimePurchaseIdSchema) 
+.action(async ({ parsedInput: { priceId, nameOfPack } }) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ["card"],
+    mode: "payment",
+    success_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/docs`,
+    cancel_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/plans?echec=true`,
+    line_items: [{ price: priceId, quantity: 1 }],
+    metadata: { packName: nameOfPack }
+  });
+
+  return { url: session.url };
 });
