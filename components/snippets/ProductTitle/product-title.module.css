@@ -1,0 +1,3 @@
+.title {
+    @apply font-semibold text-lg lg:text-xl text-center w-full;
+}

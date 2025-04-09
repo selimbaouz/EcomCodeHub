@@ -1,0 +1,12 @@
+.container {
+    @apply flex items-center justify-center gap-2;
+  }
+  
+  .icon {
+    @apply text-primary h-5 w-5;
+  }
+  
+  .text {
+    @apply text-[10px] lg:text-xs;
+  }
+  

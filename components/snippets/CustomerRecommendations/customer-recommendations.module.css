@@ -1,0 +1,19 @@
+.container {
+    @apply flex items-center justify-center gap-2 mx-auto w-max;
+}
+
+.avatarContainer {
+    @apply flex items-center -space-x-2;
+}
+
+.avatar {
+    @apply w-[22px] h-[22px] rounded-full border-2 border-white object-cover -ml-2 first:ml-0;
+}
+
+.text {
+    @apply text-[10px] lg:text-[12px]
+}
+
+.boldText {
+    @apply font-bold text-[#4abf8e];
+}

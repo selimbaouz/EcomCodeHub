@@ -1,0 +1,8 @@
+.box {
+    @apply w-max flex justify-center items-center mx-auto;
+  }
+  
+  .text {
+    @apply w-full text-white flex items-center justify-center px-5 py-2 text-[13px] font-semibold rounded-[5px] leading-[15px] bg-gradient-to-r from-[#77A1D3] via-[#79CBCA] to-[#E684AE] uppercase;
+  }
+  

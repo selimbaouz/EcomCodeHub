@@ -1,0 +1,7 @@
+.container {
+    @apply flex items-center justify-center gap-2 max-w-xs mx-auto;
+}
+
+.icon {
+    @apply h-10 w-14 border rounded-md;
+}

@@ -1,0 +1,15 @@
+.container {
+    @apply w-full max-w-sm bg-[#e4f7f1] rounded-2xl flex items-center gap-4 p-3 justify-center mx-auto;
+}
+
+.textContainer {
+    @apply flex flex-col gap-2;
+}
+
+.title {
+    @apply font-bold text-[12px] lg:text-[14px];
+}
+
+.description {
+    @apply text-[10px] lg:text-[12px];
+}
