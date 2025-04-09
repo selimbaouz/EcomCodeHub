@@ -1,0 +1,20 @@
+.container {
+    @apply flex items-center justify-center;
+  }
+  
+  .avatars {
+    @apply flex mr-[5px] ml-[7px];
+  }
+  
+  .avatar {
+    @apply w-[22px] h-[22px] rounded-full border-2 border-white -ml-[7px] object-cover;
+  }
+  
+  .text {
+    @apply text-[12px] text-[#868686] leading-[0px] font-normal;
+  }
+  
+  .text strong {
+    @apply font-extrabold text-[#2e2f3c];
+  }
+  

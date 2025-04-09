@@ -11,17 +11,17 @@ import { AiOutlineStar } from "react-icons/ai";
 import Transformations from "@/components/content/mode/Transformations";
 import Difference from "@/components/content/mode/Difference";
 import { BestReviews } from "@/components/BestReviews";
-import Badges from "@/components/snippets/Badges";
-import RatingSummary from "@/components/snippets/RatingSummary";
-import FeatureChecklist from "@/components/snippets/FeatureChecklist";
-import ProductTitle from "@/components/snippets/ProductTitle";
-import GuaranteeIcons from "@/components/snippets/GuaranteeIcons";
-import FastShipping from "@/components/snippets/FastShipping";
-import CustomerRecommendations from "@/components/snippets/CustomerRecommendations";
-import RefundGuarantees from "@/components/snippets/RefundGuarantees";
-import DeliveryEstimate from "@/components/snippets/DeliveryEstimate";
-import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2";
-import SelectOptions from "@/components/snippets/SelectOptions";
+import Badges from "@/components/snippets/Badges/Badges";
+import RatingSummary from "@/components/snippets/RatingSummary/RatingSummary";
+import FeatureChecklist from "@/components/snippets/FeatureChecklist/FeatureChecklist";
+import ProductTitle from "@/components/snippets/ProductTitle/ProductTitle";
+import GuaranteeIcons from "@/components/snippets/GuaranteeIcons/GuaranteeIcons";
+import FastShipping from "@/components/snippets/FastShipping/FastShipping";
+import CustomerRecommendations from "@/components/snippets/CustomerRecommendations/CustomerRecommendations";
+import RefundGuarantees from "@/components/snippets/RefundGuarantees/RefundGuarantees";
+import DeliveryEstimate from "@/components/snippets/DeliveryEstimate/DeliveryEstimate";
+import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2/GuaranteeIcons2";
+import SelectOptions from "@/components/snippets/SelectOptions/SelectOptions";
 
 export const PricesFixeData = (modeSelected?: number) => [
   {

@@ -1,0 +1,7 @@
+.container {
+    @apply flex items-center justify-center gap-2;
+}
+
+.text {
+    @apply text-[10px] lg:text-xs;
+}

@@ -1,0 +1,37 @@
+.accordion {
+    @apply w-full max-w-md mx-auto mt-10 rounded-[5px];
+  }
+  
+  .accordionItem {
+    @apply border-b border-[#ccc] mb-[3px];
+  }
+  
+  .accordionItem:last-child {
+    @apply border-b-0;
+  }
+  
+  .accordionHeader {
+    @apply px-2 py-1 cursor-pointer font-bold text-[14px] flex justify-between items-center;
+  }
+  
+  .indicator {
+    @apply text-[1.3em] ml-2 transition-transform duration-300 ease-in-out;
+  }
+  
+  .accordionItem.active .indicator {
+    @apply transform rotate-180;
+    content: '-';
+  }
+  
+  .accordionContent {
+    @apply max-h-0 overflow-hidden px-2 transition-all duration-300 ease-in-out;
+  }
+  
+  .accordionContent p {
+    @apply mt-2 text-[13px];
+  }
+  
+  .accordionItem.active .accordionContent {
+    @apply max-h-[150px] px-2 py-2;
+  }
+  

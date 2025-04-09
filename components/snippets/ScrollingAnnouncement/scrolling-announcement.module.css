@@ -1,0 +1,21 @@
+.announcementBar {
+    @apply bg-gradient-to-r from-[#ED4264] to-[#FFEDBC] py-[3px] overflow-hidden whitespace-nowrap relative shadow-md;
+  }
+  
+  .wrapper {
+    @apply flex animate-[scroll_50s_linear_infinite] overflow-x-auto w-max;
+  }
+  
+  .text {
+    @apply text-[#fffff9] text-[14px] font-bold mr-[25px];
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  

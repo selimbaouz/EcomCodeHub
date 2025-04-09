@@ -1,0 +1,8 @@
+.container {
+    @apply flex justify-center w-full;
+  }
+  
+  .text {
+    @apply text-center text-[12px] font-semibold;
+  }
+  

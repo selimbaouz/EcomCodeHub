@@ -1,0 +1,11 @@
+.container {
+    @apply flex items-center justify-center mx-auto bg-[#e9fbea] border border-[#d4edda] rounded-lg px-6 py-2 w-max shadow-md;
+}
+
+.dot {
+    @apply w-[10px] h-[10px] rounded-full mr-4 bg-[#007800] shadow-md shadow-[#00a000];
+}
+
+.text {
+    @apply text-xs text-[#039903] leading-none;
+}

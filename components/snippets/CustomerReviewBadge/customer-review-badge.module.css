@@ -1,0 +1,28 @@
+.container {
+    @apply relative flex items-center justify-center border-2 border-dashed border-gray-300 rounded-xl px-2 py-1.5 bg-white w-96 mx-auto text-[12px];
+  }
+  
+  .image {
+    @apply w-[35px] h-[35px] rounded-full object-cover mr-[10px];
+  }
+  
+  .content {
+    @apply flex flex-col;
+  }
+  
+  .username {
+    @apply font-bold mb-[2px] flex items-center;
+  }
+  
+  .icon {
+    @apply ml-[5px] w-[14px] h-[14px];
+  }
+  
+  .text {
+    @apply text-[11px] text-gray-800;
+  }
+  
+  .time {
+    @apply absolute top-[5px] right-[5px] text-[8px] text-red-600 font-extrabold border border-red-200 rounded px-[3px] py-[1px] bg-red-100 leading-[15px];
+  }
+  

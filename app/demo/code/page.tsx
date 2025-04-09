@@ -1,11 +1,11 @@
 "use client";
-import DeliverySteps from '@/components/snippets/DeliverySteps';
+import AnnouncementBar from '@/components/snippets/AnnouncementBar/AnnouncementBar';
 import React from 'react';
 
 const Code = () => {
     return (
-        <div className='size-full p-4 max-w-screen-xs border mx-auto'>
-            <DeliverySteps />
+        <div className='size-full p-4 max-w-screen-lg mx-auto'>
+            <AnnouncementBar />
         </div>
     );
 };

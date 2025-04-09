@@ -1,0 +1,28 @@
+.container {
+    @apply grid grid-cols-3 relative items-center gap-2 w-max justify-center mx-auto text-center;
+  }
+  
+  .line {
+    @apply absolute top-1/3 left-1/2 w-[80%] h-1.5 bg-foreground transform -translate-x-1/2 -translate-y-1/2;
+  }
+  
+  .step {
+    @apply z-10 flex flex-col gap-2 h-full;
+  }
+  
+  .stepIcon {
+    @apply p-2 lg:p-4 bg-foreground rounded-full w-max mx-auto flex flex-col justify-center;
+  }
+  
+  .stepText {
+    @apply space-y-0.5;
+  }
+  
+  .stepTitle {
+    @apply text-[10px] lg:text-xs font-semibold;
+  }
+  
+  .stepDescription {
+    @apply text-[10px] lg:text-xs;
+  }
+  

@@ -123,14 +123,6 @@ export default function Cart() {
             </SheetClose>
           </div>
         </SheetHeader>
-        {timeLeft > 0 && (
-          <div className={cn("w-full py-3 bg-primary flex justify-center")}>
-            <CartTimer />
-          </div>
-        )}
-        <div className='py-6 text-sm flex flex-col justify-center text-center px-4 border-b dark:border-b-gray-200/10'>
-          <FreeShippingBar timeForFreeDelivery={50}/>
-        </div>
         <div className={cn("bg-background text-foreground h-auto flex-grow overflow-hidden")}>
           {!cart || cart.lines.length === 0 ? (
               <div className="flex w-full flex-col items-center justify-center pt-14">
