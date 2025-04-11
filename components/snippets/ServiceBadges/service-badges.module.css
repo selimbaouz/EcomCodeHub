@@ -1,0 +1,15 @@
+.container {
+  @apply flex gap-2 items-center justify-center mx-auto w-max;
+}
+
+.badge {
+  @apply bg-[#ECFDF5] text-[#059669] rounded-md py-1 px-2 flex items-center gap-2;
+}
+
+.icon {
+  @apply text-lg;
+}
+
+.text {
+  @apply text-[10px];
+}

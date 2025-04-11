@@ -28,6 +28,22 @@ import ShopifyReviewBadge from './ShopifyReviewBadge/ShopifyReviewBadge';
 import CustomerReviewBadge from './CustomerReviewBadge/CustomerReviewBadge';
 import CheckoutMessage from './CheckoutMessage/CheckoutMessage';
 import AnnouncementBar from './AnnouncementBar/AnnouncementBar';
+import ServiceBadges from './ServiceBadges/ServiceBadges';
+import DiscountCode from './DiscountCode/DiscountCode';
+import LimitedTimeOffer from './LimitedTimeOffer/LimitedTimeOffer';
+import FastDeliveryOffer from './FastDeliveryOffer/FastDeliveryOffer';
+import ChristmasDiscount from './ChristmasDiscount/ChristmasDiscount';
+import { DeliveryInfoBox } from './DeliveryInfoBox/DeliveryInfoBox';
+import { ProductPopularityBox } from './ProductPopularityBox/ProductPopularityBox';
+import { ShippingReturnsInfo } from './ShippingReturnsInfo/ShippingReturnsInfo';
+import { LimitedStockBanner } from './LimitedStockBanner/LimitedStockBanner';
+import CustomerStats from './CustomerStats/CustomerStats';
+import ReviewBanner from './ReviewBanner/ReviewBanner';
+import { InstagramViews } from './InstagramViews/InstagramViews';
+import { TiktokViews } from './TiktokViews/TiktokViews';
+import { TiktokFollowers } from './TiktokFollowers/TiktokFollowers';
+import { InstagramFollowers } from './InstagramFollowers/InstagramFollowers';
+import AsSeenOn from './AsSeenOn/AsSeenOn';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -58,7 +74,23 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     ShopifyReviewBadge: <ShopifyReviewBadge />,
     CustomerReviewBadge: <CustomerReviewBadge />,
     CheckoutMessage: <CheckoutMessage />,
-    AnnouncementBar: <AnnouncementBar />
+    AnnouncementBar: <AnnouncementBar />,
+    ServiceBadges: <ServiceBadges />,
+    DiscountCode: <DiscountCode />,
+    LimitedTimeOffer: <LimitedTimeOffer />,
+    FastDeliveryOffer: <FastDeliveryOffer />,
+    ChristmasDiscount: <ChristmasDiscount />,
+    DeliveryInfoBox: <DeliveryInfoBox />,
+    ProductPopularityBox: <ProductPopularityBox />,
+    ShippingReturnsInfo: <ShippingReturnsInfo />,
+    LimitedStockBanner: <LimitedStockBanner />,
+    CustomerStats: <CustomerStats />,
+    ReviewBanner: <ReviewBanner />,
+    InstagramViews: <InstagramViews />,
+    InstagramFollowers: <InstagramFollowers />,
+    TiktokViews: <TiktokViews />,
+    TiktokFollowers: <TiktokFollowers />,
+    AsSeenOn: <AsSeenOn />
   };
 
 export default ComponentsSnippet;

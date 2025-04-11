@@ -1,0 +1,7 @@
+.container {
+    @apply w-full flex justify-center;
+}
+
+.wrapper {
+    @apply flex justify-center gap-2 text-[12px] bg-[#f8d7da] rounded-lg w-max mx-auto px-[20px] font-semibold text-[#d9534f] items-center;
+}

@@ -1,0 +1,3 @@
+.tiktokViews {
+    @apply border border-[#dddcdc] rounded-[20px] flex flex-row gap-[10px] justify-center mx-auto pl-4 pr-6 w-max font-semibold text-[13px] text-[#474747] items-center;
+}
