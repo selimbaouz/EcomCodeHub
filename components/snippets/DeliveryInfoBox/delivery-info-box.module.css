@@ -1,0 +1,24 @@
+.deliveryBox {
+    @apply border border-gray-300 rounded-lg p-4 bg-white font-sans w-max mx-auto;
+  }
+  
+  .icon {
+    @apply inline-block align-middle mr-3;
+  }
+  
+  .textContainer {
+    @apply flex flex-col gap-1 justify-center;
+  }
+  
+  .title {
+    @apply text-sm font-bold text-neutral-700 flex items-center leading-[15px];
+  }
+  
+  .deliveryTime {
+    @apply text-xs text-neutral-700;
+  }
+  
+  .deliveryTime span {
+    @apply font-bold text-green-600;
+  }
+  

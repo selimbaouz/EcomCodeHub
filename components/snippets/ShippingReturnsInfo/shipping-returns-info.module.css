@@ -1,0 +1,7 @@
+.container {
+  @apply flex flex-col items-start justify-center mx-auto w-max gap-1 text-[13px] font-medium text-[#474747];
+}
+
+.item {
+  @apply flex items-center gap-2.5;
+}

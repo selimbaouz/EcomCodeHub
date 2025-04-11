@@ -1,0 +1,20 @@
+.container {
+    @apply flex justify-center items-center text-[13px] bg-[#f2f2f2] rounded-[8px] w-max mx-auto px-[20px] font-semibold text-[#676767];
+  }
+
+  .wrapper {
+    @apply flex items-center gap-2;
+  }
+  
+  .code {
+    @apply underline ml-[4px] text-[#0098d9];
+  }
+  
+  .button {
+    @apply ml-2 border-none bg-none cursor-pointer;
+  }
+  
+  .copied {
+    @apply text-[#0098d9] font-bold text-[13px];
+  }
+  

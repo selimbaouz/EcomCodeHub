@@ -55,10 +55,10 @@ export default {
           const user = await getUserByEmail(email);
           if (!user) return null;
 
-          const hasPaid = await checkStripePayment(email);
+          /* const hasPaid = await checkStripePayment(email);
           if (!hasPaid) {
             return null;
-          }
+          } */
 
           return user;
         }
