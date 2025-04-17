@@ -34,7 +34,7 @@ export const verifyEmail = action
 
     return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
   }
-
+  
   return { success: true, user: existingUser };
 });
 

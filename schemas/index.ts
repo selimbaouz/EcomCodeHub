@@ -26,12 +26,16 @@ export const subscriptionIdSchema = z.object({
   subscriptionId: z.string(),
 });
 
+export const oneTimePurchaseIdSchema = z.object({
+  priceId: z.string(),
+  nameOfPack: z.string(),
+});
+
 export const customerIdSchema = z.object({
   customerId: z.string(),
 });
 
 export const upgradeSchema = z.object({
-  subscriptionId: z.string(),
   newPriceId: z.string(),
 });
 
