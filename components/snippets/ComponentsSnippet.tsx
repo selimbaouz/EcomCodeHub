@@ -44,6 +44,7 @@ import { TiktokViews } from './TiktokViews/TiktokViews';
 import { TiktokFollowers } from './TiktokFollowers/TiktokFollowers';
 import { InstagramFollowers } from './InstagramFollowers/InstagramFollowers';
 import AsSeenOn from './AsSeenOn/AsSeenOn';
+import AsSeenOnMedia from './AsSeenOnMedia/AsSeenOnMedia';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -90,7 +91,8 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     InstagramFollowers: <InstagramFollowers />,
     TiktokViews: <TiktokViews />,
     TiktokFollowers: <TiktokFollowers />,
-    AsSeenOn: <AsSeenOn />
+    AsSeenOn: <AsSeenOn />,
+    AsSeenOnMedia: <AsSeenOnMedia />
   };
 
 export default ComponentsSnippet;

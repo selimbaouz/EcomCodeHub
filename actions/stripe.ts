@@ -159,7 +159,7 @@ export const cancelAtPeriodEnd = action
 });
 
 export const upgradeSubscription = action
-  .schema(upgradeSchema)
+.schema(upgradeSchema)
   .action(async ({ parsedInput: { newPriceId } }) => {
     const session = await auth();
 
@@ -233,3 +233,21 @@ export const buyOneTimePlan = action
 
   return { url: session.url };
 });
+
+export const createCustomerInStripe = async ({
+  email,
+  name
+}: {
+  email: string;
+  name?: string;
+}) => {
+  try {
+    const stripeCustomer = await stripe.customers.create({
+      email,
+      name
+    });
+    return stripeCustomer;
+  } catch {
+    return null;
+  }
+}

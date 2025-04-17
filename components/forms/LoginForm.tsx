@@ -9,7 +9,7 @@ import {
 import { useState, useTransition} from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
-import { LoginSchema } from "@/schemas";
+import { CodePromoSchema, LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { PulseLoader } from "react-spinners";
 import { toast } from "sonner";
-import { Login } from "@/types/types";
+import { Code, Login } from "@/types/types";
 import CardAuthWrapper from "../card/CardAuthWrapper";
 import { updateOrLogin, verifyEmail } from "@/actions/login";
 import { IoIosMail } from "react-icons/io";
@@ -42,7 +42,14 @@ export function LoginForm() {
     defaultValues: {
       email: "",
       password: "",
-      code: ""
+      twoFactorCode: "",
+    },
+  });
+
+  const codeForm = useForm<Code>({
+    resolver: zodResolver(CodePromoSchema),
+    defaultValues: {
+      code: "",
     },
   });
 
@@ -51,53 +58,60 @@ export function LoginForm() {
     setShowPassword(!showPassword);
   };
   
-  const onSubmit = (values: Login) => {
-    startTransition(async () => {
-      verifyEmail({
-        email: values.email,
-        password: values.password,
-        code: values.code,
-        isChange: newEmail !== "" ? true : false
-      })
-        .then((response) => {
-          if(response?.data?.error) {
+const onSubmit = (values: Login) => {
+    if (!emailChecked) {
+      startTransition(async () => {
+        verifyEmail({
+          email: values.email,
+          password: values.password,
+          isChange: newEmail !== "" ? true : false,
+        }).then((response) => {
+          if (response?.data?.error) {
             toast.error(response?.data?.error);
           }
           if (response?.data?.success) {
-            if(!emailChecked) {
-              if (response?.data?.user?.stripeCustomerId && response.data?.user.plan && response?.data?.user.email) {
-                if(response.data?.user?.emailVerified && !response.data?.mailsend) {
+            if (!emailChecked) {
+              if (
+                response?.data?.user?.stripeCustomerId &&
+                response.data?.user.plan &&
+                response?.data?.user.email
+              ) {
+                if (
+                  response.data?.user?.emailVerified &&
+                  !response.data?.mailsend
+                ) {
                   setEmailChecked(true);
                   setIsLogin(!!response?.data?.user?.password);
                 } else {
                   toast.success(response?.data?.success);
                   setIsMailSended(true);
-                  setMailOfUser(values.email);
+                  setMailOfUser(values.email ?? "");
                 }
               } else {
                 toast.error("Votre email n'existe pas !", {
-                  description: "Veuillez acheter un plan pour pouvoir utiliser votre compte."
-                })
+                  description:
+                    "Veuillez acheter un plan pour pouvoir utiliser votre compte.",
+                });
               }
-            }  else {
+            } else {
               setIsLogin(!!response?.data?.user?.password);
-            } 
+            }
             setNewEmail("");
-          } 
+          }
         });
       });
-  };
-
-  const handleUpdateOrLogin = (values: Login) => {
-    startTransition(async () => {
-      updateOrLogin(values)
-      .then((response) => {
-        if(response?.data?.error) {
-          toast.error(response?.data?.error);
-        }
+      return;
+    } else {
+      startTransition(async () => {
+        updateOrLogin(values).then((response) => {
+          if (response?.data?.error) {
+            toast.error(response?.data?.error);
+          }
+        });
       });
-    });
-  };
+      return;
+    }
+};  
 
   const cardTexts = !emailChecked
     ? {
@@ -146,19 +160,20 @@ export function LoginForm() {
       <CardAuthWrapper
         title={cardTexts.title}
         description={cardTexts.description}
-        footerTitle={"Vous n'avez pas de compte ?"}
-        footerLabel={"Commandez un pack"}
-        footerHref={`/products/pack-pro-conversion-shopify`}
+        footerTitle="Vous avez un code ?"
+        footerLabel="Insérez votre code"
+        footerHref="/auth/code"
+        className="whitespace-pre-wrap"
       >
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(!emailChecked ?  onSubmit : handleUpdateOrLogin)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6"
           >
             {showTwoFactor && (
               <FormField
                 control={form.control}
-                name="code"
+                name="twoFactorCode"
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
@@ -218,7 +233,7 @@ export function LoginForm() {
                 )}
               />
             )}
-            {!showTwoFactor && emailChecked && isLogin && (
+            {(!showTwoFactor && (emailChecked && isLogin)) && (
               <>
                 <FormField
                   control={form.control}

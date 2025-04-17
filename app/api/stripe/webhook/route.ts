@@ -1,3 +1,4 @@
+import { createCustomerInStripe } from "@/actions/stripe";
 import { createShopifyOrder } from "@/data/shopify/customer";
 import { db } from "@/lib/db";
 import { stripe } from "@/lib/stripe";
@@ -24,23 +25,6 @@ const getCredits = (pack: string) => {
   }
 };
 
-const createCustomerInStripe = async ({
-  email,
-  name
-}: {
-  email: string;
-  name?: string;
-}) => {
-  try {
-    const stripeCustomer = await stripe.customers.create({
-      email,
-      name
-    });
-    return stripeCustomer;
-  } catch {
-    return null;
-  }
-}
 
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature")!;
