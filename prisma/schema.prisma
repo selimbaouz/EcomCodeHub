@@ -51,6 +51,8 @@ model User {
   stripeCustomerId      String?
   subscriptionId        String?
   credits               Int
+  promoCodeId String?
+  promoCode   PromoCode? @relation(fields: [promoCodeId], references: [id])
   plan                  PlanType?  
   purchases             Purchase[]
   accounts              Account[]
@@ -95,6 +97,13 @@ model TwoFactorConfirmation {
   user   User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+model PromoCode {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  ipUsed    String?
+  usedBy    User[]
 }
 
 model Snippet {

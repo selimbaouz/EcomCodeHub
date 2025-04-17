@@ -55,7 +55,7 @@ const EmailVerification = ({
                 </Text>
               </>
             )}
-            <Button href={`https://tailwindliquid.com/auth/new-verification?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-full text-center mx-auto shadow text-base hover:bg-primary/90 py-4 rounded-md font-medium mt-4 mb-10')}>Confirmer mon adresse e-mail</Button>
+            <Button href={`https://tailwindliquid.com/auth/new-verification?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-full text-center mx-auto shadow text-base hover:bg-primary/90 p-4 lg:px-6 lg:py-4 rounded-md font-medium mt-4 mb-10')}>Confirmer mon adresse e-mail</Button>
             <Text className='text-base text-left mb:mb-5'>
               Ce lien est valable pendant 30 minutes. Si vous n'avez pas demandé cette vérification, veuillez ignorer ce message ou contacter notre support à l'adresse {" "}
               <Link href="mailto:tailwindliquid@gmail.com" target="_blank" className='underline'>

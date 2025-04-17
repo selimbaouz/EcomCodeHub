@@ -15,7 +15,7 @@ import { action } from "@/lib/safe-action";
 export const verifyEmail = action
 .schema(LoginSchema) 
 .action(async ({ parsedInput: { email, isChange } }) => {
-  const existingUser = await getUserByEmail(email.toLocaleLowerCase());
+  const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
   if (!existingUser) {
     return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
@@ -40,8 +40,8 @@ export const verifyEmail = action
 
 export const updateOrLogin = action
 .schema(LoginSchema) 
-.action(async ({ parsedInput: { email, password, code } }) => {
-    const existingUser = await getUserByEmail(email.toLocaleLowerCase());
+.action(async ({ parsedInput: { email, password, twoFactorCode } }) => {
+    const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
     if (!existingUser || !existingUser.email) {
       return { error: "Utilisateur non trouvé. Veuillez vérifier les informations saisies." };
@@ -52,12 +52,12 @@ export const updateOrLogin = action
     }
 
     if (existingUser.isTwoFactorEnabled && existingUser.email) {
-      if (code) {
+      if (twoFactorCode) {
         const twoFactorToken = await getTwoFactorTokenByEmail(
           existingUser.email
         );
   
-        if (!twoFactorToken || twoFactorToken.token !== code) {
+        if (!twoFactorToken || twoFactorToken.token !== twoFactorCode) {
           return { error: "Le code de vérification est invalide. Veuillez vérifier et réessayer." };
         }
   

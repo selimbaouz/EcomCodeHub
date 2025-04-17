@@ -84,14 +84,28 @@ export const snippetSchema = z.object({
 
 export const snippetsSchema = z.array(snippetSchema);
 
-
 export const LoginSchema = z.object({
+  email: z.string().email("L'email doit être valide"),
+  password: z.string().optional(),
+  credits: z.string().optional(),
+  twoFactorCode: z.string().optional(),
+  isChange: z.boolean().optional(),
+})
+
+export const CodePromoSchema = z.object({
+  code: z.string().min(6, "Votre mot de passe à usage unique doit comporter 6 caractères.").optional(),
+  email: z.string().email("L'email doit être valide").optional(),
+  password: z.string().optional(),
+  name: z.string().optional()
+})
+
+export const SignUserWithCodeSchema = z.object({
   email: z.string().email({
     message: "L'email est obligatoire"
   }),
-  password: z.string().optional(),
-  code: z.string().optional(),
-  isChange: z.boolean().optional(),
+  password: z.string().min(1, "Mot de passe requis").optional(),
+  promoId: z.string().optional(),
+  name: z.string().optional()
 });
 
 export const checkoutSessionSchema = z.object({

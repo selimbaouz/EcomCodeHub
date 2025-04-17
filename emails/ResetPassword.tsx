@@ -46,7 +46,7 @@ const ResetPassword = ({
             <Text className='text-base text-left md:mb-5'>
             Sinon, veuillez cliquer sur le bouton ci-dessous pour réinitialiser votre mot de passe :
             </Text>
-            <Button href={`https://tailwindliquid.com/auth/new-password?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-max mx-auto text-center shadow text-base hover:bg-primary/90 py-4 rounded-md font-medium mt-4 mb-10')}>Réinitialiser mon mot de passe</Button>
+            <Button href={`https://tailwindliquid.com/auth/new-password?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-max mx-auto text-center shadow text-base hover:bg-primary/90 p-4 lg:px-6 lg:py-4 rounded-md font-medium mt-4 mb-10')}>Réinitialiser mon mot de passe</Button>
             <Text className='text-base text-left md:mb-5'>
             Ce lien est valable pendant 30 minutes. Si le lien expire, vous pouvez demander un nouveau lien de réinitialisation sur notre site.
             </Text>

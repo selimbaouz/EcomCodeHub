@@ -3,7 +3,6 @@
 import { stripe } from "@/lib/stripe";
 import { createCheckoutSessionSchema, customerIdSchema, subscriptionIdSchema, upgradeSchema } from "@/schemas";
 import { action } from "@/lib/safe-action";
-import Stripe from "stripe";
 
 const getVariantWithPacks = (type: string, level: string) => {
   switch (level) {
@@ -168,3 +167,21 @@ export const upgradeSubscription = action
     return { error: "" };
   }
 });
+
+export const createCustomerInStripe = async ({
+  email,
+  name
+}: {
+  email: string;
+  name?: string;
+}) => {
+  try {
+    const stripeCustomer = await stripe.customers.create({
+      email,
+      name
+    });
+    return stripeCustomer;
+  } catch {
+    return null;
+  }
+}
