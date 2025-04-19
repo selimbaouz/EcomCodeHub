@@ -10,8 +10,6 @@ import Link from "next/link";
 import { BestReviews } from "./BestReviews";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { CheckIcon } from "lucide-react";
-import ImageLoader from "./ImageLoader";
-import { Switch } from "./ui/switch";
 
 interface ProductImageProps {
     product: Product;

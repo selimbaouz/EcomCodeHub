@@ -3,7 +3,6 @@
 import { stripe } from "@/lib/stripe";
 import { createCheckoutSessionSchema, customerIdSchema, oneTimePurchaseIdSchema, subscriptionIdSchema, upgradeSchema } from "@/schemas";
 import { action } from "@/lib/safe-action";
-import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { getUserByEmail } from "@/data/auth/user";
 import { db } from "@/lib/db";

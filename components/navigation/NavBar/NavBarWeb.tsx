@@ -71,7 +71,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                                 title: "Snippets",
                             },
                             {
-                                path: "/installation", 
+                                path: "/docs/installation", 
                                 title: "Installation",
                             }
                         ]?.map((data, i) => (
