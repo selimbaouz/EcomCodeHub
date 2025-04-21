@@ -1,0 +1,12 @@
+.container {
+    @apply flex items-center justify-center mx-auto  bg-gradient-to-br from-violet-500 to-indigo-500 rounded-full px-6 py-2 w-max gap-2;
+  }
+  
+  .text {
+    @apply text-sm text-white font-bold;
+  }
+  
+  .rating {
+    @apply text-sm font-bold text-white;
+  }
+  

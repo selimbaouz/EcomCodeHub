@@ -191,7 +191,7 @@ export default function Cart() {
                 </span>
             </div>
             <form action={handleCheckout} className='px-4'>
-                <CheckoutButton isLoading={isLoading} />
+                <CheckoutButton isLoading={isLoading} quantity={cart.quantity} />
             </form>
           </div>
       </SheetContent>
@@ -200,12 +200,12 @@ export default function Cart() {
 }
 
 
-function CheckoutButton({isLoading}: {isLoading: boolean}) {
+function CheckoutButton({isLoading, quantity}: {isLoading: boolean, quantity: number}) {
     return (
       <button
         className="bg-primary rounded-lg text-white hover:bg-primary/80 uppercase py-[18px] w-full flex items-center justify-around text-sm font-semibold"
         type='submit'
-        disabled={isLoading}
+        disabled={isLoading || quantity === 0}
       >
         <MdLock className={cn("text-white flex justify-start text-lg")} />
         {isLoading ? <PulseLoader size={7} color="white" /> : "Passez à l'étape suivante"}

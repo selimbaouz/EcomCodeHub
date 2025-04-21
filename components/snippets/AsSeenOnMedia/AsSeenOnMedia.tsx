@@ -12,7 +12,7 @@ const AsSeenOnMedia = () => {
     return (
     <section className={styles.asSeenOn} >
         {logos.map((logo, i) => (
-        <img key={i} src={logo} alt={`Logo partenaire ${i + 1}`} className={cn("mx-auto w-max overflow-hidden max-w-[100px] h-full",
+        <img key={i} src={logo} alt={`Logo partenaire ${i + 1}`} className={cn(styles.container,
             i === 1 && "h-20",
             i === 2 && "h-10",
             i === 3 && "h-10",

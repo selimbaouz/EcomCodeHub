@@ -119,6 +119,57 @@ export const bestReviewsData = [
   },
 ]
 
+export const trustPilotReviewsData = [
+  {
+    title: "Très satisfait !",
+    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.", 
+    date: "3 Mars 2025"
+  },
+  {
+    title: "Très bonne surprise !",
+    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.", 
+    date: "17 Fév. 2025"
+  },
+  {
+    title: "Très bon produit !",
+    content: "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
+    name: "Sofia L.", 
+    date: "25 Janv. 2025"
+  },
+  {
+    title: "Très satisfait !",
+    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.", 
+    date: "3 Mars 2025"
+  },
+  {
+    title: "Très bonne surprise !",
+    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.", 
+    date: "17 Fév. 2025"
+  },
+  {
+    title: "Très bon produit !",
+    content: "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
+    name: "Sofia L.", 
+    date: "25 Janv. 2025"
+  },
+  {
+    title: "Très satisfait !",
+    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.", 
+    date: "3 Mars 2025"
+  },
+  {
+    title: "Très bonne surprise !",
+    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.", 
+    date: "17 Fév. 2025"
+  },
+]
+
 export const trustsDataGroup1 = [
   {
     icon: MdOutlineSell, // Icône pour symboliser les ventes

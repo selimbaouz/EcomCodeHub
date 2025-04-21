@@ -31,10 +31,11 @@ const EmailVerificationRequest = () => {
     const onSubmit = async () => {
         newVerification({ token })
         .then((data) => {
+          if(data?.data?.error) {
+            setMessage({ type: 'error', key: data?.data?.error ?? "" });
+          } 
           if(data?.data?.success) {
             setMessage({ type: 'success', key: data?.data?.success ?? "" });
-          } else {
-            setMessage({ type: 'error', key: data?.data?.error ?? "" });
           }
         })
         .catch(() => {

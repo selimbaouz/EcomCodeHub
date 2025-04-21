@@ -1,0 +1,24 @@
+.container {
+    @apply w-full bg-[#FF7D48];
+  }
+  
+  .content {
+    @apply py-1 lg:py-2 mx-auto lg:gap-2;
+  }
+  
+  .countdownText {
+    @apply text-center text-white justify-center items-center text-xs lg:text-sm;
+  }
+  
+  .codeSection {
+    @apply flex items-center gap-2 justify-center text-white text-xs lg:text-sm;
+  }
+  
+  .codeLink {
+    @apply font-bold underline text-xs lg:text-sm flex items-center gap-1;
+  }
+  
+  .icon {
+    @apply font-bold text-xs lg:text-sm;
+  }
+  

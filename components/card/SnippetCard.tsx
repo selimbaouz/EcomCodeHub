@@ -103,12 +103,12 @@ const SnippetCard = ({
             </div>
             <div className="w-full min-h-[350px] max-h-[350px] flex justify-center items-center border rounded-lg dark:border-[#324e58]">
                 {!hasPurchased ? (
-                    <div className="h-full max-h-[350px] w-full mx-auto">
+                    <div className="h-full max-h-[350px] w-full mx-auto overflow-hidden">
                         {Component} 
                     </div>
                 ) : (
                     selectedTab === 0 ? (
-                        <div className="h-full max-h-[350px] w-full mx-auto">
+                        <div className="h-full max-h-[350px] w-full mx-auto overflow-hidden">
                             {Component} 
                         </div>
                     ) : (

@@ -14,43 +14,59 @@ export default function InstallationPage() {
 <script>
     // Configuration de Tailwind avec un préfixe personnalisé
     tailwind.config = {
-      prefix: 'tw-', // Ajoute 'tw-' comme préfixe à toutes les classes Tailwind
-      theme: {
-    	extend: {
-          fontSize: {
-            xxs: ['10px', { lineHeight: '14px' }], 
-            xs: ['12px', { lineHeight: '16px' }],
-            sm: ['14px', { lineHeight: '20px' }],
-            base: ['16px', { lineHeight: '24px' }],
-            lg: ['18px', { lineHeight: '28px' }],
-            xl: ['20px', { lineHeight: '28px' }],
-            '2xl': ['24px', { lineHeight: '32px' }],
-            '3xl': ['30px', { lineHeight: '36px' }],
-            '4xl': ['36px', { lineHeight: '40px' }],
-            '5xl': ['48px', { lineHeight: '1' }],
-          },
-          fontWeight: {
-            thin: 100,
-            extralight: 200,
-            light: 300,
-            normal: 400,
-            medium: 500,
-            semibold: 600,
-            bold: 700,
-            extrabold: 800,
-            black: 900,
-          },
+        prefix: 'tw-',
+        theme: {
+            extend: {
+            animation: {
+                gradient: 'gradientBg 10s ease infinite',
+            },
+            keyframes: {
+                gradientBg: {
+                '0%, 100%': {
+                    'background-position': '0% 50%',
+                },
+                '50%': {
+                    'background-position': '100% 50%',
+                },
+                },
+            },
+            backgroundSize: {
+                'gradient-size': '200% 200%',
+            },
+            fontSize: {
+                xxs: ['10px', { lineHeight: '14px' }],
+                xs: ['12px', { lineHeight: '16px' }],
+                sm: ['14px', { lineHeight: '20px' }],
+                base: ['16px', { lineHeight: '24px' }],
+                lg: ['18px', { lineHeight: '28px' }],
+                xl: ['20px', { lineHeight: '28px' }],
+                '2xl': ['24px', { lineHeight: '32px' }],
+                '3xl': ['30px', { lineHeight: '36px' }],
+                '4xl': ['36px', { lineHeight: '40px' }],
+                '5xl': ['48px', { lineHeight: '1' }],
+            },
+            fontWeight: {
+                thin: 100,
+                extralight: 200,
+                light: 300,
+                normal: 400,
+                medium: 500,
+                semibold: 600,
+                bold: 700,
+                extrabold: 800,
+                black: 900,
+            },
+            },
+            screens: {
+            xs: '370px',
+            sm: '420px',
+            md: '760px',
+            lg: '1020px',
+            xl: '1400px',
+            '2xl': '1700px',
+            '3xl': '2500px'
+            },
         },
-        screens: {
-          xs: '370px',
-          sm: '420px',
-          md: '760px',
-          lg: '1020px',
-          xl: '1400px',
-          '2xl': '1700px',
-          '3xl': '2500px'
-        },
-      },
     };
 </script>`
     };

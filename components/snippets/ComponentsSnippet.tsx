@@ -45,6 +45,10 @@ import { TiktokFollowers } from './TiktokFollowers/TiktokFollowers';
 import { InstagramFollowers } from './InstagramFollowers/InstagramFollowers';
 import AsSeenOn from './AsSeenOn/AsSeenOn';
 import AsSeenOnMedia from './AsSeenOnMedia/AsSeenOnMedia';
+import TrustpilotReview from './TrustPilotReview/TrustpilotReview';
+import TrustpilotBadgeReview from './TrustpilotBadgeReview/TrustpilotBadgeReview';
+import SideBarPromo from './SideBarPromo/SideBarPromo';
+import SideBarFlashPromo from './SideBarFlashPromo/SideBarFlashPromo';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -92,7 +96,11 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     TiktokViews: <TiktokViews />,
     TiktokFollowers: <TiktokFollowers />,
     AsSeenOn: <AsSeenOn />,
-    AsSeenOnMedia: <AsSeenOnMedia />
+    AsSeenOnMedia: <AsSeenOnMedia />,
+    TrustpilotReview: <TrustpilotReview />,
+    TrustpilotBadgeReview: <TrustpilotBadgeReview />,
+    SideBarPromo: <SideBarPromo />,
+    SideBarFlashPromo: <SideBarFlashPromo />
   };
 
 export default ComponentsSnippet;
