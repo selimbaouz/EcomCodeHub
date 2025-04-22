@@ -1,11 +1,11 @@
 "use client"
-import SideBarFlashPromo from '@/components/snippets/SideBarFlashPromo/SideBarFlashPromo';
+import Accordion from '@/components/snippets/Accordion/Accordion';
 import React from 'react';
 
 const Code = () => {
     return (
         <div className='size-full mx-auto'>
-            <SideBarFlashPromo />
+            <Accordion/>
         </div>
     );
 };

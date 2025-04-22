@@ -1,0 +1,16 @@
+.bar {
+    @apply bg-[#f5ead2] w-full h-20 text-[#121212] flex items-center justify-center font-medium relative overflow-hidden;
+  }
+  
+  .item {
+    @apply absolute gap-2 transition-opacity duration-500 font-bold;
+  }
+  
+  .visible {
+    @apply opacity-100;
+  }
+  
+  .hidden {
+    @apply opacity-0;
+  }
+  

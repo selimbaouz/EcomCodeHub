@@ -49,6 +49,10 @@ import TrustpilotReview from './TrustPilotReview/TrustpilotReview';
 import TrustpilotBadgeReview from './TrustpilotBadgeReview/TrustpilotBadgeReview';
 import SideBarPromo from './SideBarPromo/SideBarPromo';
 import SideBarFlashPromo from './SideBarFlashPromo/SideBarFlashPromo';
+import Benefit from './Benefit/Benefit';
+import SideBarTime from './SideBarTime/SideBarTime';
+import AdBar from './AdBar/AdBar';
+import Accordion from './Accordion/Accordion';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -100,7 +104,11 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     TrustpilotReview: <TrustpilotReview />,
     TrustpilotBadgeReview: <TrustpilotBadgeReview />,
     SideBarPromo: <SideBarPromo />,
-    SideBarFlashPromo: <SideBarFlashPromo />
+    SideBarFlashPromo: <SideBarFlashPromo />,
+    Benefit: <Benefit />,
+    SideBarTime: <SideBarTime />,
+    AdBar: <AdBar />,
+    Accordion: <Accordion />
   };
 
 export default ComponentsSnippet;

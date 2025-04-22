@@ -5,18 +5,24 @@ const FastDeliveryOffer = () => {
     return (
         <div className={styles.container}>
             <div className={styles.fastDeliveryOffer}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" fill="#007800" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 24 24" style={{ background: "new 0 0 24 24" }}>
+            <svg
+                stroke="currentColor"
+                fill="#4abf8e"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                height="20px"
+                width="20px"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <g id="Delivery_Truck">
                     <g>
-                        <path className="st0" d="M6,5h9v2l3.7,0.8c0.9,0.2,1.7,0.8,2.1,1.7l1.8,4c0.2,0.4,0.3,0.8,0.3,1.3v1.7V18h-3" />
-                        <line className="st0" x1="5" y1="13" x2="2" y2="13" />
+                    <path
+                        d="M21.47,11.185l-1.03-1.43a2.5,2.5,0,0,0-2.03-1.05H14.03V6.565a2.5,2.5,0,0,0-2.5-2.5H4.56a2.507,2.507,0,0,0-2.5,2.5v9.94a1.5,1.5,0,0,0,1.5,1.5H4.78a2.242,2.242,0,0,0,4.44,0h5.56a2.242,2.242,0,0,0,4.44,0h1.22a1.5,1.5,0,0,0,1.5-1.5v-3.87A2.508,2.508,0,0,0,21.47,11.185ZM7,18.935a1.25,1.25,0,1,1,1.25-1.25A1.25,1.25,0,0,1,7,18.935Zm6.03-1.93H9.15a2.257,2.257,0,0,0-4.3,0H3.56a.5.5,0,0,1-.5-.5V6.565a1.5,1.5,0,0,1,1.5-1.5h6.97a1.5,1.5,0,0,1,1.5,1.5ZM17,18.935a1.25,1.25,0,1,1,1.25-1.25A1.25,1.25,0,0,1,17,18.935Zm3.94-2.43a.5.5,0,0,1-.5.5H19.15a2.257,2.257,0,0,0-4.3,0h-.82v-7.3h4.38a1.516,1.516,0,0,1,1.22.63l1.03,1.43a1.527,1.527,0,0,1,.28.87Z"
+                    ></path>
+                    <path d="M18.029,12.205h-2a.5.5,0,0,1,0-1h2a.5.5,0,0,1,0,1Z"></path>
                     </g>
-                    <line className="st0" x1="15" y1="18" x2="9" y2="18" />
-                    <circle className="st0" cx="6.5" cy="18.5" r="2.5" />
-                    <circle className="st0" cx="17.5" cy="18.5" r="2.5" />
-                    <polyline className="st0" points="15,7 15,12 15,14 " />
-                    <line className="st0" x1="1" y1="9" x2="7" y2="9" />
-                    <line className="st0" x1="4" y1="19" x2="3" y2="19" />
-                </svg>
+                </g>
+            </svg>
                 Livraison rapide en 2-3 jours
             </div>
         </div>

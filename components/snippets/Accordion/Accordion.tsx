@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import styles from './accordion-snippet.module.css';
+import styles from './accordion.module.css';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
-const AccordionSnippet = () => {
+const Accordion = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   const toggleItem = (index: number) => {
@@ -30,19 +31,19 @@ const AccordionSnippet = () => {
 
   return (
     <div className={styles.accordion}>
-      {questions.map((item, index) => (
+    {questions.map((item, index) => (
         <div className={`${styles.accordionItem} ${activeIndex === index ? styles.active : ''}`} key={index}>
-          <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
+        <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
             {item.question}
-            <span className={styles.indicator}>{activeIndex === index ? '-' : '+'}</span>
-          </div>
-          <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`}>
-            <p>{item.answer}</p>
-          </div>
+            <span className={styles.indicator}>{activeIndex === index ? <IoIosArrowUp className="text-sm" /> : <IoIosArrowDown className="text-sm" />}</span>
         </div>
-      ))}
+        <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`} style={{paddingLeft: "0px", paddingRight: "0px"}}>
+            <p>{item.answer}</p>
+        </div>
+        </div>
+    ))}
     </div>
   );
 };
 
-export default AccordionSnippet;
+export default Accordion;
