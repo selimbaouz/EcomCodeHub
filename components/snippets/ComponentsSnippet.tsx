@@ -53,6 +53,10 @@ import Benefit from './Benefit/Benefit';
 import SideBarTime from './SideBarTime/SideBarTime';
 import AdBar from './AdBar/AdBar';
 import Accordion from './Accordion/Accordion';
+import HowItWorksVideo from './HowItWorksVideo/HowItWorksVideo';
+import GetAdditionalOff from './GetAdditionalOff/GetAdditionalOff';
+import BenefitsBar from './BenefitsBar/BenefitsBar';
+import AccordionBenefit from './AccordionBenefit/AccordionBenefit';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -108,7 +112,11 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     Benefit: <Benefit />,
     SideBarTime: <SideBarTime />,
     AdBar: <AdBar />,
-    Accordion: <Accordion />
+    Accordion: <Accordion />,
+    HowItWorksVideo: <HowItWorksVideo />,
+    GetAdditionalOff: <GetAdditionalOff />,
+    BenefitsBar: <BenefitsBar />,
+    AccordionBenefit: <AccordionBenefit />
   };
 
 export default ComponentsSnippet;

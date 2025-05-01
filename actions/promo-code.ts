@@ -159,28 +159,3 @@ export const createUserWithPromo = action
 
   return { success: true, userId: user.id }
 });
-
-export const verifyEmail = action
-.schema(SignUserWithCodeSchema) 
-.action(async ({ parsedInput: { email } }) => {
-  const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
-
-  if (!existingUser?.email) {
-    return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
-  }
-
-  if(existingUser.emailVerified) {
-    return { error: "Cet e-mail a déjà été vérifiée." };
-  }
-
-    const verificationToken = await generateVerificationToken(
-      existingUser.email ?? "",
-    );
-
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-    );
-
-    return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
-});

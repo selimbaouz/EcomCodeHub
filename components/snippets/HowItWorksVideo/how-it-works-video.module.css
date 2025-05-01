@@ -1,0 +1,16 @@
+.container {
+    @apply grid grid-cols-2 lg:grid-cols-4 items-center gap-5 max-w-screen-xl mx-auto justify-center p-6;
+  }
+  
+  .videoWrapper {
+    @apply flex flex-col gap-4 text-left h-full;
+  }
+  
+  .video {
+    @apply aspect-square w-full object-cover object-top lg:aspect-auto;
+  }
+  
+  .text {
+    @apply text-lg font-medium;
+  }
+  

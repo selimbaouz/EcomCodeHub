@@ -74,7 +74,7 @@ const onSubmit = (values: Login) => {
               if (
                 response?.data?.user?.stripeCustomerId &&
                 response.data?.user.plan &&
-                response?.data?.user.email
+                response?.data?.user.email || response?.data?.user?.promoCodeId
               ) {
                 if (
                   response.data?.user?.emailVerified &&

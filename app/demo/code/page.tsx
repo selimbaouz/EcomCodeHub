@@ -1,11 +1,11 @@
 "use client"
-import Accordion from '@/components/snippets/Accordion/Accordion';
+import AccordionBenefit from '@/components/snippets/AccordionBenefit/AccordionBenefit';
 import React from 'react';
 
 const Code = () => {
     return (
         <div className='size-full mx-auto'>
-            <Accordion/>
+            <AccordionBenefit />
         </div>
     );
 };

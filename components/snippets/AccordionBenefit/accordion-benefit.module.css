@@ -1,0 +1,36 @@
+.accordion {
+  @apply w-full max-w-md mx-auto mt-10 rounded-[5px] bg-[#F6F6F6];
+}
+
+.accordionItem {
+  @apply border-b border-[#ccc]/50 mb-[3px] p-3;
+}
+
+.accordionItem:last-child {
+  @apply border-b-0;
+}
+
+.accordionHeader {
+  @apply px-2 py-1 cursor-pointer font-semibold text-base flex justify-between items-center hover:text-[#973426];
+}
+
+.indicator {
+  @apply text-[1.3em] ml-2 transition-transform duration-300 ease-in-out;
+}
+
+.accordionItem.active .indicator {
+  @apply transform rotate-180;
+  content: '-';
+}
+
+.accordionContent {
+  @apply max-h-0 overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.accordionContent p {
+  @apply mt-2 text-sm px-2;
+}
+
+.accordionItem.active .accordionContent {
+  @apply max-h-[150px] px-2 py-2;
+}
