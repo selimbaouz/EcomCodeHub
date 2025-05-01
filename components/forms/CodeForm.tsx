@@ -19,11 +19,13 @@ import { PulseLoader } from "react-spinners";
 import { toast } from "sonner";
 import { Code } from "@/types/types";
 import CardAuthWrapper from "../card/CardAuthWrapper";
-import { createUserWithPromo, validateCodeWithIP } from "@/actions/promo-code";
+import { createUserWithPromo, validateCodeWithIP, verifyEmail } from "@/actions/promo-code";
+import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 
 export function CodeForm() {
+  const [isMailSended, setIsMailSended] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const [promoId, setPromoId] = useState<string | null>(null)
@@ -68,10 +70,19 @@ const onSubmit = (values: Code) => {
           }).then((response) => {
             if (response?.data?.error) {
               toast.error(response?.data?.error);
-            } 
-
-            redirect('/auth/login');
-            setIsSignup(false);
+            } else {
+              verifyEmail({
+                  email: values.email ?? ""
+              }).then((response) => {
+                  if(response?.data?.error) {
+                      toast.error(response?.data?.error);
+                  }
+                  if(response?.data?.mailsend) {
+                      toast.success(response?.data?.success);
+                      setIsMailSended(true)
+                  }
+              })
+            }
           });
         });
         return;
@@ -87,6 +98,26 @@ const onSubmit = (values: Code) => {
         title: "Créez votre compte",
         description: "Entrez votre adresse email et créez un mot de passe pour accéder à votre compte.",
     };
+
+  if(isMailSended) {
+    return (
+      <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
+        <div className={cn("flex flex-col h-full gap-1 items-center justify-center text-center")}>
+          <IoIosMail className={cn("text-6xl")} />
+          <h5>Vérifiez votre Email</h5>
+          <p>Un lien de vérification vous a été envoyé par email.</p>
+          <Button 
+              size="xl" 
+              className={cn("w-max font-medium mt-8", "lg:text-base")}
+              type="button"
+              onClick={() => setIsMailSended(false)}
+            >
+              Accéder à la connexion
+            </Button>
+        </div>
+      </div>
+    )
+  }
 
   if(currentUser) {
     redirect("/docs");
