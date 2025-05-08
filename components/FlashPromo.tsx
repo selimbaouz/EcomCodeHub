@@ -40,7 +40,7 @@ const FlashPromo = () => {
       <div className="py-3 mx-auto lg:gap-2">
         <div className="flex gap-3 lg:gap-6 justify-center items-center">
           <h5 className="font-bold text-left text-white text-sm lg:text-lg">
-          -30% avec le code TW30: <br className='md:hidden'/>La vente flash se termine dans
+          -30% avec le code TW30, <br className='md:hidden'/>offre valable jusqu'à :
           </h5>
           <div className="flex items-center justify-center gap-[4px]">
             <div className="bg-white p-1 rounded-sm lg:p-2 flex flex-col justify-center items-center -space-y-1">
