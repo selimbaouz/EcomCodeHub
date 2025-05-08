@@ -10,10 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { useEffect, useState } from "react";
-import Design1 from "@/public/images/design1.webp";
+import Design1 from "@/public/images/design1.png";
 import Design2 from "@/public/images/design2.png";
 import Design3 from "@/public/images/design3.png";
-import Design4 from "@/public/images/design4.webp";
+import Design4 from "@/public/images/design4.png";
 import ImageLoader from "./ImageLoader";
 import { StaticImageData } from "next/image";
 import { MdClose } from "react-icons/md";
@@ -21,7 +21,7 @@ import { MdClose } from "react-icons/md";
 const ExampleStore = () => {
     const [api, setApi] = useState<CarouselApi>()
     const [current, setCurrent] = useState(0);
-    const images = [Design1, Design2, Design3, Design4];
+    const images = [Design3, Design1, Design2, Design4];
     const [selectedImage, setSelectedImage] = useState<StaticImageData>();
     const clonedImages = [...images, ...images];
     const totalSlides = images.length;

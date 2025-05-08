@@ -352,32 +352,32 @@ export const detailsProduct = [
 
 export const faqData = [
   {
-      title: "Qu’est-ce qu’un code Liquid ?",
-      content: "Liquid est le langage de programmation utilisé par Shopify pour personnaliser et structurer les thèmes des boutiques en ligne."
+    title: "Qu’est-ce qu’un code Liquid ?",
+    content: "Liquid est le langage de programmation utilisé par Shopify pour personnaliser et structurer les thèmes des boutiques en ligne."
   },
   {
     title: "À quoi sert le Pack Pro Conversion Shopify?",
     content: "Le Pack Pro Conversion améliore le design, enrichit l'expérience utilisateur et augmente significativement le taux de conversion."
   },
   {
-      title: "Les codes fonctionnent-ils avec tous les thèmes ?",
-      content: "Oui, les codes ont été testés sur une large gamme de thèmes gratuits et premium pour garantir une intégration parfaite."
+    title: "Les codes fonctionnent-ils avec tous les thèmes ?",
+    content: "Oui, les codes ont été testés sur une large gamme de thèmes gratuits et premium pour garantir une intégration parfaite."
   },
   {
     title: "Quels types de fonctionnalités puis-je ajouter ?",
     content: "Avec le Pack Pro Conversion, vous pouvez ajouter des avis clients dynamiques, des preuves sociales, des CTA attractifs, des badges de confiance et bien plus encore pour améliorer l'expérience utilisateur."
   },
   {
-      title: "Ai-je besoin de compétences techniques ?",
-      content: "Pas du tout ! Chaque achat inclut des instructions détaillées étape par étape. Même un débutant peut facilement les installer."
+    title: "Ai-je besoin de compétences techniques ?",
+    content: "Pas du tout ! Chaque achat inclut des instructions détaillées étape par étape. Même un débutant peut facilement les installer."
   },
   {
     title: "Comment fonctionne l'installation des codes ?",
-    content: "Une fois votre achat effectué, vous recevrez un accès à une page Notion contenant tous les codes. Copiez simplement le code souhaité et collez-le dans un bloc 'Custom Liquid' de votre thème Shopify."
+    content: "Une fois que vous avez acheté des crédits, vous pouvez vous connecter à votre espace personnel et débloquer les snippets de code Tailwind/Liquid pour Shopify."
   },
   {
-      title: "Que faire si j'ai des problèmes ?",
-      content: "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement via mon adresse email: im.sejiux@gmail.com ou mes réseaux sociaux."
+    title: "Que faire si j'ai des problèmes ?",
+    content: "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement via mon adresse email: im.sejiux@gmail.com ou mes réseaux sociaux."
   },
 ];
 
