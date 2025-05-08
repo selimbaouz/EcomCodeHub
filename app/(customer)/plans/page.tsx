@@ -1,6 +1,7 @@
 import { getSubscriptions } from '@/actions/stripe';
 import { auth } from '@/auth';
 import NavBar from '@/components/navigation/NavBar';
+import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import Plans from '@/components/Plans';
 import { getUserByEmail } from '@/data/auth/user';
 import { redirect } from 'next/navigation';
@@ -23,6 +24,7 @@ export default async function PlansPage () {
         </div>
         <div className="px-4 w-full py-20 mx-auto bg-gray-100 dark:bg-[#324e58] h-full">
             <div className="max-w-screen-xl mx-auto w-full">
+                <PaymentErrorModal />
                 <Plans 
                     nameOfPlan={sub?.data?.items.data[0].plan.nickname ?? ""}
                 />

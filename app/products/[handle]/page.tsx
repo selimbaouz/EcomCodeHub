@@ -15,6 +15,7 @@ import Mode from '@/components/Mode';
 import { Reviews } from '@/components/Reviews';
 import { PurchasePopup } from '@/components/PurchasePopup';
 import FlashPromo from '@/components/FlashPromo';
+import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -32,6 +33,11 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <NavBar menu={menu} />
                 <FlashPromo />
             </div>
+
+            <div className="max-w-screen-xl mx-auto w-full">
+                <PaymentErrorModal />
+            </div>
+
             {/* <div className="z-[100] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div className="p-20 lg:p-32 bg-background rounded-lg shadow-lg">
                     <p className="font-bold uppercase text-foreground">En cours de progression...</p>
