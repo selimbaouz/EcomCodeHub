@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { faker } from '@faker-js/faker';
+import { fakerFR_BE } from '@faker-js/faker'; // Français pour + de prénoms FR
 import Product from "@/public/images/product.webp";
 
-// Définition des packs avec prix ponctuel et abonnement
+// Packs
 const packs = [
   { name: "Pack Débutant", ponctuel: "29.90€", abonnement: "20,93€" },
   { name: "Pack Avancé", ponctuel: "54.90€", abonnement: "38,43€" },
@@ -15,35 +15,38 @@ const packs = [
 
 // Génère une date au format demandé
 function generateRandomDate() {
-    const hoursAgo = Math.floor(Math.random() * 240); // Jusqu'à 10 jours
-    if (hoursAgo > 168) {
-      return "Récemment";
-    } else if (hoursAgo > 48) {
-      const days = Math.floor(hoursAgo / 24);
-      return `Il y a ${days} jour${days > 1 ? 's' : ''}`;
-    } else if (hoursAgo > 24) {
-      return "Il y a 2 jours";
-    } else {
-      return `Il y a ${hoursAgo} heure${hoursAgo > 1 ? 's' : ''}`;
-    }
+  const hoursAgo = Math.floor(Math.random() * 240); // Jusqu'à 10 jours
+  if (hoursAgo > 168) {
+    return "Récemment";
+  } else if (hoursAgo > 48) {
+    const days = Math.floor(hoursAgo / 24);
+    return `Il y a ${days} jour${days > 1 ? 's' : ''}`;
+  } else if (hoursAgo > 24) {
+    return "Il y a 2 jours";
+  } else {
+    return `Il y a ${hoursAgo} heure${hoursAgo > 1 ? 's' : ''}`;
   }
-
-// Génère une commande aléatoire
-function generateRandomOrder() {
-  const pack = packs[Math.floor(Math.random() * packs.length)];
-  const priceType = Math.random() < 0.5 ? 'ponctuel' : 'abonnement';
-  return {
-    name: faker.person.firstName(),
-    product: pack.name,
-    date: generateRandomDate(),
-    price: pack[priceType],
-    image: Product,
-  };
 }
 
 export function PurchasePopup() {
+  // Génère 10 prénoms français uniques
+  const uniqueNames = fakerFR_BE.helpers.uniqueArray(fakerFR_BE.person.firstName, 500);
+
+  // Génère les commandes avec des prénoms uniques
+  const [orders] = useState(() =>
+    uniqueNames.map((name) => {
+      const pack = packs[Math.floor(Math.random() * packs.length)];
+      const priceType = Math.random() < 0.5 ? 'ponctuel' : 'abonnement';
+      return {
+        name,
+        product: pack.name,
+        date: generateRandomDate(),
+        price: pack[priceType],
+        image: Product,
+      };
+    })
+  );
   const [index, setIndex] = useState(0);
-  const [orders] = useState(() => Array(5).fill(null).map(() => generateRandomOrder()));
 
   useEffect(() => {
     const showNotification = () => {
