@@ -1,21 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { fakerFR_BE } from '@faker-js/faker'; // Français pour + de prénoms FR
+import { fakerFR_BE } from '@faker-js/faker';
 import Product from "@/public/images/product.webp";
+import { useOpenCartStore } from "@/store/cart";
 
-// Packs
 const packs = [
   { name: "Pack Débutant", ponctuel: "29.90€", abonnement: "20,93€" },
   { name: "Pack Avancé", ponctuel: "54.90€", abonnement: "38,43€" },
   { name: "Pack Pro", ponctuel: "79.90€", abonnement: "55,93€" },
 ];
 
-// Génère une date au format demandé
 function generateRandomDate() {
-  const hoursAgo = Math.floor(Math.random() * 240); // Jusqu'à 10 jours
+  const hoursAgo = Math.floor(Math.random() * 240);
   if (hoursAgo > 168) {
     return "Récemment";
   } else if (hoursAgo > 48) {
@@ -29,10 +28,9 @@ function generateRandomDate() {
 }
 
 export function PurchasePopup() {
-  // Génère 10 prénoms français uniques
+  const { isOpenCart } = useOpenCartStore();
   const uniqueNames = fakerFR_BE.helpers.uniqueArray(fakerFR_BE.person.firstName, 500);
 
-  // Génère les commandes avec des prénoms uniques
   const [orders] = useState(() =>
     uniqueNames.map((name) => {
       const pack = packs[Math.floor(Math.random() * packs.length)];
@@ -47,11 +45,29 @@ export function PurchasePopup() {
     })
   );
   const [index, setIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const toastIdRef = useRef<string | number | undefined>(undefined);
 
   useEffect(() => {
+    // Ferme le toast si le panier s'ouvre
+    if (isOpenCart) {
+      toast.dismiss(); // Ferme tous les toasts actifs
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      return;
+    }
+
+    // Nettoie l'intervalle précédent
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
     const showNotification = () => {
       const current = orders[index];
-      toast(
+      toastIdRef.current = toast(
         <div className="flex items-center gap-3">
           <Image
             src={current.image}
@@ -65,7 +81,7 @@ export function PurchasePopup() {
               <strong>{current.name}</strong> a commandé le <strong>{current.product}</strong>
             </p>
             <p className="text-sm mt-0.5 text-gray-500">
-                {current.date}
+              {current.date}
             </p>
           </div>
         </div>,
@@ -74,12 +90,17 @@ export function PurchasePopup() {
     };
 
     showNotification();
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setIndex((prev) => (prev + 1) % orders.length);
     }, 5500);
 
-    return () => clearInterval(interval);
-  }, [index, orders]);
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, [index, orders, isOpenCart]);
 
   return null;
 }

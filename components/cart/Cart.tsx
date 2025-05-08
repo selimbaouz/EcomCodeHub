@@ -177,6 +177,9 @@ export default function Cart() {
           )}
           </div>
           <div className='absolute bottom-0 pb-6 w-full'>
+            <div className={cn("w-full py-3 bg-primary dark:bg-secondary/30 flex justify-center")}>
+              <p className='text-white uppercase font-semibold text-xs dark:text-white'>Vous pourrez ajouter votre code promo à l'étape suivante</p>
+            </div>
             <div className={cn("w-full py-3 bg-secondary/30 dark:bg-[#2c4049] flex justify-center")}>
               <p className='text-primary uppercase font-semibold text-xs dark:text-white'>Garantie satisfaction de 90 jours</p>
             </div>

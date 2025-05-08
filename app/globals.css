@@ -7,6 +7,18 @@
  @apply mx-5 md:mx-9 lg:mx-11;
 }
 
+.animatedBackground {
+  @apply w-full;
+  background: linear-gradient(270deg, #259D93, #6edacc, #2C4049);
+  background-size: 600% 600%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 @layer base {
   :root {

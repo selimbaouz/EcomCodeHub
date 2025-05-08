@@ -10,11 +10,11 @@ import Footer from '@/components/Footer';
 import ExampleStore from '@/components/ExampleStore';
 import MarqueeStack from '@/components/MarqueeStack';
 import { trustsDataGroup1, trustsDataGroup2 } from '@/data';
-import ExampleCode from '@/components/ExampleCode';
 import HowItWorks from '@/components/HowItWorks';
 import Mode from '@/components/Mode';
 import { Reviews } from '@/components/Reviews';
 import { PurchasePopup } from '@/components/PurchasePopup';
+import FlashPromo from '@/components/FlashPromo';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -30,6 +30,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
                 <NavBar menu={menu} />
+                <FlashPromo />
             </div>
             {/* <div className="z-[100] fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div className="p-20 lg:p-32 bg-background rounded-lg shadow-lg">

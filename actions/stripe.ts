@@ -85,7 +85,8 @@ const getVariantWithPacks = (type: string, level: string) => {
           mode: data.type === "subscription" ? "subscription" : "payment",
           success_url: data.successUrl,
           cancel_url: data.cancelUrl,
-          metadata: { variantId: data.variantId, packName: data.packNameWithBundle }
+          metadata: { variantId: data.variantId, packName: data.packNameWithBundle },
+          allow_promotion_codes: true,
         });
       } else {
         return await stripe.checkout.sessions.create({
@@ -94,7 +95,8 @@ const getVariantWithPacks = (type: string, level: string) => {
           mode: data.type === "subscription" ? "subscription" : "payment",
           success_url: data.successUrl,
           cancel_url: data.cancelUrl,
-          metadata: { variantId: data.variantId, packName: data.packNameWithBundle }
+          metadata: { variantId: data.variantId, packName: data.packNameWithBundle },
+          allow_promotion_codes: true,
         });
       }
     } 
@@ -227,7 +229,8 @@ export const buyOneTimePlan = action
     success_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/docs`,
     cancel_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/plans?echec=true`,
     line_items: [{ price: priceId, quantity: 1 }],
-    metadata: { packName: nameOfPack }
+    metadata: { packName: nameOfPack },
+    allow_promotion_codes: true,
   });
 
   return { url: session.url };
