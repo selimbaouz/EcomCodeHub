@@ -14,6 +14,7 @@ import ExampleCode from '@/components/ExampleCode';
 import HowItWorks from '@/components/HowItWorks';
 import Mode from '@/components/Mode';
 import { Reviews } from '@/components/Reviews';
+import { PurchasePopup } from '@/components/PurchasePopup';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -59,12 +60,13 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <div className={cn("relative bg-secondary w-full h-14 text-foreground dark:text-[#324e58] flex flex-col items-center justify-center font-medium", "lg:h-20")}>
                     <MarqueeStack data={trustsDataGroup2} reverse />
                 </div>
-                <ExampleCode />
-                <HowItWorks />
+                {/* <ExampleCode /> */}
                 <Mode />
+                <HowItWorks />
                 <Reviews />
                 <FAQ />
                 <Footer />
+            <PurchasePopup />
         </div>
     );
 };

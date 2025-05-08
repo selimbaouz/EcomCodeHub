@@ -47,16 +47,6 @@ const Footer = ({
                     </div>
                 </div>
             </footer>
-            <div className={cn("py-6 border-t bg-[#1A2A32] dark:bg-background text-white")}>
-                <div className={cn("max-w-screen-xl mx-auto flex flex-col px-6 items-start", "lg:flex-row lg:items-center lg:justify-between")}>
-                    <p className={cn("text-sm hidden", "lg:block")}>
-                        © 2025 Tous droits réservés.
-                    </p>
-                    <Link href="https://sejiux.com" target="_blank" rel="noopener noreferrer" className={cn("border-b-2 w-max p-2 rounded-full border-white hover:border-t-2 hover:border-b-0")}>
-                        <Image src="/images/sejiux.webp" alt="Logo of Sejiux" width={36} height={36} className="size-6" />
-                    </Link>
-                </div>
-            </div>
         </div>
     );
 };
