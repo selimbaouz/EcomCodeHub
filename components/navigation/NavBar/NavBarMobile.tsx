@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import { useCartStore, useOpenCartStore } from "@/store/cart";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import ToggleMode from "@/components/ToggleMode";
 import Link from "next/link";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { User } from "next-auth";
@@ -46,8 +45,8 @@ const NavBarMobile = ({
                     Tailwind<span className="text-primary">Liquid</span>
                 </Link>
                 </div>
-                <div className="flex items-center gap-3">
-                    <ToggleMode />
+                <div>
+                    {/* <ToggleMode /> */}
                     {!currentUser ? (
                         <div className={cn("cursor-pointer flex items-center gap-1")}>
                         <CgProfile className="text-3xl" onClick={() => router.push("/auth/login")} />
@@ -78,8 +77,8 @@ const NavBarMobile = ({
                 Tailwind<span className="text-primary">Liquid</span>
             </Link>
             </div>
-            <div className={cn("flex gap-0.5 items-center")}>
-                <ToggleMode />
+            <div>
+                {/* <ToggleMode /> */}
                 <div 
                     className="relative p-2 cursor-pointer group" 
                     onClick={() => setIsOpenCart(true)}

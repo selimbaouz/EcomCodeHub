@@ -5,7 +5,6 @@ import Link from "next/link";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { Menu, UserType } from "@/types/types";
 import { FC, useEffect, useState } from "react";
-import ToggleMode from "@/components/ToggleMode";
 import ImageLoader from "@/components/ImageLoader";
 import Logo from '@/public/images/Logo.png';
 import LogoDark from '@/public/images/LogoDark.png';
@@ -82,7 +81,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                     </ul>
                 </div>
                 <div className="lg:flex lg:items-center lg:gap-4">
-                <ToggleMode />
+                {/* <ToggleMode /> */}
                 {!currentUser ? (
                 <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push("/auth/login")} />
                 ) : (
@@ -155,7 +154,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                 </ul>
             </div>
             <div className={cn("flex gap-3 items-center")}>
-                <ToggleMode />
+                {/* <ToggleMode /> */}
                 <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push("/auth/login")} />
                 <div 
                     className="relative p-2 cursor-pointer group" 

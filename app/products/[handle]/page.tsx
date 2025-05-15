@@ -16,6 +16,7 @@ import { Reviews } from '@/components/Reviews';
 import { PurchasePopup } from '@/components/PurchasePopup';
 import FlashPromo from '@/components/FlashPromo';
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
+import ExampleCode from '@/components/ExampleCode';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -67,8 +68,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <div className={cn("relative bg-secondary w-full h-14 text-foreground dark:text-[#324e58] flex flex-col items-center justify-center font-medium", "lg:h-20")}>
                     <MarqueeStack data={trustsDataGroup2} reverse />
                 </div>
-                {/* <ExampleCode /> */}
-                <Mode />
+                <ExampleCode />
                 <HowItWorks />
                 <Reviews />
                 <FAQ />

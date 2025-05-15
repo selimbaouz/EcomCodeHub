@@ -969,7 +969,7 @@ export const legalsPagesData = (handle: string) => {
           },
           {
             title: "1. Éditeur du site",
-            content: "TailwindLiquid\nConçu et développé par Lumea\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Lumea"
+            content: "TailwindLiquid\nConçu et développé par Sayro Baouz\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Sayro Baouz"
           },
           {
             title: "2. Hébergement",
