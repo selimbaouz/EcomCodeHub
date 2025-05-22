@@ -977,7 +977,7 @@ export const legalsPagesData = (handle: string) => {
           },
           {
             title: "3. Propriété intellectuelle",
-            content: "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois françaises relatives à la propriété intellectuelle."
+            content: "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois françaises relatives à la propriété intellectuelle. "
           },
           {
             title: "4. Contact",
