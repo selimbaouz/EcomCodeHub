@@ -15,9 +15,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const title = params.handle.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   return {
     title: title,
-    description: `Informations légales - ${title} pour sejiux, créateur de boutiques headless sur mesure.`,
+    description: `Informations légales - ${title} pour Selim, créateur de boutiques headless sur mesure.`,
     alternates: {
-      canonical: `https://www.sejiux.com/legals/${params.handle}`,
+      canonical: `https://www.selimbaouz.com/legals/${params.handle}`,
     },
   };
 }

@@ -89,7 +89,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://sejiux.com/"
+          profileUrl: "https://selimbaouz.com/"
         }
       ],
       rating: 5,
@@ -100,7 +100,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://sejiux.com/"
+          profileUrl: "https://selimbaouz.com/"
         }
       ],
       rating: 5,
@@ -111,7 +111,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://sejiux.com/"
+          profileUrl: "https://selimbaouz.com/"
         }
       ],
       rating: 5,
@@ -377,7 +377,7 @@ export const faqData = [
   },
   {
     title: "Que faire si j'ai des problèmes ?",
-    content: "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement via mon adresse email: im.sejiux@gmail.com ou mes réseaux sociaux."
+    content: "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement via mon adresse email: tailwindliquid@gmail.com ou mes réseaux sociaux."
   },
 ];
 
@@ -969,7 +969,7 @@ export const legalsPagesData = (handle: string) => {
           },
           {
             title: "1. Éditeur du site",
-            content: "TailwindLiquid\nConçu et développé par Sayro Baouz\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Sayro Baouz"
+            content: "TailwindLiquid\nConçu et développé par Selim Baouz\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz"
           },
           {
             title: "2. Hébergement",

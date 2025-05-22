@@ -1,10 +1,12 @@
 "use client";
-import { cn } from '@/lib/utils';
+import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
 import React, { useEffect, useState } from 'react';
 
 const FlashPromo = () => {
   const [timeLeft, setTimeLeft] = useState(4 * 3600 + 10 * 60 + 14); // 4h 10min 14s
+  const isCartOpen = useHideFlashPromoStore(state => state.isCartOpen);
 
+  
   useEffect(() => {
     if (timeLeft <= 0) return;
 
@@ -17,23 +19,24 @@ const FlashPromo = () => {
         return prev - 1;
       });
     }, 1000);
-
+    
     return () => clearInterval(timer);
   }, [timeLeft]);
-
+  
   const formatTime = (totalSeconds: number) => {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-
+    
     return {
       hrs: String(hours).padStart(2, '0'),
       mins: String(minutes).padStart(2, '0'),
       secs: String(seconds).padStart(2, '0'),
     };
   };
-
+  
   const { hrs, mins, secs } = formatTime(timeLeft);
+  if (isCartOpen) return null;
 
   return (
     <div className="animatedBackground">

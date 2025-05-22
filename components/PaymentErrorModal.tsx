@@ -4,28 +4,38 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function PaymentErrorModal() {
   const searchParams = useSearchParams();
   const paymentError = searchParams.get("echec") || searchParams.get("cancel");
 
+  const [isPaymentError, setIsPaymentError] = useState(false);
+
+  // Quand paymentError est présent dans l'URL, on ouvre le modal
+  useEffect(() => {
+    if (paymentError) {
+      setIsPaymentError(true);
+    }
+  }, [paymentError]);
+
   return (
-    <Dialog open={!!paymentError}>
+    <Dialog open={isPaymentError} onOpenChange={setIsPaymentError}>
       <DialogContent className="max-w-sm p-0 border-none shadow-none">
-        <Card className="bg-destructive/10 border-destructive">
-          <CardHeader>
+        <Card className="shadow-md">
+          <CardHeader className="text-center space-y-4 mx-auto flex flex-col justify-center items-center">
+              <AlertCircle className="size-28 text-destructive" />
             <div className="flex items-center gap-2">
-              <AlertCircle className="w-6 h-6 text-destructive" />
-              <h3 className="text-lg font-semibold text-destructive">
+              <h3 className="text-xl font-bold text-foreground text-center">
                 Échec du paiement
               </h3>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-destructive">
+            <p className="text-foreground text-center">
               Une erreur est survenue lors du traitement de votre paiement.
             </p>
-            <p className="text-sm text-destructive mt-2">
+            <p className="text-sm text-destructive text-center mt-4">
               Veuillez réessayer ou contacter votre banque si le problème persiste.
             </p>
           </CardContent>

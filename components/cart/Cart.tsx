@@ -11,14 +11,14 @@ import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "../ui/
 import { cn } from '@/lib/utils';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { MdLock } from 'react-icons/md';
-import CartTimer from './cart-timer';
-import FreeShippingBar from './FreeShippingBar';
 import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
+import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
 
 export default function Cart() {
-  const { timeLeft, cart, updateCartItem } = useCartStore();
+  const { cart, updateCartItem } = useCartStore();
   const {isOpenCart, setIsOpenCart} = useOpenCartStore();
+   const setCartOpen = useHideFlashPromoStore((state) => state.setCartOpen);
   const quantityRef = useRef(cart?.quantity);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,6 +35,7 @@ export default function Cart() {
       cart?.quantity > 0
     ) {
       if (!isOpenCart) {
+        setCartOpen(true);
         setIsOpenCart(true);
       }
       quantityRef.current = cart?.quantity;

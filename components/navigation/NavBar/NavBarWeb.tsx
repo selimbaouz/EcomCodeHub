@@ -141,7 +141,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                         <li key={i}>
                             {data.path.includes("contact") ? (
                                 <Link 
-                                    href="mailto:im.sejiux@gmail.com"
+                                    href="mailto:tailwindliquid@gmail.com"
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className={cn(classLink, data.path === pathname && "font-bold")}
