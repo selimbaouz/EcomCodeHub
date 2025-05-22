@@ -233,7 +233,7 @@ export const stickyBarData = [
 
 export const trustsData2 = [
   {
-    icon: MdOutlineSell, // Icône pour symboliser les ventes
+    icon: MdOutlineSell, //Icône pour symboliser les ventes
     title: "Augmenter vos conversions",
   },
   {
