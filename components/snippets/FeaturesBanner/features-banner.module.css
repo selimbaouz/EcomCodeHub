@@ -1,0 +1,25 @@
+/* components/FeaturesBanner.module.css */
+.wrapper {
+  @apply relative overflow-hidden;
+}
+.topWave {
+  @apply absolute top-0 left-0 w-full h-[80px] overflow-hidden z-10;
+}
+.bottomWave {
+  @apply absolute bottom-0 left-0 w-full h-[80px] overflow-hidden rotate-180 z-10;
+}
+.waveSvg {
+  @apply w-full h-full;
+}
+.content {
+  @apply w-full grid grid-cols-2 lg:flex bg-[#F2C2C6] px-10 py-20 justify-center items-center gap-4;
+}
+.feature {
+  @apply flex flex-col gap-2 justify-center items-center;
+}
+.colSpan2 {
+  @apply col-span-2;
+}
+.label {
+  @apply uppercase font-medium text-[#59432d] text-sm text-center;
+}

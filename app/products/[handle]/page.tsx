@@ -11,10 +11,9 @@ import ExampleStore from '@/components/ExampleStore';
 import MarqueeStack from '@/components/MarqueeStack';
 import { trustsDataGroup1, trustsDataGroup2 } from '@/data';
 import HowItWorks from '@/components/HowItWorks';
-import Mode from '@/components/Mode';
 import { Reviews } from '@/components/Reviews';
 import { PurchasePopup } from '@/components/PurchasePopup';
-import FlashPromo from '@/components/FlashPromo';
+/* import FlashPromo from '@/components/FlashPromo'; */
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import ExampleCode from '@/components/ExampleCode';
 
@@ -32,7 +31,7 @@ export default async function ProductPage({ params }: { params: { handle: string
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
                 <NavBar menu={menu} />
-                <FlashPromo />
+                {/* <FlashPromo /> */}
             </div>
 
             <div className="max-w-screen-xl mx-auto w-full">

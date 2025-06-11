@@ -101,7 +101,7 @@ const SnippetCard = ({
                     )}
                 </div>
             </div>
-            <div className={cn("w-full min-h-[350px] max-h-[350px] flex justify-center items-center border rounded-lg dark:border-[#324e58]", name === "Accordion" && "bg-pink-500")}>
+            <div className={cn("w-full min-h-[350px] max-h-[350px] flex justify-center items-center border rounded-lg dark:border-[#324e58]", name === "Accordion" && "bg-pink-500", name === "ExpertReviewsCarousel" && "bg-[#F9F6EE]")}>
                 {!hasPurchased ? (
                     <div className="h-full max-h-[350px] w-full mx-auto overflow-hidden">
                         {Component} 

@@ -1,0 +1,15 @@
+.wrapper {
+  @apply flex flex-col lg:flex-row gap-2 lg:gap-10 text-center font-bold px-10 mx-auto justify-center;
+}
+
+.benefit {
+  @apply xl:px-2;
+}
+
+.image {
+  @apply mx-auto;
+}
+
+.title {
+  @apply text-sm lg:text-lg;
+}

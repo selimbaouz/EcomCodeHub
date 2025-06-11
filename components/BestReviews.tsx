@@ -1,5 +1,4 @@
 import * as React from "react"
-import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -43,11 +42,6 @@ export function BestReviews({productPage}: {productPage?: boolean}) {
   return (
     <div>
       <Carousel 
-        plugins={[
-          Autoplay({
-            delay: 2000,
-          }),
-        ]}
         setApi={setApi} 
         className={cn("w-full cursor-pointer mx-auto", productPage ? "min-w-full" : "max-w-xs", "md:max-w-lg", "lg:max-w-xs", "xl:max-w-md", "3xl:max-w-xl")}>
         <CarouselContent>

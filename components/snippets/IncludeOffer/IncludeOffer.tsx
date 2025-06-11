@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  TruckIcon,
-  CheckBadgeIcon,
-  SparklesIcon,
-  GiftIcon
-} from "@heroicons/react/24/solid";
+import { CheckBadgeIcon, GiftIcon, SparklesIcon, TruckIcon } from "@heroicons/react/24/solid";
 
 const offers = [
   {

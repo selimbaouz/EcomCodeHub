@@ -27,7 +27,7 @@ export default async function DocsPage() {
               <NavBar menu={[]} isAccount />
             </div>
             <div className="px-4 w-full mx-auto bg-gray-100 dark:bg-[#324e58] h-full">
-                <div className="max-w-screen-xl mx-auto w-full">
+                <div className="max-w-screen-2xl mx-auto w-full">
                     <div className={cn("pt-20 pb-10 flex flex-col justify-center items-center space-y-4")}>
                         <Link href="/docs/installation" className="group flex gap-2 items-center font-medium">
                             Débuter avec l'installation

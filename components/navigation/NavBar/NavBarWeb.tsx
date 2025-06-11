@@ -48,7 +48,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
 
     if(isAccount) {
         return (
-            <div className={cn("hidden px-3 py-2 justify-between items-center max-w-screen-xl mx-auto", "md:p-4", "lg:flex")}>
+            <div className={cn("hidden px-3 py-2 justify-between items-center max-w-screen-2xl mx-auto", "md:p-4", "lg:flex")}>
                 <div className="flex items-center gap-14">
                     <div className="flex items-center gap-2">
                         <ImageLoader

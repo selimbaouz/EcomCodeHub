@@ -5,7 +5,7 @@ const RefundGuarantees = () => {
     return (
         <div className={styles.container}>
             <img 
-                src="https://res.cloudinary.com/dtiabflsh/image/upload/v1744045511/remboursement_garantie_hp46sq.png"
+                src="https://res.cloudinary.com/tailwindliquid/image/upload/v1744045511/remboursement_garantie_hp46sq.png"
                 alt="Img of moneyback"
                 width={100}
                 height={100}

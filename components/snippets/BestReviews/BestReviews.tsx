@@ -6,7 +6,6 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
 import GetRatings from "@/lib/fn";
 import { FaCircleCheck } from "react-icons/fa6";
 import { bestReviewsData } from "@/data";
@@ -20,12 +19,8 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
   const [current, setCurrent] = React.useState(0);
 
   React.useEffect(() => {
-    if (!api) {
-      return;
-    }
-
+    if (!api) return;
     setCurrent(api.selectedScrollSnap() + 1);
-
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
@@ -42,34 +37,29 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
   return (
     <div>
       <Carousel 
-        plugins={[
-          Autoplay({
-            delay: 2000,
-          }),
-        ]}
         setApi={setApi}
-        className={cn(styles.container, productPage ? "min-w-full" : "max-w-xs", "md:max-w-lg", "lg:max-w-xs", "xl:max-w-md", "3xl:max-w-xl")}
+        className={`${styles.container} ${productPage ? styles.minWFull : styles.maxWXs} ${styles.mdMaxWLg} ${styles.lgMaxWXs} ${styles.xlMaxWMd} ${styles.x3lMaxWXl}`}
       >
         <CarouselContent>
           {bestReviewsData.map((data, index) => (
             <CarouselItem key={index}>
-              <div className={cn(styles.reviewsWrapper)}>
-                <div className={cn(styles.avatarWrapper)}>
+              <div className={styles.reviewsWrapper}>
+                <div className={styles.avatarWrapper}>
                   <AvatarCircles
                     avatarUrls={data.picture} 
-                    classNameImage="size-12"
+                    classNameImage={styles.avatarImg}
                   />
                   <div>
-                    <div className={cn("flex items-center gap-2")}>
+                    <div className={styles.headerRow}>
                       <h6 className={styles.headerText}>{data.name}</h6>
                       <div className={styles.subHeader}>
-                        <div className="p-1">
+                        <div className={styles.checkIconWrapper}>
                           <FaCircleCheck className={styles.checkIcon} />
                         </div>
-                        <p className={cn("text-xs", "xl:text-sm", "3xl:text-lg")}>Avis vérifié</p>
+                        <p className={styles.verifiedText}>Avis vérifié</p>
                       </div>
                     </div>
-                    <GetRatings value={data.rating} className={cn("text-xs text-primary", "sm:text-sm", "md:text-lg", "xl:text-base", "3xl:text-xl")} />
+                    <GetRatings value={data.rating} className={styles.ratingText} />
                   </div>
                 </div>
                 <p className={styles.reviewText}>“{data.content}”</p>
@@ -78,8 +68,8 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className={cn(styles.navigationWrapper, productPage ? "min-w-full" : "md:max-w-lg mx-auto")}>
-        <div className={cn("flex items-center gap-2")}>
+      <div className={`${styles.navigationWrapper} ${productPage ? styles.minWFull : styles.mdMaxWLg} ${styles.mxAuto}`}>
+        <div className={styles.navBtnsRow}>
           <Button
             variant="outline"
             size="icon"
@@ -87,7 +77,7 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
             disabled={current === 1}
             onClick={scrollPrev}
           >
-            <ArrowLeftIcon className="h-4 w-4" />
+            <ArrowLeftIcon className={styles.arrowIcon} />
             <span className="sr-only">Previous slide</span>
           </Button>
           <Button
@@ -97,15 +87,15 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
             disabled={current === bestReviewsData.length}
             onClick={scrollNext}
           >
-            <ArrowRightIcon className="h-4 w-4" />
+            <ArrowRightIcon className={styles.arrowIcon} />
             <span className="sr-only">Next slide</span>
           </Button>
         </div>
-        <div className={cn("flex items-center gap-2")}>
+        <div className={styles.dotsRow}>
           {bestReviewsData.map((_, index) => (
             <div 
               key={index} 
-              className={cn(styles.navDot, current - 1 === index ? styles.activeDot : styles.inactiveDot)}
+              className={`${styles.navDot} ${current - 1 === index ? styles.activeDot : styles.inactiveDot}`}
             />
           ))}
         </div>

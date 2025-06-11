@@ -57,6 +57,30 @@ import HowItWorksVideo from './HowItWorksVideo/HowItWorksVideo';
 import GetAdditionalOff from './GetAdditionalOff/GetAdditionalOff';
 import BenefitsBar from './BenefitsBar/BenefitsBar';
 import AccordionBenefit from './AccordionBenefit/AccordionBenefit';
+import CarouselFeedback from './CarouselFeedback/CarouselFeedback';
+import CollapseDown from './CollapseDown/CollapseDown';
+import EbookOffer from './EbookOffer/EbookOffer';
+import IncludeOffer from './IncludeOffer/IncludeOffer';
+import LimitedOffer from './LimitedOffer/LimitedOffer';
+import DiscountNewsletter from './NewsletterPromo/NewsLetterPromo';
+import PackageOptions from './PackageOptions/PackageOptions';
+import PerfectGift from './PerfectGift/PerfectGift';
+import ProductReviewCard from './ProductReviewCard/ProductReviewCard';
+import ReviewCarousel from './ReviewCarousel/ReviewCarousel';
+import ReviewStats from './ReviewStats/ReviewStats';
+import ReviewSummary from './ReviewSummary/ReviewSummary';
+import StorageComparisonTable from './StorageComparisonTable/StorageComparisonTable';
+import TrustBadges from './TrustBadges/TrustBadges';
+import TypingEffect from './TypingEffect/TypingEffect';
+import WhyTheyLove from './WhyTheyLove/WhyTheyLove';
+import ViralHighlight from './ViralHighlight/ViralHighlight';
+import CognitiveBenefits from './CognitiveBenefits/CognitiveBenefits';
+import ProductQuickFacts from './ProductQuickFacts/ProductQuickFacts';
+import FeaturesBanner from './FeaturesBanner/FeaturesBanner';
+import BenefitsCarousel from './BenefitsCarousel/BenefitsCarousel';
+import ExpertReviewsCarousel from './ExpertReviewsCarousel/ExpertReviewsCarousel';
+import StoreLocatorMarquee from './StoreLocatorMarquee/StoreLocatorMarquee';
+import FaqAccordion from './FaqAccordion/FaqAccordion';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -116,7 +140,31 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     HowItWorksVideo: <HowItWorksVideo />,
     GetAdditionalOff: <GetAdditionalOff />,
     BenefitsBar: <BenefitsBar />,
-    AccordionBenefit: <AccordionBenefit />
+    AccordionBenefit: <AccordionBenefit />,
+    CarouselFeedback: <CarouselFeedback />,
+    CollapseDown: <CollapseDown />,
+    EbookOffer: <EbookOffer />,
+    IncludeOffer: <IncludeOffer />,
+    LimitedOffer: <LimitedOffer />,
+    NewsLetterPromo: <DiscountNewsletter />,
+    PackageOptions: <PackageOptions />,
+    PerfectGift: <PerfectGift />,
+    ProductReviewCard: <ProductReviewCard />,
+    ReviewCarousel: <ReviewCarousel />,
+    ReviewStats: <ReviewStats />,
+    ReviewSummary: <ReviewSummary />,
+    StorageComparisonTable: <StorageComparisonTable />,
+    TrustBadges: <TrustBadges />,
+    TypingEffect: <TypingEffect />,
+    WhyTheyLove: <WhyTheyLove />,
+    ViralHighlight: <ViralHighlight />,
+    CognitiveBenefits: <CognitiveBenefits />,
+    ProductQuickFacts: <ProductQuickFacts />,
+    FeaturesBanner: <FeaturesBanner />,
+    BenefitsCarousel: <BenefitsCarousel />,
+    ExpertReviewsCarousel: <ExpertReviewsCarousel />,
+    StoreLocatorMarquee: <StoreLocatorMarquee />,
+    FaqAccordion: <FaqAccordion />
   };
 
 export default ComponentsSnippet;
