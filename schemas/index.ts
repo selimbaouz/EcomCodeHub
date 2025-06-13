@@ -97,7 +97,7 @@ export const LoginSchema = z.object({
 })
 
 export const CodePromoSchema = z.object({
-  code: z.string().min(6, "Votre mot de passe à usage unique doit comporter 6 caractères.").optional(),
+  code: z.string(),
   email: z.string().email("L'email doit être valide").optional(),
   password: z.string().optional(),
   name: z.string().optional()

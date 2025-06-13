@@ -30,7 +30,7 @@ export const validateCodeWithIP = action
   }
 
   const promo = await db.promoCode.findUnique({
-    where: { code },
+    where: { code: code?.toUpperCase() },
     include: { usedBy: true },
   })
 
