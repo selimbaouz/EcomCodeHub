@@ -97,67 +97,58 @@ export async function checkIPTrust() {
 }
 
 export const createUserWithPromo = action
-.schema(SignUserWithCodeSchema) 
-.action(async ({ parsedInput: { 
-  email, 
-  password,
-  promoId,
-  name
- } }) => {
-  const headersList = headers()
-  const ip =
-    headersList.get('x-forwarded-for') ||
-    headersList.get('cf-connecting-ip') ||
-    '0.0.0.0'
+  .schema(SignUserWithCodeSchema)
+  .action(async ({ parsedInput: { email, password, promoId, name } }) => {
+    const headersList = headers();
+    const ip =
+      headersList.get("x-forwarded-for") ||
+      headersList.get("cf-connecting-ip") ||
+      "0.0.0.0";
 
-  const hashedIp = createHash('sha256').update(ip).digest('hex')
-  const hashedPassword = await bcrypt.hash(password ?? "", 10)
+    const hashedIp = createHash("sha256").update(ip).digest("hex");
+    const hashedPassword = await bcrypt.hash(password ?? "", 10);
 
-  const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "")
+    const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
-  if (existingUser) {
-    return { error: 'Un compte existe déjà avec cet email.' }
-  }
+    if (existingUser) {
+      return { error: "Un compte existe déjà avec cet email." };
+    }
 
-  const user = await db.user.create({
-    data: {
+    const stripeCustomer = await createCustomerInStripe({
       email,
-      password: hashedPassword ?? "",
-      credits: 15,
-      name
-    },
-  })
+      name: name ?? "",
+    });
 
-  const promoCode = await db.promoCode.update({
-    where: { id: promoId },
-    data: {
-      ipUsed: hashedIp,
-      usedBy: {
-        connect: { id: user.id },
+    if (!stripeCustomer) {
+      return { error: "Erreur dans la création de compte sur stripe" };
+    }
+
+    const user = await db.user.create({
+      data: {
+        email,
+        password: hashedPassword ?? "",
+        credits: 15,
+        name,
+        plan: "ONE_TIME",
+        stripeCustomerId: stripeCustomer.id,
       },
-    },
-  });
-  
-  if(!promoCode || !user) {
-    return { error: 'La création de compte a échouée' }
-  }
-  const stripeCustomer = await createCustomerInStripe({email: email, name: name ?? ""})
-  
-  if (!stripeCustomer) {
-    return { error: "Erreur dans la création de compte sur stripe" };
-  }
+    });
 
-  await db.user.create({
-    data: {
-      email: stripeCustomer.email,
-      name: stripeCustomer.name,
-      stripeCustomerId: stripeCustomer.id,
-      credits: 15,
-      plan: "ONE_TIME",
-    },
-  });
+    const promoCode = await db.promoCode.update({
+      where: { id: promoId },
+      data: {
+        ipUsed: hashedIp,
+        usedBy: {
+          connect: { id: user.id },
+        },
+      },
+    });
 
-  return { success: true, userId: user.id }
+    if (!promoCode || !user) {
+      return { error: "La création de compte a échouée" };
+    }
+
+    return { success: true, userId: user.id };
 });
 
 export const verifyEmail = action

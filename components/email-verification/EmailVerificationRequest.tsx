@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 
 const EmailVerificationRequest = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const searchParams = useSearchParams();
   const token = searchParams?.get("token");
@@ -18,6 +19,7 @@ const EmailVerificationRequest = () => {
   useEffect(() => {
     if (!token) {
       setMessage({ type: 'warning', key: 'tokenRequired' });
+      setIsLoading(false);
       return;
     }
 
@@ -25,6 +27,7 @@ const EmailVerificationRequest = () => {
 
     if (!parsedToken.success) {
       setMessage({ type: 'warning', key: 'tokenInvalid' });
+      setIsLoading(false);
       return;
     }
 
@@ -40,6 +43,8 @@ const EmailVerificationRequest = () => {
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'somethingWentWrong' });
+        }).finally(() => {
+          setIsLoading(false);
         });
     };
 
@@ -51,7 +56,13 @@ const EmailVerificationRequest = () => {
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
       <CardAuthWrapper>
+         {isLoading ? (
+        <div className="flex flex-col items-center justify-center py-12">
+          <PulseLoader size={14} color="#0ea5e9" />
+        </div>
+      ) : (
         <GetAPiMesssage {...messageContent} />
+      )}
       </CardAuthWrapper>
     </div>
   );

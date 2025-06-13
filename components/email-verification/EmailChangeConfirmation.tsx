@@ -9,9 +9,11 @@ import { updateEmail } from '@/actions/account';
 import { useNewEmailStore } from '@/store/account';
 import { EmailChangeConfirmationContent } from '../content/auth/EmailChangeConfirmationContent';
 import { logout } from '@/actions/logout';
+import { PulseLoader } from 'react-spinners';
 
 const EmailChangeConfirmation = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const {newEmail} = useNewEmailStore();
   const searchParams = useSearchParams();
   const token = searchParams?.get("token");
@@ -19,6 +21,7 @@ const EmailChangeConfirmation = () => {
   useEffect(() => {
     if (!token) {
       setMessage({ type: 'warning', key: 'tokenRequired' });
+      setIsLoading(false);
       return;
     }
 
@@ -26,6 +29,7 @@ const EmailChangeConfirmation = () => {
 
     if (!parsedToken.success) {
       setMessage({ type: 'warning', key: 'tokenInvalid' });
+      setIsLoading(false);
       return;
     }
 
@@ -46,6 +50,8 @@ const EmailChangeConfirmation = () => {
         })
         .catch(() => {
           setMessage({ type: 'error', key: 'somethingWentWrong' });
+        }).finally(() => {
+          setIsLoading(false);
         });
     };
 
@@ -57,7 +63,13 @@ const EmailChangeConfirmation = () => {
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
       <CardAuthWrapper>
-        <GetAPiMesssage {...messageContent} />
+         {isLoading ? (
+               <div className="flex flex-col items-center justify-center py-12">
+                 <PulseLoader size={14} color="#0ea5e9" />
+               </div>
+             ) : (
+               <GetAPiMesssage {...messageContent} />
+             )}
       </CardAuthWrapper>
     </div>
   );

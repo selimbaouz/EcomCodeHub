@@ -1,5 +1,6 @@
 import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { IoIosCloseCircle } from "react-icons/io";
+import { PulseLoader } from 'react-spinners';
 
 export const EmailChangeConfirmationContent = (messageKey: string | undefined) => {
   switch (messageKey) {
@@ -62,11 +63,11 @@ export const EmailChangeConfirmationContent = (messageKey: string | undefined) =
       };
     default:
       return {
-        icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer plus tard ou contacter le support si le problème persiste.",
-        buttonLabel: "Contacter le support",
-        buttonHref: "mailto:tailwindliquid@gmail.com",
+        icon: <PulseLoader size={14} color="#0ea5e9" />,
+        title: "Vérification en cours...",
+        description: "Merci de patienter pendant la vérification de votre email.",
+        buttonLabel: "",
+        buttonHref: "",
       };
   }
 };

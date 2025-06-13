@@ -1,9 +1,10 @@
-import { CodePromoSchema, deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
+import { CodePromoSchema, deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, SignUserWithCodeSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
 
 export type Login = z.infer<typeof LoginSchema>;
 export type Code = z.infer<typeof CodePromoSchema>;
+export type SignUpWithCode = z.infer<typeof SignUserWithCodeSchema>;
 export type UserType = z.infer<typeof userSchema>;
 export type NewPassword = z.infer<typeof NewPasswordSchema>;
 export type Reset = z.infer<typeof ResetSchema>;

@@ -4,12 +4,12 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormMessage,  
+  FormMessage,
 } from "@/components/ui/form";
-import { useState, useTransition} from "react";
+import { useState, useTransition } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
-import { CodePromoSchema } from "@/schemas";
+import { CodePromoSchema, SignUserWithCodeSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
@@ -17,9 +17,13 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { PulseLoader } from "react-spinners";
 import { toast } from "sonner";
-import { Code } from "@/types/types";
+import { Code, SignUpWithCode } from "@/types/types";
 import CardAuthWrapper from "../card/CardAuthWrapper";
-import { createUserWithPromo, validateCodeWithIP, verifyEmail } from "@/actions/promo-code";
+import {
+  createUserWithPromo,
+  validateCodeWithIP,
+  verifyEmail,
+} from "@/actions/promo-code";
 import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
@@ -27,104 +31,120 @@ import { useCurrentUser } from "@/hook/use-current-user";
 export function CodeForm() {
   const [isMailSended, setIsMailSended] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
-  const [promoId, setPromoId] = useState<string | null>(null)
+  const [step, setStep] = useState<"code" | "signup">("code");
   const [isPending, startTransition] = useTransition();
   const currentUser = useCurrentUser();
-  
-  const form = useForm<Code>({
+
+  const codeForm = useForm<Code>({
     resolver: zodResolver(CodePromoSchema),
+    defaultValues: { code: "" },
+  });
+
+  // Formulaire étape 2
+  const signupForm = useForm<SignUpWithCode>({
+    resolver: zodResolver(SignUserWithCodeSchema),
     defaultValues: {
+      name: "",
       email: "",
       password: "",
-      code: "",
-      name: ""
+      promoId: "",
     },
   });
 
-  const handleClickShowPassword = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.stopPropagation(); 
+  const handleClickShowPassword = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    e.stopPropagation();
     setShowPassword(!showPassword);
   };
-  
-const onSubmit = (values: Code) => {
-    if (!isSignup) {
-        startTransition(async () => {
-          validateCodeWithIP({code: values.code}).then((response) => {
-            if (response?.data?.error) {
-              toast.error(response?.data?.error);
-            } else {
-                setPromoId(response?.data?.promoId ?? "");
-                setIsSignup(true);
-            }
-          });
-        });
-        return;
-    } else {
-        startTransition(async () => {
-          createUserWithPromo({
-            name: values.name ?? "",
-            email: values.email ?? "",
-            password: values.password ?? "",
-            promoId: promoId ?? "",
-          }).then((response) => {
-            if (response?.data?.error) {
-              toast.error(response?.data?.error);
-            } else {
-              verifyEmail({
-                  email: values.email ?? ""
-              }).then((response) => {
-                  if(response?.data?.error) {
-                      toast.error(response?.data?.error);
-                  }
-                  if(response?.data?.mailsend) {
-                      toast.success(response?.data?.success);
-                      setIsMailSended(true)
-                  }
-              })
-            }
-          });
-        });
-        return;
+
+  const onSubmitCode = (values: Code) => {
+    startTransition(async () => {
+      const response = await validateCodeWithIP({ code: values.code });
+      if (response?.data?.error) {
+        toast.error(response?.data?.error);
+      } else {
+        signupForm.setValue("promoId", response?.data?.promoId ?? "");
+        setStep("signup");
       }
-};  
+    });
+  };
 
-  const cardTexts = !isSignup ?
-    {
-        title: "Débloquez vos crédits offerts",
-        description: "Vous avez reçu une invitation spéciale ?\nEntrez-le ci-dessous pour activer vos crédits.",
-    } : 
-    {
-        title: "Créez votre compte",
-        description: "Entrez votre adresse email et créez un mot de passe pour accéder à votre compte.",
-    };
+  const onSubmitSignup = (values: SignUpWithCode) => {
+    startTransition(async () => {
+      const response = await createUserWithPromo(values);
+      if (response?.data?.error) {
+        toast.error(response?.data?.error);
+      } else {
+        const emailResponse = await verifyEmail(values);
+        if (emailResponse?.data?.error) {
+          toast.error(emailResponse?.data?.error);
+        }
+        if (emailResponse?.data?.mailsend) {
+          toast.success(emailResponse?.data?.success);
+          setIsMailSended(true);
+        }
+      }
+    });
+  };
 
-  if(isMailSended) {
+  const cardTexts =
+    step === "code"
+      ? {
+          title: "Débloquez vos crédits offerts",
+          description:
+            "Vous avez reçu une invitation spéciale ?\nEntrez-le ci-dessous pour activer vos crédits.",
+        }
+      : {
+          title: "Créez votre compte",
+          description:
+            "Entrez votre adresse email et créez un mot de passe pour accéder à votre compte.",
+        };
+
+  if (isMailSended) {
     return (
-      <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
-        <div className={cn("flex flex-col h-full gap-1 items-center justify-center text-center")}>
+      <div
+        className={cn(
+          "bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6",
+          "lg:px-10",
+          "xl:px-20",
+          "dark:bg-[#324e58]",
+        )}
+      >
+        <div
+          className={cn(
+            "flex flex-col h-full gap-1 items-center justify-center text-center",
+          )}
+        >
           <IoIosMail className={cn("text-6xl")} />
           <h5>Vérifiez votre Email</h5>
           <p>Un lien de vérification vous a été envoyé par email.</p>
-          <Button 
-              size="xl" 
-              className={cn("w-max font-medium mt-8", "lg:text-base")}
-              type="button"
-              onClick={() => setIsMailSended(false)}
-            >
-              Accéder à la connexion
-            </Button>
+          <Button
+            size="xl"
+            className={cn("w-max font-medium mt-8", "lg:text-base")}
+            type="button"
+            onClick={() => setIsMailSended(false)}
+          >
+            Accéder à la connexion
+          </Button>
         </div>
       </div>
-    )
+    );
   }
 
-  if(currentUser) {
+  if (currentUser) {
     redirect("/docs");
   }
-  
+
   return (
-    <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
+    <div
+      className={cn(
+        "bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6",
+        "lg:px-10",
+        "xl:px-20",
+        "dark:bg-[#324e58]",
+      )}
+    >
       <CardAuthWrapper
         title={cardTexts.title}
         description={cardTexts.description}
@@ -133,111 +153,142 @@ const onSubmit = (values: Code) => {
         footerHref="/auth/login"
         className="whitespace-pre-wrap"
       >
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6"
-          >
-            {!isSignup && (
-              <FormField
-              control={form.control}
-              name="code"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      icon={<CiMail className="text-lg opacity-80" />}
-                      placeholder="Insérez votre code"
-                      type="text"
-                      />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-                )}
-              />
-            )}
-            {isSignup && (
-              <>
-              <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      icon={<CiMail className="text-lg opacity-80" />}
-                      placeholder="Insérez votre nom"
-                      type="text"
-                      />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-                )}
-              />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          icon={<CiMail className="text-lg opacity-80" />}
-                          placeholder="Adresse e-mail"
-                          type="email"
-                          />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          icon={<CiLock className="text-lg opacity-80" />} 
-                          placeholder={"Mot de passe"}
-                          type={showPassword ? "text" : "password"}
-                          endIcon={
-                            <Button type="button" variant="link" onClick={handleClickShowPassword}>
-                              {showPassword ? <IoEyeOutline className="text-foreground h-5 w-5" /> : <IoEyeOffOutline className="text-foreground h-5 w-5" />}
-                            </Button>
-                          } 
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-            </>
-            )}
-            <Button 
-              size="xl" 
-              className={cn("w-full font-medium mt-2 text-white", "lg:text-base")}
-              disabled={isPending}
-              type="submit"
-              onClick={() => onSubmit(form.getValues())}
+        {step === "code" && (
+          <Form {...codeForm}>
+            <form
+              onSubmit={codeForm.handleSubmit(onSubmitCode)}
+              className="space-y-6"
             >
-              {isPending ? (
-                <PulseLoader
-                  size={7}
-                  color="white"
-                />) : (
-                isSignup ? "S'inscrire" : "Confirmer"
-              )}
-            </Button>
-          </form>
-        </Form>
+              <FormField
+                control={codeForm.control}
+                name="code"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        icon={<CiMail className="text-lg opacity-80" />}
+                        placeholder="Insérez votre code"
+                        type="text"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button
+                size="xl"
+                className={cn(
+                  "w-full font-medium mt-2 text-white",
+                  "lg:text-base",
+                )}
+                disabled={isPending}
+                type="submit"
+              >
+                {isPending ? (
+                  <PulseLoader size={7} color="white" />
+                ) : (
+                  "Confirmer"
+                )}
+              </Button>
+            </form>
+          </Form>
+        )}
+
+        {step === "signup" && (
+          <Form {...signupForm}>
+            <form
+              onSubmit={signupForm.handleSubmit(onSubmitSignup)}
+              className="space-y-6"
+            >
+              <FormField
+                control={signupForm.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        icon={<CiMail className="text-lg opacity-80" />}
+                        placeholder="Insérez votre nom"
+                        type="text"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={signupForm.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        icon={<CiMail className="text-lg opacity-80" />}
+                        placeholder="Adresse e-mail"
+                        type="email"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={signupForm.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        icon={<CiLock className="text-lg opacity-80" />}
+                        placeholder={"Mot de passe"}
+                        type={showPassword ? "text" : "password"}
+                        endIcon={
+                          <Button
+                            type="button"
+                            variant="link"
+                            onClick={handleClickShowPassword}
+                          >
+                            {showPassword ? (
+                              <IoEyeOutline className="text-foreground h-5 w-5" />
+                            ) : (
+                              <IoEyeOffOutline className="text-foreground h-5 w-5" />
+                            )}
+                          </Button>
+                        }
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button
+                size="xl"
+                className={cn(
+                  "w-full font-medium mt-2 text-white",
+                  "lg:text-base",
+                )}
+                disabled={isPending}
+                type="submit"
+                /* onClick={() => onSubmit(form.getValues())} */
+              >
+                {isPending ? (
+                  <PulseLoader size={7} color="white" />
+                ) : (
+                  "S'inscrire"
+                )}
+              </Button>
+            </form>
+          </Form>
+        )}
       </CardAuthWrapper>
     </div>
   );

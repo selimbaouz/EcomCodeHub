@@ -96,20 +96,17 @@ export const LoginSchema = z.object({
   isChange: z.boolean().optional(),
 })
 
+// Schéma pour la première étape : code uniquement
 export const CodePromoSchema = z.object({
-  code: z.string(),
-  email: z.string().email("L'email doit être valide").optional(),
-  password: z.string().optional(),
-  name: z.string().optional()
-})
+  code: z.string().min(1, "Le code est requis"),
+});
 
+// Schéma pour l'inscription après validation du code promo
 export const SignUserWithCodeSchema = z.object({
-  email: z.string().email({
-    message: "L'email est obligatoire"
-  }),
-  password: z.string().min(1, "Mot de passe requis").optional(),
-  promoId: z.string().optional(),
-  name: z.string().optional()
+  name: z.string().min(1, "Le nom est requis"),
+  email: z.string().email("L'email doit être valide"),
+  password: z.string().min(6, "Le mot de passe doit faire au moins 6 caractères"),
+  promoId: z.string().min(1, "Le code promo est requis"),
 });
 
 export const checkoutSessionSchema = z.object({
