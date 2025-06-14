@@ -6,10 +6,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 import { Product } from "@/types/types";
 import { FC, useEffect, useState } from "react";
 import { AddToCart } from "./cart/add-to-cart";
-import Link from "next/link";
 import { BestReviews } from "./BestReviews";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { CheckIcon } from "lucide-react";
+import { StarFilledIcon } from "@radix-ui/react-icons";
 
 interface ProductImageProps {
     product: Product;
@@ -65,15 +65,24 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                 <h3 className={cn("text-left text-2xl font-bold pointer-events-none whitespace-pre-wrap text-foreground", "lg:text-3xl", "xl:text-4xl")}>
                     {product.title}
                 </h3>
-                <div className={cn("flex items-center gap-2")}> 
-                    <p className={cn("font-medium text-sm text-foreground")}>4.8/5</p>
-                    <GetRatings value={5} className={cn("text-base sm:text-md text-primary", "md:text-lg", "xl:text-sm")} />
-                    <Link href="#avis" className={cn("font-medium text-[13px] text-foreground", "lg:text-sm")}>
-                        Basé sur <strong>650 e-commercants</strong>
-                    </Link>
+               <div className="flex items-center justify-start border border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2">
+                    <div className="text-[13px] font-semibold">"Incroyable"</div>
+                    <div className="flex items-center">
+                        <StarFilledIcon className="text-sm text-primary"/>
+                        <StarFilledIcon className="text-sm text-primary"/>
+                        <StarFilledIcon className="text-sm text-primary"/>
+                        <StarFilledIcon className="text-sm text-primary"/>
+                        <StarFilledIcon className="text-sm text-primary"/>
+                    </div>
+                    <div className="text-xs font-semibold text-foreground">Noté 5/5 sur</div>
+                    <img
+                        className="w-[45px] mt-[2px]"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
+                        alt="Logo Google"
+                    />
                 </div>
             </div>
-            <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez plus de <strong>600 e-commerçants</strong> qui ont faits <strong>exploser leurs ventes</strong> grâce à nos <strong>packs conversion Shopify</strong> 🚀.</p>
+            <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez notre <strong>communauté d’e-commerçants</strong> qui ont fait <strong>exploser leurs ventes</strong> grâce à notre <strong>Pack Conversion</strong> 🚀.</p>
 
             <ul className={cn("flex flex-col py-4 gap-4")}>
                 {checkProduct.map((data, index) => (

@@ -55,6 +55,16 @@ export function Reviews() {
                       Ils ne peuvent plus s{"'"}en passer
                   </h3>
                   <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">Qui de mieux qu{"'"}eux pour parler du pack pro conversion ?</p>
+                  <div className="text-center">
+                    <a 
+                      href="https://www.google.com/search?safe=strict&tbm=lcl&sxsrf=AE3TifNbb_1LBN1FsuMJ8m80oCOnLUZvwg:1749897451817&q=tailwindliquid%20toulon%20reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDWwtLC0NDcyMzY1NrK0MDEyMdvAyPiKUbYkMTOnPDMvJSezsDQzRaEkvzQnP0-hKLUsM7W8eBErfnkAXD5oWFsAAAA&rldimm=15098997263532984246&hl=en-FR#arid=Ci9DQUlRQUNvZENodHljRjlvT21SRmVrRlhkRGM1TkRkcWVGTnNUSEl6YjJOVE1GRRAB&lkt=LocalPoiReviews&rlfi=hd:;si:15098997263532984246,l,Ch10YWlsd2luZGxpcXVpZCB0b3Vsb24gcmV2aWV3c0jvw6__gLyAgAhaIxAAGAAiHXRhaWx3aW5kbGlxdWlkIHRvdWxvbiByZXZpZXdzkgEXY29tcHV0ZXJfc29mdHdhcmVfc3RvcmU;mv:[[43.13072237731904,5.918950512532541],[43.130362422680975,5.918457287467461]]" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-sm font-medium lg:text-base max-w-5xl mx-auto underline"
+                    >
+                      Voir tous les avis sur Google
+                    </a>
+                  </div>
               </div>
               <Carousel 
                   setApi={setApi} 

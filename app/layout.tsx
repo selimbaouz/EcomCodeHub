@@ -41,7 +41,7 @@ export default async function RootLayout({
         <body
           className={`${montserrat.variable} font-montserrat relative text-foreground size-full`}
         >
-          <Toaster position="bottom-right" />
+          <Toaster position="bottom-left" />
           <Providers>
             <LayoutClient>
               {children}

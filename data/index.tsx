@@ -6,7 +6,6 @@ import { FaCheckSquare } from "react-icons/fa";
 import Description from "@/components/content/detailsProduct/Description";
 import WhyTL from "@/components/content/detailsProduct/WhyTL";
 import HowItWorks from "@/components/content/detailsProduct/HowItWorks";
-import Delivery from "@/components/content/detailsProduct/Delivery";
 import { AiOutlineStar } from "react-icons/ai";
 import Transformations from "@/components/content/mode/Transformations";
 import Difference from "@/components/content/mode/Difference";
@@ -22,6 +21,7 @@ import RefundGuarantees from "@/components/snippets/RefundGuarantees/RefundGuara
 import DeliveryEstimate from "@/components/snippets/DeliveryEstimate/DeliveryEstimate";
 import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2/GuaranteeIcons2";
 import SelectOptions from "@/components/snippets/SelectOptions/SelectOptions";
+import Group from "@/components/content/detailsProduct/Group";
 
 export const PricesFixeData = (modeSelected?: number) => [
   {
@@ -276,39 +276,34 @@ export const trustsData2 = [
 
 export const reviewsData = [
   {
-    name: "Sophie D.",
+    name: "Yassine",
     score: 5,
-    content: "Je n'avais aucune expérience en codage, mais grâce au Pack Pro Conversion, j'ai transformé ma boutique en un site professionnel en quelques minutes. C'était tellement simple à installer !",
+    content: "Très bon rapport qualité prix",
   },
   {
-    name: "Claudia R.",
+    name: "Ines S.",
     score: 5,
-    content: "J'hésitais à investir dans des thèmes premium coûteux. Ce pack m'a offert un design tout aussi impressionnant pour une fraction du prix.",
+    content: "J'ai utilisée plusieurs snippets pour ma boutique shopify et je suis vraiment satisfaite. Tout fonctionne du 1er coup, et j'ai pu personnaliser facilement selon mes besoins. Un vrai plus pour ma boutique, merci !",
   },
   {
-    name: "Philippe G.",
+    name: "Mickael L.",
     score: 5,
-    content: "J'avais peur que ça ne fonctionne pas avec mon thème Shopify. Mais tout s'est intégré parfaitement, et ma boutique est plus belle que jamais.",
+    content: "Aucun bug, tout fonctionne parfaitement. J’étais un peu sceptique au début, mais tous les codes fonctionnent parfaitement sur mon thème. Pas de bugs, pas de ralentissement… juste des fonctionnalités en plus pour mon site. Très rassurant.",
   },
   {
-    name: "Marie L.",
+    name: "Marwen L.",
     score: 5,
-    content: "Le Pack Pro Conversion m'a permis d'ajouter des fonctionnalités comme des preuves sociales et des badges de confiance. Mes clients se sentent rassurés, et mes ventes ont augmenté.",
+    content: "Je cherchais un moyen d'améliorer l'apparence de ma boutique Shopify sans me ruiner, et TailwindLiquid était la solution parfaite. Leurs snippets sont super faciles à mettre en œuvre et à personnaliser, ce qui me permet d'adapter mon design exactement à mes besoins.",
   },
   {
-    name: "Jean-Marc T.",
+    name: "Karim H.",
     score: 5,
-    content: "Depuis que j'ai installé ce pack, mon taux de conversion a doublé. Les codes de tailwind ont vraiment fait la différence !",
+    content: "Un excellent rapport qualité/prix. Pour le prix, c’est franchement imbattable. Au lieu de payer un développeur des centaines d’euros, j’ai pu installer moi-même des fonctionnalités premium sur mon site Shopify. Très satisfait du résultat.",
   },
   {
-    name: "Laura M.",
+    name: "Guillaume L.",
     score: 5,
-    content: "J'ai économisé des heures de travail grâce à ce pack. Tout est bien documenté, et l'installation est rapide et intuitive.",
-  },
-  {
-    name: "Marc L.",
-    score: 5,
-    content: "Je pensais que ce genre d'outil ralentirait ma boutique, mais c'est tout le contraire. Mon site est rapide et performant.",
+    content: "Des fonctionnalités introuvables ailleurs. Certains snippets ajoutent des options que je n’ai trouvées dans aucune app Shopify. C’est super pratique et surtout léger : pas besoin d’installer une application entière pour une seule fonction.",
   },
 ];
 
@@ -341,12 +336,12 @@ export const detailsProduct = [
     content: <WhyTL />
   },
   {
-    title: "Informations de Livraison et Accès",
-    content: <Delivery />
-  },
-  {
     title: "Comment ça marche ?",
     content: <HowItWorks />
+  },
+  {
+    title: "Groupe VIP pour abonnés",
+    content: <Group />
   },
 ]
 

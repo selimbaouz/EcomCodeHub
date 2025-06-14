@@ -39,13 +39,13 @@ const FlashPromo = () => {
   if (isCartOpen) return null;
 
   return (
-    <div className="animatedBackground">
+    <div className="bg-[#2c4049]">
       <div className="py-3 mx-auto lg:gap-2">
         <div className="flex gap-3 lg:gap-6 justify-center items-center">
-          <h5 className="font-bold text-left text-white text-sm lg:text-lg">
-          -30% avec le code TW30, <br className='md:hidden'/>offre valable jusqu'à :
+          <h5 className="font-bold text-left text-white text-sm lg:text-base">
+          Profitez de -30% avec le code TW30{/*  ,<br className='md:hidden'/>offre valable jusqu'à : */}
           </h5>
-          <div className="flex items-center justify-center gap-[4px]">
+         {/*  <div className="flex items-center justify-center gap-[4px]">
             <div className="bg-white p-1 rounded-sm lg:p-2 flex flex-col justify-center items-center -space-y-1">
               <h6 className="font-bold text-sm">{hrs}</h6>
               <p className="uppercase text-[8px] lg:text-[10px] font-bold">hrs</p>
@@ -60,7 +60,7 @@ const FlashPromo = () => {
               <h6 className="font-bold text-sm">{secs}</h6>
               <p className="uppercase text-[8px] lg:text-[10px] font-bold">sec</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
