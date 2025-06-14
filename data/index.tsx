@@ -21,8 +21,9 @@ import RefundGuarantees from "@/components/snippets/RefundGuarantees/RefundGuara
 import DeliveryEstimate from "@/components/snippets/DeliveryEstimate/DeliveryEstimate";
 import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2/GuaranteeIcons2";
 import SelectOptions from "@/components/snippets/SelectOptions/SelectOptions";
-import Group from "@/components/content/detailsProduct/Group";
 import Support from "@/components/content/detailsProduct/Support";
+import PaymentSecurity from "@/components/content/detailsProduct/PaymentSecurity";
+import RefundPolicy from "@/components/content/detailsProduct/RefundPolicy";
 
 export const PricesFixeData = (modeSelected?: number) => [
   {
@@ -329,7 +330,7 @@ export const checkProduct = [
 
 export const detailsProduct = [
   {
-    title: "Description",
+    title: "Ce que vous obtenez",
     content: <Description />
   },
   {
@@ -337,17 +338,21 @@ export const detailsProduct = [
     content: <WhyTL />
   },
   {
-    title: "Comment ça marche ?",
+    title: "Fonctionnement",
     content: <HowItWorks />
   },
   {
-    title: "Groupe VIP pour abonnés",
-    content: <Group />
-  },
-   {
-    title: "Besoin d'aide ?",
+    title: "Assistance personnalisée",
     content: <Support />
   },
+  {
+    title: "Paiements acceptés et sécurité",
+    content: <PaymentSecurity />
+  },
+  {
+    title: "Remboursements",
+    content: <RefundPolicy />
+  }
 ]
 
 export const faqData = [

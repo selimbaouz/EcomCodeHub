@@ -3,5 +3,5 @@
 }
 
 .icon {
-    @apply h-10 w-14 border rounded-md;
+  @apply h-10 w-auto object-contain p-2 rounded-md border;
 }
