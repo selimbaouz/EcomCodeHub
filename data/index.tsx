@@ -22,6 +22,7 @@ import DeliveryEstimate from "@/components/snippets/DeliveryEstimate/DeliveryEst
 import GuaranteeIcons2 from "@/components/snippets/GuaranteeIcons2/GuaranteeIcons2";
 import SelectOptions from "@/components/snippets/SelectOptions/SelectOptions";
 import Group from "@/components/content/detailsProduct/Group";
+import Support from "@/components/content/detailsProduct/Support";
 
 export const PricesFixeData = (modeSelected?: number) => [
   {
@@ -276,11 +277,6 @@ export const trustsData2 = [
 
 export const reviewsData = [
   {
-    name: "Yassine",
-    score: 5,
-    content: "Très bon rapport qualité prix",
-  },
-  {
     name: "Ines S.",
     score: 5,
     content: "J'ai utilisée plusieurs snippets pour ma boutique shopify et je suis vraiment satisfaite. Tout fonctionne du 1er coup, et j'ai pu personnaliser facilement selon mes besoins. Un vrai plus pour ma boutique, merci !",
@@ -304,6 +300,11 @@ export const reviewsData = [
     name: "Guillaume L.",
     score: 5,
     content: "Des fonctionnalités introuvables ailleurs. Certains snippets ajoutent des options que je n’ai trouvées dans aucune app Shopify. C’est super pratique et surtout léger : pas besoin d’installer une application entière pour une seule fonction.",
+  },
+   {
+    name: "Abdelhaq M.",
+    score: 5,
+    content: "Incroyable ! C’est super bien pensé pour tester sans prise de tête. Le système de crédits permet de choisir exactement les snippets dont on a besoin, sans engagement ni dépenses inutiles. Pas d’installations en trop, on paie uniquement pour ce qu’on utilise. Je recommande.",
   },
 ];
 
@@ -343,38 +344,60 @@ export const detailsProduct = [
     title: "Groupe VIP pour abonnés",
     content: <Group />
   },
+   {
+    title: "Besoin d'aide ?",
+    content: <Support />
+  },
 ]
 
 export const faqData = [
   {
     title: "Qu’est-ce qu’un code Liquid ?",
-    content: "Liquid est le langage de programmation utilisé par Shopify pour personnaliser et structurer les thèmes des boutiques en ligne."
+    content:
+      "Liquid est le langage de programmation utilisé par Shopify pour personnaliser et structurer les thèmes des boutiques en ligne.",
   },
   {
-    title: "À quoi sert le Pack Pro Conversion Shopify?",
-    content: "Le Pack Pro Conversion améliore le design, enrichit l'expérience utilisateur et augmente significativement le taux de conversion."
+    title: "À quoi sert le Pack Conversion Shopify ?",
+    content:
+      "Le Pack Conversion améliore le design, enrichit l'expérience utilisateur et augmente significativement le taux de conversion.",
   },
   {
     title: "Les codes fonctionnent-ils avec tous les thèmes ?",
-    content: "Oui, les codes ont été testés sur une large gamme de thèmes gratuits et premium pour garantir une intégration parfaite."
+    content:
+      "Oui, les codes ont été testés sur une large gamme de thèmes gratuits et premium pour garantir une intégration parfaite.",
   },
   {
     title: "Quels types de fonctionnalités puis-je ajouter ?",
-    content: "Avec le Pack Pro Conversion, vous pouvez ajouter des avis clients dynamiques, des preuves sociales, des CTA attractifs, des badges de confiance et bien plus encore pour améliorer l'expérience utilisateur."
+    content:
+      "Avec le Pack Conversion, vous pouvez ajouter des avis clients dynamiques, des preuves sociales, des CTA attractifs, des badges de confiance et bien plus encore pour améliorer l'expérience utilisateur.",
   },
   {
     title: "Ai-je besoin de compétences techniques ?",
-    content: "Pas du tout ! Chaque achat inclut des instructions détaillées étape par étape. Même un débutant peut facilement les installer."
+    content:
+      "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Whatsapp ou par email à tailwindliquid@gmail.com.",
   },
   {
     title: "Comment fonctionne l'installation des codes ?",
-    content: "Une fois que vous avez acheté des crédits, vous pouvez vous connecter à votre espace personnel et débloquer les snippets de code Tailwind/Liquid pour Shopify."
+    content:
+      "L'installation prend seulement quelques secondes. Il suffit de suivre les instructions disponibles sur la page “Installation” pour que tout fonctionne parfaitement.",
+  },
+  {
+    title: "TailwindLiquid peut-il ralentir ma boutique ?",
+    content:
+      "Non. Le code est optimisé et léger. Il s’intègre proprement à votre thème sans impacter les performances de votre boutique.",
+  },
+  {
+    title: "Puis-je être remboursé si je ne suis pas satisfait ?",
+    content:
+      "Les remboursements sont possibles uniquement si aucun crédit n’a été utilisé. Une fois un snippet débloqué, l’achat est considéré comme consommé.",
   },
   {
     title: "Que faire si j'ai des problèmes ?",
-    content: "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement via mon adresse email: tailwindliquid@gmail.com ou mes réseaux sociaux."
+    content:
+      "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Whatsapp ou par email à tailwindliquid@gmail.com.",
   },
 ];
+
 
 export const HowItWorks1 = [
   {

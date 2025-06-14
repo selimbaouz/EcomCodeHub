@@ -11,7 +11,7 @@ const HowItWorks = () => {
                 <strong className='underline'>2. Paiement et connexion :</strong> Une fois votre paiement validé par Stripe, vos crédits seront ajoutés automatiquement. Vous serez ensuite invité à vous connecter à l’aide de l’adresse email utilisée lors du paiement. Vous devrez ensuite confirmer votre email pour accéder à votre compte.
             </li>
             <li>
-                <strong className='underline'>3. Explorez les codes disponibles :</strong> Une fois connecté, suivez les instructions dans la page "Instructions" pour configurer votre thème Shopify, puis explorez les codes classés par niveau de complexité (1, 3 ou 5 crédits). Chaque code est conçu pour améliorer une fonctionnalité spécifique de votre boutique Shopify.
+                <strong className='underline'>3. Explorez les codes disponibles :</strong> Une fois connecté, suivez les instructions dans la page "installation" pour configurer votre thème Shopify, puis explorez les codes classés par niveau de complexité (1, 3 ou 5 crédits). Chaque code est conçu pour améliorer une fonctionnalité spécifique de votre boutique Shopify.
             </li>
             <li>
                 <strong className='underline'>4. Débloquez un code :</strong> Selon le nombre de crédits dont vous disposez, vous pouvez débloquer des codes basiques (1 crédit), intermédiaires (3 crédits) ou avancés (5 crédits).

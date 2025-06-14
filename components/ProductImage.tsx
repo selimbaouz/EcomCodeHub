@@ -10,6 +10,7 @@ import { BestReviews } from "./BestReviews";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { CheckIcon } from "lucide-react";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import SecureBadges from "./snippets/SecureBadges/SecureBadges";
 
 interface ProductImageProps {
     product: Product;
@@ -213,6 +214,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         bundle={bundleActive ? bundle : undefined}  
                         size="fullWidth" 
                     />
+                    <SecureBadges />
                     {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
                             <div>

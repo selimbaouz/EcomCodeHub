@@ -12,6 +12,8 @@ import {
 import { useEffect, useState } from "react";
 import { reviewsData } from "@/data";
 import ReviewCard from "./card/ReviewCard";
+import Link from "next/link";
+import { GoStarFill } from "react-icons/go";
 
 export function Reviews() {
     const [api, setApi] = useState<CarouselApi>()
@@ -50,21 +52,25 @@ export function Reviews() {
               "lg:text-3xl lg:py-20 lg:px-0", 
               "xl:text-4xl",
               )}>
-              <div className={cn("space-y-3 pb-4")}>
+              <div className={cn("space-y-4 pb-4")}>
                   <h3 className="mx-auto xl:text-6xl">
                       Ils ne peuvent plus s{"'"}en passer
                   </h3>
-                  <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">Qui de mieux qu{"'"}eux pour parler du pack pro conversion ?</p>
-                  <div className="text-center">
-                    <a 
-                      href="https://www.google.com/search?safe=strict&tbm=lcl&sxsrf=AE3TifNbb_1LBN1FsuMJ8m80oCOnLUZvwg:1749897451817&q=tailwindliquid%20toulon%20reviews&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDWwtLC0NDcyMzY1NrK0MDEyMdvAyPiKUbYkMTOnPDMvJSezsDQzRaEkvzQnP0-hKLUsM7W8eBErfnkAXD5oWFsAAAA&rldimm=15098997263532984246&hl=en-FR#arid=Ci9DQUlRQUNvZENodHljRjlvT21SRmVrRlhkRGM1TkRkcWVGTnNUSEl6YjJOVE1GRRAB&lkt=LocalPoiReviews&rlfi=hd:;si:15098997263532984246,l,Ch10YWlsd2luZGxpcXVpZCB0b3Vsb24gcmV2aWV3c0jvw6__gLyAgAhaIxAAGAAiHXRhaWx3aW5kbGlxdWlkIHRvdWxvbiByZXZpZXdzkgEXY29tcHV0ZXJfc29mdHdhcmVfc3RvcmU;mv:[[43.13072237731904,5.918950512532541],[43.130362422680975,5.918457287467461]]" 
+                  <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto pb-4">Qui de mieux qu{"'"}eux pour parler du Pack Conversion ?</p>
+                    <Link 
+                      href="https://www.google.com/search?nfpr=1&q=avis+sur+tailwindliquid+toulon&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzxCAX6Y-MYBdJ0ccMN9jN6O3luQYWsCh1ZGoHrBO0TmH8se3GhEtOTHRS4jHKd-1G7rIAi-UJbWYyHBd1lVI2Y08ulWT3urDb1OwkTXjLCoGX2iH3UaDvy6wJvHpJeEg92T5jMGFzaHf1ec5dXHEukjzS_tg&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9EshZX3GWIEXaoNNU90bh_GkICpSnqz5VUaDlBAC5fxsnm6iIVGvzaFMLWZfBRgqgBEygDDBMl7G1_cupIIhwZfW6StRuL_Mn7-82Co5iLLhlcbLw%3D%3D&stq=1&cs=1&lei=VJpMaOPKMKHX7M8PtqWQgQo&safe=strict" 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-sm font-medium lg:text-base max-w-5xl mx-auto underline"
+                      className="flex items-center justify-center mx-auto rounded-full shadow-md bg-white px-6 py-2 w-max gap-2"
                     >
-                      Voir tous les avis sur Google
-                    </a>
-                  </div>
+                      <GoStarFill className="text-lg text-primary" />
+                    <div className="text-sm font-semibold text-foreground">5/5 sur</div>
+                    <img
+                      className="w-[60px]"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
+                      alt="Logo Google"
+                    />
+                  </Link>
               </div>
               <Carousel 
                   setApi={setApi} 
