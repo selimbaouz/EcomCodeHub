@@ -278,7 +278,7 @@ export const trustsData2 = [
 
 export const reviewsData = [
   {
-    name: "Jerôme T.",
+    name: "Ye Yun",
     score: 5,
     content: "J’avais une petite question technique sur l’intégration d’un snippet, j’ai eu une réponse claire et rapide en moins d’une heure. Franchement, c’est rare de trouver un tel suivi. Bravo pour le professionnalisme !",
   },
