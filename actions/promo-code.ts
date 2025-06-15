@@ -36,6 +36,8 @@ export const validateCodeWithIP = action
 
   if (!promo) {
     return { error: 'Code invalide.' }
+  } else if (promo?.usedBy && promo?.ipUsed) {
+    return { error: "Le code promo a déjà été utilisé." };
   }
   
   return {

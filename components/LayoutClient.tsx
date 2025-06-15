@@ -11,7 +11,7 @@ interface LayoutClientProps {
 const LayoutClient: FC<LayoutClientProps> = ({children}) => {
     usePageVisibility({
         title: "Pourquoi tu es parti ? Reviens booster ta boutique !",
-        onVisible: "tailwindliquid - Boostez votre boutique Shopify",
+        onVisible: "TailwindLiquid - Boostez votre boutique Shopify",
         onHidden: () => "L'utilisateur a laissé filer ses conversions Shopify !",
         favicon: Favicon.src,
         faviconInactive: FaviconInactive.src

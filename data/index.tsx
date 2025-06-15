@@ -278,9 +278,9 @@ export const trustsData2 = [
 
 export const reviewsData = [
   {
-    name: "Ines S.",
+    name: "Jerôme T.",
     score: 5,
-    content: "J'ai utilisée plusieurs snippets pour ma boutique shopify et je suis vraiment satisfaite. Tout fonctionne du 1er coup, et j'ai pu personnaliser facilement selon mes besoins. Un vrai plus pour ma boutique, merci !",
+    content: "J’avais une petite question technique sur l’intégration d’un snippet, j’ai eu une réponse claire et rapide en moins d’une heure. Franchement, c’est rare de trouver un tel suivi. Bravo pour le professionnalisme !",
   },
   {
     name: "Mickael L.",
