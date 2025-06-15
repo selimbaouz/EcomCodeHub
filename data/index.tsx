@@ -330,27 +330,27 @@ export const checkProduct = [
 
 export const detailsProduct = [
   {
-    title: "Ce que vous obtenez",
+    title: "Présentation et bénéfices du pack",
     content: <Description />
   },
   {
-    title: "Pourquoi choisir TailwindLiquid ?",
+    title: "Pourquoi c’est la meilleure solution ?",
     content: <WhyTL />
   },
   {
-    title: "Fonctionnement",
+    title: "Comment ça marche ?",
     content: <HowItWorks />
   },
   {
-    title: "Assistance personnalisée",
+    title: "Assistance et contact",
     content: <Support />
   },
   {
-    title: "Paiements acceptés et sécurité",
+    title: "Sécurité et moyens de paiement",
     content: <PaymentSecurity />
   },
   {
-    title: "Remboursements",
+    title: "Conditions de remboursement",
     content: <RefundPolicy />
   }
 ]

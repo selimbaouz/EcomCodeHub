@@ -41,7 +41,7 @@ const Footer = ({
                             <h6 className={cn("lg:text-xl font-medium")}>Contactez-nous</h6>
                             <div className="leading-relaxed space-y-2 text-sm">
                                 <Link href="mailto:tailwindliquid@gmail.com" className={cn(classLink)}>tailwindliquid@gmail.com</Link>
-                                <p>Du lundi au vendredi: 09h00 - 17h30</p>
+                                <p>Du lundi au vendredi: 09h00 - 18h00</p>
                             </div>
                         </div>
                     </div>
