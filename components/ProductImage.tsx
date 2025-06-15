@@ -214,7 +214,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         bundle={bundleActive ? bundle : undefined}  
                         size="fullWidth" 
                     />
-                    <p className="text-center">Paiement sécurisé – Accès immédiat après achat</p>
+                    <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">Paiement sécurisé – Accès immédiat après achat</p>
                     <SecureBadges />
                     {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
