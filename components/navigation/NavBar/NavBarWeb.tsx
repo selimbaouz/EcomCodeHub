@@ -70,8 +70,12 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                                 title: "Snippets",
                             },
                             {
-                                path: "/docs/installation", 
+                                path: "/installation", 
                                 title: "Installation",
+                            },
+                            {
+                                path: "/credits-gratuits", 
+                                title: "Crédits gratuits",
                             }
                         ]?.map((data, i) => (
                             <li key={i}>
@@ -97,14 +101,13 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                             }},
                             {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
                             {href: `/account`, label: "Compte"},
-                            ...(user?.plan === "SUBSCRIPTION" ? 
-                                [{ 
-                                    href: `https://www.facebook.com/groups/tailwindliquid`, 
-                                    label: "Groupe Privé", 
-                                    separator: true,
-                                    target: "_blank", 
-                                    rel: "noopener noreferrer" 
-                                }] : []), 
+                            { 
+                                href: `https://discord.gg/kdjkzQNE`, 
+                                label: "Serveur Discord", 
+                                separator: true,
+                                target: "_blank", 
+                                rel: "noopener noreferrer" 
+                            }, 
                         ]}
                         handleLogOut={() => signOut()}
                         isLogOut={currentUser ? true : false}

@@ -49,6 +49,10 @@ export default function SideBar ({
                         {
                             path: "/installation", 
                             title: "Installation",
+                        },
+                        {
+                            path: "/credits-gratuits", 
+                            title: "Crédits gratuits",
                         }
                     ]?.map((data, i) => (
                         <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>

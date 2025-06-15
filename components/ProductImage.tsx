@@ -185,7 +185,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                                                                 {title: "Économisez  30% sur chaque commande"},
                                                                 {title: "Annulez, modifiez, mettez en pause à tout moment"},
                                                                 {title: "Support client prioritaire"},
-                                                                {title: "Accès à notre groupe VIP"},
+                                                                {title: "Accès à notre serveur Discord"},
                                                                 {title: "Recevez de nouveaux codes chaque mois"},
                                                                 {title: "Audits et conseils pour améliorer votre boutique"},
                                                             ].map((data, index) => (
