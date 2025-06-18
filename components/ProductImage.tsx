@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { CheckIcon } from "lucide-react";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import SecureBadges from "./snippets/SecureBadges/SecureBadges";
+import Link from "next/link";
 
 interface ProductImageProps {
     product: Product;
@@ -66,7 +67,12 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                 <h3 className={cn("text-left text-2xl font-bold pointer-events-none whitespace-pre-wrap text-foreground", "lg:text-3xl", "xl:text-4xl")}>
                     {product.title}
                 </h3>
-               <div className="flex items-center justify-start border border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2">
+               <Link 
+                    href="https://www.google.com/search?nfpr=1&q=avis+sur+tailwindliquid+toulon&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzxCAX6Y-MYBdJ0ccMN9jN6O3luQYWsCh1ZGoHrBO0TmH8se3GhEtOTHRS4jHKd-1G7rIAi-UJbWYyHBd1lVI2Y08ulWT3urDb1OwkTXjLCoGX2iH3UaDvy6wJvHpJeEg92T5jMGFzaHf1ec5dXHEukjzS_tg&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9EshZX3GWIEXaoNNU90bh_GkICpSnqz5VUaDlBAC5fxsnm6iIVGvzaFMLWZfBRgqgBEygDDBMl7G1_cupIIhwZfW6StRuL_Mn7-82Co5iLLhlcbLw%3D%3D&stq=1&cs=1&lei=VJpMaOPKMKHX7M8PtqWQgQo&safe=strict" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center justify-start border border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2"
+                >
                     <div className="text-[13px] font-semibold">"Incroyable"</div>
                     <div className="flex items-center">
                         <StarFilledIcon className="text-sm text-primary"/>
@@ -81,7 +87,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
                         alt="Logo Google"
                     />
-                </div>
+                </Link>
             </div>
             <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez notre <strong>communauté d’e-commerçants</strong> qui ont fait <strong>exploser leurs ventes</strong> grâce à notre <strong>Pack Conversion</strong> 🚀.</p>
 

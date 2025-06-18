@@ -91,7 +91,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://selimbaouz.com/"
+          profileUrl: "#"
         }
       ],
       rating: 5,
@@ -102,7 +102,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://selimbaouz.com/"
+          profileUrl: "#"
         }
       ],
       rating: 5,
@@ -113,7 +113,7 @@ export const bestReviewsData = [
       picture: [
         {
           imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "https://selimbaouz.com/"
+          profileUrl: "#"
         }
       ],
       rating: 5,
@@ -992,7 +992,7 @@ export const legalsPagesData = (handle: string) => {
           },
           {
             title: "1. Éditeur du site",
-            content: "TailwindLiquid\nConçu et développé par Selim Baouz\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz"
+            content: "TailwindLiquid\nConçu et développé par Selim Baouz (Selimmersive)\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz (Selimmersive)"
           },
           {
             title: "2. Hébergement",
