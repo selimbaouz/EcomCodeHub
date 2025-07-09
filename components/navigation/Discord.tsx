@@ -1,9 +1,10 @@
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa6';
+import { FaDiscord } from 'react-icons/fa6';
 
 // Remplace ce numéro par le tien (format international sans +)
-const WHATSAPP_NUMBER = '33745473667'; // Exemple : 33612345678 pour +33 6 12 34 56 78
+const LINK_DISCORD = 'https://discord.gg/kGayPFck58';
 
 function isOpenNow() {
   // Obtenir la date et l'heure actuelles à Paris
@@ -20,17 +21,17 @@ function isOpenNow() {
   return isWeekday && isOpenHour;
 }
 
-const WhatsApp = () => {
+const Discord = () => {
   const open = isOpenNow();
 
   return (
-    <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+    <Link
+      href={LINK_DISCORD}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contactez-nous sur WhatsApp"
+      aria-label="Rejoignez-nous sur Discord"
       className={cn(
-        "fixed z-50 bottom-8 right-6 size-16 lg:size-24 rounded-full bg-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        "fixed z-50 bottom-8 right-6 size-16 lg:size-24 rounded-full bg-[#5662F6] flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
       )}
     >
       <div
@@ -39,9 +40,9 @@ const WhatsApp = () => {
           open ? 'bg-green-400' : 'bg-red-500'
         )}
       />
-      <FaWhatsapp className="size-8 lg:size-12 text-white" />
-    </a>
+      <FaDiscord className="size-8 lg:size-12 text-white" />
+    </Link>
   );
 };
 
-export default WhatsApp;
+export default Discord;

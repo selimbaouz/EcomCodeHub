@@ -379,7 +379,7 @@ export const faqData = [
   {
     title: "Ai-je besoin de compétences techniques ?",
     content:
-      "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Whatsapp ou par email à tailwindliquid@gmail.com.",
+      "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Discord ou par email à tailwindliquid@gmail.com.",
   },
   {
     title: "Comment fonctionne l'installation des codes ?",
@@ -399,7 +399,7 @@ export const faqData = [
   {
     title: "Que faire si j'ai des problèmes ?",
     content:
-      "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Whatsapp ou par email à tailwindliquid@gmail.com.",
+      "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Discord ou par email à tailwindliquid@gmail.com.",
   },
 ];
 

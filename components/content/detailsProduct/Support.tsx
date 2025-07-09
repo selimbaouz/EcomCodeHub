@@ -8,7 +8,7 @@ const Support = () => {
         Je suis disponible pour vous accompagner à chaque étape, que ce soit pour un problème technique ou une question sur l'installation ou l'utilisation des codes.
       </li>
       <li>
-        <strong className='underline'>Contactez-moi directement :</strong> Par Whatsapp ou par email : <a href="mailto:tailwindliquid@gmail.com" className="text-blue-500 underline">tailwindliquid@gmail.com</a>
+        <strong className='underline'>Contactez-moi directement :</strong> Par Discord ou par email : <a href="mailto:tailwindliquid@gmail.com" className="text-blue-500 underline">tailwindliquid@gmail.com</a>
       </li>
      {/*  <li>
         <strong className='underline'>Rejoignez notre communauté Discord :</strong>  

@@ -102,7 +102,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                             {href: `/ambassador-program`, label: "Devenez Ambassadeur", separator: true},
                             {href: `/account`, label: "Compte"},
                             { 
-                                href: `https://discord.gg/kdjkzQNE`, 
+                                href: `https://discord.gg/kGayPFck58`, 
                                 label: "Serveur Discord", 
                                 separator: true,
                                 target: "_blank", 

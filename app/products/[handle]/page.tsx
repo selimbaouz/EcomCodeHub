@@ -16,7 +16,7 @@ import { Reviews } from '@/components/Reviews';
 import FlashPromo from '@/components/FlashPromo';
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import ExampleCode from '@/components/ExampleCode';
-import WhatsApp from '@/components/navigation/WhatsApp';
+import Discord from '@/components/navigation/Discord';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -73,7 +73,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <Reviews />
                 <FAQ />
                 <Footer />
-                <WhatsApp />
+                <Discord />
             {/* <PurchasePopup /> */}
         </div>
     );

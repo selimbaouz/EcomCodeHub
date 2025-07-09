@@ -38,7 +38,7 @@ const CreditsGratuits = () => {
             2. Montrez-nous votre message
           </h2>
           <p className="text-gray-700 dark:text-gray-300">
-            Une fois l’avis publié, prenez une capture d’écran (avec la date visible) et envoyez-la par e-mail à l'adresse : tailwindliquid@gmail.com, sur Whatsapp
+            Une fois l’avis publié, prenez une capture d’écran (avec la date visible) et envoyez-la par e-mail à l'adresse : tailwindliquid@gmail.com, sur Discord
             ou sur notre serveur Discord.
           </p>
         </div>
