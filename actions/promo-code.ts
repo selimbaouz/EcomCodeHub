@@ -47,56 +47,49 @@ export const validateCodeWithIP = action
 
 export async function checkIPTrust() {
   try {
-    const headersList = headers()
-    const ip =
-      headersList.get('x-forwarded-for') ||
-      headersList.get('cf-connecting-ip') ||
-      '0.0.0.0'
+    const headersList = headers();
+    let ip = headersList.get('x-forwarded-for') || headersList.get('cf-connecting-ip') || '0.0.0.0';
+    
+    // Si x-forwarded-for contient plusieurs IPs, prends la première publique
+    if (ip.includes(',')) {
+      ip = ip.split(',').map(i => i.trim())[0];
+    }
 
-    const hashedIp = createHash('sha256').update(ip).digest('hex')
+    const hashedIp = createHash('sha256').update(ip).digest('hex');
 
-    // Vérifie si l'IP est déjà utilisée pour un autre code
-    const alreadyUsed = await db.promoCode.findFirst({
-      where: {
-        ipUsed: hashedIp,
-      },
-    })
+    const alreadyUsed = await db.promoCode.findFirst({ where: { ipUsed: hashedIp } });
 
-    // Vérifie la fiabilité de l'IP
     const response = await fetch(`https://ipapi.co/${ip}/json/`, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; IP Check)',
-      },
-    })
-    const data = await response.json()
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; IP Check)' },
+    });
+    const data = await response.json();
 
-    const isVPN = data?.security?.vpn || false
-    const isProxy = data?.security?.proxy || false
-    const isTor = data?.security?.tor || false
-
-    const isTrusted = !(isVPN || isProxy || isTor)
+    const isVPN = data?.security?.vpn || false;
+    const isProxy = data?.security?.proxy || false;
+    const isTor = data?.security?.tor || false;
+    const isTrusted = !(isVPN || isProxy || isTor);
 
     if (!isTrusted) {
       return {
         success: false,
         reason: 'Votre IP semble provenir d’un VPN, proxy ou réseau TOR.',
-      }
+      };
     }
 
     return {
       success: true,
       isTrusted: true,
       alreadyUsed,
-      
-    }
+    };
   } catch (err) {
-    console.error(err)
+    console.error(err);
     return {
       success: false,
       reason: 'Erreur lors de la vérification de votre IP.',
-    }
+    };
   }
 }
+
 
 export const createUserWithPromo = action
   .schema(SignUserWithCodeSchema)
@@ -133,6 +126,7 @@ export const createUserWithPromo = action
         name,
         plan: "ONE_TIME",
         stripeCustomerId: stripeCustomer.id,
+        promoCodeId: promoId
       },
     });
 

@@ -43,7 +43,7 @@ export default function SideBar ({
                 <ul className={cn("cursor-pointer")}>
                     {[
                         {
-                            path: "/docs", 
+                            path: "/", 
                             title: "Snippets",
                         },
                         {

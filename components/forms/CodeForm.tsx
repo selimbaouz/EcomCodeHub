@@ -133,7 +133,7 @@ export function CodeForm() {
   }
 
   if (currentUser) {
-    redirect("/docs");
+    redirect("/");
   }
 
   return (

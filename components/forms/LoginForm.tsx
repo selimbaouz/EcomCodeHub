@@ -68,33 +68,31 @@ const onSubmit = (values: Login) => {
         }).then((response) => {
           if (response?.data?.error) {
             toast.error(response?.data?.error);
+            return;
           }
+
           if (response?.data?.success) {
-            if (!emailChecked) {
-              if (
-                response?.data?.user?.stripeCustomerId &&
-                response.data?.user.plan &&
-                response?.data?.user.email || response?.data?.user?.promoCodeId
-              ) {
-                if (
-                  response.data?.user?.emailVerified &&
-                  !response.data?.mailsend
-                ) {
-                  setEmailChecked(true);
-                  setIsLogin(!!response?.data?.user?.password);
-                } else {
-                  toast.success(response?.data?.success);
-                  setIsMailSended(true);
-                  setMailOfUser(values.email ?? "");
-                }
-              } else {
-                toast.error("Votre email n'existe pas !", {
-                  description:
-                    "Veuillez acheter un plan pour pouvoir utiliser votre compte.",
-                });
+            const user = response?.data?.user;
+            const hasPaidPlan = user?.stripeCustomerId && user?.plan && user?.email;
+            const hasPromoCode = !!user?.promoCodeId;
+
+            if (hasPaidPlan || hasPromoCode) {
+              if (user?.emailVerified === null) {
+                // email non vérifié → envoie mail de vérif déjà fait
+                toast.success("Veuillez vérifier votre email pour continuer.");
+                setIsMailSended(true);
+                setMailOfUser(values.email ?? "");
+                return;
               }
+
+              // Email vérifié et pas de mail envoyé → continuer
+              setEmailChecked(true);
+              setIsLogin(!!user?.password);
             } else {
-              setIsLogin(!!response?.data?.user?.password);
+              toast.error("Votre email n'existe pas !", {
+                description:
+                  "Veuillez acheter un plan pour pouvoir utiliser votre compte.",
+              });
             }
             setNewEmail("");
           }
@@ -152,7 +150,7 @@ const onSubmit = (values: Login) => {
   }
 
   if(currentUser) {
-    redirect("/docs");
+    redirect("/");
   }
   
   return (

@@ -226,7 +226,7 @@ export const buyOneTimePlan = action
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/docs`,
+    success_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/`,
     cancel_url: `${process.env.NEXT_PUBLIC_LOCAL_URL!}/plans?echec=true`,
     line_items: [{ price: priceId, quantity: 1 }],
     metadata: { packName: nameOfPack },

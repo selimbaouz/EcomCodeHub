@@ -13,30 +13,40 @@ import { AuthError } from "next-auth";
 import { action } from "@/lib/safe-action";
 
 export const verifyEmail = action
-.schema(LoginSchema) 
-.action(async ({ parsedInput: { email, isChange } }) => {
-  const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
+  .schema(LoginSchema)
+  .action(async ({ parsedInput: { email, isChange } }) => {
+    const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
-  if (!existingUser) {
-    return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
-  }
+    if (!existingUser) {
+      return {
+        error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie.",
+        emailVerified: false,
+      };
+    }
 
-  if (!existingUser.emailVerified) {
-    const verificationToken = await generateVerificationToken(
-      existingUser.email ?? "",
-    );
+    if (!existingUser.emailVerified) {
+      const verificationToken = await generateVerificationToken(existingUser.email ?? "");
 
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-      isChange ?? false
-    );
+      await sendVerificationEmail(
+        verificationToken.email,
+        verificationToken.token,
+        isChange ?? false
+      );
 
-    return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
-  }
-  
-  return { success: true, user: existingUser };
-});
+      return {
+        success: "E-mail de confirmation envoyé.",
+        mailsend: true,
+        emailVerified: false,
+        user: existingUser,
+      };
+    }
+
+    return {
+      success: "Cet e-mail a déjà été vérifié.",
+      emailVerified: true,
+      user: existingUser,
+    };
+  });
 
 export const updateOrLogin = action
 .schema(LoginSchema) 
