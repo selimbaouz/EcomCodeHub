@@ -19,6 +19,10 @@ export default async function Home() {
     const user = await getUserByEmail(session?.user?.email ?? "");
     const snippets = await fetchSnippets();
     const categoriesSnippets = await fetchCategoriesSnippets();
+
+    /* if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
+            redirect("/auth/login");
+    } */
     
     return (
         <div>

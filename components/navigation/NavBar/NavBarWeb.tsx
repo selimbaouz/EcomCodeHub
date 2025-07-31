@@ -140,20 +140,32 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                     </Link>
                 </div>
                 <ul className={cn("flex items-center gap-5", "xl:gap-6")}>
-                    {menu.map((data, i) => (
-                        <li key={i}>
-                            {data.path.includes("contact") ? (
-                                <Link 
-                                    href="mailto:tailwindliquid@gmail.com"
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className={cn(classLink, data.path === pathname && "font-bold")}
-                                >Contact</Link>
-                            ) : (
-                                <Link href={data.path} className={cn(classLink, data.path === pathname && "font-bold text-primary")}>{data.title}</Link>
-                            )}
+                    {[
+                            {
+                                path: "/", 
+                                title: "Snippets",
+                            },
+                            {
+                                path: "/products/pack-pro-conversion-shopify", 
+                                title: "Pack Conversion",
+                            },
+                            {
+                                path: "/ambassador-program", 
+                                title: "Programme Ammbassadeurs",
+                            }
+                        ].map((data, i) => (
+                            <li key={i}>
+                            <Link href={data.path} className={cn(classLink, data.path === pathname && "font-bold text-primary")}>{data.title}</Link>
+                            </li>
+                        ))}
+                        <li>
+                            <Link 
+                                href="mailto:tailwindliquid@gmail.com"
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className={cn(classLink)}
+                            >Contact</Link>
                         </li>
-                    ))}
                 </ul>
             </div>
             <div className={cn("flex gap-3 items-center")}>
