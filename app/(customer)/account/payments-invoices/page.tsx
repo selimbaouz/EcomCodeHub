@@ -5,7 +5,6 @@ import AccountWrapper from "@/components/AccountWrapper";
 import LoaderSpinner from "@/components/loading/LoaderSpinner";
 import NavBar from "@/components/navigation/NavBar";
 import { getUserByEmail } from "@/data/auth/user";
-import { getMenu } from "@/data/shopify";
 import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import OrdersList from "@/components/OrdersList";
@@ -32,7 +31,7 @@ export default async function PaymentsInvoices() {
                 </div>
                 <div className={cn("min-h-[92dvh]", "lg:max-w-[1400px] lg:mx-auto", "xl:flex xl:gap-24")}>
                 <AccountSidebar />
-                {user && (user.plan === "SUBSCRIPTION" || subscription?.data) ? (
+                {user && subscriptionItem ? (
                     <div className="flex flex-col gap-20 w-full">
                         <div className={cn('px-6 w-full', "lg:block", "xl:px-0 xl:pt-14")}>   
                             <h3 className={cn('text-2xl font-bold py-10 lg:py-0 lg:pb-14')}>Mon abonnement</h3>

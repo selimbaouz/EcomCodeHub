@@ -98,47 +98,40 @@ export default function SideBar ({
             </SheetTitle>
         </SheetHeader>
         <SheetDescription></SheetDescription>
-        <ul className={cn("cursor-pointer")}>
-            {menu?.map((data, i) => (
-                <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>
-                    {data.path.includes("contact") ? (
-                        <Link 
-                            href="mailto:tailwindliquid@gmail.com"
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className={cn(classLink)}
-                        >Contact</Link>
-                    ) : (
-                        <Link 
-                        href={data.path} 
-                        target={data.title === "Suivre ma commande" ? "_blank" : undefined} 
-                        rel={data.title === "Suivre ma commande" ? "noopener noreferrer" : undefined} 
-                        className={cn(classLink, data.path === pathname && "text-background dark:text-foreground")}
-                        onClick={() => {
-                            if (!data.path.startsWith("/#")) {
-                                setIsOpenSidebar(false);
-                            }
-                        }}
-                        >
-                            {data.title}
-                        </Link>
-                    )}
-                </li>
-            ))}
-            <li className={cn("border-y dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", "/auth/login" === pathname && "bg-primary")}>
-                <Link 
-                    href={"/auth/login"} 
-                    className={cn(classLink, "/auth/login" === pathname && "text-background")}
-                    onClick={() => {
-                        if (!"/auth/login".startsWith("/#")) {
-                            setIsOpenSidebar(false);
-                        }
-                    }}
+            <ul className={cn("cursor-pointer")}>
+                {[
+                    {
+                        path: "/", 
+                        title: "Snippets",
+                    },
+                    {
+                        path: "/products/pack-pro-conversion-shopify", 
+                        title: "Pack Conversion",
+                    },
+                    {
+                        path: "/ambassador-program", 
+                        title: "Programme Ammbassadeurs",
+                    },
+                    {
+                        path: "/auth/login", 
+                        title: "Se connecter",
+                    }
+                ].map((data, i) => (
+                    <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>
+                        <Link href={data.path} className={cn(classLink, data.path === pathname && "text-background font-bold dark:text-foreground")}>{data.title}</Link>
+                    </li>
+                ))}
+                <li className="border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group">
+                    <Link 
+                        href="mailto:tailwindliquid@gmail.com"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={cn(classLink)}
                     >
-                        Se connecter
-                </Link>
-            </li>
-        </ul>
+                        Contact
+                    </Link>
+                </li>
+            </ul>
         </SheetContent>
     </Sheet>
   );
