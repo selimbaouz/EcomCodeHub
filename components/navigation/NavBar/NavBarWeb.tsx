@@ -66,7 +66,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ menu, isAccount = false, currentUser, u
                     <ul className={cn("flex items-center gap-5", "xl:gap-6")}>
                         {[
                             {
-                                path: "/docs", 
+                                path: "/", 
                                 title: "Snippets",
                             },
                             {

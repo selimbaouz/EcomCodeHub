@@ -103,7 +103,7 @@ export const updateOrLogin = action
       const isMatch = await bcrypt.compare(password ?? "", existingUser.password);
       if (!isMatch) return { error: "Le mot de passe est incorrect. Veuillez réessayer." };
 
-      await signIn("credentials", { email, password, redirectTo: "/docs" });
+      await signIn("credentials", { email, password, redirectTo: "/" });
       } catch (error) {
         if (error instanceof AuthError) {
           switch (error.type) {
@@ -125,7 +125,7 @@ export const updateOrLogin = action
         data: { password: hashedPassword ?? "" },
       });
 
-      await signIn("credentials", { email, password, redirectTo: "/docs" });
+      await signIn("credentials", { email, password, redirectTo: "/" });
       return { success: true };
     } catch (error) {
       if (error instanceof AuthError) {

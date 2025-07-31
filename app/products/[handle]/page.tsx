@@ -32,7 +32,6 @@ export default async function ProductPage({ params }: { params: { handle: string
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
                 <NavBar menu={menu} />
-                <FlashPromo />
             </div>
 
             <div className="max-w-screen-xl mx-auto w-full">

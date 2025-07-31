@@ -37,7 +37,6 @@ const Discord = () => {
       <div
         className={cn(
           'size-3 lg:size-5 rounded-full absolute top-2 left-0',
-          open ? 'bg-green-400' : 'bg-red-500'
         )}
       />
       <FaDiscord className="size-8 lg:size-12 text-white" />

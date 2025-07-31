@@ -25,7 +25,7 @@ const Category: FC<CategoryProps> = ({categories}) => {
     }, [categories]);
 
     return (
-        <div className="whitespace-nowrap flex items-center justify-start gap-2 lg:justify-center pt-32 overflow-x-scroll scrollbar-hidden">
+        <div className="whitespace-nowrap flex items-center justify-start gap-2 lg:justify-center pt-10 overflow-x-scroll scrollbar-hidden">
             {categoriesFiltered.map((title, i) => (
                 <div 
                     key={i}

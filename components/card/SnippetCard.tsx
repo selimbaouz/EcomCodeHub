@@ -12,6 +12,8 @@ import { Button } from '../ui/button';
 import { PulseLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { useCurrentUser } from '@/hook/use-current-user';
+import Link from 'next/link';
 
 interface SnippetCardProps {
     snippet: SnippetType;
@@ -25,7 +27,10 @@ const SnippetCard = ({
     const [copied, setCopied] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isPending, startTransition] = useTransition();
+    const currentUser = useCurrentUser();
     const router = useRouter();
+    const hasAccess = !!user?.stripeCustomerId || !!user?.plan;
+    const isLoggedIn = !!user?.id;
 
     const name = snippet.componentName;
     if(!name) return null;
@@ -64,32 +69,43 @@ const SnippetCard = ({
                 <h6 className="font-semibold lg:text-sm">{snippet.title}</h6>
                 <div className={cn("flex items-center gap-2", "lg:gap-4")}>
                     <div className="flex bg-gray-100 rounded-xl p-0.5">
-                        {!hasPurchased ? (
-                            <button type='button' onClick={(e) => {
-                                e.preventDefault();
-                                setIsModalOpen(true);
-                            }} className={cn('flex items-center gap-2 py-2 px-3 rounded-xl cursor-pointer bg-background', 'hover:bg-foreground hover:text-background')}>
-                                <div className={cn("flex gap-2 items-center")}>
-                                    <FaUnlock className='text-sm' />
-                                    <p className='font-bold text-sm hidden lg:block'>Débloquez</p>
-                                </div>
-                                <p className='text-gray-400'>|</p>
-                                <div className='flex gap-2 items-center'>
-                                    <FaCoins className='text-sm'/>
-                                    <p>{snippet.creditPrice}</p>
-                                </div>
-                            </button>
-                        ) : 
-                        (selectSnippetData.map((data, index) => (
-                            <button
-                                key={index}
-                                className={cn("flex items-center gap-2 text-sm font-bold cursor-pointer py-2 px-3 rounded-xl", selectedTab === index ? "bg-white text-foreground" : "text-gray-500")}
-                                onClick={() => setSelectedTab(index)}
-                            >
-                                <data.icon className='text-lg lg:text-sm' />
-                                <h6 className={cn("hidden", "lg:block lg:text-sm")}>{data.title}</h6>
-                            </button>
-                        )))}
+                      {!hasPurchased ? (
+                          <button
+                            type='button'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setIsModalOpen(true);
+                            }}
+                            className={cn(
+                              'flex items-center gap-2 py-2 px-3 rounded-xl cursor-pointer bg-background',
+                              'hover:bg-foreground hover:text-background'
+                            )}
+                          >
+                            <div className="flex gap-2 items-center">
+                              <FaUnlock className="text-sm" />
+                              <p className="font-bold text-sm hidden lg:block">Débloquez le code</p>
+                            </div>
+                            <p className="text-gray-400">|</p>
+                            <div className="flex gap-2 items-center">
+                              <FaCoins className="text-sm" />
+                              <p>{snippet.creditPrice}</p>
+                            </div>
+                          </button>
+                      ) : (
+                        selectSnippetData.map((data, index) => (
+                          <button
+                            key={index}
+                            className={cn(
+                              "flex items-center gap-2 text-sm font-bold cursor-pointer py-2 px-3 rounded-xl",
+                              selectedTab === index ? "bg-white text-foreground" : "text-gray-500"
+                            )}
+                            onClick={() => setSelectedTab(index)}
+                          >
+                            <data.icon className="text-lg lg:text-sm" />
+                            <h6 className="hidden lg:block lg:text-sm">{data.title}</h6>
+                          </button>
+                        ))
+                      )}
                     </div>
                     {hasPurchased && (
                     <button
@@ -119,48 +135,61 @@ const SnippetCard = ({
                 )}
             </div>
             {isModalOpen && (
-                <ConfirmModal
+              <ConfirmModal
                 isOpen={isModalOpen}
                 onClose={setIsModalOpen}
-                title="Débloquez le snippet"
-                description={`Ce snippet coûte ${snippet.creditPrice} crédits et il vous reste ${user?.credits} crédits. Êtes-vous sûr de vouloir débloquer ce snippet ?`}
+                title={!isLoggedIn || !hasAccess ? "Accès requis" : "Débloquez le snippet"}
+                description={
+                  !isLoggedIn || !hasAccess
+                    ? "Vous devez acheter un pack de crédits et vous connecter pour débloquer ce snippet avec vos crédits."
+                    : `Ce snippet coûte ${snippet.creditPrice} crédits et il vous reste ${user?.credits} crédits. Êtes-vous sûr de vouloir débloquer ce snippet ?`
+                }
               >
-                <div className={cn("flex items-center gap-2 justify-end")}>
+                <div className="flex items-center gap-2 justify-end">
                   <Button
-                    size="lg" 
-                    variant="outline" 
+                    size="lg"
+                    variant="outline"
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setIsModalOpen(false);
                     }}
                     type="button"
-                    className={cn("font-medium border", "lg:text-base")}
+                    className="font-medium border lg:text-base"
                     disabled={isPending}
-                  >  
+                  >
                     Annuler
                   </Button>
-                  <Button 
-                    type='button' 
-                    size="lg" 
-                    variant="secondary" 
-                    disabled={isPending}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handlePurchase();
-                    }} 
-                    className={cn("font-medium", "lg:text-base")}
-                  >
-                    {isPending ? (
-                      <PulseLoader
-                        size={7}
-                      />) : (
-                      "Débloquez"
-                    )}
-                  </Button>
+
+                  {!isLoggedIn || !hasAccess ? (
+                    <Link href="/products/pack-pro-conversion-shopify">
+                      <Button
+                        size="lg"
+                        variant="secondary"
+                        className="font-medium lg:text-base"
+                      >
+                        Acheter un pack
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      type="button"
+                      size="lg"
+                      variant="secondary"
+                      disabled={isPending}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handlePurchase();
+                      }}
+                      className="font-medium lg:text-base"
+                    >
+                      {isPending ? <PulseLoader size={7} /> : "Débloquez"}
+                    </Button>
+                  )}
                 </div>
               </ConfirmModal>
             )}
+
         </div>
     );
 };
