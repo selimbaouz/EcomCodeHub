@@ -5,7 +5,12 @@ export const getVerificationTokenByToken = async (
 ) => {
   try {
     const verificationToken = await db.verificationToken.findUnique({
-      where: { token }
+      where: { token },
+      select: {
+        id: true,
+        email: true,
+        expires: true
+      }
     });
 
     return verificationToken;

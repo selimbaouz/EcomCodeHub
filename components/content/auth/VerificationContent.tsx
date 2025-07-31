@@ -13,14 +13,6 @@ export const VerificationContent = (messageKey: string | undefined) => {
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
         targetHref: "_blank"
       };
-    case 'tokenInvalid':
-      return {
-        icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Lien invalide",
-        description: "Le lien de vérification est invalide. Veuillez vérifier votre boîte de réception pour le lien correct ou demander un nouveau lien en saisissant à nouveau votre adresse e-mail.",
-        buttonLabel: "Se connecter",
-        buttonHref: `/auth/login`,
-      };
     case 'tokenExpired':
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
@@ -29,6 +21,14 @@ export const VerificationContent = (messageKey: string | undefined) => {
         buttonLabel: "Se connecter",
         buttonHref: `/auth/login`,
       };
+      case 'tokenInvalidOrUsed':
+        return {
+          icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
+          title: "Lien invalide ou déjà utilisé",
+          description: "Ce lien de vérification est invalide ou a déjà été utilisé. Veuillez en demander un nouveau ou vous connecter si votre e-mail a déjà été confirmé.",
+          buttonLabel: "Se connecter",
+          buttonHref: `/auth/login`,
+        };
     case 'emailNotExist':
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
@@ -43,14 +43,6 @@ export const VerificationContent = (messageKey: string | undefined) => {
         icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
         title: "E-mail vérifié",
         description: "Votre adresse e-mail a été vérifiée avec succès. Vous pouvez maintenant créer votre mot de passe pour pouvoir accéder à votre compte.",
-        buttonLabel: "Se connecter",
-        buttonHref: `/auth/login`,
-      };
-    case 'emailAlreadyVerified':
-      return {
-        icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
-        title: "E-mail déjà validé",
-        description: "Votre adresse e-mail a déjà été confirmée. Connectez-vous maintenant pour accéder à votre compte.",
         buttonLabel: "Se connecter",
         buttonHref: `/auth/login`,
       };

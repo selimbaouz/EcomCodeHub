@@ -12,8 +12,10 @@ import { cn } from '@/lib/utils';
 const EmailVerificationRequest = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasVerified, setHasVerified] = useState(false);
 
   const searchParams = useSearchParams();
+  
   const token = searchParams?.get("token");
 
   useEffect(() => {
@@ -23,33 +25,34 @@ const EmailVerificationRequest = () => {
       return;
     }
 
-    const parsedToken = NewVerificationSchema.safeParse({ token });
-
-    if (!parsedToken.success) {
-      setMessage({ type: 'warning', key: 'tokenInvalid' });
-      setIsLoading(false);
+    if (hasVerified) {
+      // On a déjà vérifié pour ce token, ne rien faire
       return;
     }
 
     const onSubmit = async () => {
-        newVerification({ token })
-        .then((data) => {
-          if(data?.data?.error) {
-            setMessage({ type: 'error', key: data?.data?.error ?? "" });
-          } 
-          if(data?.data?.success) {
-            setMessage({ type: 'success', key: data?.data?.success ?? "" });
-          }
-        })
-        .catch(() => {
+      try {
+        setIsLoading(true);
+        const data = await newVerification({ token });
+        const res = data?.data;
+
+        if (res?.error) {
+          setMessage({ type: 'error', key: res.error });
+        } else if (res?.success) {
+          setMessage({ type: 'success', key: res.success });
+        } else {
           setMessage({ type: 'error', key: 'somethingWentWrong' });
-        }).finally(() => {
-          setIsLoading(false);
-        });
+        }
+      } catch {
+        setMessage({ type: 'error', key: 'somethingWentWrong' });
+      } finally {
+        setIsLoading(false);
+        setHasVerified(true); // on indique qu'on a fait la vérification
+      }
     };
 
     onSubmit();
-  }, [token]);
+  }, [token, hasVerified]);
 
   const messageContent = VerificationContent(message?.key);
 

@@ -27,6 +27,7 @@ import {
 import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
+import Link from "next/link";
 
 export function CodeForm() {
   const [isMailSended, setIsMailSended] = useState(false);
@@ -124,8 +125,11 @@ export function CodeForm() {
             className={cn("w-max font-medium mt-8", "lg:text-base")}
             type="button"
             onClick={() => setIsMailSended(false)}
+            asChild
           >
-            Accéder à la connexion
+            <Link href="/auth/login">
+              Accéder à la connexion
+            </Link>
           </Button>
         </div>
       </div>

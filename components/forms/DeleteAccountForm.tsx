@@ -6,7 +6,7 @@ import {
   FormItem,
   FormMessage,  
 } from "@/components/ui/form";
-import React, { FC, useState, useTransition } from 'react';
+import React, { useState, useTransition } from 'react';
 import { cn } from '@/lib/utils';
 import { CiLock } from 'react-icons/ci';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
@@ -21,6 +21,7 @@ import { Button } from '../ui/button';
 import CardAuthWrapper from '../card/CardAuthWrapper';
 import { Input } from '../ui/input';
 import { PulseLoader } from 'react-spinners';
+import { logout } from "@/actions/logout";
 
 const DeleteAccountForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +48,12 @@ const DeleteAccountForm = () => {
                 toast.error(response?.data?.error);
                 }
                 if (response?.data?.success) {
-                toast.success(response?.data?.success);
+                    toast.success(response?.data?.success);
+
+                setTimeout(async () => {
+                    await logout();
+                    window.location.href = "/";
+                }, 2000);
                 } 
             });
             });

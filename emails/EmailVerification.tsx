@@ -33,7 +33,7 @@ const EmailVerification = ({
                 TailwindLiquid
             </Text>
             <Text className='text-3xl mt-8 text-foreground font-medium'>
-                {isChange ? "Confirmez votre nouvelle adresse e-mail" : "Confirmez le changement de votre adresse e-mail"}
+                {!isChange ? "Confirmez votre adresse e-mail" : "Confirmez le changement de votre adresse e-mail"}
             </Text>
           </Section>
           <Hr />

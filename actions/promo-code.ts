@@ -167,6 +167,7 @@ export const verifyEmail = action
     await sendVerificationEmail(
       verificationToken.email,
       verificationToken.token,
+      false
     );
 
     return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
