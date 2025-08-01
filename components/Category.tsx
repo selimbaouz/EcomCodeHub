@@ -1,8 +1,8 @@
 "use client";
 import { cn } from '@/lib/utils';
 import { useSnippetsFiltered } from '@/store/snippetsFiltered';
-import { SnippetsType } from '@/types/types';
-import React, { FC, useEffect, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
+import React, { FC, useMemo } from 'react';
 
 interface CategoryProps {
     categories: {
@@ -13,12 +13,13 @@ interface CategoryProps {
 
 const Category: FC<CategoryProps> = ({categories}) => {
     const { setCategory, category } = useSnippetsFiltered();
+    const t = useTranslations("fe.snippetsDatabase.categories");
 
     const categoriesFiltered = useMemo(() => {
-        const categoriesSet = new Set<string>(["Tout"]);
+        const categoriesSet = new Set<string>([t("all")]);
         categories.forEach(category => {
             if (category?.title) {
-                categoriesSet.add(category.title);
+                categoriesSet.add(t(category.title));
             }
         });
         return Array.from(categoriesSet);

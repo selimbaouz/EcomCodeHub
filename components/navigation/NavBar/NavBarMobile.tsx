@@ -12,7 +12,6 @@ import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useOpenSidebarStore } from "@/store/sidebar";
 import { useOpenAccountStore } from "@/store/account";
 /* import LocaleSwitcher from "@/components/LocaleSwitcher"; */
-import { useLocale } from "next-intl";
 
 interface NavBarMobileProps {
     currentUser: User | undefined;
@@ -23,7 +22,6 @@ const NavBarMobile = ({
     isAccount
 }: NavBarMobileProps) => {
     const { cart } = useCartStore();
-      const locale = useLocale();
     const { setIsOpenCart } = useOpenCartStore();
     const { setIsOpenSidebar } = useOpenSidebarStore();
     const { setIsOpenAccount } = useOpenAccountStore();

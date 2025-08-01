@@ -507,17 +507,6 @@ export const PacksSelected = (selected: number) => {
   }
 };
 
-export const selectSnippetData = [
-  {
-    title: "Aperçu",
-    icon: FaEye,
-  },
-  {
-    title: "Code",
-    icon: MdOutlineCode
-  }
-]
-
 export const SnippetSelected = () => [
   {
     title: "Titre Produit",

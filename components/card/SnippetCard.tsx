@@ -1,8 +1,7 @@
 "use client";
-import { selectSnippetData } from '@/data';
 import { cn } from '@/lib/utils';
 import React, { useState, useTransition } from 'react';
-import { FaCheck, FaCoins, FaRegCopy, FaUnlock } from 'react-icons/fa6';
+import { FaCheck, FaCoins, FaEye, FaRegCopy, FaUnlock } from 'react-icons/fa6';
 import CodeBlock from '../CodeBlock';
 import { SnippetType, UserType } from '@/types/types';
 import ComponentsSnippet from '../snippets/ComponentsSnippet';
@@ -13,6 +12,8 @@ import { PulseLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { MdOutlineCode } from 'react-icons/md';
 
 interface SnippetCardProps {
     snippet: SnippetType;
@@ -22,6 +23,7 @@ const SnippetCard = ({
     snippet,
     user
 }: SnippetCardProps) => {
+    const t = useTranslations("fe");
     const [selectedTab, setSelectedTab] = useState(0);
     const [copied, setCopied] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,6 +38,17 @@ const SnippetCard = ({
     var pretty = require('pretty');
     const formattedCode = pretty(snippet.code, {ocd: true});
     const hasPurchased = snippet.purchases.some((purchase) => purchase.userId === user?.id);
+
+    const selectSnippetData = [
+      {
+        title: t("snippets.preview"),
+        icon: FaEye,
+      },
+      {
+        title: t("snippets.code"),
+        icon: MdOutlineCode
+      }
+    ]
 
     const handleCopy = () => {
         navigator.clipboard.writeText(formattedCode);
@@ -64,7 +77,7 @@ const SnippetCard = ({
     return (
         <div className={cn("bg-background relative flex flex-col gap-2 w-full border p-4 rounded-2xl shadow-md", "dark:border-[#324e58]")}>
             <div className="flex justify-between items-center">
-                <h6 className="font-semibold lg:text-sm">{snippet.title}</h6>
+                <h6 className="font-semibold lg:text-sm">{t(`snippetsDatabase.title.${snippet.title}`)}</h6>
                 <div className={cn("flex items-center gap-2", "lg:gap-4")}>
                     <div className="flex bg-gray-100 rounded-xl p-0.5">
                       {!hasPurchased ? (
@@ -81,7 +94,7 @@ const SnippetCard = ({
                           >
                             <div className="flex gap-2 items-center">
                               <FaUnlock className="text-sm" />
-                              <p className="font-bold text-sm hidden lg:block">Débloquez le code</p>
+                              <p className="font-bold text-sm hidden lg:block">{t("snippets.unlockCode")}</p>
                             </div>
                             <p className="text-gray-400">|</p>
                             <div className="flex gap-2 items-center">
@@ -136,12 +149,15 @@ const SnippetCard = ({
               <ConfirmModal
                 isOpen={isModalOpen}
                 onClose={setIsModalOpen}
-                title={!isLoggedIn || !hasAccess ? "Accès requis" : "Débloquez le snippet"}
+                title={!isLoggedIn || !hasAccess ? t("snippets.accessRequired") : t("snippets.unlockSnippet")}
                 description={
-                  !isLoggedIn || !hasAccess
-                    ? "Vous devez acheter un pack de crédits et vous connecter pour débloquer ce snippet avec vos crédits."
-                    : `Ce snippet coûte ${snippet.creditPrice} crédits et il vous reste ${user?.credits} crédits. Êtes-vous sûr de vouloir débloquer ce snippet ?`
-                }
+                !isLoggedIn || !hasAccess
+                  ? t("snippets.buyPackAndLogin")
+                  : t("snippets.confirmUnlock", {
+                      creditPrice: snippet.creditPrice,
+                      userCredits: user?.credits ?? 0,
+                    })
+              }
               >
                 <div className="flex items-center gap-2 justify-end">
                   <Button
@@ -156,7 +172,7 @@ const SnippetCard = ({
                     className="font-medium border lg:text-base"
                     disabled={isPending}
                   >
-                    Annuler
+                    {t("snippets.cancel")}
                   </Button>
 
                   {!isLoggedIn || !hasAccess ? (
@@ -166,7 +182,7 @@ const SnippetCard = ({
                         variant="secondary"
                         className="font-medium lg:text-base"
                       >
-                        Acheter un pack
+                        {t("snippets.buyPack")}
                       </Button>
                     </Link>
                   ) : (
@@ -181,7 +197,7 @@ const SnippetCard = ({
                       }}
                       className="font-medium lg:text-base"
                     >
-                      {isPending ? <PulseLoader size={7} /> : "Débloquez"}
+                      {isPending ? <PulseLoader size={7} /> : t("snippets.unlock")}
                     </Button>
                   )}
                 </div>

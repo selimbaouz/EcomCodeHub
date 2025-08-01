@@ -22,11 +22,13 @@ import CardAuthWrapper from '../card/CardAuthWrapper';
 import { Input } from '../ui/input';
 import { PulseLoader } from 'react-spinners';
 import { logout } from "@/actions/logout";
+import { useLocale } from "next-intl";
 
 const DeleteAccountForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isPending, startTransition] = useTransition();
+    const locale = useLocale();
 
     const form = useForm<DeleteAccount>({
         resolver: zodResolver(deleteAccountSchema),
@@ -53,7 +55,7 @@ const DeleteAccountForm = () => {
             }).finally(() => {
                  setTimeout(async () => {
                     await logout();
-                    window.location.href = "/";
+                    window.location.href = `/${locale}`;
                 }, 2000);
             });
             });

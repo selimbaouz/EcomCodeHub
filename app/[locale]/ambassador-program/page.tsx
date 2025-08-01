@@ -4,13 +4,15 @@ import StickyBar from '@/components/navigation/StickyBar';
 import Prose from '@/components/prose';
 import { getPage } from '@/data/shopify';
 import { cn } from '@/lib/utils';
+import { useLocale } from 'next-intl';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
 export default async function AmbassadorProgram() {
     const page = await getPage("ambassador-program");
+    const locale = useLocale();
 
-    if (!page) redirect("/");
+    if (!page) redirect(`/${locale}`);
 
     return (
         <div className='relative'>

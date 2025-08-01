@@ -5,6 +5,7 @@ import SnippetCard from "../card/SnippetCard";
 import { FC, useMemo } from "react";
 import { SnippetsType, UserType } from "@/types/types";
 import { useSnippetsFiltered } from "@/store/snippetsFiltered";
+import { useTranslations } from "next-intl";
 
 interface SnippetsProps {
     user: UserType;
@@ -12,9 +13,10 @@ interface SnippetsProps {
 }
 const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     const {searchQuery, category} = useSnippetsFiltered(); 
+    const t = useTranslations("fe");
     const filteredSnippets = useMemo(() => {
         return snippets.filter(snippet => {
-            const matchesCategory = category === "Tout" || snippet.category?.title === category;
+            const matchesCategory = category === t("snippetsDatabase.categories.all") || t(`snippetsDatabase.categories.${snippet.category?.title}`) === category;
             const matchesSearch = snippet.title.toLowerCase().includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
         });
@@ -29,7 +31,7 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
                     ))}
                 </div>
             ) : ( category &&
-                <div className="flex justify-center items-center w-full">Aucun snippet trouvé</div>
+                <div className="flex justify-center items-center w-full">{t("snippets.NoSnippetFound")}</div>
             )}
         </div>
     );

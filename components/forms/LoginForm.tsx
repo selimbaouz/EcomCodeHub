@@ -25,6 +25,7 @@ import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import { useNewEmailStore } from "@/store/account";
+import { useLocale } from "next-intl";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -36,6 +37,7 @@ export function LoginForm() {
   const [isPending, startTransition] = useTransition();
   const currentUser = useCurrentUser();
   const {newEmail, setNewEmail} = useNewEmailStore();
+  const locale = useLocale();
   
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -150,7 +152,7 @@ const onSubmit = (values: Login) => {
   }
 
   if(currentUser) {
-    redirect("/");
+    redirect(`/${locale}`);
   }
   
   return (
@@ -160,7 +162,7 @@ const onSubmit = (values: Login) => {
         description={cardTexts.description}
         footerTitle="Vous avez un code ?"
         footerLabel="Insérez votre code"
-        footerHref="/auth/code"
+        footerHref={`/${locale}/auth/code`}
         className="whitespace-pre-wrap"
       >
         <Form {...form}>

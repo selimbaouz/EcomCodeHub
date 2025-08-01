@@ -14,7 +14,6 @@ import HowItWorks from '@/components/HowItWorks';
 import { Reviews } from '@/components/Reviews';
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import ExampleCode from '@/components/ExampleCode';
-import Discord from '@/components/navigation/Discord';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -69,7 +68,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <Reviews />
                 <FAQ />
                 <Footer />
-                <Discord />
+               {/*  <Discord /> */}
             {/* <PurchasePopup /> */}
         </div>
     );

@@ -28,6 +28,7 @@ import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
 export function CodeForm() {
   const [isMailSended, setIsMailSended] = useState(false);
@@ -35,6 +36,7 @@ export function CodeForm() {
   const [step, setStep] = useState<"code" | "signup">("code");
   const [isPending, startTransition] = useTransition();
   const currentUser = useCurrentUser();
+  const locale = useLocale();
 
   const codeForm = useForm<Code>({
     resolver: zodResolver(CodePromoSchema),
@@ -127,7 +129,7 @@ export function CodeForm() {
             onClick={() => setIsMailSended(false)}
             asChild
           >
-            <Link href="/auth/login">
+            <Link href={`/${locale}/auth/login`}>
               Accéder à la connexion
             </Link>
           </Button>
@@ -137,7 +139,7 @@ export function CodeForm() {
   }
 
   if (currentUser) {
-    redirect("/");
+    redirect(`/${locale}`);
   }
 
   return (
