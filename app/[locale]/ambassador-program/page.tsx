@@ -2,14 +2,13 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/navigation/NavBar';
 import StickyBar from '@/components/navigation/StickyBar';
 import Prose from '@/components/prose';
-import { getMenu, getPage } from '@/data/shopify';
+import { getPage } from '@/data/shopify';
 import { cn } from '@/lib/utils';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
 export default async function AmbassadorProgram() {
     const page = await getPage("ambassador-program");
-    const menu = await getMenu("main-menu");
 
     if (!page) redirect("/");
 
@@ -17,7 +16,7 @@ export default async function AmbassadorProgram() {
         <div className='relative'>
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
-                <NavBar menu={menu} />
+                <NavBar />
             </div>
             <section className={cn(
                 "w-full text-left space-y-10 max-w-screen-2xl mx-auto py-10", 

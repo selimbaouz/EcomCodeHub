@@ -17,7 +17,7 @@ export default async function InstallationPage() {
     return (
         <div>
             <div className="sticky top-0 w-full z-50">
-                <NavBar menu={[]} isAccount />
+                <NavBar isAccount />
             </div>
             <Installation />
             <Footer />

@@ -23,7 +23,7 @@ const Header:FC<HeaderProps> = ({menu}) => {
             <div className={cn('p-4 text-center py-14 space-y-8 mx-auto max-w-screen-2xl h-[95dvh] z-10', "lg:flex lg:justify-between lg:p-2 lg:py-0 lg:space-y-0 lg:text-left", "3xl:max-w-screen-3xl")}>
                 <div className={cn("lg:flex lg:flex-col lg:justify-between lg:px-4 xl:px-10 lg:w-[90%]", "xl:w-[70%]")}>
                     <div className={cn("hidden", "lg:block")}>
-                        <NavBar menu={menu} />
+                        <NavBar />
                     </div>
                     <div className={cn("space-y-8 px-2", "sm:px-10", "lg:px-0 lg:w-[90%]")}>
                         <h1 className={cn('uppercase font-medium text-2xl leading-tight', "md:text-4xl md:leading-[1.2]", "lg:text-5xl", "xl:text-6xl xl:leading-tight", "3xl:text-8xl 3xl:leading-snug")}>

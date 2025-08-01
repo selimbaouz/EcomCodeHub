@@ -1,0 +1,33 @@
+{
+  "fe": {
+    "heroTitle": "The ultimate snippet\nlibrary for Shopify",
+    "heroDescription": "Ready-to-use Tailwindcss snippets for Shopify.\nSave time—copy, paste, and you’re live.",
+    "heroButton": "Buy a pack",
+    "startInstallation": "Get started with installation",
+    "greeting": "Hello",
+    "creditsRemaining": "You have {credits} credits left",
+    "noCredits": "You have no credits left",
+    "navigation": {
+      "snippets": "Snippets",
+      "installation": "Installation",
+      "credits": "Free credits",
+      "buyCredits": "Buy credits",
+      "subscribe": "Subscribe",
+      "ambassador": "Become an Ambassador",
+      "account": "Account",
+      "discord": "Discord Server",
+      "conversionPack": "Conversion Pack",
+      "ambassadorProgram": "Ambassador Program",
+      "contact": "Contact",
+      "login": "Login",
+      "logout": "Logout"
+    },
+    "localeNames": {
+      "en": "English",
+      "fr": "French",
+      "es": "Spanish",
+      "pt": "Portuguese"
+    },
+    "searchPlaceholder": "Search..."
+  }
+}

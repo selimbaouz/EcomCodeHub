@@ -1,6 +1,6 @@
 import ProductImage from '@/components/ProductImage';
 import ImagesGallery from '@/components/ImagesGallery'; 
-import { getHandleOfProduct, getMenu, getProductById } from '@/data/shopify'; 
+import { getHandleOfProduct, getProductById } from '@/data/shopify'; 
 import { redirect } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import StickyBar from '@/components/navigation/StickyBar';
@@ -12,15 +12,12 @@ import MarqueeStack from '@/components/MarqueeStack';
 import { trustsDataGroup1, trustsDataGroup2 } from '@/data';
 import HowItWorks from '@/components/HowItWorks';
 import { Reviews } from '@/components/Reviews';
-/* import { PurchasePopup } from '@/components/PurchasePopup'; */
-import FlashPromo from '@/components/FlashPromo';
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import ExampleCode from '@/components/ExampleCode';
 import Discord from '@/components/navigation/Discord';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
-    const menu = await getMenu("main-menu");
     
     if(!product) {
         redirect('/')
@@ -31,7 +28,7 @@ export default async function ProductPage({ params }: { params: { handle: string
         <div className='relative'>
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
-                <NavBar menu={menu} />
+                <NavBar />
             </div>
 
             <div className="max-w-screen-xl mx-auto w-full">

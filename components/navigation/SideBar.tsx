@@ -9,18 +9,19 @@ import { useOpenSidebarStore } from "@/store/sidebar";
 import { CgClose } from "react-icons/cg";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
+import { useLocale, useTranslations } from "next-intl";
 
 interface SideBarProps {
-    menu: Menu[];
     isAccount?: boolean;
 }
 
 export default function SideBar ({
-    menu,
     isAccount
 }: SideBarProps) {
     const classLink = "font-light text-base text-foreground lg:text-sm xl:text-base group-hover:text-background";
     const pathname = usePathname();
+    const locale = useLocale();
+    const t = useTranslations("fe.navigation");
     const { isOpenSidebar, setIsOpenSidebar } = useOpenSidebarStore();
 
     const handleSignOut = async () => {
@@ -43,16 +44,16 @@ export default function SideBar ({
                 <ul className={cn("cursor-pointer")}>
                     {[
                         {
-                            path: "/", 
-                            title: "Snippets",
+                            path: `/${locale}`, 
+                            title: t("snippets"),
                         },
                         {
-                            path: "/installation", 
-                            title: "Installation",
+                            path: `/${locale}/installation`, 
+                            title: t("installation"),
                         },
                         {
-                            path: "/credits-gratuits", 
-                            title: "Crédits gratuits",
+                            path: `/${locale}/credits-gratuits`, 
+                            title: t("credits"),
                         }
                     ]?.map((data, i) => (
                         <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>
@@ -77,7 +78,7 @@ export default function SideBar ({
                             className={cn(classLink, "/auth/login" === pathname && "text-background")}
                             onClick={handleSignOut}
                             >
-                                Se déconnecter
+                                {t("logout")}
                         </Link>
                     </li>
                 </ul>
@@ -101,20 +102,20 @@ export default function SideBar ({
             <ul className={cn("cursor-pointer")}>
                 {[
                     {
-                        path: "/", 
-                        title: "Snippets",
+                        path: `/${locale}`, 
+                        title: t("snippets"),
                     },
                     {
-                        path: "/products/pack-pro-conversion-shopify", 
-                        title: "Pack Conversion",
+                        path: `/${locale}/products/pack-pro-conversion-shopify`, 
+                        title: t("conversionPack"),
                     },
                     {
-                        path: "/ambassador-program", 
-                        title: "Programme Ammbassadeurs",
+                        path: `/${locale}/ambassador-program`, 
+                        title: t("ambassadorProgram"),
                     },
                     {
-                        path: "/auth/login", 
-                        title: "Se connecter",
+                        path: `/${locale}/auth/login`, 
+                        title: t("login"),
                     }
                 ].map((data, i) => (
                     <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>
@@ -128,7 +129,7 @@ export default function SideBar ({
                         rel="noopener noreferrer"
                         className={cn(classLink)}
                     >
-                        Contact
+                        {t("contact")}
                     </Link>
                 </li>
             </ul>

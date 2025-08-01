@@ -12,7 +12,6 @@ import { Button } from '../ui/button';
 import { PulseLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { useCurrentUser } from '@/hook/use-current-user';
 import Link from 'next/link';
 
 interface SnippetCardProps {
@@ -27,7 +26,6 @@ const SnippetCard = ({
     const [copied, setCopied] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isPending, startTransition] = useTransition();
-    const currentUser = useCurrentUser();
     const router = useRouter();
     const hasAccess = !!user?.stripeCustomerId || !!user?.plan;
     const isLoggedIn = !!user?.id;

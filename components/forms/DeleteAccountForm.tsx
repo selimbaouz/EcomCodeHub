@@ -45,16 +45,16 @@ const DeleteAccountForm = () => {
         deleteAccount(values)
             .then((response) => {
                 if(response?.data?.error) {
-                toast.error(response?.data?.error);
+                    toast.error(response?.data?.error);
                 }
                 if (response?.data?.success) {
                     toast.success(response?.data?.success);
-
-                setTimeout(async () => {
+                } 
+            }).finally(() => {
+                 setTimeout(async () => {
                     await logout();
                     window.location.href = "/";
                 }, 2000);
-                } 
             });
             });
         };

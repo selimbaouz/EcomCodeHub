@@ -17,7 +17,7 @@ export default async function CreditsGratuitsPage() {
     return (
         <div>
             <div className="sticky top-0 w-full z-50">
-                <NavBar menu={[]} isAccount />
+                <NavBar isAccount />
             </div>            
             <CreditsGratuits />
             <Footer />

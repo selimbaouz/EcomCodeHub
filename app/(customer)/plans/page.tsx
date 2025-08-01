@@ -20,7 +20,7 @@ export default async function PlansPage () {
     return (
       <div>
         <div className="sticky top-0 w-full z-50">
-            <NavBar menu={[]} isAccount />
+            <NavBar isAccount />
         </div>
         <div className="px-4 w-full py-20 mx-auto bg-gray-100 dark:bg-[#324e58] h-full">
             <div className="max-w-screen-xl mx-auto w-full">

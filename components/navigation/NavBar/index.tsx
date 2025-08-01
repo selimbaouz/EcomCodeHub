@@ -10,12 +10,10 @@ import { fetchUserByEmail } from "@/actions/user";
 import { useSession } from "next-auth/react";
 
 interface NavBarProps {
-    menu?: Menu[];
     isAccount?: boolean;
 }
 export default function NavBar(
     {
-        menu,
         isAccount,
     }: NavBarProps) {
         const { data: session } = useSession();
@@ -36,12 +34,12 @@ export default function NavBar(
     return (
         <nav className={cn("bg-background border-b dark:border-white/10 z-[100]")}>
             <NavBarMobile currentUser={currentUser} isAccount={isAccount} />
-            <NavBarWeb menu={menu ?? []} currentUser={currentUser} user={user} isAccount={isAccount} />
+            <NavBarWeb currentUser={currentUser} user={user} isAccount={isAccount} />
 
             {/* Panier */}
             <Cart />
             {/* Liens */}
-            <SideBar menu={menu ?? []} isAccount={isAccount} />
+            <SideBar isAccount={isAccount} />
         </nav>
     );
 };

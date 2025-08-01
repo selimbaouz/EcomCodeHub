@@ -2,14 +2,17 @@
 import { FaSearch } from 'react-icons/fa'; // Icône de recherche
 import { Input } from './ui/input';
 import { useSnippetsFiltered } from '@/store/snippetsFiltered';
+import { useTranslations } from 'next-intl';
 
 function SearchBar() {
     const {searchQuery, setSearchQuery} = useSnippetsFiltered();
+    const t = useTranslations("fe");
+  
   return (
     <div className="relative w-full max-w-md mx-auto">
       <Input
         type="text"
-        placeholder="Rechercher..."
+        placeholder={t('searchPlaceholder')}
         className="pl-10 py-2 border rounded-full w-full shadow-md bg-background"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
