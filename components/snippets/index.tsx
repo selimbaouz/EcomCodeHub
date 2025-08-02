@@ -16,7 +16,7 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     const t = useTranslations("fe");
     const filteredSnippets = useMemo(() => {
         return snippets.filter(snippet => {
-            const matchesCategory = category === t("snippetsDatabase.categories.all") || t(`snippetsDatabase.categories.${snippet.category?.title}`) === category;
+            const matchesCategory = category === t("snippets.database.categories.all") || t(`snippets.database.categories.${snippet.category?.title}`) === category;
             const matchesSearch = snippet.title.toLowerCase().includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
         });

@@ -3,11 +3,9 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "../ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { Menu } from "@/types/types";
 import { usePathname } from "next/navigation";
 import { useOpenSidebarStore } from "@/store/sidebar";
 import { CgClose } from "react-icons/cg";
-import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 
@@ -25,7 +23,7 @@ export default function SideBar ({
     const { isOpenSidebar, setIsOpenSidebar } = useOpenSidebarStore();
 
     const handleSignOut = async () => {
-        await signOut({ callbackUrl: "/auth/login" });
+        await signOut({ callbackUrl: `/${locale}/auth/login` });
       };
 
     if(isAccount) {
@@ -72,7 +70,7 @@ export default function SideBar ({
                             </Link>
                         </li>
                     ))}
-                    <li className={cn("border-y dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", "/auth/login" === pathname && "bg-primary")}>
+                    <li className={cn("border-y dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", `/${locale}/auth/login ` === pathname && "bg-primary")}>
                         <Link 
                             href={"/auth/login"} 
                             className={cn(classLink, "/auth/login" === pathname && "text-background")}

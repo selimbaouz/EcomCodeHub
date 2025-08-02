@@ -8,11 +8,14 @@ import CardAuthWrapper from '../card/CardAuthWrapper';
 import { GetAPiMesssage } from '../GetAPiMesssage';
 import { newVerification } from '@/actions/new-verification';
 import { cn } from '@/lib/utils';
+import { useLocale, useTranslations } from 'next-intl';
 
 const EmailVerificationRequest = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasVerified, setHasVerified] = useState(false);
+  const locale = useLocale();
+  const t = useTranslations("fe");
 
   const searchParams = useSearchParams();
   
@@ -54,7 +57,7 @@ const EmailVerificationRequest = () => {
     onSubmit();
   }, [token, hasVerified]);
 
-  const messageContent = VerificationContent(message?.key);
+  const messageContent = VerificationContent(message?.key, locale, t);
 
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>

@@ -28,7 +28,7 @@ import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export function CodeForm() {
   const [isMailSended, setIsMailSended] = useState(false);
@@ -37,6 +37,7 @@ export function CodeForm() {
   const [isPending, startTransition] = useTransition();
   const currentUser = useCurrentUser();
   const locale = useLocale();
+  const t = useTranslations("fe");
 
   const codeForm = useForm<Code>({
     resolver: zodResolver(CodePromoSchema),
@@ -94,14 +95,14 @@ export function CodeForm() {
   const cardTexts =
     step === "code"
       ? {
-          title: "Débloquez vos crédits offerts",
+          title: t("form.codeTitle"),
           description:
-            "Vous avez reçu une invitation spéciale ?\nEntrez-le ci-dessous pour activer vos crédits.",
+             t("form.codeDescription"),
         }
       : {
-          title: "Créez votre compte",
+          title: t("form.signupTitle"),
           description:
-            "Entrez votre adresse email et créez un mot de passe pour accéder à votre compte.",
+            t("form.signupDescription"),
         };
 
   if (isMailSended) {
@@ -120,8 +121,8 @@ export function CodeForm() {
           )}
         >
           <IoIosMail className={cn("text-6xl")} />
-          <h5>Vérifiez votre Email</h5>
-          <p>Un lien de vérification vous a été envoyé par email.</p>
+          <h5>{t("form.emailSentTitle")}</h5>
+          <p>{t("form.emailSentDescription")}</p>
           <Button
             size="xl"
             className={cn("w-max font-medium mt-8", "lg:text-base")}
@@ -130,7 +131,7 @@ export function CodeForm() {
             asChild
           >
             <Link href={`/${locale}/auth/login`}>
-              Accéder à la connexion
+              {t("form.returnToLogin")}
             </Link>
           </Button>
         </div>
@@ -154,9 +155,9 @@ export function CodeForm() {
       <CardAuthWrapper
         title={cardTexts.title}
         description={cardTexts.description}
-        footerTitle="Vous avez un compte ?"
-        footerLabel="Connectez-vous"
-        footerHref="/auth/login"
+        footerTitle={t("form.footerTitleLogin")}
+        footerLabel={t("form.footerLabelLogin")}
+        footerHref={`/${locale}/auth/login`}
         className="whitespace-pre-wrap"
       >
         {step === "code" && (
@@ -175,7 +176,7 @@ export function CodeForm() {
                         {...field}
                         disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
-                        placeholder="Insérez votre code"
+                        placeholder={t("form.footerLabelCode")}
                         type="text"
                       />
                     </FormControl>
@@ -196,7 +197,7 @@ export function CodeForm() {
                 {isPending ? (
                   <PulseLoader size={7} color="white" />
                 ) : (
-                  "Confirmer"
+                  t("form.confirm")
                 )}
               </Button>
             </form>
@@ -219,7 +220,7 @@ export function CodeForm() {
                         {...field}
                         disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
-                        placeholder="Insérez votre nom"
+                        placeholder={t("form.insertName")}
                         type="text"
                       />
                     </FormControl>
@@ -237,7 +238,7 @@ export function CodeForm() {
                         {...field}
                         disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
-                        placeholder="Adresse e-mail"
+                        placeholder={t("form.emailPlaceholder")}
                         type="email"
                       />
                     </FormControl>
@@ -289,7 +290,7 @@ export function CodeForm() {
                 {isPending ? (
                   <PulseLoader size={7} color="white" />
                 ) : (
-                  "S'inscrire"
+                  t("form.register")
                 )}
               </Button>
             </form>

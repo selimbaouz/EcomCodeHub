@@ -21,12 +21,14 @@ import { Input } from "../ui/input";
 import { CiMail } from "react-icons/ci";
 import { useNewEmailStore } from "@/store/account";
 import { User } from "next-auth";
+import { useTranslations } from "next-intl";
 
 interface UpdateEmailFormProps {
     currentUser: User;
 }
 const UpdateEmailForm:FC<UpdateEmailFormProps> = ({currentUser}) => {
     const [isPending, startTransition] = useTransition();
+    const t = useTranslations("fe");
     const {setNewEmail} = useNewEmailStore();
 
     const form = useForm<UpdateEmail>({
@@ -41,9 +43,10 @@ const UpdateEmailForm:FC<UpdateEmailFormProps> = ({currentUser}) => {
         confirmChangeEmail(values)
             .then((response) => {
             if(response?.data?.error) {
-                toast.error(response?.data?.error);
+                toast.error(t(`toast.errors.${response?.data?.error}`));
             } else if (response?.data?.success) {
                 setNewEmail(values.newEmail);
+                toast.success(t(`toast.success.${response?.data?.success}`));
             }
             });
         });
@@ -55,19 +58,19 @@ const UpdateEmailForm:FC<UpdateEmailFormProps> = ({currentUser}) => {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6 max-w-xl"
             >
-                <h3 className={cn('text-xl font-bold pb-2')}>Email</h3>
+                <h3 className={cn('text-xl font-bold pb-2')}>{t("form.email")}</h3>
                 <FormField
                     control={form.control}
                     name="newEmail"
                     render={({ field }) => (
                         <FormItem className="space-y-4">
-                            <FormLabel className="font-medium">Adresse Email</FormLabel>
+                            <FormLabel className="font-medium">{t("form.emailPlaceholder")}</FormLabel>
                             <FormControl>
                                 <Input
                                     {...field}
                                     disabled={isPending}
                                     icon={<CiMail className="text-lg opacity-80" />}
-                                    placeholder="Adresse e-mail"
+                                    placeholder={t("form.emailPlaceholder")}
                                     type="email"
                                 />
                             </FormControl>
@@ -86,7 +89,7 @@ const UpdateEmailForm:FC<UpdateEmailFormProps> = ({currentUser}) => {
                     size={7}
                     color="white"
                 />) : (
-                "Sauvegarder"
+                t("form.confirm")
                 )}
             </Button>
             </form>

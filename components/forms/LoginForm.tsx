@@ -9,7 +9,7 @@ import {
 import { useState, useTransition} from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
-import { CodePromoSchema, LoginSchema } from "@/schemas";
+import { LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
@@ -25,7 +25,7 @@ import { IoIosMail } from "react-icons/io";
 import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import { useNewEmailStore } from "@/store/account";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -38,6 +38,7 @@ export function LoginForm() {
   const currentUser = useCurrentUser();
   const {newEmail, setNewEmail} = useNewEmailStore();
   const locale = useLocale();
+  const t = useTranslations("fe");
   
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
@@ -45,13 +46,7 @@ export function LoginForm() {
       email: "",
       password: "",
       twoFactorCode: "",
-    },
-  });
-
-  const codeForm = useForm<Code>({
-    resolver: zodResolver(CodePromoSchema),
-    defaultValues: {
-      code: "",
+      locale: locale
     },
   });
 
@@ -69,7 +64,7 @@ const onSubmit = (values: Login) => {
           isChange: newEmail !== "" ? true : false,
         }).then((response) => {
           if (response?.data?.error) {
-            toast.error(response?.data?.error);
+            toast.error(t(`toast.errors.${response?.data?.error}`));
             return;
           }
 
@@ -81,7 +76,7 @@ const onSubmit = (values: Login) => {
             if (hasPaidPlan || hasPromoCode) {
               if (user?.emailVerified === null) {
                 // email non vérifié → envoie mail de vérif déjà fait
-                toast.success("Veuillez vérifier votre email pour continuer.");
+                toast.success(t("toast.success.checkEmail"));
                 setIsMailSended(true);
                 setMailOfUser(values.email ?? "");
                 return;
@@ -91,9 +86,9 @@ const onSubmit = (values: Login) => {
               setEmailChecked(true);
               setIsLogin(!!user?.password);
             } else {
-              toast.error("Votre email n'existe pas !", {
+              toast.error(t("toast.error.emailNotExist"), {
                 description:
-                  "Veuillez acheter un plan pour pouvoir utiliser votre compte.",
+                 t("toast.errors.planRequired"),
               });
             }
             setNewEmail("");
@@ -105,7 +100,7 @@ const onSubmit = (values: Login) => {
       startTransition(async () => {
         updateOrLogin(values).then((response) => {
           if (response?.data?.error) {
-            toast.error(response?.data?.error);
+            toast.error(t(`toast.errors.${response?.data?.error}`));
           }
         });
       });
@@ -115,20 +110,20 @@ const onSubmit = (values: Login) => {
 
   const cardTexts = !emailChecked
     ? {
-        title: "Bienvenue",
+        title: t("form.titleEmail"),
         description:
-          "Veuillez entrer l'email que vous avez utilisé lors de votre achat sur Stripe.",
+          t("form.descEmail"),
       }
     : isLogin
     ? {
-        title: "Connectez-vous avec votre mot de passe",
+        title: t("form.titlePassword"),
         description:
-          "Veuillez indiquer le mot de passe que vous avez créé lors de votre inscription.",
+          t("form.descPassword"),
       }
     : {
-        title: "Créer un nouveau mot de passe",
+        title: t("form.titleNewPassword"),
         description:
-          "Veuillez créer un nouveau mot de passe pour accéder à votre compte.",
+          t("form.descNewPassword"),
       };
 
   if(!emailChecked && isMailSended) {
@@ -136,15 +131,15 @@ const onSubmit = (values: Login) => {
       <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
         <div className={cn("flex flex-col h-full gap-1 items-center justify-center text-center")}>
           <IoIosMail className={cn("text-6xl")} />
-          <h5>Vérifiez votre Email</h5>
-          <p>Nous envoyons simplement un lien de vérification à {mailOfUser || form.getValues("email")}.</p>
+          <h5>{t("form.checkEmailTitle")}</h5>
+          <p>{t("form.checkEmailDesc")} {mailOfUser || form.getValues("email")}.</p>
           <Button 
               size="xl" 
               className={cn("w-max font-medium mt-8", "lg:text-base")}
               type="button"
               onClick={() => setIsMailSended(false)}
             >
-              Accéder à la connexion
+              {t("form.returnToLogin")}
             </Button>
         </div>
       </div>
@@ -160,8 +155,8 @@ const onSubmit = (values: Login) => {
       <CardAuthWrapper
         title={cardTexts.title}
         description={cardTexts.description}
-        footerTitle="Vous avez un code ?"
-        footerLabel="Insérez votre code"
+        footerTitle={t("form.footerTitleCode")}
+        footerLabel={t("form.footerLabelCode")}
         footerHref={`/${locale}/auth/code`}
         className="whitespace-pre-wrap"
       >
@@ -180,7 +175,7 @@ const onSubmit = (values: Login) => {
                       <Input
                         {...field}
                         disabled={isPending}
-                        placeholder="Code à deux facteurs"
+                        placeholder={t("form.twoFactorPlaceholder")}
                       />
                     </FormControl>
                     <FormMessage />
@@ -199,7 +194,7 @@ const onSubmit = (values: Login) => {
                         {...field}
                         disabled={isPending}
                         icon={<CiLock className="text-lg opacity-80" />} 
-                        placeholder="Créer un nouveau mot de passe"
+                        placeholder={t("form.titleNewPassword")}
                         type={showPassword ? "text" : "password"}
                         endIcon={
                           <Button type="button" variant="link" onClick={handleClickShowPassword}>
@@ -224,7 +219,7 @@ const onSubmit = (values: Login) => {
                         {...field}
                         disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
-                        placeholder="Adresse e-mail"
+                        placeholder={t("form.emailPlaceholder")}
                         type="email"
                         />
                     </FormControl>
@@ -245,7 +240,7 @@ const onSubmit = (values: Login) => {
                           {...field}
                           disabled={isPending}
                           icon={<CiMail className="text-lg opacity-80" />}
-                          placeholder="Adresse e-mail"
+                          placeholder={t("form.emailPlaceholder")}
                           type="email"
                           />
                       </FormControl>
@@ -263,7 +258,7 @@ const onSubmit = (values: Login) => {
                           {...field}
                           disabled={isPending}
                           icon={<CiLock className="text-lg opacity-80" />} 
-                          placeholder={"Mot de passe"}
+                          placeholder={t("form.passwordPlaceholder")}
                           type={showPassword ? "text" : "password"}
                           endIcon={
                             <Button type="button" variant="link" onClick={handleClickShowPassword}>
@@ -279,7 +274,7 @@ const onSubmit = (values: Login) => {
                           className="px-0 pt-2 font-normal text-foreground"
                           asChild
                         >
-                          <Link href="/auth/reset" className="pb-2 text-sm">Mot de passe oublié ?</Link>
+                          <Link href={`/${locale}/auth/reset`} className="pb-2 text-sm">{t("form.forgotPassword")}</Link>
                         </Button>
                       )}
                       <FormMessage />
@@ -299,7 +294,7 @@ const onSubmit = (values: Login) => {
                   size={7}
                   color="white"
                 />) : (
-                showTwoFactor ? "Confirmer" : isLogin ? "Se connecter" : "Continuer"
+                showTwoFactor ? t("form.confirm") : isLogin ? t("form.submitLogin") : t("form.submitContinue")
               )}
             </Button>
           </form>

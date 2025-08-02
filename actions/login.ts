@@ -19,7 +19,7 @@ export const verifyEmail = action
 
     if (!existingUser) {
       return {
-        error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie.",
+        error: "emailNotExistError",
         emailVerified: false,
       };
     }
@@ -34,7 +34,7 @@ export const verifyEmail = action
       );
 
       return {
-        success: "E-mail de confirmation envoyé.",
+        success: "emailConfirmationSent",
         mailsend: true,
         emailVerified: false,
         user: existingUser,
@@ -42,7 +42,7 @@ export const verifyEmail = action
     }
 
     return {
-      success: "Cet e-mail a déjà été vérifié.",
+      success: "emailAlreadyVerified",
       emailVerified: true,
       user: existingUser,
     };
@@ -50,15 +50,15 @@ export const verifyEmail = action
 
 export const updateOrLogin = action
 .schema(LoginSchema) 
-.action(async ({ parsedInput: { email, password, twoFactorCode } }) => {
+.action(async ({ parsedInput: { email, password, twoFactorCode, locale } }) => {
     const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
     if (!existingUser || !existingUser.email) {
-      return { error: "Utilisateur non trouvé. Veuillez vérifier les informations saisies." };
+      return { error: "userNotFoundError" };
     }
 
     if (existingUser?.email !== email || !password) {
-      return { error: "Certains champs sont invalides. Veuillez vérifier et réessayer." };
+      return { error: "invalidFieldsError" };
     }
 
     if (existingUser.isTwoFactorEnabled && existingUser.email) {
@@ -68,13 +68,13 @@ export const updateOrLogin = action
         );
   
         if (!twoFactorToken || twoFactorToken.token !== twoFactorCode) {
-          return { error: "Le code de vérification est invalide. Veuillez vérifier et réessayer." };
+          return { error: "invalidVerificationCodeError" };
         }
   
         const hasExpired = new Date(twoFactorToken.expires) < new Date();
   
         if (hasExpired) {
-          return { error: "Le code de vérification a expiré. Veuillez en demander un nouveau." };
+          return { error: "expiredVerificationCodeError" };
         }
   
         await db.twoFactorToken.delete({
@@ -111,16 +111,16 @@ export const updateOrLogin = action
       try {
       // L'utilisateur a un mot de passe -> Connexion
       const isMatch = await bcrypt.compare(password ?? "", existingUser.password);
-      if (!isMatch) return { error: "Le mot de passe est incorrect. Veuillez réessayer." };
+      if (!isMatch) return { error: "incorrectPasswordError" };
 
-      await signIn("credentials", { email, password, redirectTo: "/" });
+      await signIn("credentials", { email, password, redirectTo: `/${locale}` });
       } catch (error) {
         if (error instanceof AuthError) {
           switch (error.type) {
             case "CredentialsSignin":
-              return { error: "Invalid credentials!" }
+              return { error: "loginInvalidCredentialsError" }
             default:
-              return { error: "Something went wrong!" }
+              return { error: "genericError" }
           }
         }
     
@@ -135,15 +135,15 @@ export const updateOrLogin = action
         data: { password: hashedPassword ?? "" },
       });
 
-      await signIn("credentials", { email, password, redirectTo: "/" });
+      await signIn("credentials", { email, password, redirectTo: `/${locale}` });
       return { success: true };
     } catch (error) {
       if (error instanceof AuthError) {
         switch (error.type) {
           case "CredentialsSignin":
-            return { error: "Invalid credentials!" }
+            return { error: "loginInvalidCredentialsError" }
           default:
-            return { error: "Something went wrong!" }
+            return { error: "genericError" }
         }
       }
       throw error;

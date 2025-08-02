@@ -27,7 +27,7 @@ const Home = ({
     snippets,
     categoriesSnippets
 }: HomeProps) => {
-    const t = useTranslations("fe");
+    const t = useTranslations("fe.home");
 
     /* useEffect(() => {
         fetch('/api/fb-view-content', {

@@ -2,70 +2,66 @@ import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
 import { IoIosCloseCircle } from "react-icons/io";
 import { PulseLoader } from 'react-spinners';
 
-export const EmailChangeConfirmationContent = (messageKey: string | undefined) => {
+export const EmailChangeConfirmationContent = (
+  messageKey: string | undefined,
+  locale: string,
+  t: (key: string) => string
+) => {
   switch (messageKey) {
     case 'tokenRequired':
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Lien non cliqué",
-        description: "Il semble que vous n'ayez pas cliqué sur le lien de confirmation envoyé à votre nouvel e-mail. Veuillez vérifier votre boîte de réception et cliquer sur le lien pour confirmer votre changement d'adresse e-mail.",
-        buttonLabel: "Ouvrir ma boîte mail",
+        title: t("content.tokenRequiredTitle"),
+        description: t("content.tokenRequiredDescription"),
+        buttonLabel: t("content.tokenRequiredButtonLabel"),
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
         targetHref: "_blank"
       };
     case 'tokenInvalid':
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Lien invalide",
-        description: "Le lien de confirmation du changement d'e-mail est invalide. Veuillez vérifier votre boîte de réception ou demander un nouveau changement d'e-mail.",
-        buttonLabel: "Revenir aux paramètres",
-        buttonHref: `/account`,
+        title: t("content.tokenInvalidTitle"),
+        description: t("content.tokenInvalidDescription"),
+        buttonLabel: t("content.tokenInvalidButtonLabel"),
+        buttonHref: `/${locale}/account`,
       };
     case 'tokenExpired':
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Lien expiré",
-        description: "Le lien de confirmation du changement d'e-mail a expiré. Veuillez effectuer une nouvelle demande depuis vos paramètres.",
-        buttonLabel: "Revenir aux paramètres",
-        buttonHref: `/account`,
-      };
-    case 'emailNotExist':
-      return {
-        icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Nouvel e-mail introuvable",
-        description: "L'adresse e-mail fournie n'existe pas. Veuillez vérifier l'adresse saisie et réessayer.",
-        buttonLabel: "Revenir aux paramètres",
-        buttonHref: `/account`,
+        title: t("content.tokenExpiredTitle"),
+        description: t("content.tokenExpiredDescription"),  
+        buttonLabel: t("content.tokenExpiredButtonLabel"),
+        buttonHref: `/${locale}/account`,
       };
     case 'emailChanged':
       return {
         icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
-        title: "E-mail mis à jour",
-        description: "Votre adresse e-mail a été changée avec succès. Vous pouvez maintenant vous connecter avec votre nouvelle adresse.",
-        buttonLabel: "Se connecter",
-        buttonHref: `/auth/login`,
+        title: t("content.emailChangedTitle"),
+        description: t("content.emailChangedDescription"),
+        buttonLabel: t("content.emailChangedButtonLabel"),
+        buttonHref: `/${locale}/auth/login`,
       };
-    case 'emailAlreadyChanged':
+    case 'userNotFound':
       return {
-        icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
-        title: "E-mail déjà mis à jour",
-        description: "Votre adresse e-mail a déjà été changée. Connectez-vous maintenant avec votre nouvelle adresse.",
-        buttonLabel: "Se connecter",
-        buttonHref: `/auth/login`,
+        icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
+        title: t("content.userNotFoundTitle"),
+        description: t("content.userNotFoundDescription"),
+        buttonLabel: t("content.userNotFoundButtonLabel"),
+        buttonHref: `/${locale}/account`,
       };
     case 'somethingWentWrong':
       return {
         icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
-        title: "Erreur",
-        description: "Une erreur est survenue lors du changement d'e-mail. Veuillez réessayer plus tard ou contacter le support si le problème persiste.",
-        buttonLabel: "Contacter le support",
+        title: t("content.somethingWentWrongTitle"),
+        description: t("content.somethingWentWrongDescription"),
+        buttonLabel: t("content.somethingWentWrongButtonLabel"),
         buttonHref: "mailto:tailwindliquid@gmail.com",
       };
     default:
       return {
         icon: <PulseLoader size={14} color="#0ea5e9" />,
-        title: "Vérification en cours...",
-        description: "Merci de patienter pendant la vérification de votre email.",
+        title: t("content.defaultTitle"),
+        description: t("content.defaultDescription"),
         buttonLabel: "",
         buttonHref: "",
       };

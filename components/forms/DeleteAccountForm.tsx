@@ -22,12 +22,13 @@ import CardAuthWrapper from '../card/CardAuthWrapper';
 import { Input } from '../ui/input';
 import { PulseLoader } from 'react-spinners';
 import { logout } from "@/actions/logout";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const DeleteAccountForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isPending, startTransition] = useTransition();
+    const t = useTranslations("fe");
     const locale = useLocale();
 
     const form = useForm<DeleteAccount>({
@@ -35,7 +36,7 @@ const DeleteAccountForm = () => {
         defaultValues: {
             password: "",
         },
-        });
+    });
 
     const handleClickShowPassword = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation(); 
@@ -47,10 +48,10 @@ const DeleteAccountForm = () => {
         deleteAccount(values)
             .then((response) => {
                 if(response?.data?.error) {
-                    toast.error(response?.data?.error);
+                    toast.error(t(`toast.errors.${response?.data?.error}`));
                 }
                 if (response?.data?.success) {
-                    toast.success(response?.data?.success);
+                    toast.success(t(`toast.success.${response?.data?.success}`));
                 } 
             }).finally(() => {
                  setTimeout(async () => {
@@ -64,10 +65,9 @@ const DeleteAccountForm = () => {
     return (
         <>
             <div className={cn("space-y-6 max-w-xl")}>
-                <h3 className={cn('text-xl font-bold pb-2')}>Supprimer le compte</h3>
-                <p className={cn('pb-2')}>
-                    Souhaitez-vous vraiment supprimer votre compte ?<br />
-                    En supprimant votre compte, vous supprimez tout le contenu qui y est associé.<br />
+                <h3 className={cn('text-xl font-bold pb-2')}>{t("form.deleteTitle")}</h3>
+                <p className={cn('pb-2 whitespace-pre-wrap')}>
+                    {t("form.deleteDescription")}
                 </p>
                 <Button
                     size="lg"
@@ -75,19 +75,19 @@ const DeleteAccountForm = () => {
                     className="px-0 font-bold text-red-500 underline"
                     onClick={() => setIsModalOpen(true)}
                 >
-                    Je souhaite supprimer mon compte
+                    {t("form.deleteButton")}
                 </Button>
             </div>
             {isModalOpen && (
                 <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                     <DialogContent className="min-h-auto md:h-auto max-w-sm p-6 rounded-2xl lg:max-w-lg">
-                    <div className='w-full text-left -mt-3 text-base font-medium'>Suppression de votre compte</div>
+                    <div className='w-full text-left -mt-3 text-base font-medium'>{t("form.deleteModalTitle")}</div>
                         <CardAuthWrapper
-                            title="Souhaitez-vous vraiment supprimer votre compte ?"
-                            description="Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront perdues définitivement."
+                            title={t("form.deleteModalConfirmTitle")}
+                            description={t("form.deleteModalConfirmDescription")}
                             onClick={() => setIsModalOpen(false)}
-                            footerHref="/auth/reset"
-                            footerLabel="Mot de passe oublié ?"
+                            footerHref={`/${locale}/auth/reset`}
+                            footerLabel={t("form.forgotPassword")}
                             className="border-none shadow-none"
                         >
                             <Form {...form}>
@@ -105,7 +105,7 @@ const DeleteAccountForm = () => {
                                             {...field}
                                             disabled={isPending}
                                             icon={<CiLock className="text-lg opacity-80" />} 
-                                            placeholder="Confirmez avec votre mot de passe"
+                                            placeholder={t("form.deletePlaceholder")}
                                             type={showPassword ? "text" : "password"}
                                             endIcon={
                                             <Button type="button" variant="link" onClick={handleClickShowPassword}>
@@ -129,7 +129,7 @@ const DeleteAccountForm = () => {
                                     size={7}
                                     color="white"
                                     />) : (
-                                    "Confirmer"
+                                    t("form.confirm")
                                 )}
                                 </Button>
                             </form>

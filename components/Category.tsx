@@ -2,7 +2,7 @@
 import { cn } from '@/lib/utils';
 import { useSnippetsFiltered } from '@/store/snippetsFiltered';
 import { useTranslations } from 'next-intl';
-import React, { FC, useMemo } from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 
 interface CategoryProps {
     categories: {
@@ -13,7 +13,11 @@ interface CategoryProps {
 
 const Category: FC<CategoryProps> = ({categories}) => {
     const { setCategory, category } = useSnippetsFiltered();
-    const t = useTranslations("fe.snippetsDatabase.categories");
+    const t = useTranslations("fe.snippets.database.categories");
+    
+    useEffect(() => {
+        setCategory(t("all")); 
+    }, []);
 
     const categoriesFiltered = useMemo(() => {
         const categoriesSet = new Set<string>([t("all")]);

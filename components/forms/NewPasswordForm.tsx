@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { NewPasswordSchema, NewPasswordTokenSchema } from "@/schemas";
+import { NewPasswordSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -24,15 +24,17 @@ import { NewPassword } from "@/types/types";
 import PasswordContent from "../content/auth/PasswordContent";
 import CardAuthWrapper from "../card/CardAuthWrapper";
 import { newPassword, newVerificationPasswordtoken } from "@/actions/new-password";
+import { useLocale, useTranslations } from "next-intl";
 
 const NewPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
   const [isPending, startTransition] = useTransition();
-
+  const locale = useLocale();
   const searchParams = useSearchParams();
   const token = searchParams?.get("token");
+  const t = useTranslations("fe");
     
   const form = useForm<NewPassword>({
     resolver: zodResolver(NewPasswordSchema),
@@ -103,17 +105,17 @@ const NewPasswordForm = () => {
     });
   };
 
-  const messageContent = PasswordContent(message?.key);
+  const messageContent = PasswordContent(message?.key, locale, t);
 
 
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
         <CardAuthWrapper
-           title="Mise à jour du mot de passe"
+           title={t("form.titleUpdatePassword")}
         >
           {!message ? (
             <>
-              <p className="pb-10 text-center">Pour réinitialiser votre mot de passe, veuillez entrer un nouveau mot de passe dans les champs ci-dessous.</p>
+              <p className="pb-10 text-center">{t("form.resetInstructions")}</p>
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
@@ -130,7 +132,7 @@ const NewPasswordForm = () => {
                               {...field}
                               disabled={isPending}
                               icon={<CiLock className="text-lg opacity-80" />} 
-                              placeholder="Mot de passe"
+                              placeholder={t("form.passwordPlaceholder")}
                               type={showPassword ? "text" : "password"}
                               endIcon={
                                 <Button type="button" variant="link" onClick={handleClickShowPassword}>
@@ -153,7 +155,7 @@ const NewPasswordForm = () => {
                               {...field}
                               disabled={isPending}
                               icon={<CiLock className="text-lg opacity-80" />} 
-                              placeholder="Confirmation"
+                              placeholder={t("form.confirmation")}
                               type={showConfirmPassword ? "text" : "password"}
                               endIcon={
                                 <Button type="button" variant="link" onClick={handleClickShowConfirmPassword}>
@@ -178,7 +180,7 @@ const NewPasswordForm = () => {
                         size={7}
                         color="white"
                       />) : (
-                      "Confirmer"
+                      t("form.confirm")
                     )}
                   </Button>
                 </form>

@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 
 function SearchBar() {
     const {searchQuery, setSearchQuery} = useSnippetsFiltered();
-    const t = useTranslations("fe");
+    const t = useTranslations("fe.home");
   
   return (
     <div className="relative w-full max-w-md mx-auto">

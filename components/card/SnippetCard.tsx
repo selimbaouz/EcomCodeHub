@@ -12,7 +12,7 @@ import { PulseLoader } from 'react-spinners';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { MdOutlineCode } from 'react-icons/md';
 
 interface SnippetCardProps {
@@ -23,6 +23,7 @@ const SnippetCard = ({
     snippet,
     user
 }: SnippetCardProps) => {
+    const locale = useLocale();
     const t = useTranslations("fe");
     const [selectedTab, setSelectedTab] = useState(0);
     const [copied, setCopied] = useState(false);
@@ -69,7 +70,7 @@ const SnippetCard = ({
                 }
               })
               .catch(() => {
-                toast.error("Quelque chose s'est mal passé. Veuillez réessayer plus tard ou contacter le support si le problème persiste.");
+                toast.error(t("toast.errors.somethingWrong"));
               });
             });
       };
@@ -77,7 +78,7 @@ const SnippetCard = ({
     return (
         <div className={cn("bg-background relative flex flex-col gap-2 w-full border p-4 rounded-2xl shadow-md", "dark:border-[#324e58]")}>
             <div className="flex justify-between items-center">
-                <h6 className="font-semibold lg:text-sm">{t(`snippetsDatabase.title.${snippet.title}`)}</h6>
+                <h6 className="font-semibold lg:text-sm">{t(`snippets.database.title.${snippet.title}`)}</h6>
                 <div className={cn("flex items-center gap-2", "lg:gap-4")}>
                     <div className="flex bg-gray-100 rounded-xl p-0.5">
                       {!hasPurchased ? (
@@ -176,7 +177,7 @@ const SnippetCard = ({
                   </Button>
 
                   {!isLoggedIn || !hasAccess ? (
-                    <Link href="/products/pack-pro-conversion-shopify">
+                    <Link href={`/${locale}/products/pack-pro-conversion-shopify`}>
                       <Button
                         size="lg"
                         variant="secondary"

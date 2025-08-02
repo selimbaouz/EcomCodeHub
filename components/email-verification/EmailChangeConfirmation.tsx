@@ -10,13 +10,16 @@ import { useNewEmailStore } from '@/store/account';
 import { EmailChangeConfirmationContent } from '../content/auth/EmailChangeConfirmationContent';
 import { logout } from '@/actions/logout';
 import { PulseLoader } from 'react-spinners';
+import { useLocale, useTranslations } from 'next-intl';
 
 const EmailChangeConfirmation = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const {newEmail} = useNewEmailStore();
   const searchParams = useSearchParams();
+  const locale = useLocale();
   const token = searchParams?.get("token");
+  const t = useTranslations("fe");
 
   useEffect(() => {
     if (!token) {
@@ -41,7 +44,7 @@ const EmailChangeConfirmation = () => {
 
             setTimeout(async () => {
               await logout();
-              window.location.href = "/auth/login";
+              window.location.href = `/${locale}/auth/login`;
             }, 2000);
 
           } else {
@@ -58,7 +61,7 @@ const EmailChangeConfirmation = () => {
     onSubmit();
   }, [newEmail, token]);
 
-  const messageContent = EmailChangeConfirmationContent(message?.key);
+  const messageContent = EmailChangeConfirmationContent(message?.key, locale, t);
 
   return (
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>

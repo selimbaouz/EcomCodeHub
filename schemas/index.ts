@@ -94,6 +94,7 @@ export const LoginSchema = z.object({
   credits: z.string().optional(),
   twoFactorCode: z.string().optional(),
   isChange: z.boolean().optional(),
+  locale: z.string().optional(),
 })
 
 // Schéma pour la première étape : code uniquement

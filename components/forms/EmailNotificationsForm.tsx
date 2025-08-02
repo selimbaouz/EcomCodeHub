@@ -1,5 +1,4 @@
 "use client";
-import { cn } from '@/lib/utils';
 import React, { FC, useTransition } from 'react';
 import { Switch } from '../ui/switch';
 import {
@@ -15,6 +14,7 @@ import { notificationSchema } from '@/schemas';
 import { Notifications, UserType } from '@/types/types';
 import { toggleEmailNotifications } from '@/actions/notification';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface EmailNotificationsFormProps {
     user: UserType;
@@ -22,11 +22,12 @@ interface EmailNotificationsFormProps {
 
 const EmailNotificationsForm: FC<EmailNotificationsFormProps> = ({ user }) => {
     const [isPending, startTransition] = useTransition();
+    const t = useTranslations("fe");
       
     const form = useForm<Notifications>({
         resolver: zodResolver(notificationSchema),
         defaultValues: {
-            emailNotifications: user?.emailNotifications ?? false, // ✅ Correction ici
+            emailNotifications: user?.emailNotifications ?? false, 
         },
     });
 
@@ -49,14 +50,14 @@ const EmailNotificationsForm: FC<EmailNotificationsFormProps> = ({ user }) => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex items-center justify-between"> 
                 <div className="py-2 space-y-1 lg:py-4"> 
-                    <h4 className="text-sm font-semibold lg:text-lg">Email Communication</h4>
+                    <h4 className="text-sm font-semibold lg:text-lg">{t("form.emailCommunication")}</h4>
                     <p className="text-sm font-medium text-foreground/50 lg:text-base">
-                        Recevez des emails quand de nouveaux codes sont ajoutés
+                        {t("form.emailCommunicationDescription")}
                     </p>
                 </div>
                 <FormField 
                     control={form.control} 
-                    name="emailNotifications" // ✅ Correction ici
+                    name="emailNotifications" 
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
@@ -65,7 +66,7 @@ const EmailNotificationsForm: FC<EmailNotificationsFormProps> = ({ user }) => {
                                     checked={field.value}
                                     onCheckedChange={(checked) => { 
                                         field.onChange(checked); 
-                                        onSubmit({ emailNotifications: checked }); // ✅ Appel direct ici
+                                        onSubmit({ emailNotifications: checked }); 
                                     }}
                                     disabled={isPending}
                                 />

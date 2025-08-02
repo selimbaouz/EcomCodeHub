@@ -16,10 +16,12 @@ import { Reset } from "@/types/types";
 import CardAuthWrapper from "../card/CardAuthWrapper";
 import ResetContent from "../content/auth/ResetContent";
 import { reset } from "@/actions/reset";
+import { useTranslations } from "next-intl";
 
 export function ResetForm() {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
+  const t = useTranslations("fe");
 
   const form = useForm<Reset>({
     resolver: zodResolver(ResetSchema),
@@ -46,12 +48,12 @@ export function ResetForm() {
     <div className={cn("bg-secondary/30 h-[92dvh] w-full flex flex-col items-center px-6", "lg:px-10", "xl:px-20", "dark:bg-[#324e58]")}>
       {isSuccess ? (
         <CardAuthWrapper>
-          <GetAPiMesssage {...ResetContent()} />
+          <GetAPiMesssage {...ResetContent(t)} />
         </CardAuthWrapper>
       ) : (
         <CardAuthWrapper
-          title="Mot de passe oublié ?">
-          <p className="pb-10 text-center">Veuillez entrer l'adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.</p>
+          title={t("form.resetTitle")}>
+          <p className="pb-10 text-center">{t("form.resetDescription")}</p>
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
@@ -67,7 +69,7 @@ export function ResetForm() {
                         {...field}
                         disabled={isPending}
                         icon={<CiMail className="text-lg opacity-80" />}
-                        placeholder="Adresse e-mail"
+                        placeholder={t("form.emailPlaceholder")}
                         type="email"
                       />
                     </FormControl>
@@ -86,7 +88,7 @@ export function ResetForm() {
                     size={7}
                     color="white"
                   />) : (
-                  "Envoyer"
+                  t("form.submitReset")
                 )}
               </Button>
             </form>
