@@ -62,11 +62,11 @@ const SnippetCard = ({
             onPurchaseSnippet({snippetId: snippet.id, userId: user?.id ?? "", creditPrice: snippet.creditPrice})
             .then((data) => {
                 if(data?.data?.success) {
-                  toast.success(data?.data.success);
+                  toast.success(t(`toast.success.${data?.data.success}`));
                   setIsModalOpen(false);
                   router.refresh();
                 } else {
-                  toast.error(data?.data?.error);
+                  toast.error(t(`toast.errors.${data?.data?.error}`));
                 }
               })
               .catch(() => {

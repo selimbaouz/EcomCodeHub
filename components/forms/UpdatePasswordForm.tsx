@@ -45,9 +45,9 @@ const UpdatePasswordForm = () => {
             })
             .then((data) => {
                 if(data?.data?.success) {
-                toast.success(data?.data?.success);
+                toast.success(t(`toast.success.${data?.data?.success}`));
                 } else {
-                toast.error(data?.data?.error);
+                toast.error(t(`toast.errors.${data?.data?.error}`));
                 }
             })
             .catch(() => {

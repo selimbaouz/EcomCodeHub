@@ -66,7 +66,7 @@ export function CodeForm() {
     startTransition(async () => {
       const response = await validateCodeWithIP({ code: values.code });
       if (response?.data?.error) {
-        toast.error(response?.data?.error);
+        toast.error(t(`toast.errors.${response?.data?.error}`));
       } else {
         signupForm.setValue("promoId", response?.data?.promoId ?? "");
         setStep("signup");
@@ -78,7 +78,7 @@ export function CodeForm() {
     startTransition(async () => {
       const response = await createUserWithPromo(values);
       if (response?.data?.error) {
-        toast.error(response?.data?.error);
+        toast.error(t(`toast.errors.${response?.data?.error}`));
       } else {
         const emailResponse = await verifyEmail(values);
         if (emailResponse?.data?.error) {

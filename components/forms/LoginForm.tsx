@@ -86,7 +86,7 @@ const onSubmit = (values: Login) => {
               setEmailChecked(true);
               setIsLogin(!!user?.password);
             } else {
-              toast.error(t("toast.error.emailNotExist"), {
+              toast.error(t("toast.errors.emailNotExist"), {
                 description:
                  t("toast.errors.planRequired"),
               });

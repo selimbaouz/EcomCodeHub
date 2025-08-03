@@ -14,6 +14,7 @@ import { MdLock } from 'react-icons/md';
 import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
 import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
+import { useTranslations } from 'next-intl';
 
 export default function Cart() {
   const { cart, updateCartItem } = useCartStore();
@@ -21,6 +22,7 @@ export default function Cart() {
    const setCartOpen = useHideFlashPromoStore((state) => state.setCartOpen);
   const quantityRef = useRef(cart?.quantity);
   const [isLoading, setIsLoading] = useState(false);
+  const t = useTranslations("fe");
 
   useEffect(() => {
     if (cart.lines.length > 0 && isOpenCart) {
@@ -105,7 +107,7 @@ export default function Cart() {
 
     } catch (error) {
       console.error("Erreur lors du démarrage du paiement :", error);
-      alert("Une erreur est survenue. Veuillez réessayer.");
+      alert(t("toast.errors.errorServerStripe"));
     } finally {
       setIsLoading(false);
     }

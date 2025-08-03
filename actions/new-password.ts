@@ -34,7 +34,7 @@ export const newVerificationPasswordtoken = action
     return { error: "emailNotExist" }
   }
 
-  return { success: "Votre e-mail a été vérifié avec succès." };
+  return { success: "emailVerified" };
 });
 
 

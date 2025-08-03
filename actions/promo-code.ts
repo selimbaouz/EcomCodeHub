@@ -16,17 +16,17 @@ export const validateCodeWithIP = action
 .action(async ({ parsedInput: { code } }) => {
   const ipCheck = await checkIPTrust()
   if (!ipCheck.isTrusted) {
-    return { error: 'Votre réseau semble utiliser un VPN ou est bloqué. Veuillez recommencer' }
+    return { error: 'promoNetworkBlocked' }
   }
 
   if (ipCheck.alreadyUsed) {
     return {
-      error: 'Cette IP a déjà été utilisée pour un autre code.',
+      error: 'promoIpAlreadyUse.',
     }
   }
 
   if (!ipCheck.success) {
-    return { error: ipCheck.reason || 'Vérification IP échouée.' }
+    return { error: ipCheck.reason || 'promoIpCheckFailed' }
   }
 
   const promo = await db.promoCode.findUnique({
@@ -35,9 +35,9 @@ export const validateCodeWithIP = action
   })
 
   if (!promo) {
-    return { error: 'Code invalide.' }
+    return { error: 'promoInvalid' }
   } else if (promo?.usedBy && promo?.ipUsed) {
-    return { error: "Le code promo a déjà été utilisé." };
+    return { error: "promoAlreadyUsed" };
   }
   
   return {
@@ -72,7 +72,7 @@ export async function checkIPTrust() {
     if (!isTrusted) {
       return {
         success: false,
-        reason: 'Votre IP semble provenir d’un VPN, proxy ou réseau TOR.',
+        reason: 'promoNetworkBlocked',
       };
     }
 
@@ -85,7 +85,7 @@ export async function checkIPTrust() {
     console.error(err);
     return {
       success: false,
-      reason: 'Erreur lors de la vérification de votre IP.',
+      reason: 'promoIpCheckFailed',
     };
   }
 }
@@ -106,7 +106,7 @@ export const createUserWithPromo = action
     const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
     if (existingUser) {
-      return { error: "Un compte existe déjà avec cet email." };
+      return { error: "promoAccountExists" };
     }
 
     const stripeCustomer = await createCustomerInStripe({
@@ -115,7 +115,7 @@ export const createUserWithPromo = action
     });
 
     if (!stripeCustomer) {
-      return { error: "Erreur dans la création de compte sur stripe" };
+      return { error: "promoStripeError" };
     }
 
     const user = await db.user.create({
@@ -141,7 +141,7 @@ export const createUserWithPromo = action
     });
 
     if (!promoCode || !user) {
-      return { error: "La création de compte a échouée" };
+      return { error: "promoAccountCreationFailed" };
     }
 
     return { success: true, userId: user.id };
@@ -153,11 +153,11 @@ export const verifyEmail = action
   const existingUser = await getUserByEmail(email?.toLocaleLowerCase() ?? "");
 
   if (!existingUser?.email) {
-    return { error: "Cet e-mail n'existe pas. Veuillez vérifier l'adresse e-mail saisie." };
+    return { error: "promoUserNotFound" };
   }
 
   if(existingUser.emailVerified) {
-    return { error: "Cet e-mail a déjà été vérifiée." };
+    return { error: "promoAlreadyVerified" };
   }
 
     const verificationToken = await generateVerificationToken(
@@ -170,5 +170,5 @@ export const verifyEmail = action
       false
     );
 
-    return { success: "E-mail de confirmation envoyé.", mailsend: true, user: existingUser };
+    return { success: "promoVerificationSent", mailsend: true, user: existingUser };
 });

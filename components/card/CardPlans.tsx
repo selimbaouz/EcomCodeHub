@@ -2,10 +2,9 @@ import { cn } from '@/lib/utils';
 import React, { FC } from 'react';
 import Link from 'next/link';
 import { FaCheckCircle } from 'react-icons/fa';
-import Stripe from 'stripe';
-import { UserType } from '@/types/types';
 import { buyOneTimePlan, upgradeSubscription } from '@/actions/stripe';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface CardPlansProps {
   planId: number;
@@ -36,7 +35,7 @@ const CardPlans: FC<CardPlansProps> = ({
   nameOfPack,
   isCurrentPlan
 }) => {
-  console.log(modeSelected);
+  const t = useTranslations("fe");
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); 
     try {
@@ -48,13 +47,13 @@ const CardPlans: FC<CardPlansProps> = ({
       } else {
         const upgrade = await upgradeSubscription({ newPriceId: link });
         if(upgrade?.data?.success) {
-          toast.success(upgrade?.data?.success);
+          toast.success(t(`toast.success.${upgrade?.data?.success}`));
         } else {
-          toast.error(upgrade?.data?.error);
+          toast.error(t(`toast.errors.${upgrade?.data?.error}`));
         }
       }
     } catch (error) {
-      toast.error("Erreur lors de l'achat, veuillez réessayer ou contacter le support.",);
+      toast.error(t("toast.errors.errorBuyStripe"));
     }
   };
 

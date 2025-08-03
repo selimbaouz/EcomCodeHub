@@ -12,7 +12,7 @@ export const reset = action
   const existingUser = await getUserByEmail(email);
   
   if (!existingUser) {
-    return { error: "Adresse e-mail introuvable. Veuillez vérifier l'adresse saisie." };
+    return { error: "emailNotExistError" };
   }
 
   const passwordResetToken = await generatePasswordResetToken(email);
@@ -21,5 +21,5 @@ export const reset = action
     passwordResetToken.token,
   );
 
-  return { success: "E-mail de réinitialisation du mot de passe envoyé." };
+  return { success: "emailResetPasswordSuccess" };
 });

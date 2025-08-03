@@ -10,20 +10,20 @@ export const toggleEmailNotifications = action
 .schema(notificationSchema) 
 .action(async ({ parsedInput: { emailNotifications } }) => {
   const session = await auth();
-  if (!session?.user?.id) return { error: "Utilisateur non authentifié" };
+  if (!session?.user?.id) return { error: "userNotConnected" };
 
   const user = await db.user.findUnique({
     where: { id: session.user.id },
   });
 
-  if (!user) return { error: "Utilisateur introuvable" };
+  if (!user) return { error: "userNotFound" };
 
   await db.user.update({
     where: { id: session.user.id },
     data: { emailNotifications: emailNotifications },
   });
 
-  return { success: `Notifications ${user.emailNotifications ? "désactivées" : "activées"}` };
+  return { success: `emailNotifications ? "notificationsEnabled" : "notificationsDisabled"` };
 });
 
 export const notifyNewCodes = action
@@ -34,15 +34,15 @@ export const notifyNewCodes = action
     select: { email: true },
   });
 
-  if (!users.length) return { error: "Aucun utilisateur inscrit aux notifications" };
+  if (!users.length) return { error: "noUsersSubscribedNotification" };
 
   const recipientEmails = users.map(user => user.email);
 
   try {
     await sendNotificationNewCodes(newCodes, recipientEmails)
 
-    return { success: `Email de notification envoyé` };
+    return { success: `notificationEmailSent` };
   } catch (error) {
-    return { error: "Erreur lors de l'envoi des emails" };
+    return { error: "notificationEmailSendFailed" };
   }
 });

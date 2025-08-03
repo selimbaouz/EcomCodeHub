@@ -37,10 +37,10 @@ const EmailNotificationsForm: FC<EmailNotificationsFormProps> = ({ user }) => {
             toggleEmailNotifications(values)
                 .then((response) => {
                     if(response?.data?.error) {
-                        toast.error(response?.data?.error);
+                        toast.error(t(`toast.errors.${response?.data?.error}`));
                     }
                     if (response?.data?.success) {
-                        toast.success(response?.data?.success);
+                        toast.success(t(`toast.success.${response?.data?.success}`));
                     } 
                 });
         });

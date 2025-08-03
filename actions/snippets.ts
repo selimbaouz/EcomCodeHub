@@ -22,10 +22,10 @@ export const onPurchaseSnippet = action
   .action(async ({ parsedInput: { userId, creditPrice, snippetId } }) => {
     const session = await auth();
     const user = await db.user.findUnique({ where: { id: userId } });
-    if (!session?.user?.id || session?.user?.id !== user?.id) throw new Error("Utilisateur non authentifié.");
+    if (!session?.user?.id || session?.user?.id !== user?.id) throw new Error("userNotAuthenticated");
 
     if (!user || user.credits < creditPrice) {
-        return { error: "Vous n'avez pas assez de crédit." };
+        return { error: "notEnoughCredits" };
     }
 
      // Vérifier si l'achat existe déjà
@@ -44,5 +44,5 @@ export const onPurchaseSnippet = action
         data: { userId, snippetId },
     });
 
-    return { success: "Bravo ! Vous avez débloquez un snippet" };
+    return { success: "snippetPurchasedSuccess" };
 });

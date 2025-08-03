@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { PulseLoader } from 'react-spinners';
 import { cancelAtPeriodEnd } from '@/actions/stripe';
 import { toast } from 'sonner';
+import { useTranslations } from 'next-intl';
 
 interface SubscriptionProps {
     subscriptionId: string;
@@ -21,6 +22,7 @@ const Subscription:FC<SubscriptionProps> = ({
   price
 }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const t = useTranslations("fe");
 
     const handleCancelSubscription = async () => {
         setIsLoading(true);
@@ -29,12 +31,12 @@ const Subscription:FC<SubscriptionProps> = ({
           const res = await cancelAtPeriodEnd({subscriptionId});
     
           if(res?.data?.success) {
-            toast.success(res.data.success);
+            toast.success(t(`toast.success.${res.data.success}`));
           }
     
         } catch (error) {
           console.error("Erreur lors du démarrage du paiement :", error);
-          toast.error("Une erreur est survenue. Veuillez réessayer.");
+          toast.error(t("toast.errors.errorServerStripe"));
         } finally {
           setIsLoading(false);
         }

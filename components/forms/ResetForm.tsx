@@ -36,9 +36,9 @@ export function ResetForm() {
         .then((data) => {
           if(data?.data?.success) {
             setIsSuccess(true);
-            toast.success(data?.data?.success);
+            toast.success(t(`toast.success.${data?.data?.success}`));
           } else {
-            toast.error(data?.data?.error);
+            toast.error(t(`toast.errors.${data?.data?.error}`));
           }
         });
     });

@@ -11,6 +11,10 @@ import { Session } from 'next-auth';
 import { SnippetsType, UserType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import NavBar from './navigation/NavBar';
+import { userSchema } from '@/schemas';
+import z from 'zod';
+
+
 
 interface HomeProps {
     session: Session | null ;
@@ -27,7 +31,7 @@ const Home = ({
     snippets,
     categoriesSnippets
 }: HomeProps) => {
-    const t = useTranslations("fe.home");
+    const t = useTranslations("fe.home");    
 
     /* useEffect(() => {
         fetch('/api/fb-view-content', {

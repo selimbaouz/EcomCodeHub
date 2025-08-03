@@ -67,7 +67,7 @@ const getVariantWithPacks = (type: string, level: string) => {
       const recurringPrices = prices.filter((price) => price.recurring);
 
       if (recurringPrices.length === 0) {
-        throw new Error("Le mode 'subscription' nécessite au moins un prix récurrent.");
+        throw new Error("stripeRecurringPriceRequired");
       }
     }
     
@@ -112,7 +112,7 @@ const getVariantWithPacks = (type: string, level: string) => {
       return { url: session.url };
     } catch (error) {
       console.error("Erreur lors de la création de la session :", error);
-      return { error: "Impossible de créer la session de paiement." };
+      return { error: "stripeSessionFailed" };
     }
   });
 
@@ -142,9 +142,9 @@ export const cancelSubscription = action
 .action(async ({ parsedInput: { subscriptionId } }) => {
   try {
     await stripe.subscriptions.cancel(subscriptionId);
-    return { success: `Abonnement annulé` };
+    return { success: `subscriptionCanceled` };
   } catch (error) {
-    return { error: "L'annulation de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
+    return { error: "stripeCancelFailed" };
   }
 });
 
@@ -153,9 +153,9 @@ export const cancelAtPeriodEnd = action
 .action(async ({ parsedInput: { subscriptionId } }) => {
   try {
     await stripe.subscriptions.update(subscriptionId, { cancel_at_period_end: true });
-    return { success: `L'abonnement sera annulé à la fin de la période.` };
+    return { success: `subscriptionCancelAtPeriodEnd` };
   } catch (error) {
-    return { error: "L'annulation de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
+    return { error: "stripeCancelFailed" };
   }
 });
 
@@ -167,7 +167,7 @@ export const upgradeSubscription = action
     try {
       const user = await getUserByEmail(session?.user?.email ?? "");
       if (!user) {
-        return { error: "Utilisateur introuvable." };
+        return { error: "stripeUserNotFound" };
       }
 
       if (user.subscriptionId) {
@@ -183,11 +183,11 @@ export const upgradeSubscription = action
           proration_behavior: "create_prorations",
         });
 
-        return { success: `L'abonnement a été mis à jour.` };
+        return { success: `subscriptionUpgraded` };
       } else {
         // 🆕 L'utilisateur n'a PAS d'abonnement → Création
         if (!user.stripeCustomerId) {
-          return { error: "Aucun compte Stripe trouvé. Veuillez contacter le support." };
+          return { error: "stripeNoAccount" };
         }
 
         // Création d'un abonnement sur Stripe
@@ -199,7 +199,7 @@ export const upgradeSubscription = action
         });
 
         if (!subscription.id) {
-          return { error: "Erreur lors de la création de l'abonnement." };
+          return { error: "stripeSubscriptionCreateFailed" };
         }
 
         // ✅ Mise à jour en BDD via Prisma
@@ -211,11 +211,11 @@ export const upgradeSubscription = action
           },
         });
 
-        return { success: `L'abonnement a bien été souscrit.` };
+        return { success: `subscriptionCreated` };
       }
     } catch (error) {
       console.error("Erreur Stripe :", error);
-      return { error: "La mise à jour de l'abonnement a échoué. Veuillez réessayer plus tard ou contacter le support." };
+      return { error: "stripeUpgradeFailed" };
     }
   });
 
