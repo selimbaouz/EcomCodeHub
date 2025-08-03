@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { NewPasswordSchema } from "@/schemas";
 import { Input } from "@/components/ui/input";
 import {
   Form,
@@ -25,6 +24,7 @@ import PasswordContent from "../content/auth/PasswordContent";
 import CardAuthWrapper from "../card/CardAuthWrapper";
 import { newPassword, newVerificationPasswordtoken } from "@/actions/new-password";
 import { useLocale, useTranslations } from "next-intl";
+import z from "zod";
 
 const NewPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +35,19 @@ const NewPasswordForm = () => {
   const searchParams = useSearchParams();
   const token = searchParams?.get("token");
   const t = useTranslations("fe");
+
+  const NewPasswordSchema = z.object({
+    token: z.string().optional(),
+    password: z.string().min(6, {
+      message: t("schemas.newPasswordMinLength"),
+    }),
+    confirmPassword: z.optional(z.string().min(6, {
+      message: t("schemas.newPasswordMinLength"),
+    })),
+  }).refine((data) => data.password === data.confirmPassword, {
+    message: t("schemas.updatePasswordPasswordsMustMatch"),
+    path: ["confirmPassword"],
+  });
     
   const form = useForm<NewPassword>({
     resolver: zodResolver(NewPasswordSchema),

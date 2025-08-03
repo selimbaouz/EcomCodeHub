@@ -3,7 +3,6 @@
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ResetSchema } from "@/schemas";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { CiMail } from "react-icons/ci";
@@ -17,11 +16,18 @@ import CardAuthWrapper from "../card/CardAuthWrapper";
 import ResetContent from "../content/auth/ResetContent";
 import { reset } from "@/actions/reset";
 import { useTranslations } from "next-intl";
+import z from "zod";
 
 export function ResetForm() {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isPending, startTransition] = useTransition();
   const t = useTranslations("fe");
+
+  const ResetSchema = z.object({
+    email: z.string().email({
+      message: t("schemas.resetEmailRequired"),
+    }),
+  });
 
   const form = useForm<Reset>({
     resolver: zodResolver(ResetSchema),

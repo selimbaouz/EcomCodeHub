@@ -9,7 +9,6 @@ import {
 import { useState, useTransition} from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
-import { LoginSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
@@ -26,6 +25,7 @@ import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import { useNewEmailStore } from "@/store/account";
 import { useLocale, useTranslations } from "next-intl";
+import z from "zod";
 
 export function LoginForm() {
   const [isLogin, setIsLogin] = useState(false);
@@ -40,6 +40,15 @@ export function LoginForm() {
   const locale = useLocale();
   const t = useTranslations("fe");
   
+  const LoginSchema = z.object({
+    email: z.string().email(t("schemas.emailInvalid")),
+    password: z.string().optional(),
+    credits: z.string().optional(),
+    twoFactorCode: z.string().optional(),
+    isChange: z.boolean().optional(),
+    locale: z.string().optional(),
+  })
+
   const form = useForm<Login>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {

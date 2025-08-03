@@ -11,7 +11,6 @@ import { FC, useTransition} from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { UpdateEmail } from "@/types/types";
-import { updateEmailSchema } from "@/schemas";
 import { confirmChangeEmail } from "@/actions/account";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
@@ -22,6 +21,7 @@ import { CiMail } from "react-icons/ci";
 import { useNewEmailStore } from "@/store/account";
 import { User } from "next-auth";
 import { useTranslations } from "next-intl";
+import z from "zod";
 
 interface UpdateEmailFormProps {
     currentUser: User;
@@ -30,6 +30,10 @@ const UpdateEmailForm:FC<UpdateEmailFormProps> = ({currentUser}) => {
     const [isPending, startTransition] = useTransition();
     const t = useTranslations("fe");
     const {setNewEmail} = useNewEmailStore();
+
+    const updateEmailSchema = z.object({
+      newEmail: z.string().email(t("schemas.updateEmailEmailInvalid")),
+    });
 
     const form = useForm<UpdateEmail>({
         resolver: zodResolver(updateEmailSchema),

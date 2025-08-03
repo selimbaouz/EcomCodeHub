@@ -327,6 +327,39 @@
 
       "defaultTitle": "Verification in Progress...",
       "defaultDescription": "Please wait while your email is being verified."
+    },
+    "ambassador": {
+      "title": "Ambassador Program",
+      "description": "Join our exclusive ambassador program and take part in the Shopify development revolution!",
+
+      "offersTitle": "What We Offer:",
+      "offers": [
+        "Cash commission: Earn a commission in euros for every sale generated through your referral. The more you share, the more you earn!",
+        "Early access: Get early previews of our new snippets and templates to stay ahead of the innovation curve.",
+        "Dedicated marketing tools: Access personalized materials, guides, and content to promote TailwindLiquid on your networks.",
+        "Enhanced visibility: Join a community of experts and be featured on our platform and at exclusive events."
+      ],
+
+      "requirementsTitle": "What We Expect From You:",
+      "requirements": [
+        "Sharing and engagement: Spread the word about TailwindLiquid through your social media, blogs, or other channels.",
+        "Constructive feedback: Help us improve our products by providing regular insights.",
+        "Active participation: Join online workshops and events to connect with other ambassadors and the TailwindLiquid team."
+      ],
+
+      "howItWorksTitle": "How It Works",
+      "howItWorksDescription": "To become an ambassador, send us your social media links (Facebook, Twitter, LinkedIn, Instagram, etc.) so we can evaluate your reach and engagement. Once your application is reviewed, you’ll receive instructions on how to promote TailwindLiquid and track your commissions.",
+
+      "applyTitle": "How to Apply:",
+      "applyInstructions": [
+        "Send us an email at [tailwindliquid@gmail.com](mailto:tailwindliquid@gmail.com) with the following information:",
+        "Your contact details (name, email, etc.)",
+        "Links to your social profiles and pages",
+        "A brief overview of your experience and your motivation to join the ambassador program"
+      ],
+
+      "closingStatement": "Whether you're a developer, designer, or simply passionate about optimizing Shopify stores, the TailwindLiquid ambassador program gives you the opportunity to turn your expertise into tangible earnings. Together, let's boost store conversions and deliver an exceptional user experience.",
+      "callToAction": "Join the TailwindLiquid movement and start earning today!"
     }
   }
 }

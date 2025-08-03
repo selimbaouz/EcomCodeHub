@@ -7,7 +7,6 @@ import {
   FormLabel,
   FormMessage,  
 } from "@/components/ui/form";
-import { updatePasswordSchema } from '@/schemas';
 import { UpdatePassword } from '@/types/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useState, useTransition } from 'react';
@@ -22,12 +21,21 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { updatePassword } from "@/actions/account";
 import { useTranslations } from "next-intl";
+import z from "zod";
 
 const UpdatePasswordForm = () => {
     const [isPending, startTransition] = useTransition();
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const t = useTranslations("fe");
+
+    const updatePasswordSchema = z.object({
+      newPassword: z.string().min(6, t("schemas.updatePasswordNewPasswordMinLength")),
+      confirmPassword: z.string().min(6, t("schemas.updatePasswordConfirmPasswordMinLength")),
+    }).refine(data => data.newPassword === data.confirmPassword, {
+      message: t("schemas.updatePasswordPasswordsMustMatch"),
+      path: ["confirmPassword"]
+    });
 
     const form = useForm<UpdatePassword>({
         resolver: zodResolver(updatePasswordSchema),

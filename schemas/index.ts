@@ -89,7 +89,7 @@ export const snippetSchema = z.object({
 export const snippetsSchema = z.array(snippetSchema);
 
 export const LoginSchema = z.object({
-  email: z.string().email("L'email doit être valide"),
+  email: z.string().email(),
   password: z.string().optional(),
   credits: z.string().optional(),
   twoFactorCode: z.string().optional(),
@@ -99,7 +99,7 @@ export const LoginSchema = z.object({
 
 // Schéma pour la première étape : code uniquement
 export const CodePromoSchema = z.object({
-  code: z.string().min(1, "Le code est requis"),
+  code: z.string().min(1),
 });
 
 // Schéma pour l'inscription après validation du code promo

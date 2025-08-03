@@ -1,7 +1,6 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { NewVerificationEmailSchema } from '@/schemas';
 import CardAuthWrapper from '../card/CardAuthWrapper';
 import { GetAPiMesssage } from '../GetAPiMesssage';
 import { cn } from '@/lib/utils';
@@ -11,6 +10,7 @@ import { EmailChangeConfirmationContent } from '../content/auth/EmailChangeConfi
 import { logout } from '@/actions/logout';
 import { PulseLoader } from 'react-spinners';
 import { useLocale, useTranslations } from 'next-intl';
+import z from 'zod';
 
 const EmailChangeConfirmation = () => {
   const [message, setMessage] = useState<{ type: string, key: string } | null>(null);
@@ -20,6 +20,11 @@ const EmailChangeConfirmation = () => {
   const locale = useLocale();
   const token = searchParams?.get("token");
   const t = useTranslations("fe");
+
+  const NewVerificationEmailSchema = z.object({
+    newEmail: z.string().email(t("schemas.updateEmailEmailInvalid")),
+    token: z.string(),
+  });
 
   useEffect(() => {
     if (!token) {

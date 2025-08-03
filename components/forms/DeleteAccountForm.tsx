@@ -12,7 +12,6 @@ import { CiLock } from 'react-icons/ci';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { deleteAccountSchema } from '@/schemas';
 import { toast } from 'sonner';
 import { deleteAccount } from '@/actions/account';
 import { Dialog, DialogContent } from '../ui/dialog';
@@ -23,6 +22,7 @@ import { Input } from '../ui/input';
 import { PulseLoader } from 'react-spinners';
 import { logout } from "@/actions/logout";
 import { useLocale, useTranslations } from "next-intl";
+import z from "zod";
 
 const DeleteAccountForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +30,10 @@ const DeleteAccountForm = () => {
     const [isPending, startTransition] = useTransition();
     const t = useTranslations("fe");
     const locale = useLocale();
+
+    const deleteAccountSchema = z.object({
+      password: z.string().min(6, t("schemas.deleteAccountPasswordRequired")),
+    });
 
     const form = useForm<DeleteAccount>({
         resolver: zodResolver(deleteAccountSchema),

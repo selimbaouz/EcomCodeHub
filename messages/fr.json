@@ -325,6 +325,39 @@
 
       "defaultTitle": "Vérification en cours...",
       "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail."
+    },
+    "ambassador": {
+      "title": "Programme Ambassadeur",
+      "description": "Rejoignez notre programme ambassadeur exclusif et participez à la révolution du développement Shopify !",
+      
+      "offersTitle": "Ce que nous vous offrons :",
+      "offers": [
+        "Commission en argent : Pour chaque vente générée par votre recommandation, recevez une commission en euros. Plus vous partagez et plus vous gagnez !",
+        "Accès anticipé : Profitez en avant-première de nos nouveautés – snippets et templates – pour rester à la pointe de l'innovation.",
+        "Outils marketing dédiés : Bénéficiez de supports, guides et contenus personnalisés pour promouvoir TailwindLiquid sur vos réseaux.",
+        "Visibilité renforcée : Intégrez une communauté d'experts et soyez mis en avant sur notre plateforme ainsi que lors d'événements exclusifs."
+      ],
+
+      "requirementsTitle": "Ce que nous attendons de vous :",
+      "requirements": [
+        "Partage et engagement : Diffusez votre expérience et vos conseils autour de TailwindLiquid via vos réseaux sociaux, blogs ou autres canaux.",
+        "Feedback constructif : Aidez nous à améliorer nos produits en fournissant des retours réguliers.",
+        "Participation active : Prenez part à des ateliers et événements en ligne pour échanger avec d'autres ambassadeurs et l'équipe TailwindLiquid."
+      ],
+
+      "howItWorksTitle": "Comment ça fonctionne ?",
+      "howItWorksDescription": "Pour devenir ambassadeur, vous devez nous fournir les liens vers vos réseaux sociaux (Facebook, Twitter, LinkedIn, Instagram, etc.) afin que nous puissions évaluer votre influence et votre engagement. Une fois votre candidature examinée, vous recevrez des instructions sur la manière de promouvoir TailwindLiquid et de suivre vos commissions.",
+
+      "applyTitle": "Pour candidater :",
+      "applyInstructions": [
+        "Envoyez-nous un email à [tailwindliquid@gmail.com](mailto:tailwindliquid@gmail.com) avec les informations suivantes :",
+        "Vos coordonnées (nom, email, etc.)",
+        "Les liens vers vos profils et pages sur les réseaux sociaux",
+        "Une brève présentation de votre expérience et de votre motivation à rejoindre le programme ambassadeur"
+      ],
+
+      "closingStatement": "Que vous soyez développeur, designer ou passionné par l’optimisation des boutiques Shopify, le programme ambassadeur TailwindLiquid vous offre l'opportunité de transformer votre expertise en revenus concrets. Ensemble, contribuons à booster la conversion des boutiques et à offrir une expérience utilisateur exceptionnelle.",
+      "callToAction": "Rejoignez le mouvement TailwindLiquid et commencez à gagner de l'argent dès aujourd'hui !"
     }
   }
 }

@@ -9,7 +9,7 @@ import {
 import { useState, useTransition } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { CiMail, CiLock } from "react-icons/ci";
-import { CodePromoSchema, SignUserWithCodeSchema } from "@/schemas";
+import { SignUserWithCodeSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
@@ -29,6 +29,7 @@ import { redirect } from "next/navigation";
 import { useCurrentUser } from "@/hook/use-current-user";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
+import z from "zod";
 
 export function CodeForm() {
   const [isMailSended, setIsMailSended] = useState(false);
@@ -38,6 +39,17 @@ export function CodeForm() {
   const currentUser = useCurrentUser();
   const locale = useLocale();
   const t = useTranslations("fe");
+
+  const CodePromoSchema = z.object({
+    code: z.string().min(1, t("schemas.codePromoCodeRequired")),
+  });
+
+  const SignUserWithCodeSchema = z.object({
+    name: z.string().min(1, t("schemas.signUserNameRequired")),
+    email: z.string().email(t("schemas.emailInvalid")),
+    password: z.string().min(6, t("schemas.signUserPasswordMinLength")),
+    promoId: z.string().min(1, t("schemas.signUserPromoRequired")),
+  });
 
   const codeForm = useForm<Code>({
     resolver: zodResolver(CodePromoSchema),
