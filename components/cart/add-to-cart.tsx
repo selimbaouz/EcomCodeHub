@@ -6,6 +6,7 @@ import { addItem } from './actions';
 import { useCartStore, useOpenCartStore, useVisibleFloatingCartStore } from '@/store/cart';
 import { cn } from '@/lib/utils';
 import { useEffect, useRef } from 'react';
+import { useTranslations } from "next-intl";
 
 interface SubmitButtonProps {
   size?: "fullWidth" | "initial";
@@ -14,6 +15,7 @@ interface SubmitButtonProps {
 function SubmitButton({size = "initial", price}: SubmitButtonProps) {
   const buttonRef = useRef(null);
   const { setIsVisible } = useVisibleFloatingCartStore();
+  const t = useTranslations("fe");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,7 +50,7 @@ function SubmitButton({size = "initial", price}: SubmitButtonProps) {
           "hover:bg-gradient-to-tr"
       )}
       >
-        <p className={cn("uppercase")}>Ajouter au panier - {parseFloat(price ?? "").toFixed(2)}€</p>
+        <p className={cn("uppercase")}>{t("productImage.addToCart", { price: parseFloat(price ?? "").toFixed(2) })}</p>
       </button>
   );
 }

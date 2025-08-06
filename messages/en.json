@@ -326,7 +326,28 @@
       "emailSentDescription": "A password reset email has been sent. Please check your inbox and follow the instructions.",
 
       "defaultTitle": "Verification in Progress...",
-      "defaultDescription": "Please wait while your email is being verified."
+      "defaultDescription": "Please wait while your email is being verified.",
+      "description": {
+        "paragraph1": "<strong>TailwindLiquid is the must-have solution</strong> for Shopify merchants looking to transform their store into <strong>a highly converting shop</strong>. Thanks to optimized and customizable TailwindCSS and Liquid codes, you can <strong>boost your conversions</strong>, provide a smooth user experience, and give your store <strong>a look worthy of the best themes without spending hundreds of euros</strong>.",
+        "paragraph2": "Designed by a <strong>fullstack developer, SEO consultant, and web designer with over 7 years of Shopify store creation experience</strong>, TailwindLiquid follows web standards and <strong>guarantees optimal SEO performance</strong>.",
+        "paragraph3": "<strong>Join our dedicated Discord server</strong>, included with all packs, even one-time purchases, to <strong>ask your technical questions, share feedback</strong>, discover new features first, and <strong>co-build the next TailwindLiquid snippets with the community</strong>.",
+        "paragraph4": "<strong>Shopify design and store audits</strong> will also be regularly proposed to identify improvement points. <strong>These audits will be exclusively reserved for subscribers.</strong>",
+        "paragraph5": "TailwindLiquid's goal is to <strong>bring together an ambitious community of merchants</strong> and succeed together."
+      },
+      "howItWorks": {
+        "step1": "<strong class='underline'>1. Choose your pack:</strong> Select a credit pack based on your needs: Beginner Pack (20 credits), Advanced Pack (60 credits), or Pro Pack (90 credits).",
+        "step2": "<strong class='underline'>2. Payment and login:</strong> Once your payment is validated by Stripe, your credits will be automatically added. You will then be invited to log in using the email address used at checkout. You will have to confirm your email to access your account.",
+        "step3": "<strong class='underline'>3. Explore available codes:</strong> Once logged in, follow the instructions on the \"installation\" page to configure your Shopify theme, then explore the codes sorted by complexity level (1, 3, or 5 credits). Each code is designed to enhance a specific feature of your Shopify store.",
+        "step4": "<strong class='underline'>4. Unlock a code:</strong> Depending on the number of credits you have, you can unlock basic codes (1 credit), intermediate (3 credits), or advanced (5 credits).",
+        "step5": "<strong class='underline'>5. Add a code to your Shopify store:</strong>",
+        "step5List": [
+          "Log in to your Shopify dashboard.",
+          "Go to \"Customize theme.\"",
+          "Click on \"Add section,\" then select \"Custom Liquid.\""
+        ],
+        "step6": "<strong class='underline'>6. Paste the code:</strong> Copy the unlocked code and paste it directly into the \"Custom Liquid\" section of your Shopify theme.",
+        "step7": "<strong class='underline'>7. Save and admire:</strong> Click \"Save,\" then instantly see the changes applied to your store."
+      }
     },
     "ambassador": {
       "title": "Ambassador Program",
@@ -360,6 +381,380 @@
 
       "closingStatement": "Whether you're a developer, designer, or simply passionate about optimizing Shopify stores, the TailwindLiquid ambassador program gives you the opportunity to turn your expertise into tangible earnings. Together, let's boost store conversions and deliver an exceptional user experience.",
       "callToAction": "Join the TailwindLiquid movement and start earning today!"
+    },
+    "creditsGratuits": {
+      "title": "Earn 15 credits in just a few seconds ✨",
+      "subtitle1": "Do you love TailwindLiquid? So do we, and we want the world to know!",
+      "subtitle2Part1": "By sharing your experience, you help us grow, and in return, we thank you with ",
+      "strongText": "15 free credits",
+      "subtitle2Part2": " to unlock snippets.",
+      "step1": {
+        "title": "1. Share your review",
+        "description": "Tell us what you liked about TailwindLiquid, how it helped you, or what you expect next. A few words can make a big difference 🙏",
+        "linkText": "👉 Leave a review on Google"
+      },
+      "step2": {
+        "title": "2. Show us your message",
+        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to tailwindliquid@gmail.com, on Discord, or on our Discord server."
+      },
+      "step3": {
+        "title": "3. Receive your credits",
+        "descriptionPart1": "Upon receipt and verification of your message, your ",
+        "strongText": "15 credits",
+        "descriptionPart2": " will be added to your account within 24 hours. It’s our way of saying thank you ❤️"
+      }
+    },
+     "stickyBar": {
+      "codeReady": "💻 60+ ready-to-use codes",
+      "newMonthly": "📅 New additions every month",
+      "proRender": "🚀 Professional results in minutes"
+    },
+    "paymentErrorModal": {
+      "title": "Payment failed",
+      "mainMessage": "An error occurred while processing your payment.",
+      "retryAdvice": "Please try again or contact your bank if the problem persists."
+    },
+    "checkProduct": {
+      "benefit1": "+60 Liquid + Tailwind ready-to-use codes",
+      "benefit2": "Copy, paste and boost your conversions",
+      "benefit3": "100% compatible with all Shopify themes",
+      "benefit4": "One-time purchase or subscription with updates"
+    },
+    "detailsProduct": {
+      "0": { "title": "Pack presentation and benefits" },
+      "1": { "title": "Why is this the best solution?" },
+      "2": { "title": "How does it work?" },
+      "3": { "title": "Support and contact" },
+      "4": { "title": "Security and payment methods" },
+      "5": { "title": "Refund conditions" }
+    },
+    "packsSelected": {
+      "0": "To unlock simple codes",
+      "1": "To unlock advanced codes",
+      "2": "To unlock pro codes"
+    },
+    "packTitles": {
+      "débutant": "Beginner",
+      "avancé": "Advanced",
+      "pro": "Pro"
+    },
+     "purchaseMode": {
+      "oneTime": "One-time purchase",
+      "subscription": "Monthly subscription"
+    },
+    "productImage": {
+      "instantAccess": "Instant access",
+      "topSeller2025": "Top Seller 2025",
+      "incredible": "Amazing",
+      "rated5": "Rated 5/5 on",
+      "joinCommunity": "Join our <strong>merchant community</strong> who have <strong>boosted their sales</strong> thanks to our <strong>Conversion Pack</strong> 🚀.",
+      "ourPacks": "Our Packs:",
+      "frequency": "Frequency:",
+      "paymentSecure": "Secure payment – instant access after purchase",
+      "exampleCode": "Code example (your best reviews)",
+      "mostPopular": "Most popular",
+      "mostProfitable": "Most profitable",
+      "noCommit": "No commitment",
+      "creditsLabel": "Credits",
+      "addToCart": "Add to cart - {price} €",
+      "exampleStore": {
+        "title": "Imagine your future store",
+        "subtitle": "What you can achieve with your Pro Conversion Pack",
+        "instructions": "(Click on any visual to enlarge and scroll to explore the design in detail)",
+        "modalAlt": "Enlarge"
+      },
+      "announcement": {
+        "trustsDataGroup1": {
+          "increaseConversions": "Increase your conversions",
+          "easyCopyPaste": "Easy copy-paste",
+          "saveTime": "Save time",
+          "fastPersonalization": "Fast personalization",
+          "instantResults": "Instant results"
+        },
+        "trustsDataGroup2": {
+          "readyToUse": "Ready-to-use code",
+          "proDesign": "Professional design",
+          "higherAttractiveness": "Higher attractiveness",
+          "guaranteedSuccess": "Guaranteed success",
+          "boostSales": "Boost your sales"
+        }
+      },
+      "exampleCodePage": {
+        "title": "More than 60 codes to integrate",
+        "subtitle": "A preview of the many codes included",
+        "images": {
+          "proveSatisfaction": "Prove satisfaction",
+          "crowdEffect": "Create a crowd effect",
+          "credibility": "Reinforce credibility",
+          "urgency": "Create urgency",
+          "valueOffer": "Showcase the offer",
+          "eliminateRisk": "Eliminate risk",
+          "clearExpectation": "Set a clear expectation",
+          "reassureSecure": "Reassure and secure",
+          "finalPush": "Strengthen the buying decision"
+        }
+      },
+      "howItWorksPage": {
+        "title": "No more overpriced themes",
+        "subtitle": "The affordable solution for a premium design",
+        "videoDescription": "It's incredibly easy to add to your store, you'll see improvements instantly",
+        "left": {
+          "noMoreApps": "No more apps needed",
+          "convertingDesign": "A design that converts",
+          "buildCredibility": "Builds your store’s credibility",
+          "easyToInstall": "Easy to install",
+          "saveTime": "Saves time",
+          "noSkillsNeeded": "No skills required"
+        },
+        "right": {
+          "noPremiumTheme": "No more premium themes",
+          "unlimitedCustomization": "Unlimited customization",
+          "proLook": "Professional look",
+          "compatibleAllThemes": "Compatible with all themes",
+          "boostConversions": "Boosts conversions",
+          "regularUpdates": "Regular updates"
+        }
+      },
+      "reviewsPage": {
+        "title": "They can't live without it anymore",
+        "subtitle": "Who better than them to talk about the Conversion Pack?",
+        "googleBadge": "5/5 on",
+        "reviews": [
+          {
+            "name": "Ye Yun",
+            "score": 5,
+            "content": "I had a technical question about integrating a snippet and received a clear, prompt answer in less than an hour. Honestly, it's rare to find such support. Hats off for the professionalism!"
+          },
+          {
+            "name": "Mickael L.",
+            "score": 5,
+            "content": "No bugs, everything works perfectly. I was a bit skeptical at first, but all the codes work flawlessly on my theme. No bugs, no slowdown... just new features for my store. Very reassuring."
+          },
+          {
+            "name": "Marwen L.",
+            "score": 5,
+            "content": "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and TailwindLiquid was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want."
+          },
+          {
+            "name": "Karim H.",
+            "score": 5,
+            "content": "Excellent value for money. For the price, it's unbeatable. Instead of paying a developer hundreds of euros, I installed premium features on my Shopify site myself. Very satisfied with the result."
+          },
+          {
+            "name": "Guillaume L.",
+            "score": 5,
+            "content": "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function."
+          },
+          {
+            "name": "Abdelhaq M.",
+            "score": 5,
+            "content": "Incredible! It's perfectly designed for quick and easy testing. The credits system lets you choose exactly the snippets you need, without commitments or unnecessary expenses. No bloatware, you only pay for what you use. Highly recommended."
+          }
+        ]
+      },
+      "faq": {
+        "title": "Your Questions",
+        "subtitle": "Find here the answers to the most frequently asked questions to assist you in using your pack",
+        "items": [
+          {
+            "title": "What is a Liquid code?",
+            "content": "Liquid is the programming language used by Shopify to customize and structure online store themes."
+          },
+          {
+            "title": "What is the Shopify Conversion Pack for?",
+            "content": "The Conversion Pack improves design, enhances user experience, and significantly increases conversion rates."
+          },
+          {
+            "title": "Do these codes work with all themes?",
+            "content": "Yes, the codes have been tested on a wide range of free and premium themes to ensure perfect integration."
+          },
+          {
+            "title": "What kind of features can I add?",
+            "content": "With the Conversion Pack, you can add dynamic customer reviews, social proof, attractive CTAs, trust badges, and much more to improve user experience."
+          },
+          {
+            "title": "Do I need technical skills?",
+            "content": "Not at all! Even a beginner can easily install them. Just copy-paste and replace the text or colors. And if needed, I am here to support you via Discord or email at tailwindliquid@gmail.com."
+          },
+          {
+            "title": "How does code installation work?",
+            "content": "Installation only takes a few seconds. Just follow the instructions on the “Installation” page to ensure everything works perfectly."
+          },
+          {
+            "title": "Can TailwindLiquid slow down my store?",
+            "content": "No. The code is optimized and lightweight. It integrates cleanly with your theme without impacting your store’s performance."
+          },
+          {
+            "title": "Can I get a refund if I am not satisfied?",
+            "content": "Refunds are possible only if no credit has been used. Once a snippet is unlocked, the purchase is considered consumed."
+          },
+          {
+            "title": "What if I have problems?",
+            "content": "I am available to help you at every step. Contact me directly on Discord or by email at tailwindliquid@gmail.com."
+          }
+        ]
+      }
+    },
+    "packBenefits": {
+      "save30": "Save 30% on each order",
+      "cancelAnytime": "Cancel, change, or pause anytime",
+      "prioritySupport": "Priority customer support",
+      "discordAccess": "Access to our Discord server",
+      "receiveCodes": "Receive new codes every month",
+      "shopAudits": "Shop audits and advice to improve your store"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "close": "Close",
+      "emptyCart": "Your cart is empty.",
+      "productImageAlt": "Product image",
+      "couponInfo": "Code to apply on next step",
+      "totalLabel": "Total",
+      "checkoutButton": "Proceed to next step"
+    },
+    "footer": {
+      "aboutTitle": "About",
+      "aboutText": "I launched <strong>TailwindLiquid</strong> to offer Shopify merchants powerful and accessible tools to transform their stores into true conversion engines.",
+      "legalPagesTitle": "Legal Pages",
+      "contactTitle": "Contact Us",
+      "contactHours": "Monday to Friday: 9:00 AM - 6:00 PM",
+      "legalLinks": [
+        { "link": "/legals/legal-notice", "label": "Legal Notice" },
+        { "link": "/legals/privacy-policy", "label": "Privacy Policy" },
+        { "link": "/legals/terms-and-conditions", "label": "Terms and Conditions of Sale" },
+        { "link": "/legals/terms-and-conditions-of-use", "label": "Terms of Use" }
+      ]
+    },
+    "legalpage": {
+      "terms-and-conditions-of-use": {
+        "title": "Terms of Use (TOU)",
+        "data": [
+          {
+            "title": "Last updated: 02/04/2025",
+            "content": "Welcome to TailwindLiquid. By accessing and using our website, you agree to these Terms of Use. If you do not agree with these terms, please do not use our site."
+          },
+          {
+            "title": "1. Purpose",
+            "content": "These Terms of Use define the usage conditions of the TailwindLiquid website and the services provided."
+          },
+          {
+            "title": "2. Access to the Site",
+            "content": "Access to the site is reserved for adults. By using this site, you declare that you are at least 18 years old."
+          },
+          {
+            "title": "3. Intellectual Property",
+            "content": "All content and code (snippets) on this site are the exclusive property of TailwindLiquid and are protected by intellectual property laws."
+          },
+          {
+            "title": "4. Responsibilities",
+            "content": "We strive to ensure the accuracy of the information on this site, but we cannot guarantee that it is always complete or up to date. Use of the information on this site is at your own risk."
+          },
+          {
+            "title": "5. Changes to the Terms",
+            "content": "We reserve the right to modify these Terms of Use at any time. Changes will take effect upon publication on the site."
+          }
+        ]
+      },
+      "terms-and-conditions": {
+        "title": "General Terms and Conditions of Sale (GTCS)",
+        "data": [
+          {
+            "title": "Last updated: 02/04/2025",
+            "content": "These General Terms and Conditions of Sale govern the sales of products and services on the TailwindLiquid website."
+          },
+          {
+            "title": "1. Products and Services",
+            "content": "TailwindLiquid offers ready-to-use Liquid & TailwindCSS snippets to improve Shopify stores. Access to these snippets is via a credit system, which can be purchased in packs."
+          },
+          {
+            "title": "2. Packs and Subscriptions",
+            "content": "We offer three credit packs used to unlock snippets:\n- 1 credit\n- 3 credits\n- 5 credits\nThese credits can be obtained through a one-time purchase or a monthly subscription."
+          },
+          {
+            "title": "3. Pricing",
+            "content": "Prices for packs and subscriptions are listed in euros, including all taxes. We reserve the right to modify our prices at any time."
+          },
+          {
+            "title": "4. Orders",
+            "content": "You can place orders directly on our site. Confirmation of your order implies full acceptance of these GTCS."
+          },
+          {
+            "title": "5. Payment",
+            "content": "Payment is due immediately at the time of ordering. Payments are processed via Stripe."
+          },
+          {
+            "title": "6. Delivery",
+            "content": "Credits purchased are added to your account immediately after payment confirmation."
+          },
+          {
+            "title": "7. Right of Withdrawal",
+            "content": "According to applicable laws, the right of withdrawal cannot be exercised for digital content not supplied on a physical support."
+          },
+          {
+            "title": "8. Liability",
+            "content": "We cannot be held liable for damages resulting from the misuse of our products."
+          }
+        ]
+      },
+      "privacy-policy": {
+        "title": "Privacy Policy",
+        "data": [
+          {
+            "title": "Last updated: 02/04/2025",
+            "content": "At TailwindLiquid, we attach great importance to protecting your personal data."
+          },
+          {
+            "title": "1. Information Collection",
+            "content": "We collect information when you register on our site, place an order, or interact with our services."
+          },
+          {
+            "title": "2. Use of Information",
+            "content": "The collected information may be used to:\n- Improve our website and services\n- Contact you via email\n- Administer contests, promotions, or surveys"
+          },
+          {
+            "title": "3. Information Protection",
+            "content": "We implement a variety of security measures to protect your personal information."
+          },
+          {
+            "title": "4. Consent",
+            "content": "By using our site, you consent to our privacy policy."
+          }
+        ]
+      },
+      "legal-notice": {
+        "title": "Legal Notice",
+        "data": [
+          {
+            "title": "Last updated: 02/04/2025",
+            "content": "Legal information about the TailwindLiquid website."
+          },
+          {
+            "title": "1. Site Publisher",
+            "content": "TailwindLiquid\nDesigned and developed by Selim Baouz (Selimmersive)\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: tailwindliquid@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz (Selimmersive)"
+          },
+          {
+            "title": "2. Hosting",
+            "content": "Frontend Hosting: Vercel\nBackend Hosting: Shopify"
+          },
+          {
+            "title": "3. Intellectual Property",
+            "content": "All content and code (snippets) on this site are the exclusive property of TailwindLiquid and are protected by French intellectual property laws."
+          },
+          {
+            "title": "4. Contact",
+            "content": "For any questions or information requests regarding the site, please contact us at: tailwindliquid@gmail.com."
+          }
+        ]
+      },
+      "not-found": {
+        "title": "Page Not Found",
+        "data": [
+          {
+            "title": "Error 404",
+            "content": "The page you requested does not exist."
+          }
+        ]
+      }
     }
   }
 }

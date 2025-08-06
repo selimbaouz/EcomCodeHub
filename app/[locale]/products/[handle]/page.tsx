@@ -8,12 +8,11 @@ import NavBar from '@/components/navigation/NavBar';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import ExampleStore from '@/components/ExampleStore';
-import MarqueeStack from '@/components/MarqueeStack';
-import { trustsDataGroup1, trustsDataGroup2 } from '@/data';
 import HowItWorks from '@/components/HowItWorks';
 import { Reviews } from '@/components/Reviews';
 import { PaymentErrorModal } from '@/components/PaymentErrorModal';
 import ExampleCode from '@/components/ExampleCode';
+import AnnouncementBar from '@/components/AnnouncementBar';
 
 export default async function ProductPage({ params }: { params: { handle: string } }) {    
     const product = await getHandleOfProduct(params.handle);
@@ -57,12 +56,7 @@ export default async function ProductPage({ params }: { params: { handle: string
                     </section>
                 </div>
                 <ExampleStore />
-                <div className={cn("relative bg-primary w-full h-14 text-white flex flex-col items-center justify-center font-medium", "lg:h-20")}>
-                    <MarqueeStack data={trustsDataGroup1} />
-                </div>
-                <div className={cn("relative bg-secondary w-full h-14 text-foreground dark:text-[#324e58] flex flex-col items-center justify-center font-medium", "lg:h-20")}>
-                    <MarqueeStack data={trustsDataGroup2} reverse />
-                </div>
+                <AnnouncementBar />
                 <ExampleCode />
                 <HowItWorks />
                 <Reviews />

@@ -5,10 +5,12 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function PaymentErrorModal() {
   const searchParams = useSearchParams();
   const paymentError = searchParams.get("echec") || searchParams.get("cancel");
+  const t = useTranslations("fe");
 
   const [isPaymentError, setIsPaymentError] = useState(false);
 
@@ -27,16 +29,16 @@ export function PaymentErrorModal() {
               <AlertCircle className="size-28 text-destructive" />
             <div className="flex items-center gap-2">
               <h3 className="text-xl font-bold text-foreground text-center">
-                Échec du paiement
+                {t("paymentErrorModal.title")}
               </h3>
             </div>
           </CardHeader>
           <CardContent>
             <p className="text-foreground text-center">
-              Une erreur est survenue lors du traitement de votre paiement.
+              {t("paymentErrorModal.mainMessage")}
             </p>
             <p className="text-sm text-destructive text-center mt-4">
-              Veuillez réessayer ou contacter votre banque si le problème persiste.
+              {t("paymentErrorModal.retryAdvice")}
             </p>
           </CardContent>
         </Card>

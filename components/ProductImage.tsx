@@ -1,6 +1,5 @@
 "use client";
-import { checkProduct, detailsProduct, PacksSelected } from "@/data";
-import GetRatings, { removeSuffix } from "@/lib/fn";
+import { removeSuffix } from "@/lib/fn";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Product } from "@/types/types";
@@ -12,6 +11,14 @@ import { CheckIcon } from "lucide-react";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import SecureBadges from "./snippets/SecureBadges/SecureBadges";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { FaCheckSquare } from "react-icons/fa";
+import Description from "./content/detailsProduct/Description";
+import WhyTL from "./content/detailsProduct/WhyTL";
+import HowItWorks from "./content/detailsProduct/HowItWorks";
+import Support from "./content/detailsProduct/Support";
+import PaymentSecurity from "./content/detailsProduct/PaymentSecurity";
+import RefundPolicy from "./content/detailsProduct/RefundPolicy";
 
 interface ProductImageProps {
     product: Product;
@@ -21,12 +28,86 @@ interface ProductImageProps {
 const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
     const [bundleActive, setBundleActive] = useState(false);
     const [selectedPack, setSelectedPack] = useState(0);
-    const [selectedPackName, setSelectedPackName] = useState("Débutant");
+    const [selectedPackName, setSelectedPackName] = useState("Avancé");
     const filteredVariant = product.variants.edges.filter(v => v.node.title.includes(selectedPackName));
+    const t = useTranslations("fe");
     const [selectedVariant, setSelectedVariant] = useState({
         title: filteredVariant[0].node.title,
         price: filteredVariant[0].node.price?.amount
     });
+
+    const packs = [
+        { title: "Débutant", credits: 30 },
+        { title: "Avancé", credits: 60, discount: "-7%" },
+        { title: "Pro", credits: 90, discount: "-11%" },
+    ];
+
+    const checkProduct = [
+      {
+        title: t("checkProduct.benefit1"),
+        icon: FaCheckSquare,
+      },
+      {
+        title: t("checkProduct.benefit2"),
+        icon: FaCheckSquare,
+      },
+      {
+        title: t("checkProduct.benefit3"),
+        icon: FaCheckSquare,
+      },
+      {
+        title: t("checkProduct.benefit4"),
+        icon: FaCheckSquare,
+      },
+    ]
+
+    const detailsProduct = [
+        {
+            title: t("detailsProduct.0.title"),
+            content: <Description />
+        },
+        {
+            title: t("detailsProduct.1.title"),
+            content: <WhyTL />
+        },
+        {
+            title: t("detailsProduct.2.title"),
+            content: <HowItWorks />
+        },
+        {
+            title: t("detailsProduct.3.title"),
+            content: <Support />
+        },
+        {
+            title: t("detailsProduct.4.title"),
+            content: <PaymentSecurity />
+        },
+        {
+            title: t("detailsProduct.5.title"),
+            content: <RefundPolicy />
+        }
+    ]
+
+    const PacksSelected = (selected: number) => {
+        switch (selected) {
+        case 0:
+            return {
+            content: t("packsSelected.0")
+            };
+        case 1:
+            return {
+            content: t("packsSelected.1")
+            };
+            case 2:
+            return {
+            content: t("packsSelected.2")
+            };
+        default:
+            return {
+            content: t("packsSelected.0")
+            };
+        }
+    };
 
     useEffect(() => {
         if (removeSuffix(selectedVariant.title) === "Abonnement mensuel") {
@@ -58,10 +139,10 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
             <div className={cn("space-y-2")}>
                 <div className={cn("flex items-center gap-2")}>
                     <div className={cn("text-xs text-white font-semibold bg-primary px-2 py-1 rounded-lg")}>
-                        Accès instantané
+                        {t("productImage.instantAccess")}
                     </div>
                     <div className={cn("text-xs text-background font-semibold bg-foreground px-2 py-1 rounded-lg")}>
-                        Top Achat 2025
+                        {t("productImage.topSeller2025")}
                     </div>
                 </div>
                 <h3 className={cn("text-left text-2xl font-bold pointer-events-none whitespace-pre-wrap text-foreground", "lg:text-3xl", "xl:text-4xl")}>
@@ -73,7 +154,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                     rel="noopener noreferrer" 
                     className="flex items-center justify-start border border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2"
                 >
-                    <div className="text-[13px] font-semibold">"Incroyable"</div>
+                    <div className="text-[13px] font-semibold">{t("productImage.incredible")}</div>
                     <div className="flex items-center">
                         <StarFilledIcon className="text-sm text-primary"/>
                         <StarFilledIcon className="text-sm text-primary"/>
@@ -81,7 +162,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         <StarFilledIcon className="text-sm text-primary"/>
                         <StarFilledIcon className="text-sm text-primary"/>
                     </div>
-                    <div className="text-xs font-semibold text-foreground">Noté 5/5 sur</div>
+                    <div className="text-xs font-semibold text-foreground">{t("productImage.rated5")}</div>
                     <img
                         className="w-[45px] mt-[2px]"
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
@@ -89,7 +170,12 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                     />
                 </Link>
             </div>
-            <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>Rejoignez notre <strong>communauté d’e-commerçants</strong> qui ont fait <strong>exploser leurs ventes</strong> grâce à notre <strong>Pack Conversion</strong> 🚀.</p>
+            <p 
+                className={cn("text-sm", "sm:text-base", "xl:text-lg")}>
+                   {t.rich("productImage.joinCommunity", {
+                        strong: (chunks) => <strong>{chunks}</strong>
+                    })}
+            </p>
 
             <ul className={cn("flex flex-col py-4 gap-4")}>
                 {checkProduct.map((data, index) => (
@@ -102,26 +188,11 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
             <div className={cn("space-y-10 py-4")}>    
                 <div className={cn("space-y-6")}>
                     <div className={cn("flex items-center justify-between")}>
-                        <h6 className={cn("font-bold uppercase")}>Nos Packs :</h6>
+                        <h6 className={cn("font-bold uppercase")}>{t("productImage.ourPacks")}</h6>
                         <p className={cn("text-[13px] font-medium", "lg:text-sm")}>{PacksSelected(selectedPack).content}</p>
                     </div>
                     <div className={cn("relative w-full flex items-center justify-stretch gap-2")}>
-                        {[
-                            {
-                                title: "Débutant",
-                                credits: 30
-                            },
-                            {
-                                title: "Avancé",
-                                credits: 60,
-                                discount: "-7%"
-                            },
-                            {
-                                title: "Pro",
-                                credits: 90,
-                                discount: "-11%"
-                            },
-                        ].map((data, index) => (
+                        {packs.map((data, index) => (
                         <div 
                             key={index} 
                             onClick={() => {
@@ -136,17 +207,17 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                                 {data.discount && <div className={cn("absolute -top-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{data.discount}</div>}
                             <div className="space-y-1">
                                 <h6 className={cn("text-sm", "lg:text-base")}>
-                                    {data.title}
+                                    {t(`packTitles.${data.title.toLocaleLowerCase()}`)}
                                 </h6>
                                 <p className={cn("text-xs font-medium", "lg:text-sm")}>
-                                    {data.credits} Crédits
+                                    {data.credits} {t("productImage.creditsLabel")}
                                 </p>
                             </div>
                         </div>
 
                         ))}
                     </div>
-                    <h6 className={cn("font-bold uppercase")}>Fréquence :</h6>
+                    <h6 className={cn("font-bold uppercase")}>{t("productImage.frequency")}</h6>
                     <RadioGroup 
                         value={selectedVariant.title}
                         className={cn("flex flex-col items-center justify-between text-center gap-0")}
@@ -173,27 +244,37 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                                         })}
                                     />
                                     <div className="flex items-center w-full">
-                                    {selectedPack !== 0 && index !== 0 && <div className={cn("absolute -top-4 right-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{selectedPack === 1 ? "La plus populaire" : "La plus rentable"}</div>}
+                                    {selectedPack !== 0 && index !== 0 && <div className={cn("absolute -top-4 right-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{selectedPack === 1 ? t("productImage.mostPopular") : t("productImage.mostProfitable")}</div>}
                                         <div className={cn("flex flex-col items-start text-left w-full")}>
                                             <div className={cn(index !== 0 && "flex items-center w-full justify-between")}>
-                                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}>{parseFloat(data.node.price?.amount ?? "").toFixed(2)} € - {cleanedTitle}</h4>
+                                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}>
+                                                    {parseFloat(data.node.price?.amount ?? "").toFixed(2)} € - {
+                                                        cleanedTitle === "Achat ponctuel"
+                                                            ? t("purchaseMode.oneTime")
+                                                            : cleanedTitle === "Abonnement mensuel"
+                                                            ? t("purchaseMode.subscription")
+                                                            : cleanedTitle
+                                                    }
+                                                </h4>
                                                 {data.node.compareAtPrice && index !== 0 && (
-                                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>{parseFloat(data.node.compareAtPrice.amount).toFixed(2)}€</p>
+                                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>
+                                                        {parseFloat(data.node.compareAtPrice.amount).toFixed(2)}€
+                                                    </p>
                                                 )}
                                             </div>
                                             {index !== 0 && (
                                                 <div>
                                                     {/* {selectedPackName === "Pro" && <p className="text-sm font-bold text-primary">+ Boutique offerte</p>} */}
-                                                    <p className="text-sm">Sans engagement</p>
+                                                    <p className="text-sm">{t("productImage.noCommit")}</p>
                                                     {selectedVariant.title === data.node.title && (
                                                         <div className="space-y-1 pt-4">
                                                             {[
-                                                                {title: "Économisez  30% sur chaque commande"},
-                                                                {title: "Annulez, modifiez, mettez en pause à tout moment"},
-                                                                {title: "Support client prioritaire"},
-                                                                {title: "Accès à notre serveur Discord"},
-                                                                {title: "Recevez de nouveaux codes chaque mois"},
-                                                                {title: "Audits et conseils pour améliorer votre boutique"},
+                                                                {title: t("packBenefits.save30")},
+                                                                {title: t("packBenefits.cancelAnytime")},
+                                                                {title: t("packBenefits.prioritySupport")},
+                                                                {title: t("packBenefits.discordAccess")},
+                                                                {title: t("packBenefits.receiveCodes")},
+                                                                {title: t("packBenefits.shopAudits")},
                                                             ].map((data, index) => (
                                                                 <div key={index}>
                                                                     <div className="flex gap-2 items-center">
@@ -220,7 +301,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                         bundle={bundleActive ? bundle : undefined}  
                         size="fullWidth" 
                     />
-                    <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">Paiement sécurisé – Accès immédiat après achat</p>
+                    <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">{t("productImage.paymentSecure")}</p>
                     <SecureBadges />
                     {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
@@ -268,7 +349,7 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                 </Accordion>
             </div>
             <div className={cn("space-y-4 pb-5")}>
-                <p className="font-bold underline">Exemple de code (vos meilleurs avis)</p>
+                <p className="font-bold underline">{t("productImage.exampleCode")}</p>
                 <BestReviews productPage />
             </div>  
         </div>

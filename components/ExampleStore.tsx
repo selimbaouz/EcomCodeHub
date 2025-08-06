@@ -17,6 +17,7 @@ import Design4 from "@/public/images/design4.png";
 import ImageLoader from "./ImageLoader";
 import { StaticImageData } from "next/image";
 import { MdClose } from "react-icons/md";
+import { useTranslations } from "next-intl";
 
 const ExampleStore = () => {
     const [api, setApi] = useState<CarouselApi>()
@@ -25,6 +26,7 @@ const ExampleStore = () => {
     const [selectedImage, setSelectedImage] = useState<StaticImageData>();
     const clonedImages = [...images, ...images];
     const totalSlides = images.length;
+    const t = useTranslations("fe.productImage");
 
     useEffect(() => {
         if (!api) {
@@ -57,9 +59,13 @@ const ExampleStore = () => {
               )}>
               <div className={cn("space-y-3 pb-4")}>
                   <h3 className="mx-auto xl:text-6xl">
-                      Imaginez votre future boutique
+                      {t("exampleStore.title")}
                   </h3>
-                  <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">Ce que vous pouvez réaliser avec votre pack pro conversion <br className="hidden lg:block"/><span className="text-sm">(Cliquez sur chaque visuel pour l{"'"}agrandir et scrollez pour explorer le design en détail)</span></p>
+                  <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">
+                    {t("exampleStore.subtitle")} 
+                    <br className="hidden lg:block"/>
+                    <span className="text-sm">{t("exampleStore.instructions")}</span>
+                  </p>
               </div>
               <div className="lg:h-[650px]">
                 <Carousel 
@@ -78,7 +84,7 @@ const ExampleStore = () => {
                                   <div className={cn("relative w-full h-full overflow-hidden rounded-xl", "lg:translate-y-[0]", "lg:transition-transform lg:duration-500 lg:ease-in-out")}>
                                       <ImageLoader
                                           src={data.src}
-                                          alt={`Uploaded image ${index}`}
+                                          alt={t("exampleStore.modalAlt")}
                                           width={data.width}
                                           height={data.height}
                                           loading="lazy"
@@ -117,7 +123,7 @@ const ExampleStore = () => {
                   <MdClose className="text-3xl"/>
                 </button>
               <div
-                className={cn("relative max-h-[100%] max-w-[100%] lg:max-h-[90vh] overflow-y-auto", "lg:p-4 lg:rounded-2xl lg:bg-white")}
+                className={cn("relative max-h-[100%] max-w-[100%] lg:max-h-[90vh] overflow-y-auto", "lg:p-2 lg:rounded-2xl lg:bg-white")}
                 onClick={(e) => e.stopPropagation()} 
               >
                 <ImageLoader

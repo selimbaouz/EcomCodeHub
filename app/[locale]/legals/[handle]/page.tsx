@@ -21,8 +21,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-
-export default async function Legals ({ params }: Props) {
+export default async function Legals({ params }: Props) {
   return (
     <Suspense>
       <div className="relative">

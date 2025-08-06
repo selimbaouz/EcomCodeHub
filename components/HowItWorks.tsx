@@ -1,10 +1,32 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { HowItWorks1, HowItWorks2 } from '@/data';
 import ImageLoader from './ImageLoader';
 import Demo from "@/public/images/demo-video.gif";
+import { FaCheckSquare } from 'react-icons/fa';
+import { cp } from 'fs';
+import { useTranslations } from 'next-intl';
 
 const HowItWorks = () => {
+    const t = useTranslations("fe.productImage.howItWorksPage")
+
+    const HowItWorks1 = [
+        { title: t("left.noMoreApps"), icon: FaCheckSquare },
+        { title: t("left.convertingDesign"), icon: FaCheckSquare },
+        { title: t("left.buildCredibility"), icon: FaCheckSquare },
+        { title: t("left.easyToInstall"), icon: FaCheckSquare },
+        { title: t("left.saveTime"), icon: FaCheckSquare },
+        { title: t("left.noSkillsNeeded"), icon: FaCheckSquare },
+    ];
+
+    const HowItWorks2 = [
+        { title: t("right.noPremiumTheme"), icon: FaCheckSquare },
+        { title: t("right.unlimitedCustomization"), icon: FaCheckSquare },
+        { title: t("right.proLook"), icon: FaCheckSquare },
+        { title: t("right.compatibleAllThemes"), icon: FaCheckSquare },
+        { title: t("right.boostConversions"), icon: FaCheckSquare },
+        { title: t("right.regularUpdates"), icon: FaCheckSquare },
+    ];
+
     return (
         <section className={cn(
             "bg-background px-4 relative py-10 space-y-4 text-center mx-auto text-2xl font-bold", 
@@ -13,9 +35,11 @@ const HowItWorks = () => {
             )}>
             <div className={cn("space-y-3 pb-4 max-w-screen-xl mx-auto")}>
                 <h3 className="mx-auto xl:text-6xl">
-                Fini les thèmes hors de prix
+                    {t("title")}
                 </h3>
-                <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">La solution abordable pour un design haut de gamme</p>
+                <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">
+                    {t("subtitle")}
+                </p>
                 <div className={cn("flex flex-col", "lg:flex-row lg:items-center lg:justify-between")}>
                     <ul className={cn("order-2 flex flex-col gap-4", "lg:order-1")}>
                         {HowItWorks1.map((data, index) => (
@@ -33,7 +57,9 @@ const HowItWorks = () => {
                             alt="Gif who show how it works"
                             className='border rounded-2xl h-full'
                         />
-                        <p className="text-base lg:text-xl font-medium max-w-5xl mx-auto">C{"'"}est incroyablement facile à ajouter sur votre boutique, vous verrez des améliorations instantanément</p>
+                        <p className="text-base lg:text-xl font-medium max-w-5xl mx-auto">
+                            {t("videoDescription")}    
+                        </p>
                     </div>
                     <ul className={cn("order-3 flex flex-col pt-4 gap-4", "lg:pt-0")}>
                         {HowItWorks2.map((data, index) => (

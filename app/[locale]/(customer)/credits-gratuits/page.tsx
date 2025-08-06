@@ -11,7 +11,7 @@ export default async function CreditsGratuitsPage() {
     const user = await getUserByEmail(session?.user?.email ?? "");
     
     if(!session?.user && !user?.stripeCustomerId && !user?.plan) {
-        redirect("/auth/login");
+        redirect("/");
     }
 
     return (

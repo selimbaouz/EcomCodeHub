@@ -19,11 +19,25 @@ import Component6 from "@/public/images/component6.png";
 import Component7 from "@/public/images/component7.png";
 import Component8 from "@/public/images/component8.png";
 import Component9 from "@/public/images/component9.png";
+import { useTranslations } from 'next-intl';
 
 const ExampleCode = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const t = useTranslations("fe.productImage.exampleCodePage")
+
+  const images = [
+    { title: t("images.proveSatisfaction"), image: Component1 },
+    { title: t("images.crowdEffect"), image: Component2 },
+    { title: t("images.credibility"), image: Component3 },
+    { title: t("images.urgency"), image: Component4 },
+    { title: t("images.valueOffer"), image: Component5 },
+    { title: t("images.eliminateRisk"), image: Component6 },
+    { title: t("images.clearExpectation"), image: Component7 },
+    { title: t("images.reassureSecure"), image: Component8 },
+    { title: t("images.finalPush"), image: Component9 },
+  ];
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,9 +75,11 @@ const ExampleCode = () => {
         >
         <div className={cn("space-y-3 pb-4 text-white")}>
             <h3 className="mx-auto xl:text-6xl">
-            Plus de 60 Codes à intégrés
+              {t("title")}
             </h3>
-            <p className="text-base font-medium lg:text-xl max-w-4xl mx-auto">Un aperçu parmi les nombreux codes inclus</p>
+            <p className="text-base font-medium lg:text-xl max-w-4xl mx-auto">
+              {t("subtitle")}
+            </p>
         </div>
         <Carousel 
           setApi={setApi} 
@@ -107,42 +123,3 @@ const ExampleCode = () => {
 };
 
 export default ExampleCode;
-
-  const images = [
-    {
-      title: "Prouve la satisfaction",
-      image: Component1,
-    },
-    {
-      title: "Crée un effet de foule",
-      image: Component2,
-    },
-    {
-      title: "Renforce la Crédibilité",
-      image: Component3,
-    },
-    {
-      title: "Crée l'urgence",
-      image: Component4,
-    },
-    {
-      title: "Valorise l’offre",
-      image: Component5,
-    },
-    {
-      title: "Élimine le risque",
-      image: Component6,
-    },
-    {
-      title: "Fixe une attente claire",
-      image: Component7,
-    },
-    {
-      title: "Rassure et sécurise",
-      image: Component8,
-    },
-    {
-      title: "Renforce la décision d'achat",
-      image: Component9,
-    },
-  ];

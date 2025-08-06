@@ -22,7 +22,7 @@ export default function Cart() {
    const setCartOpen = useHideFlashPromoStore((state) => state.setCartOpen);
   const quantityRef = useRef(cart?.quantity);
   const [isLoading, setIsLoading] = useState(false);
-  const t = useTranslations("fe");
+  const t = useTranslations("fe.cart");
 
   useEffect(() => {
     if (cart.lines.length > 0 && isOpenCart) {
@@ -119,10 +119,10 @@ export default function Cart() {
       <SheetContent side="right" className="h-full w-full">
         <SheetHeader className="border-b">
           <div className='flex justify-between items-center p-4'>
-            <SheetTitle className="text-foreground text-lg font-medium uppercase">Votre Panier</SheetTitle>
+            <SheetTitle className="text-foreground text-lg font-medium uppercase">{t("title")}</SheetTitle>
             <SheetClose>
               <Cross2Icon className="size-5" />
-              <span className="sr-only">Close</span>
+              <span className="sr-only">{t("close")}</span>
             </SheetClose>
           </div>
         </SheetHeader>
@@ -130,7 +130,7 @@ export default function Cart() {
           {!cart || cart.lines.length === 0 ? (
               <div className="flex w-full flex-col items-center justify-center pt-14">
                 <ShoppingCartIcon className="size-14" />
-                <p className="mt-6 text-center text-lg font-medium">Votre panier est vide.</p>
+                <p className="mt-6 text-center text-lg font-medium">{t("emptyCart")}</p>
               </div>
           ) : (
               <div className='h-[92%] flex flex-col justify-between'>
@@ -180,11 +180,11 @@ export default function Cart() {
           )}
           </div>
           <div className='absolute bottom-0 pb-6 w-full'>
-            <div className={cn("w-full py-3 bg-secondary/30 dark:bg-[#2c4049] flex justify-center")}>
-              <p className='text-primary uppercase font-semibold text-xs dark:text-white'>Code à appliquer à l’étape suivante</p>
-            </div>
+          {/*   <div className={cn("w-full py-3 bg-secondary/30 dark:bg-[#2c4049] flex justify-center")}>
+              <p className='text-primary uppercase font-semibold text-xs dark:text-white'>{t("couponInfo")}</p>
+            </div> */}
             <div className="z-50 border-t dark:border-t-gray-200/10 p-4 pt-6 flex items-center justify-between dark:border-gray-200/10 border-neutral-200 dark:border-neutral-700">
-                <p className={cn("uppercase font-semibold")}>Total</p>
+                <p className={cn("uppercase font-semibold")}>{t("totalLabel")}</p>
                 <span className='ml-1 inline'>
                     <PriceCart
                         className="flex justify-end space-y-2 text-right text-sm"
@@ -194,7 +194,7 @@ export default function Cart() {
                 </span>
             </div>
             <form action={handleCheckout} className='px-4'>
-                <CheckoutButton isLoading={isLoading} quantity={cart.quantity} />
+                <CheckoutButton isLoading={isLoading} quantity={cart.quantity} t={t} />
             </form>
           </div>
       </SheetContent>
@@ -203,7 +203,7 @@ export default function Cart() {
 }
 
 
-function CheckoutButton({isLoading, quantity}: {isLoading: boolean, quantity: number}) {
+function CheckoutButton({isLoading, quantity, t}: {isLoading: boolean, quantity: number, t: (key: string) => string}) {
     return (
       <button
         className="bg-primary rounded-lg text-white hover:bg-primary/80 uppercase py-[18px] w-full flex items-center justify-around text-sm font-semibold"
@@ -211,7 +211,7 @@ function CheckoutButton({isLoading, quantity}: {isLoading: boolean, quantity: nu
         disabled={isLoading || quantity === 0}
       >
         <MdLock className={cn("text-white flex justify-start text-lg")} />
-        {isLoading ? <PulseLoader size={7} color="white" /> : "Passez à l'étape suivante"}
+        {isLoading ? <PulseLoader size={7} color="white" /> : t("checkoutButton")}
         <div />
       </button>
     );

@@ -12,7 +12,7 @@ import { getUserInvoices } from "@/actions/order";
 import Subscription from "@/components/Subscription";
 import { getSubscriptions } from "@/actions/stripe";
 
-export default async function PaymentsInvoices() {
+export default async function PaymentsInvoicesPage() {
     const session = await auth();
     const user = await getUserByEmail(session?.user?.email ?? "");
     const initialInvoices = await getUserInvoices({ limit: 20, subscriptionId: user?.subscriptionId ?? "" });

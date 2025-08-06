@@ -19,7 +19,7 @@ import { CgProfile } from "react-icons/cg";
 import { usePathname, useRouter } from "next/navigation";
 import { useModalStore } from "@/store/plans";
 import { useLocale, useTranslations } from "next-intl";
-/* import LocaleSwitcher from "@/components/LocaleSwitcher"; */
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 interface NavBarWebProps {
   isAccount?: boolean;
@@ -81,7 +81,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user })
           </ul>
         </div>
         <div className="lg:flex lg:items-center lg:gap-4">
-            {/* <LocaleSwitcher locale={locale} /> */}
+            <LocaleSwitcher locale={locale} />
           {!currentUser ? (
             <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push(`/${locale}/auth/login`)} />
           ) : (
@@ -143,7 +143,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user })
         </ul>
       </div>
       <div className={cn("flex gap-3 items-center")}>
-        {/* <LocaleSwitcher locale={locale} /> */}
+        <LocaleSwitcher locale={locale} />
         <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push(`/${locale}/auth/login`)} />
         <div className="relative p-2 cursor-pointer group" onClick={() => setIsOpenCart(true)}>
           <RiShoppingBag3Fill className={cn("text-3xl text-foreground group-hover:text-primary transition-all ease-in-out hover:scale-110", "lg:text-2xl", "xl:text-3xl")} />

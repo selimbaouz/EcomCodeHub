@@ -324,7 +324,28 @@
       "emailSentDescription": "Un e-mail de réinitialisation du mot de passe a été envoyé. Veuillez vérifier votre boîte de réception et suivre les instructions.",
 
       "defaultTitle": "Vérification en cours...",
-      "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail."
+      "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail.",
+      "description": {
+        "paragraph1": "<strong>TailwindLiquid est la solution incontournable</strong> pour les e-commerçants Shopify souhaitant transformer leur boutique en <strong>une boutique à fort taux de conversion</strong>. Grâce à des codes TailwindCSS et Liquid optimisés et personnalisables, vous pouvez <strong>améliorer vos conversions</strong>, offrir une expérience utilisateur fluide et donner à votre boutique <strong>une apparence digne des meilleurs thèmes, sans dépenser des centaines d’euros</strong>.",
+        "paragraph2": "Conçu par un <strong>développeur fullstack, consultant SEO et designer web avec plus de 7 ans d’expérience</strong> dans la création de boutiques Shopify, TailwindLiquid respecte les standards du web et <strong>garantit des performances optimales pour le SEO</strong>.",
+        "paragraph3": "<strong>Rejoignez notre serveur Discord dédié</strong>, inclus avec tous les packs, même ponctuels, pour <strong>poser vos questions techniques, partager vos retours</strong>, découvrir les nouveautés en avant-première, et <strong>co-construire avec la communauté les prochains snippets </strong> TailwindLiquid.",
+        "paragraph4": "Des <strong>audits de design et de boutique Shopify</strong> seront également proposés régulièrement afin d’identifier les points d'amélioration. <strong>Ces audits seront exclusivement réservés aux abonnés.</strong>",
+        "paragraph5": "L’objectif de TailwindLiquid est de <strong>réunir une communauté ambitieuse d’e-commerçants</strong> et de réussir ensemble."
+      },
+      "howItWorks": {
+        "step1": "<strong class='underline'>1. Choisissez votre pack :</strong> Sélectionnez un pack de crédits en fonction de vos besoins : Pack Débutant (20 crédits), Pack Avancé (60 crédits), ou Pack Pro (90 crédits).",
+        "step2": "<strong class='underline'>2. Paiement et connexion :</strong> Une fois votre paiement validé par Stripe, vos crédits seront ajoutés automatiquement. Vous serez ensuite invité à vous connecter à l’aide de l’adresse email utilisée lors du paiement. Vous devrez ensuite confirmer votre email pour accéder à votre compte.",
+        "step3": "<strong class='underline'>3. Explorez les codes disponibles :</strong> Une fois connecté, suivez les instructions dans la page \"installation\" pour configurer votre thème Shopify, puis explorez les codes classés par niveau de complexité (1, 3 ou 5 crédits). Chaque code est conçu pour améliorer une fonctionnalité spécifique de votre boutique Shopify.",
+        "step4": "<strong class='underline'>4. Débloquez un code :</strong> Selon le nombre de crédits dont vous disposez, vous pouvez débloquer des codes basiques (1 crédit), intermédiaires (3 crédits) ou avancés (5 crédits).",
+        "step5": "<strong class='underline'>5. Ajoutez un code à votre boutique Shopify :</strong>",
+        "step5List": [
+          "Connectez-vous à votre tableau de bord Shopify.",
+          "Allez dans \"Personnaliser le thème\".",
+          "Cliquez sur \"Ajouter une section\", puis sélectionnez \"Custom Liquid\"."
+        ],
+        "step6": "<strong class='underline'>6. Collez le code :</strong> Copiez le code débloqué et collez-le directement dans la section \"Custom Liquid\" de votre thème Shopify.",
+        "step7": "<strong class='underline'>7. Enregistrez et admirez :</strong> Cliquez sur \"Enregistrer\", puis observez instantanément les changements appliqués à votre boutique."
+      }
     },
     "ambassador": {
       "title": "Programme Ambassadeur",
@@ -358,6 +379,380 @@
 
       "closingStatement": "Que vous soyez développeur, designer ou passionné par l’optimisation des boutiques Shopify, le programme ambassadeur TailwindLiquid vous offre l'opportunité de transformer votre expertise en revenus concrets. Ensemble, contribuons à booster la conversion des boutiques et à offrir une expérience utilisateur exceptionnelle.",
       "callToAction": "Rejoignez le mouvement TailwindLiquid et commencez à gagner de l'argent dès aujourd'hui !"
+    },
+    "creditsGratuits": {
+      "title": "Gagnez 15 crédits en quelques secondes ✨",
+      "subtitle1": "Vous aimez TailwindLiquid ? Nous aussi, et on aimerait que le monde le sache !",
+      "subtitle2Part1": "En partageant votre expérience, vous nous aidez à grandir, et en retour, on vous remercie avec ",
+      "strongText": "15 crédits gratuits",
+      "subtitle2Part2": " à utiliser pour débloquer des snippets.",
+      "step1": {
+        "title": "1. Partagez votre avis",
+        "description": "Racontez ce que vous avez aimé sur TailwindLiquid, comment cela vous a aidé, ou ce que vous attendez de la suite. Un petit mot peut faire une grande différence 🙏",
+        "linkText": "👉 Laisser un avis sur Google"
+      },
+      "step2": {
+        "title": "2. Montrez-nous votre message",
+        "description": "Une fois l’avis publié, prenez une capture d’écran (avec la date visible) et envoyez-la par e-mail à l'adresse : tailwindliquid@gmail.com, sur Discord ou sur notre serveur Discord."
+      },
+      "step3": {
+        "title": "3. Recevez vos crédits",
+        "descriptionPart1": "Dès réception et vérification de votre message, vos ",
+        "strongText": "15 crédits",
+        "descriptionPart2": " seront ajoutés à votre compte sous 24h. C’est notre façon de vous dire merci ❤️"
+      }
+    },
+    "stickyBar": {
+      "codeReady": "💻 60+ codes prêts à l’emploi",
+      "newMonthly": "📅 Nouveaux ajouts chaque mois",
+      "proRender": "🚀 Un rendu pro en quelques minutes"
+    },
+    "paymentErrorModal": {
+      "title": "Échec du paiement",
+      "mainMessage": "Une erreur est survenue lors du traitement de votre paiement.",
+      "retryAdvice": "Veuillez réessayer ou contacter votre banque si le problème persiste."
+    },
+    "checkProduct": {
+      "benefit1": "+60 codes Liquid + Tailwind prêts à l’emploi",
+      "benefit2": "Copiez, collez et boostez vos conversions",
+      "benefit3": "100 % compatibles avec tous les thèmes Shopify",
+      "benefit4": "Achat unique ou abonnement avec mises à jour"
+    },
+    "detailsProduct": {
+      "0": { "title": "Présentation et bénéfices du pack" },
+      "1": { "title": "Pourquoi c’est la meilleure solution ?" },
+      "2": { "title": "Comment ça marche ?" },
+      "3": { "title": "Assistance et contact" },
+      "4": { "title": "Sécurité et moyens de paiement" },
+      "5": { "title": "Conditions de remboursement" }
+    },
+    "packsSelected": {
+      "0": "Pour débloquer des codes simples",
+      "1": "Pour débloquer des codes avancés",
+      "2": "Pour débloquer des codes pro"
+    },
+    "packTitles": {
+      "débutant": "Débutant",
+      "avancé": "Avancé",
+      "pro": "Pro"
+    },
+    "purchaseMode": {
+      "oneTime": "Achat ponctuel",
+      "subscription": "Abonnement mensuel"
+    },
+    "productImage": {
+      "instantAccess": "Accès instantané",
+      "topSeller2025": "Top Achat 2025",
+      "incredible": "Incroyable",
+      "rated5": "Noté 5/5 sur",
+      "joinCommunity": "Rejoignez notre <strong>communauté d’e-commerçants</strong> qui ont fait <strong>exploser leurs ventes</strong> grâce à notre <strong>Pack Conversion</strong> 🚀.",
+      "ourPacks": "Nos Packs :",
+      "frequency": "Fréquence :",
+      "paymentSecure": "Paiement sécurisé – Accès immédiat après achat",
+      "exampleCode": "Exemple de code (vos meilleurs avis)",
+      "mostPopular": "La plus populaire",
+      "mostProfitable": "La plus rentable",
+      "noCommit": "Sans engagement",
+      "creditsLabel": "Crédits",
+      "addToCart": "Ajouter au panier - {price}€",
+      "exampleStore": {
+        "title": "Imaginez votre future boutique",
+        "subtitle": "Ce que vous pouvez réaliser avec votre pack pro conversion",
+        "instructions": "(Cliquez sur chaque visuel pour l'agrandir et scrollez pour explorer le design en détail)",
+        "modalAlt": "Agrandir"
+      },
+      "announcement": {
+        "trustsDataGroup1": {
+          "increaseConversions": "Augmenter vos conversions",
+          "easyCopyPaste": "Copier-coller facile",
+          "saveTime": "Gain de temps",
+          "fastPersonalization": "Personnalisation rapide",
+          "instantResults": "Résultats immédiats"
+        },
+        "trustsDataGroup2": {
+          "readyToUse": "Code prêt à l'emploi",
+          "proDesign": "Design professionnel",
+          "higherAttractiveness": "Attractivité renforcée",
+          "guaranteedSuccess": "Succès assuré",
+          "boostSales": "Boostez vos ventes"
+        }
+      },
+      "exampleCodePage": {
+        "title": "Plus de 60 Codes à intégrer",
+        "subtitle": "Un aperçu parmi les nombreux codes inclus",
+        "images": {
+          "proveSatisfaction": "Prouve la satisfaction",
+          "crowdEffect": "Crée un effet de foule",
+          "credibility": "Renforce la Crédibilité",
+          "urgency": "Crée l'urgence",
+          "valueOffer": "Valorise l’offre",
+          "eliminateRisk": "Élimine le risque",
+          "clearExpectation": "Fixe une attente claire",
+          "reassureSecure": "Rassure et sécurise",
+          "finalPush": "Renforce la décision d'achat"
+        }
+      },
+       "howItWorksPage": {
+        "title": "Fini les thèmes hors de prix",
+        "subtitle": "La solution abordable pour un design haut de gamme",
+        "videoDescription": "C'est incroyablement facile à ajouter sur votre boutique, vous verrez des améliorations instantanément",
+        "left": {
+          "noMoreApps": "Plus besoin d'applications",
+          "convertingDesign": "Un design qui convertit",
+          "buildCredibility": "Crédibilise votre boutique",
+          "easyToInstall": "Facile à installer",
+          "saveTime": "Gagne du temps",
+          "noSkillsNeeded": "Aucune compétence requise"
+        },
+        "right": {
+          "noPremiumTheme": "Plus besoin de thème premium",
+          "unlimitedCustomization": "Personnalisation illimitée",
+          "proLook": "Rendu professionnel",
+          "compatibleAllThemes": "Compatible avec tous thèmes",
+          "boostConversions": "Boost les conversions",
+          "regularUpdates": "Mises à jour régulière"
+        }
+      },
+      "reviewsPage": {
+        "title": "Ils ne peuvent plus s'en passer",
+        "subtitle": "Qui de mieux qu'eux pour parler du Pack Conversion ?",
+        "googleBadge": "5/5 sur",
+        "reviews": [
+          {
+            "name": "Ye Yun",
+            "score": 5,
+            "content": "J’avais une petite question technique sur l’intégration d’un snippet, j’ai eu une réponse claire et rapide en moins d’une heure. Franchement, c’est rare de trouver un tel suivi. Bravo pour le professionnalisme !"
+          },
+          {
+            "name": "Mickael L.",
+            "score": 5,
+            "content": "Aucun bug, tout fonctionne parfaitement. J’étais un peu sceptique au début, mais tous les codes fonctionnent parfaitement sur mon thème. Pas de bugs, pas de ralentissement… juste des fonctionnalités en plus pour mon site. Très rassurant."
+          },
+          {
+            "name": "Marwen L.",
+            "score": 5,
+            "content": "Je cherchais un moyen d'améliorer l'apparence de ma boutique Shopify sans me ruiner, et TailwindLiquid était la solution parfaite. Leurs snippets sont super faciles à mettre en œuvre et à personnaliser, ce qui me permet d'adapter mon design exactement à mes besoins."
+          },
+          {
+            "name": "Karim H.",
+            "score": 5,
+            "content": "Un excellent rapport qualité/prix. Pour le prix, c’est franchement imbattable. Au lieu de payer un développeur des centaines d’euros, j’ai pu installer moi-même des fonctionnalités premium sur mon site Shopify. Très satisfait du résultat."
+          },
+          {
+            "name": "Guillaume L.",
+            "score": 5,
+            "content": "Des fonctionnalités introuvables ailleurs. Certains snippets ajoutent des options que je n’ai trouvées dans aucune app Shopify. C’est super pratique et surtout léger : pas besoin d’installer une application entière pour une seule fonction."
+          },
+          {
+            "name": "Abdelhaq M.",
+            "score": 5,
+            "content": "Incroyable ! C’est super bien pensé pour tester sans prise de tête. Le système de crédits permet de choisir exactement les snippets dont on a besoin, sans engagement ni dépenses inutiles. Pas d’installations en trop, on paie uniquement pour ce qu’on utilise. Je recommande."
+          }
+        ]
+      },
+      "faq": {
+        "title": "Vos questions",
+        "subtitle": "Retrouvez ici les réponses aux questions les plus fréquentes pour vous accompagner dans l’utilisation de votre pack",
+        "items": [
+          {
+            "title": "Qu’est-ce qu’un code Liquid ?",
+            "content": "Liquid est le langage de programmation utilisé par Shopify pour personnaliser et structurer les thèmes des boutiques en ligne."
+          },
+          {
+            "title": "À quoi sert le Pack Conversion Shopify ?",
+            "content": "Le Pack Conversion améliore le design, enrichit l'expérience utilisateur et augmente significativement le taux de conversion."
+          },
+          {
+            "title": "Les codes fonctionnent-ils avec tous les thèmes ?",
+            "content": "Oui, les codes ont été testés sur une large gamme de thèmes gratuits et premium pour garantir une intégration parfaite."
+          },
+          {
+            "title": "Quels types de fonctionnalités puis-je ajouter ?",
+            "content": "Avec le Pack Conversion, vous pouvez ajouter des avis clients dynamiques, des preuves sociales, des CTA attractifs, des badges de confiance et bien plus encore pour améliorer l'expérience utilisateur."
+          },
+          {
+            "title": "Ai-je besoin de compétences techniques ?",
+            "content": "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Discord ou par email à tailwindliquid@gmail.com."
+          },
+          {
+            "title": "Comment fonctionne l'installation des codes ?",
+            "content": "L'installation prend seulement quelques secondes. Il suffit de suivre les instructions disponibles sur la page “Installation” pour que tout fonctionne parfaitement."
+          },
+          {
+            "title": "TailwindLiquid peut-il ralentir ma boutique ?",
+            "content": "Non. Le code est optimisé et léger. Il s’intègre proprement à votre thème sans impacter les performances de votre boutique."
+          },
+          {
+            "title": "Puis-je être remboursé si je ne suis pas satisfait ?",
+            "content": "Les remboursements sont possibles uniquement si aucun crédit n’a été utilisé. Une fois un snippet débloqué, l’achat est considéré comme consommé."
+          },
+          {
+            "title": "Que faire si j'ai des problèmes ?",
+            "content": "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Discord ou par email à tailwindliquid@gmail.com."
+          }
+        ]
+      }
+    },
+    "packBenefits": {
+      "save30": "Économisez 30% sur chaque commande",
+      "cancelAnytime": "Annulez, modifiez, mettez en pause à tout moment",
+      "prioritySupport": "Support client prioritaire",
+      "discordAccess": "Accès à notre serveur Discord",
+      "receiveCodes": "Recevez de nouveaux codes chaque mois",
+      "shopAudits": "Audits et conseils pour améliorer votre boutique"
+    },
+    "cart": {
+      "title": "Votre Panier",
+      "close": "Fermer",
+      "emptyCart": "Votre panier est vide.",
+      "productImageAlt": "Image du produit",
+      "couponInfo": "Code à appliquer à l’étape suivante",
+      "totalLabel": "Total",
+      "checkoutButton": "Passez à l’étape suivante"
+    },
+    "footer": {
+      "aboutTitle": "À propos",
+      "aboutText": "J'ai lancé <strong>TailwindLiquid</strong> pour offrir aux e-commerçants Shopify des outils puissants et accessibles pour transformer leurs boutiques en véritables moteurs de conversions.",
+      "legalPagesTitle": "Pages Légales",
+      "contactTitle": "Contactez-nous",
+      "contactHours": "Du lundi au vendredi: 09h00 - 18h00",
+      "legalLinks": [
+        { "link": "/legals/legal-notice", "label": "Mentions légales" },
+        { "link": "/legals/privacy-policy", "label": "Politique de confidentialité" },
+        { "link": "/legals/terms-and-conditions", "label": "Conditions générales de vente" },
+        { "link": "/legals/terms-and-conditions-of-use", "label": "Conditions générales d'utilisation" }
+      ]
+    },
+    "legalpage": {
+      "terms-and-conditions-of-use": {
+        "title": "Conditions Générales d'Utilisation (CGU)",
+        "data": [
+          {
+            "title": "Dernière mise à jour : 02/04/2025",
+            "content": "Bienvenue sur TailwindLiquid. En accédant et en utilisant notre site web, vous acceptez les présentes Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site."
+          },
+          {
+            "title": "1. Objet",
+            "content": "Les présentes CGU définissent les conditions d'utilisation du site TailwindLiquid et des services proposés."
+          },
+          {
+            "title": "2. Accès au site",
+            "content": "L'accès au site est réservé aux personnes majeures. En utilisant ce site, vous déclarez avoir au moins 18 ans."
+          },
+          {
+            "title": "3. Propriété intellectuelle",
+            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois sur la propriété intellectuelle."
+          },
+          {
+            "title": "4. Responsabilités",
+            "content": "Nous nous efforçons d'assurer l'exactitude des informations présentes sur ce site, mais nous ne pouvons garantir qu'elles soient toujours complètes ou à jour. L'utilisation des informations disponibles sur ce site se fait sous votre propre responsabilité."
+          },
+          {
+            "title": "5. Modification des CGU",
+            "content": "Nous nous réservons le droit de modifier ces CGU à tout moment. Les modifications entreront en vigueur dès leur publication sur le site."
+          }
+        ]
+      },
+      "terms-and-conditions": {
+        "title": "Conditions Générales de Vente (CGV)",
+        "data": [
+          {
+            "title": "Dernière mise à jour : 02/04/2025",
+            "content": "Les présentes Conditions Générales de Vente régissent les ventes de produits et services effectuées sur le site TailwindLiquid."
+          },
+          {
+            "title": "1. Produits et services",
+            "content": "TailwindLiquid propose des snippets Liquid & TailwindCSS prêts à l'emploi pour améliorer les boutiques Shopify. L'accès à ces snippets se fait via un système de crédits, qui peuvent être achetés sous forme de packs."
+          },
+          {
+            "title": "2. Packs et abonnements",
+            "content": "Nous proposons trois packs de crédits, utilisés pour débloquer des snippets :\n- 1 crédit\n- 3 crédits\n- 5 crédits\nCes crédits peuvent être obtenus via un achat ponctuel ou un abonnement mensuel."
+          },
+          {
+            "title": "3. Prix",
+            "content": "Les prix des packs et abonnements sont indiqués en euros, toutes taxes comprises. Nous nous réservons le droit de modifier nos prix à tout moment."
+          },
+          {
+            "title": "4. Commandes",
+            "content": "Vous pouvez passer commande directement sur notre site. La validation de votre commande implique l'acceptation pleine et entière des présentes CGV."
+          },
+          {
+            "title": "5. Paiement",
+            "content": "Le paiement est exigible immédiatement à la commande. Les paiements sont gérés via Stripe."
+          },
+          {
+            "title": "6. Livraison",
+            "content": "Les crédits achetés sont ajoutés à votre compte immédiatement après confirmation du paiement."
+          },
+          {
+            "title": "7. Droit de rétractation",
+            "content": "Conformément à la législation en vigueur, le droit de rétractation ne peut être exercé pour les contenus numériques non fournis sur un support matériel."
+          },
+          {
+            "title": "8. Responsabilité",
+            "content": "Nous ne saurions être tenus responsables des dommages résultant d'une mauvaise utilisation de nos produits."
+          }
+        ]
+      },
+      "privacy-policy": {
+        "title": "Politique de Confidentialité",
+        "data": [
+          {
+            "title": "Dernière mise à jour : 02/04/2025",
+            "content": "Chez TailwindLiquid, nous attachons une grande importance à la protection de vos données personnelles."
+          },
+          {
+            "title": "1. Collecte des informations",
+            "content": "Nous collectons des informations lorsque vous vous inscrivez sur notre site, passez une commande ou interagissez avec nos services."
+          },
+          {
+            "title": "2. Utilisation des informations",
+            "content": "Les informations collectées peuvent être utilisées pour :\n- Améliorer notre site web et nos services\n- Vous contacter par e-mail\n- Administrer un concours, une promotion ou une enquête"
+          },
+          {
+            "title": "3. Protection des informations",
+            "content": "Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles."
+          },
+          {
+            "title": "4. Consentement",
+            "content": "En utilisant notre site, vous consentez à notre politique de confidentialité."
+          }
+        ]
+      },
+      "legal-notice": {
+        "title": "Mentions Légales",
+        "data": [
+          {
+            "title": "Dernière mise à jour : 02/04/2025",
+            "content": "Informations légales du site TailwindLiquid."
+          },
+          {
+            "title": "1. Éditeur du site",
+            "content": "TailwindLiquid\nConçu et développé par Selim Baouz (Selimmersive)\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz (Selimmersive)"
+          },
+          {
+            "title": "2. Hébergement",
+            "content": "Hébergeur Frontend : Vercel\nHébergeur Backend : Shopify"
+          },
+          {
+            "title": "3. Propriété intellectuelle",
+            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois françaises relatives à la propriété intellectuelle. "
+          },
+          {
+            "title": "4. Contact",
+            "content": "Pour toute question ou demande d'information concernant le site, contactez nous à : tailwindliquid@gmail.com."
+          }
+        ]
+      },
+      "not-found": {
+        "title": "Page non trouvée",
+        "data": [
+          {
+            "title": "Erreur 404",
+            "content": "La page demandée n'existe pas."
+          }
+        ]
+      }
     }
   }
 }

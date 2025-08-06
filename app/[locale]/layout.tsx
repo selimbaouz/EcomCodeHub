@@ -23,7 +23,7 @@ const montserrat = Montserrat({
     "900",
   ],
   subsets: ["latin"],
-  variable: "--font-ms",
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {

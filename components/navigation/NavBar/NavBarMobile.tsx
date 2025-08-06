@@ -11,7 +11,8 @@ import { useRouter } from "next/navigation";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useOpenSidebarStore } from "@/store/sidebar";
 import { useOpenAccountStore } from "@/store/account";
-/* import LocaleSwitcher from "@/components/LocaleSwitcher"; */
+import LocaleSwitcher from "@/components/LocaleSwitcher";
+import { useLocale } from "next-intl";
 
 interface NavBarMobileProps {
     currentUser: User | undefined;
@@ -26,6 +27,7 @@ const NavBarMobile = ({
     const { setIsOpenSidebar } = useOpenSidebarStore();
     const { setIsOpenAccount } = useOpenAccountStore();
     const router = useRouter();
+    const locale = useLocale();
     const isHydrated = useIsHydrated();
 
     if(!isHydrated){
@@ -48,6 +50,7 @@ const NavBarMobile = ({
                 </div>
                 <div>
                     {/* <ToggleMode /> */}
+                    <LocaleSwitcher locale={locale} />
                     {!currentUser ? (
                         <div className={cn("cursor-pointer flex items-center gap-1")}>
                         <CgProfile className="text-3xl" onClick={() => router.push("/auth/login")} />
@@ -79,7 +82,7 @@ const NavBarMobile = ({
             </Link>
             </div>
             <div className={cn("flex gap-0.5 items-center")}>
-                {/* <LocaleSwitcher locale={locale} /> */}
+                <LocaleSwitcher locale={locale} />
                 <div 
                     className="relative p-2 cursor-pointer group" 
                     onClick={() => setIsOpenCart(true)}

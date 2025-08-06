@@ -1,9 +1,22 @@
 "use client";
 import { useState, useEffect } from "react";
-import { stickyBarData } from "@/data";
+import { useTranslations } from "next-intl";
 
 const StickyBar = () => {
     const [index, setIndex] = useState(0);
+    const t = useTranslations("fe");
+
+    const stickyBarData = [
+     {
+        title: t('stickyBar.codeReady'),
+      },
+      {
+        title: t('stickyBar.newMonthly'),
+      },
+      {
+        title: t('stickyBar.proRender'),
+      },
+    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
