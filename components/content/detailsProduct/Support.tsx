@@ -1,16 +1,20 @@
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const Support = () => {
+  const t = useTranslations("fe.content.support");
+  const items: string[] = t.raw("items");
+
   return (
     <ul className={cn("text-sm space-y-6 py-4")}>
-      <li>
-        Je suis disponible pour vous accompagner à chaque étape, que ce soit pour un problème technique ou une question sur l'installation ou l'utilisation des codes.
-      </li>
-      <li>
-        <strong className='underline'>Contactez-moi directement :</strong> Par Discord ou par email : <a href="mailto:tailwindliquid@gmail.com" className="text-blue-500 underline">tailwindliquid@gmail.com</a>
-      </li>
-     {/*  <li>
+      {items.map((item, index) => (
+        <li
+          key={index}
+          dangerouslySetInnerHTML={{ __html: item }}
+        />
+      ))}
+      {/*  <li>
         <strong className='underline'>Rejoignez notre communauté Discord :</strong>  
         Échangez avec d'autres utilisateurs, partagez vos expériences et trouvez des solutions ensemble. <br />
         <a href="https://discord.gg/tonlien" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">

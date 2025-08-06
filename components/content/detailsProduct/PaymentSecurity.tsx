@@ -1,18 +1,16 @@
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const PaymentSecurity = () => {
+  const t = useTranslations("fe.content.paymentSecurity");
+  const items: string[] = t.raw("items");
+
   return (
-    <ul className={cn("text-sm space-y-6 py-4")}>
-      <li>
-        <strong className='underline'>Paiement 100% sécurisé :</strong> Toutes les transactions sont protégées via Stripe et ses partenaires officiels, dont Apple Pay, Google Pay, Revolut, PayPal, Amazon Pay, Link et Twint.
-      </li>
-      <li>
-        <strong className='underline'>Moyens de paiement acceptés :</strong> Visa, Mastercard, Apple Pay, Google Pay, Revolut, Link, Paypal, Twint, Bancontact, Amazon Pay.
-      </li>
-      <li>
-        <strong className='underline'>Certification et conformité :</strong> Stripe est certifié PCI DSS niveau 1, la norme la plus stricte en matière de sécurité des paiements en ligne.
-      </li>
+     <ul className={cn("text-sm space-y-6 py-4")}>
+      {items.map((item, index) => (
+        <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+      ))}
     </ul>
   );
 };

@@ -1,21 +1,21 @@
+"use client";
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const WhyTL = () => {
+    const t = useTranslations("fe.content.whyTL");
+
+    const items: string[] = t.raw("items");
     return (
         <ul className={cn("text-sm py-2 space-y-4")}>
-            <li>
-                <strong className='underline'>Facile à utiliser :</strong> Aucun besoin de compétences techniques ;), copiez, collez, et c’est prêt !
-            </li>
-            <li>
-                <strong className='underline'>Économique :</strong> Une alternative abordable aux thèmes Shopify coûteux (jusqu’à 350 €).
-            </li>
-            <li>
-                <strong className='underline'>Optimisé pour le SEO :</strong> Des codes légers et performants pour améliorer la visibilité de votre boutique.
-            </li>
-            <li>
-                <strong className='underline'>Compatible avec tous les thèmes Shopify :</strong> Fonctionne parfaitement, quel que soit votre design actuel.
-            </li>
+            {items.map((item, index) => (
+                <li
+                key={index}
+                // On utilise dangerouslySetInnerHTML parce que la chaîne contient du HTML <strong class='underline'>
+                dangerouslySetInnerHTML={{ __html: item }}
+                />
+            ))}
         </ul>
     );
 };

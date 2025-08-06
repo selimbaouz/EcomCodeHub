@@ -335,18 +335,48 @@
         "paragraph5": "TailwindLiquid's goal is to <strong>bring together an ambitious community of merchants</strong> and succeed together."
       },
       "howItWorks": {
-        "step1": "<strong class='underline'>1. Choose your pack:</strong> Select a credit pack based on your needs: Beginner Pack (20 credits), Advanced Pack (60 credits), or Pro Pack (90 credits).",
-        "step2": "<strong class='underline'>2. Payment and login:</strong> Once your payment is validated by Stripe, your credits will be automatically added. You will then be invited to log in using the email address used at checkout. You will have to confirm your email to access your account.",
-        "step3": "<strong class='underline'>3. Explore available codes:</strong> Once logged in, follow the instructions on the \"installation\" page to configure your Shopify theme, then explore the codes sorted by complexity level (1, 3, or 5 credits). Each code is designed to enhance a specific feature of your Shopify store.",
-        "step4": "<strong class='underline'>4. Unlock a code:</strong> Depending on the number of credits you have, you can unlock basic codes (1 credit), intermediate (3 credits), or advanced (5 credits).",
-        "step5": "<strong class='underline'>5. Add a code to your Shopify store:</strong>",
-        "step5List": [
-          "Log in to your Shopify dashboard.",
-          "Go to \"Customize theme.\"",
-          "Click on \"Add section,\" then select \"Custom Liquid.\""
-        ],
-        "step6": "<strong class='underline'>6. Paste the code:</strong> Copy the unlocked code and paste it directly into the \"Custom Liquid\" section of your Shopify theme.",
-        "step7": "<strong class='underline'>7. Save and admire:</strong> Click \"Save,\" then instantly see the changes applied to your store."
+        "items": [
+          "<strong class='underline'>1. Choose your pack:</strong> Select a credit pack based on your needs: Beginner Pack (20 credits), Advanced Pack (60 credits), or Pro Pack (90 credits).",
+          "<strong class='underline'>2. Payment and login:</strong> Once your payment is validated by Stripe, your credits will be automatically added. You will then be invited to log in using the email address used at checkout. You will have to confirm your email to access your account.",
+          "<strong class='underline'>3. Explore available codes:</strong> Once logged in, follow the instructions on the \"installation\" page to configure your Shopify theme, then explore the codes sorted by complexity level (1, 3, or 5 credits). Each code is designed to enhance a specific feature of your Shopify store.",
+          "<strong class='underline'>4. Unlock a code:</strong> Depending on the number of credits you have, you can unlock basic codes (1 credit), intermediate (3 credits), or advanced (5 credits).",
+          "<strong class='underline'>5. Add a code to your Shopify store:</strong>",
+          [
+            "Log in to your Shopify dashboard.",
+            "Go to \"Customize theme.\"",
+            "Click on \"Add section,\" then select \"Custom Liquid.\""
+          ],
+          "<strong class='underline'>6. Paste the code:</strong> Copy the unlocked code and paste it directly into the \"Custom Liquid\" section of your Shopify theme.",
+          "<strong class='underline'>7. Save and admire:</strong> Click \"Save,\" then instantly see the changes applied to your store."
+        ]
+      },
+      "whyTL": {
+        "items": [
+          "<strong class='underline'>Easy to use:</strong> No technical skills needed ;), just copy, paste, and you're ready!",
+          "<strong class='underline'>Affordable:</strong> A cost-effective alternative to expensive Shopify themes (up to €350).",
+          "<strong class='underline'>SEO optimized:</strong> Lightweight and efficient code to improve your store's visibility.",
+          "<strong class='underline'>Compatible with all Shopify themes:</strong> Works perfectly regardless of your current design."
+        ]
+      },
+      "support": {
+        "items": [
+          "I am available to support you at every step, whether it is a technical issue or a question about installing or using the codes.",
+          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:tailwindliquid@gmail.com' class='text-blue-500 underline'>tailwindliquid@gmail.com</a>"
+        ]
+      },
+      "refundPolicy": {
+        "items": [
+          "<strong class='underline'>Can I get a refund?</strong> Yes, a refund is possible <strong>only if no credit has been used</strong>. Once a snippet is unlocked, the purchase is considered consumed.",
+          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:tailwindliquid@gmail.com' class='text-foreground underline'>tailwindliquid@gmail.com</a>",
+          "<strong class='underline'>Support at your service:</strong> Before any refund, I am here to help you resolve your technical issue. My goal is your satisfaction."
+        ]
+      },
+      "paymentSecurity": {
+        "items": [
+          "<strong class='underline'>100% Secure Payment:</strong> All transactions are protected via Stripe and its official partners including Apple Pay, Google Pay, Revolut, PayPal, Amazon Pay, Link, and Twint.",
+          "<strong class='underline'>Accepted Payment Methods:</strong> Visa, Mastercard, Apple Pay, Google Pay, Revolut, Link, PayPal, Twint, Bancontact, Amazon Pay.",
+          "<strong class='underline'>Certification and Compliance:</strong> Stripe is PCI DSS Level 1 certified, the highest security standard for online payments."
+        ]
       }
     },
     "ambassador": {

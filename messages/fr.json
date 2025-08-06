@@ -333,18 +333,48 @@
         "paragraph5": "L’objectif de TailwindLiquid est de <strong>réunir une communauté ambitieuse d’e-commerçants</strong> et de réussir ensemble."
       },
       "howItWorks": {
-        "step1": "<strong class='underline'>1. Choisissez votre pack :</strong> Sélectionnez un pack de crédits en fonction de vos besoins : Pack Débutant (20 crédits), Pack Avancé (60 crédits), ou Pack Pro (90 crédits).",
-        "step2": "<strong class='underline'>2. Paiement et connexion :</strong> Une fois votre paiement validé par Stripe, vos crédits seront ajoutés automatiquement. Vous serez ensuite invité à vous connecter à l’aide de l’adresse email utilisée lors du paiement. Vous devrez ensuite confirmer votre email pour accéder à votre compte.",
-        "step3": "<strong class='underline'>3. Explorez les codes disponibles :</strong> Une fois connecté, suivez les instructions dans la page \"installation\" pour configurer votre thème Shopify, puis explorez les codes classés par niveau de complexité (1, 3 ou 5 crédits). Chaque code est conçu pour améliorer une fonctionnalité spécifique de votre boutique Shopify.",
-        "step4": "<strong class='underline'>4. Débloquez un code :</strong> Selon le nombre de crédits dont vous disposez, vous pouvez débloquer des codes basiques (1 crédit), intermédiaires (3 crédits) ou avancés (5 crédits).",
-        "step5": "<strong class='underline'>5. Ajoutez un code à votre boutique Shopify :</strong>",
-        "step5List": [
-          "Connectez-vous à votre tableau de bord Shopify.",
-          "Allez dans \"Personnaliser le thème\".",
-          "Cliquez sur \"Ajouter une section\", puis sélectionnez \"Custom Liquid\"."
-        ],
-        "step6": "<strong class='underline'>6. Collez le code :</strong> Copiez le code débloqué et collez-le directement dans la section \"Custom Liquid\" de votre thème Shopify.",
-        "step7": "<strong class='underline'>7. Enregistrez et admirez :</strong> Cliquez sur \"Enregistrer\", puis observez instantanément les changements appliqués à votre boutique."
+        "items": [
+          "<strong class='underline'>1. Choisissez votre pack :</strong> Sélectionnez un pack de crédits en fonction de vos besoins : Pack Débutant (20 crédits), Pack Avancé (60 crédits), ou Pack Pro (90 crédits).",
+          "<strong class='underline'>2. Paiement et connexion :</strong> Une fois votre paiement validé par Stripe, vos crédits seront ajoutés automatiquement. Vous serez ensuite invité à vous connecter à l’aide de l’adresse email utilisée lors du paiement. Vous devrez ensuite confirmer votre email pour accéder à votre compte.",
+          "<strong class='underline'>3. Explorez les codes disponibles :</strong> Une fois connecté, suivez les instructions dans la page \"installation\" pour configurer votre thème Shopify, puis explorez les codes classés par niveau de complexité (1, 3 ou 5 crédits). Chaque code est conçu pour améliorer une fonctionnalité spécifique de votre boutique Shopify.",
+          "<strong class='underline'>4. Débloquez un code :</strong> Selon le nombre de crédits dont vous disposez, vous pouvez débloquer des codes basiques (1 crédit), intermédiaires (3 crédits) ou avancés (5 crédits).",
+          "<strong class='underline'>5. Ajoutez un code à votre boutique Shopify :</strong>",
+          [
+            "Connectez-vous à votre tableau de bord Shopify.",
+            "Allez dans \"Personnaliser le thème\".",
+            "Cliquez sur \"Ajouter une section\", puis sélectionnez \"Custom Liquid\"."
+          ],
+          "<strong class='underline'>6. Collez le code :</strong> Copiez le code débloqué et collez-le directement dans la section \"Custom Liquid\" de votre thème Shopify.",
+          "<strong class='underline'>7. Enregistrez et admirez :</strong> Cliquez sur \"Enregistrer\", puis observez instantanément les changements appliqués à votre boutique."
+        ]
+      },
+      "whyTL": {
+        "items": [
+          "<strong class='underline'>Facile à utiliser :</strong> Aucun besoin de compétences techniques ;), copiez, collez, et c’est prêt !",
+          "<strong class='underline'>Économique :</strong> Une alternative abordable aux thèmes Shopify coûteux (jusqu’à 350 €).",
+          "<strong class='underline'>Optimisé pour le SEO :</strong> Des codes légers et performants pour améliorer la visibilité de votre boutique.",
+          "<strong class='underline'>Compatible avec tous les thèmes Shopify :</strong> Fonctionne parfaitement, quel que soit votre design actuel."
+        ]
+      },
+      "support": {
+        "items": [
+          "Je suis disponible pour vous accompagner à chaque étape, que ce soit pour un problème technique ou une question sur l'installation ou l'utilisation des codes.",
+          "<strong class='underline'>Contactez-moi directement :</strong> Par Discord ou par email : <a href='mailto:tailwindliquid@gmail.com' class='text-blue-500 underline'>tailwindliquid@gmail.com</a>"
+        ]
+      },
+      "refundPolicy": {
+        "items": [
+          "<strong class='underline'>Puis-je être remboursé ?</strong> Oui, un remboursement est possible <strong>uniquement si aucun crédit n’a été utilisé</strong>. Dès qu’un snippet est débloqué, l’achat est considéré comme consommé.",
+          "<strong class='underline'>Comment demander un remboursement ?</strong> Il suffit de me contacter par email avec l’adresse utilisée pour l’achat : <a href='mailto:tailwindliquid@gmail.com' class='text-foreground underline'>tailwindliquid@gmail.com</a>",
+          "<strong class='underline'>Support à l'écoute :</strong> Avant tout remboursement, je suis là pour vous aider à résoudre votre problème technique. Mon objectif : que vous soyez satisfait."
+        ]
+      },
+      "paymentSecurity": {
+        "items": [
+          "<strong class='underline'>Paiement 100% sécurisé :</strong> Toutes les transactions sont protégées via Stripe et ses partenaires officiels, dont Apple Pay, Google Pay, Revolut, PayPal, Amazon Pay, Link et Twint.",
+          "<strong class='underline'>Moyens de paiement acceptés :</strong> Visa, Mastercard, Apple Pay, Google Pay, Revolut, Link, Paypal, Twint, Bancontact, Amazon Pay.",
+          "<strong class='underline'>Certification et conformité :</strong> Stripe est certifié PCI DSS niveau 1, la norme la plus stricte en matière de sécurité des paiements en ligne."
+        ]
       }
     },
     "ambassador": {
