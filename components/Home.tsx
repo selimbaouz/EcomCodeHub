@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import Category from "@/components/Category";
 import Footer from "@/components/Footer";
 import SearchBar from "@/components/SearchBar";
@@ -32,7 +32,7 @@ const Home = ({
     const t = useTranslations("fe.home");    
     const isMobile = useIsMobile();
 
-    /* useEffect(() => {
+    useEffect(() => {
         fetch('/api/fb-view-content', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -48,7 +48,7 @@ const Home = ({
                 fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1],
             })
         });
-    }, []); */
+    }, []);
 
     return (
         <div>

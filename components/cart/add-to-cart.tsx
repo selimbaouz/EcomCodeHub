@@ -1,59 +1,8 @@
-'use client';
-
-import { Product, VariantsProduct } from '@/types/types';
+import { Product } from '@/types/types';
 import { useFormState } from 'react-dom';
 import { addItem } from './actions';
-import { useCartStore, useOpenCartStore, useVisibleFloatingCartStore } from '@/store/cart';
-import { cn } from '@/lib/utils';
-import { useEffect, useRef } from 'react';
-import { useTranslations } from "next-intl";
-
-interface SubmitButtonProps {
-  size?: "fullWidth" | "initial";
-  price?: string;
-}
-function SubmitButton({size = "initial", price}: SubmitButtonProps) {
-  const buttonRef = useRef(null);
-  const { setIsVisible } = useVisibleFloatingCartStore();
-  const t = useTranslations("fe");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0,
-      }
-    );
-
-    if (buttonRef.current) {
-      observer.observe(buttonRef.current);
-    }
-
-    return () => {
-      if (buttonRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        observer.unobserve(buttonRef.current);
-      }
-    };
-  }, [setIsVisible]);
-
-  return (
-      <button
-        aria-label="Add to cart"
-        ref={buttonRef}
-        className={cn(
-          "py-4 px-2 lg:px-6 rounded-lg bg-primary hover:bg-primary/80 text-white font-medium text-base border-t",
-          size === "fullWidth" ? "min-w-full" : "w-max",
-          "hover:bg-gradient-to-tr"
-      )}
-      >
-        <p className={cn("uppercase")}>{t("productImage.addToCart", { price: parseFloat(price ?? "").toFixed(2) })}</p>
-      </button>
-  );
-}
+import { useCartStore } from '@/store/cart';
+import { SubmitButtonClient } from './SubmitButton';
 
 export function AddToCart({ 
   product, 
@@ -70,14 +19,11 @@ export function AddToCart({
   price?: string;
 } }) {
   const variants = product.variants.edges;
-  const { addCartItem } = useCartStore();
-  const { setIsOpenCart } = useOpenCartStore();
-  const { setIsOpenFloatingBar } = useVisibleFloatingCartStore();
   const [message] = useFormState(addItem, null);
 
   const stateValues = state?.title.split(" / ").map(s => s.trim());
 
-  const variant = product.variants.edges.find((variant) =>
+  const variant = variants.find((variant) =>
       variant.node.selectedOptions?.map(option => option.value.trim().toLowerCase()).join(" / ") === stateValues?.join(" / ").toLowerCase()
     );
 
@@ -91,9 +37,6 @@ export function AddToCart({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const actionWithVariant = async (prevState: any) => {
     addItem(prevState, selectedVariantId, sellingPlanId ? sellingPlanId : undefined);
-    if (bundle) {
-      addCartItem(bundle.variants.edges[0], bundle); 
-    } 
   }
   
   /* const actionWithVariant = formAction.bind(null, selectedVariantId); */
@@ -103,13 +46,15 @@ export function AddToCart({
   return (
     <form
       action={async (prevState) => {
-        addCartItem(finalVariant, product);
         await actionWithVariant(prevState);
-        setIsOpenFloatingBar(false);
       }}
-      onClick={() => setIsOpenCart(true)}
     >
-      <SubmitButton size={size} price={updatedPrice} />
+      <SubmitButtonClient 
+        size={size} 
+        price={updatedPrice} 
+        variant={finalVariant}
+        product={product}
+      />
       <p aria-live="polite" className="sr-only" role="status">
         {message}
       </p>

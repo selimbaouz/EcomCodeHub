@@ -92,6 +92,22 @@ export default function Cart() {
       ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
       : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
 
+      await fetch("/api/fb-initiate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventTime: Math.floor(Date.now() / 1000),
+          eventSourceUrl: window.location.href,
+          userAgent: navigator.userAgent,
+          pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, // ou une variable d'env
+          value: cart.cost.totalAmount.amount,
+          currency: cart.cost.totalAmount.currencyCode,
+          content_ids: cart.lines.map(line => line.merchandise.id),
+          num_items: cart.quantity,
+          fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1]
+        }),
+      });
+
       const res = await createCheckoutSessionCart({
         packNameWithBundle,
         quantities,

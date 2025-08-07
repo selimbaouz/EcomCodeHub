@@ -60,7 +60,7 @@ export default async function LocaleLayout({
                   s.parentNode.insertBefore(t,s)}(window, document,
                   'script',
                   'https://connect.facebook.net/en_US/fbevents.js');
-                  fbq('init', '1521652655465018');
+                  fbq('init', '1861317064600077');
                   fbq('track', 'PageView');
                 `,
               }}
@@ -71,7 +71,7 @@ export default async function LocaleLayout({
                 height="1"
                 width="1"
                 style={{ display: "none" }}
-                src="https://www.facebook.com/tr?id=1521652655465018&ev=
+                src="https://www.facebook.com/tr?id=1861317064600077&ev=
                 PageView&noscript=1"/>
             </noscript>
             {/* End Meta Pixel Code */}
