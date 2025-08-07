@@ -27,7 +27,7 @@ interface ProductImageProps {
 
 const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
     const [bundleActive, setBundleActive] = useState(false);
-    const [selectedPack, setSelectedPack] = useState(0);
+    const [selectedPack, setSelectedPack] = useState(1);
     const [selectedPackName, setSelectedPackName] = useState("Avancé");
     const filteredVariant = product.variants.edges.filter(v => v.node.title.includes(selectedPackName));
     const t = useTranslations("fe");
