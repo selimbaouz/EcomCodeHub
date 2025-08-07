@@ -9,6 +9,8 @@ import Head from "next/head";
 import Image from "next/image";
 import { NextIntlClientProvider } from "next-intl";
 import { Montserrat } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const montserrat = Montserrat({
   weight: [
@@ -27,8 +29,67 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "TailwindLiquid - Transformez votre boutique Shopify",
-  description: "Découvrez TailwindLiquid, des codes optimisés pour améliorer le design de votre boutique Shopify et augmenter vos conversions, sans thème premium coûteux.",
+  title: {
+    default: "TailwindLiquid – Shopify Liquid Code Snippets to Boost Your Store",
+    template: "%s | TailwindLiquid"
+  },
+  description:
+    "Unlock your Shopify store’s full potential with TailwindLiquid: ready-to-use Liquid code and UI snippets to enhance your design, boost sales, and improve conversions—no coding or expensive themes required.",
+  keywords: [
+    "shopify liquid code",
+    "code liquid shopify",
+    "code shopify",
+    "liquid shopify",
+    "code shopify liquid",
+    "shopify snippets",
+    "liquid snippets",
+    "shopify conversions",
+    "tailwindcss shopify",
+    "shopify store design",
+    "shopify ui",
+    "copy paste shopify code",
+    "shopify components",
+    "shopify code examples",
+    "no-code shopify",
+    "ux shopify",
+    "ecommerce design"
+  ],
+  authors: [{ name: "selimmersive" }],
+  creator: "selimmersive",
+  publisher: "selimmersive",
+  robots: "index, follow",
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://tailwindliquid.com",
+    siteName: "TailwindLiquid",
+    title: "TailwindLiquid – Shopify Liquid Code Snippets to Boost Your Store",
+    description:
+      "TailwindLiquid provides Shopify merchants with powerful, plug-&-play Liquid code and TailwindCSS snippets to boost conversions and customize any store, without developer skills.",
+    images: [
+      {
+        url: "https://tailwindliquid.com/images/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "TailwindLiquid – Shopify Liquid Code"
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@selimmersive",
+    creator: "@selimmersive",
+    title: "TailwindLiquid – Shopify Liquid Code Snippets",
+    description:
+      "Shopify Liquid code, ready-to-use UI snippets, and plug & play design blocks to enhance your store’s design and boost sales.",
+    images: ["https://tailwindliquid.com/images/og-image.webp"],
+  },
+  verification: {
+    google: "",
+  },
+  alternates: {
+    canonical: "https://tailwindliquid.com",
+  },
 };
 
 export default async function LocaleLayout({
@@ -79,6 +140,8 @@ export default async function LocaleLayout({
           </Head>
           <Toaster position="bottom-right" />
           <NextIntlClientProvider>
+            <SpeedInsights />
+            <Analytics />
             <Providers>
               <LayoutClient>
                 {children}

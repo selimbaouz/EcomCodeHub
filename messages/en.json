@@ -404,10 +404,10 @@
 
       "applyTitle": "How to Apply:",
       "applyInstructions": [
-        "Send us an email at [tailwindliquid@gmail.com](mailto:tailwindliquid@gmail.com) with the following information:",
+        "Fill out this [online form](FORM_URL) with the following information:",
         "Your contact details (name, email, etc.)",
-        "Links to your social profiles and pages",
-        "A brief overview of your experience and your motivation to join the ambassador program"
+        "Links to your social media profiles and pages",
+        "A brief introduction about your experience and motivation to join the ambassador program"
       ],
 
       "closingStatement": "Whether you're a developer, designer, or simply passionate about optimizing Shopify stores, the TailwindLiquid ambassador program gives you the opportunity to turn your expertise into tangible earnings. Together, let's boost store conversions and deliver an exceptional user experience.",

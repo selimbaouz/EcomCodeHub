@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Footer from '@/components/Footer';
 import NavBar from '@/components/navigation/NavBar';
 import StickyBar from '@/components/navigation/StickyBar';
@@ -10,6 +10,12 @@ import React from 'react';
 
 export default function AmbassadorProgram() {
   const t = useTranslations("fe.ambassador");
+  const locale = useLocale();
+
+  const formUrl =
+  locale === "fr"
+    ? "https://docs.google.com/forms/d/e/1FAIpQLSdIQLMTWDha82sNpD7ZLg05GL-BpBGljN5_ecZ9a_adKlqR4A/viewform?usp=dialog"
+    : "https://docs.google.com/forms/d/e/1FAIpQLScQY8jdBN6k3V3X86DVHAYSww-qTi6ac3zE241B_ctWtOvq4A/viewform?usp=dialog";
 
   // Forcer le typage des tableaux retournés par t()
   const offers = t.raw("offers") as string[];
@@ -65,7 +71,7 @@ export default function AmbassadorProgram() {
                     ),
                     }}
                 >
-                    {item}
+                    {item.replace('FORM_URL', formUrl)}
                 </ReactMarkdown>
                 </li>
             ))}
