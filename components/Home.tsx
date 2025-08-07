@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import Category from "@/components/Category";
 import Footer from "@/components/Footer";
@@ -11,6 +12,7 @@ import { Session } from 'next-auth';
 import { SnippetsType, UserType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import NavBar from './navigation/NavBar';
+import useIsMobile from '@/hook/use-is-mobile';
 
 interface HomeProps {
     session: Session | null ;
@@ -28,6 +30,7 @@ const Home = ({
     categoriesSnippets
 }: HomeProps) => {
     const t = useTranslations("fe.home");    
+    const isMobile = useIsMobile();
 
     /* useEffect(() => {
         fetch('/api/fb-view-content', {
@@ -57,7 +60,7 @@ const Home = ({
                   {!session?.user ? (
                     <div className={cn("pt-20 pb-10 flex flex-col justify-center items-center space-y-6 lg:space-y-8 lg:pt-24")}>
                       <h1 className="text-4xl lg:text-7xl font-bold text-center max-w-7xl whitespace-pre-wrap">
-                        {t("heroTitle")}
+                        {isMobile ? t("heroTitleMobile") : t("heroTitleWeb")}
                       </h1>
                       <p className="lg:text-xl text-center text-gray-700 max-w-3xl whitespace-pre-wrap">
                         {t("heroDescription")}

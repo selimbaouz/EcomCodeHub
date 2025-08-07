@@ -7,7 +7,8 @@
       "pt": "Portugais"
     },
     "home": {
-      "heroTitle": "La bibliothèque ultime de\nsnippets pour Shopify",
+      "heroTitleWeb": "La bibliothèque ultime de\nsnippets pour Shopify",
+      "heroTitleMobile": "La bibliothèque ultime de snippets pour Shopify",
       "heroDescription": "Des snippets Tailwindcss prêts à l’emploi pour Shopify.\nGagnez du temps, copiez, collez, c’est en ligne.",
       "herotitleAuth": "Bienvenue",
       "heroDescriptionAuth": "Veuillez entrer l'e-mail que vous avez utilisé lors de l'achat sur Stripe.",
