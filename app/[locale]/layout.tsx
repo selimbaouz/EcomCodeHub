@@ -30,11 +30,11 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "TailwindLiquid – Extraits de code Liquid Shopify pour booster votre boutique",
+    default: "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
     template: "%s | TailwindLiquid"
   },
   description:
-    "Libérez tout le potentiel de votre boutique Shopify avec TailwindLiquid : extraits de code Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
+    "Libérez tout le potentiel de votre boutique Shopify avec TailwindLiquid : snippets Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
   keywords: [
     "shopify liquid code",
     "code liquid shopify",
@@ -63,9 +63,9 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://tailwindliquid.com",
     siteName: "TailwindLiquid",
-    title: "TailwindLiquid – Extraits de code Liquid Shopify pour booster votre boutique",
+    title: "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
     description:
-      "TailwindLiquid offre aux commerçants Shopify des extraits de code et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
+      "TailwindLiquid offre aux commerçants Shopify des snippets et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
     images: [
       {
         url: "https://tailwindliquid.com/fr/images/og-image.webp",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@selimmersive",
     creator: "@selimmersive",
-    title: "TailwindLiquid – Extraits de code Liquid Shopify",
+    title: "TailwindLiquid – snippets Liquid Shopify",
     description:
       "Code Liquid Shopify, composants UI clé-en-main et blocs TailwindCSS pour améliorer rapidement le design et la conversion de votre boutique.",
     images: ["https://tailwindliquid.com/fr/images/og-image.webp"],

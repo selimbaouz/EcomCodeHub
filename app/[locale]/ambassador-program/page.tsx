@@ -7,33 +7,6 @@ import StickyBar from '@/components/navigation/StickyBar';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import React from 'react';
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Ambassador Program | TailwindLiquid",
-  description:
-    "Rejoignez le programme ambassadeur TailwindLiquid : bénéficiez d'avantages exclusifs pour promouvoir nos solution Shopify, accédez à des ressources pro, et grandissez avec une communauté de makers e-commerce.",
-  alternates: {
-    canonical: "https://www.tailwindliquid.com/fr/ambassador-program",
-  },
-  keywords: [
-    "ambassadeur tailwindliquid",
-    "ambassador program",
-    "shopify",
-    "affiliation shopify",
-    "liquid shopify",
-    "community shopify",
-    "partenaire shopify",
-    "tailwindliquid",
-  ],
-  openGraph: {
-    title: "Ambassador Program | TailwindLiquid",
-    description: "Devenez ambassadeur TailwindLiquid et profitez d’avantages exclusifs pour les passionnés Shopify, no-code, e-commerce.",
-    url: "https://www.tailwindliquid.com/fr/ambassador-program",
-    siteName: "TailwindLiquid",
-  },
-};
-
 
 export default function AmbassadorProgram() {
   const t = useTranslations("fe.ambassador");
