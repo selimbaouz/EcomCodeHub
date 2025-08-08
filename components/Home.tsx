@@ -34,7 +34,6 @@ const Home = ({
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        TiktokPixel.pageView(); // Event "PageView" générique
         TiktokPixel.track('ViewContent', {
         content_id: 'homepage',
         content_type: 'home',

@@ -18,13 +18,6 @@ const LayoutClient: FC<LayoutClientProps> = ({children}) => {
         faviconInactive: FaviconInactive.src
     });
 
-      useEffect(() => {
-        const advancedMatching = {}; // optionnel, mets ici les données hashées si besoin
-        const options = { debug: false };
-        // Initialiser le pixel TikTok une seule fois
-        TiktokPixel.init("D2AVJF3C77U67ECJ57P0", advancedMatching, options);
-    }, []);
-
     return (
         <main>
             {children}

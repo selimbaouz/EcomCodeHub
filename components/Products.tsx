@@ -23,7 +23,6 @@ interface ProductsProps {
 const Products: FC<ProductsProps> = ({product}) => {
 
     useEffect(() => {
-        TiktokPixel.pageView();
         TiktokPixel.track('ViewContent', {
             content_id: product.id,
             content_type: 'product',
