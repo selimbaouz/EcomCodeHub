@@ -15,6 +15,7 @@ import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
 import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
 import { useTranslations } from 'next-intl';
+import TiktokPixel from 'tiktok-pixel';
 
 export default function Cart() {
   const { cart, updateCartItem } = useCartStore();
@@ -91,7 +92,16 @@ export default function Cart() {
       const quantities = type === "bundle" 
       ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
       : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
-
+        TiktokPixel.track('InitiateCheckout', {
+          content_id: cart.lines.map(line => line.merchandise.id).join(','),
+          content_type: 'product',
+          content_name: cart.lines.map(line => line.merchandise.title).join(', '),
+          price: cart.cost.totalAmount.amount,
+          quantity: cart.quantity,
+          value: cart.cost.totalAmount.amount,
+          currency: cart.cost.totalAmount.currencyCode,
+          description: window.location.pathname,
+        });
       await fetch("/api/fb-initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

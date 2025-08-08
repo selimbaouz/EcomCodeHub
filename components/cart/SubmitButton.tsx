@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Product, VariantsProduct } from '@/types/types';
 import { useTranslations } from 'next-intl';
+import TiktokPixel from 'tiktok-pixel';
 
 interface SubmitButtonProps {
   size?: "fullWidth" | "initial";
@@ -48,6 +49,16 @@ export function SubmitButtonClient({ size = "initial", price, variant, product }
         onClick={async () => {
             addCartItem(variant, product);
             setIsOpenCart(true);
+             TiktokPixel.track('AddToCart', {
+                content_id: variant.node.id,
+                content_type: 'product',
+                content_name: variant.node.title,
+                userAgent: navigator.userAgent,
+                price: variant.node.price?.amount,
+                value: variant.node.price?.amount,
+                currency: 'EUR',
+                description: window.location.pathname,
+            });
             await fetch("/api/fb-add-to-cart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

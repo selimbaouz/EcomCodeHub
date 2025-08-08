@@ -13,6 +13,7 @@ import { SnippetsType, UserType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import NavBar from './navigation/NavBar';
 import useIsMobile from '@/hook/use-is-mobile';
+import TiktokPixel from 'tiktok-pixel';
 
 interface HomeProps {
     session: Session | null ;
@@ -33,6 +34,16 @@ const Home = ({
     const isMobile = useIsMobile();
 
     useEffect(() => {
+        TiktokPixel.pageView(); // Event "PageView" générique
+        TiktokPixel.track('ViewContent', {
+        content_id: 'homepage',
+        content_type: 'home',
+        content_name: 'Homepage',
+        value: 0,
+        currency: 'EUR',
+        description: window.location.pathname,
+        });
+        
         fetch('/api/fb-view-content', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

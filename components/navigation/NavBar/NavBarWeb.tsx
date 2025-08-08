@@ -20,6 +20,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useModalStore } from "@/store/plans";
 import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
+import TiktokPixel from 'tiktok-pixel';
 
 interface NavBarWebProps {
   isAccount?: boolean;
@@ -141,6 +142,14 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user })
               target="_blank" 
               rel="noopener noreferrer" 
               onClick={() => {
+                 TiktokPixel.track('Contact', {
+                    content_id: 'contact',
+                    content_type: 'action',
+                    content_name: 'Contact Click',
+                    description: window.location.pathname,
+                    value: 0,
+                    currency: 'EUR'
+                  });
                   // Envoi l'event serveur Facebook ! (appel asynchrone)
                   fetch('/api/fb-contact-click', {
                       method: "POST",

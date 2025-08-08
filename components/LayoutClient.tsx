@@ -1,8 +1,9 @@
 "use client";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Favicon from "@/app/favicon.ico";
 import FaviconInactive from "@/app/favicon-inactive.ico";
 import { usePageVisibility } from "@/hook/usePageVisibility";
+import TiktokPixel from "tiktok-pixel";
 
 interface LayoutClientProps {
     children: React.ReactNode;
@@ -16,6 +17,14 @@ const LayoutClient: FC<LayoutClientProps> = ({children}) => {
         favicon: Favicon.src,
         faviconInactive: FaviconInactive.src
     });
+
+      useEffect(() => {
+        const advancedMatching = {}; // optionnel, mets ici les données hashées si besoin
+        const options = { debug: false };
+        // Initialiser le pixel TikTok une seule fois
+        TiktokPixel.init("D2AVJF3C77U67ECJ57P0", advancedMatching, options);
+    }, []);
+
     return (
         <main>
             {children}
