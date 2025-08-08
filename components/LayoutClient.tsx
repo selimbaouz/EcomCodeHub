@@ -18,6 +18,10 @@ const LayoutClient: FC<LayoutClientProps> = ({children}) => {
         faviconInactive: FaviconInactive.src
     });
 
+      useEffect(() => {
+        TiktokPixel.init("D2AVJF3C77U67ECJ57P0");
+    }, []);
+
     return (
         <main>
             {children}
