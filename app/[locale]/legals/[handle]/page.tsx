@@ -11,15 +11,35 @@ type Props = {
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
-  const title = params.handle.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  // Transforme le handle pour un titre humain : "politique-de-confidentialite" => "Politique De Confidentialite"
+  const title = params.handle
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, l => l.toUpperCase());
+
   return {
-    title: title,
-    description: `Informations légales - ${title} pour Selim, créateur de boutiques headless sur mesure.`,
+    title: `${title} | TailwindLiquid`,
+    description: `${title} : informations légales, conformité, et mentions obligatoires pour TailwindLiquid, créateur de boutiques Shopify headless sur mesure.`,
     alternates: {
-      canonical: `https://www.selimbaouz.com/legals/${params.handle}`,
+      canonical: `https://www.tailwindliquid.com/fr/legals/${params.handle}`,
+    },
+    keywords: [
+      title.toLowerCase(),
+      "informations légales",
+      "mentions légales",
+      "boutique shopify headless",
+      "liquid shopify",
+      "shopify",
+      "tailwindliquid",
+    ],
+    openGraph: {
+      title: `${title} | TailwindLiquid`,
+      description: `${title} : toutes les informations légales et réglementaires nécessaires concernant TailwindLiquid.`,
+      url: `https://www.tailwindliquid.com/fr/legals/${params.handle}`,
+      siteName: "TailwindLiquid",
     },
   };
 }
+
 
 export default async function Legals({ params }: Props) {
   return (

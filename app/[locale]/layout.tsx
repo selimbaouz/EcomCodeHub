@@ -30,26 +30,26 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "TailwindLiquid – Shopify Liquid Code Snippets to Boost Your Store",
+    default: "TailwindLiquid – Extraits de code Liquid Shopify pour booster votre boutique",
     template: "%s | TailwindLiquid"
   },
   description:
-    "Unlock your Shopify store’s full potential with TailwindLiquid: ready-to-use Liquid code and UI snippets to enhance your design, boost sales, and improve conversions—no coding or expensive themes required.",
+    "Libérez tout le potentiel de votre boutique Shopify avec TailwindLiquid : extraits de code Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
   keywords: [
     "shopify liquid code",
     "code liquid shopify",
     "code shopify",
     "liquid shopify",
     "code shopify liquid",
-    "shopify snippets",
-    "liquid snippets",
-    "shopify conversions",
+    "extrait code shopify",
+    "snippets shopify",
+    "conversion shopify",
     "tailwindcss shopify",
-    "shopify store design",
-    "shopify ui",
-    "copy paste shopify code",
-    "shopify components",
-    "shopify code examples",
+    "design boutique shopify",
+    "ui shopify",
+    "code personnalisé shopify",
+    "shopify composants",
+    "exemple code shopify",
     "no-code shopify",
     "ux shopify",
     "ecommerce design"
@@ -63,15 +63,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://tailwindliquid.com",
     siteName: "TailwindLiquid",
-    title: "TailwindLiquid – Shopify Liquid Code Snippets to Boost Your Store",
+    title: "TailwindLiquid – Extraits de code Liquid Shopify pour booster votre boutique",
     description:
-      "TailwindLiquid provides Shopify merchants with powerful, plug-&-play Liquid code and TailwindCSS snippets to boost conversions and customize any store, without developer skills.",
+      "TailwindLiquid offre aux commerçants Shopify des extraits de code et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
     images: [
       {
-        url: "https://tailwindliquid.com/images/og-image.webp",
+        url: "https://tailwindliquid.com/fr/images/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "TailwindLiquid – Shopify Liquid Code"
+        alt: "TailwindLiquid – Code Liquid Shopify"
       }
     ],
   },
@@ -79,10 +79,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@selimmersive",
     creator: "@selimmersive",
-    title: "TailwindLiquid – Shopify Liquid Code Snippets",
+    title: "TailwindLiquid – Extraits de code Liquid Shopify",
     description:
-      "Shopify Liquid code, ready-to-use UI snippets, and plug & play design blocks to enhance your store’s design and boost sales.",
-    images: ["https://tailwindliquid.com/images/og-image.webp"],
+      "Code Liquid Shopify, composants UI clé-en-main et blocs TailwindCSS pour améliorer rapidement le design et la conversion de votre boutique.",
+    images: ["https://tailwindliquid.com/fr/images/og-image.webp"],
   },
   verification: {
     google: "",
@@ -136,7 +136,23 @@ export default async function LocaleLayout({
                 PageView&noscript=1"/>
             </noscript>
             {/* End Meta Pixel Code */}
-
+            {/** Tiktok Pixel Code */}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                !function (w, d, t) {
+                  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+                var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+                ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    
+    
+                  ttq.load('D2AVJF3C77U67ECJ57P0');
+                  ttq.page();
+                }(window, document, 'ttq');
+                `,
+              }}
+            />
+            {/* End Tiktok Pixel Code */}
           </Head>
           <Toaster position="bottom-right" />
           <NextIntlClientProvider>

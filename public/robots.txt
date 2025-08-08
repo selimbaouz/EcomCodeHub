@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tailwindliquid.com
+
+# Sitemaps
+Sitemap: https://tailwindliquid.com/fr/sitemap.xml
