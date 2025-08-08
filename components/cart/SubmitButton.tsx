@@ -6,7 +6,6 @@ import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Product, VariantsProduct } from '@/types/types';
 import { useTranslations } from 'next-intl';
-import TiktokPixel from 'tiktok-pixel';
 
 interface SubmitButtonProps {
   size?: "fullWidth" | "initial";
@@ -49,29 +48,20 @@ export function SubmitButtonClient({ size = "initial", price, variant, product }
         onClick={async () => {
             addCartItem(variant, product);
             setIsOpenCart(true);
-             TiktokPixel.track('AddToCart', {
-                content_id: variant.node.id,
-                content_type: 'product',
-                content_name: variant.node.title,
-                userAgent: navigator.userAgent,
-                price: variant.node.price?.amount,
-                value: variant.node.price?.amount,
-                currency: 'EUR',
-                description: window.location.pathname,
-            });
-            await fetch("/api/fb-add-to-cart", {
+            await fetch("/api/pixels-add-to-cart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                 eventTime: Math.floor(Date.now() / 1000),
                 eventSourceUrl: window.location.href,
                 userAgent: navigator.userAgent,
-                pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+                fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+                tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
                 content_ids: [variant.node.id],
                 content_name: variant.node.title,
                 content_type: "product",
                 value: variant?.node?.price?.amount,
-                currency: "EUR"
+                currency: "EUR",
                 }),
             });
         }}

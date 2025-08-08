@@ -15,7 +15,6 @@ import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
 import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
 import { useTranslations } from 'next-intl';
-import TiktokPixel from 'tiktok-pixel';
 
 export default function Cart() {
   const { cart, updateCartItem } = useCartStore();
@@ -92,31 +91,22 @@ export default function Cart() {
       const quantities = type === "bundle" 
       ? [bundleQuantity, uniqueQuantity]  // Bundle + Achat unique 
       : type === "subscription" ? [subscriptionQuantity] :  [uniqueQuantity]; // Achat unique seul ou abonnement seul
-        TiktokPixel.track('InitiateCheckout', {
-          content_id: cart.lines.map(line => line.merchandise.id).join(','),
-          content_type: 'product',
-          content_name: cart.lines.map(line => line.merchandise.title).join(', '),
-          price: cart.cost.totalAmount.amount,
-          quantity: cart.quantity,
-          value: cart.cost.totalAmount.amount,
-          currency: cart.cost.totalAmount.currencyCode,
-          description: window.location.pathname,
+        await fetch("/api/pixels-initiate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            eventTime: Math.floor(Date.now() / 1000),
+            eventSourceUrl: window.location.href,
+            userAgent: navigator.userAgent,
+            fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+            tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+            value: cart.cost.totalAmount.amount,
+            currency: cart.cost.totalAmount.currencyCode,
+            content_ids: cart.lines.map(line => line.merchandise.id),
+            num_items: cart.quantity,
+            fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1]
+          }),
         });
-      await fetch("/api/fb-initiate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          eventTime: Math.floor(Date.now() / 1000),
-          eventSourceUrl: window.location.href,
-          userAgent: navigator.userAgent,
-          pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, // ou une variable d'env
-          value: cart.cost.totalAmount.amount,
-          currency: cart.cost.totalAmount.currencyCode,
-          content_ids: cart.lines.map(line => line.merchandise.id),
-          num_items: cart.quantity,
-          fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1]
-        }),
-      });
 
       const res = await createCheckoutSessionCart({
         packNameWithBundle,

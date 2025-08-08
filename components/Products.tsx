@@ -14,7 +14,6 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import ProductImage from '@/components/ProductImage';
 import ImagesGallery from '@/components/ImagesGallery'; 
 import { Product } from '@/types/types';
-import TiktokPixel from 'tiktok-pixel';
 
 interface ProductsProps {
     product: Product;
@@ -23,24 +22,15 @@ interface ProductsProps {
 const Products: FC<ProductsProps> = ({product}) => {
 
     useEffect(() => {
-        TiktokPixel.track('ViewContent', {
-            content_id: product.id,
-            content_type: 'product',
-            content_name: product.title,
-            price: product.priceRange.minVariantPrice.amount,
-            quantity: 1,
-            value: product.priceRange.minVariantPrice.amount,
-            currency: 'EUR',
-            description: window.location.pathname,
-        });
-       fetch('/api/fb-view-content', {
+       fetch('/api/pixels-view-content', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
             eventTime: Math.floor(Date.now() / 1000),
             eventSourceUrl: window.location.href,
             userAgent: navigator.userAgent,
-            pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+            fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+            tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
             content_ids: [product.id],
             content_name: product.title,
             content_type: 'product',

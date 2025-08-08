@@ -19,7 +19,7 @@ const LayoutClient: FC<LayoutClientProps> = ({children}) => {
     });
 
       useEffect(() => {
-        TiktokPixel.init("D2AVJF3C77U67ECJ57P0");
+        TiktokPixel.init(process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID!);
     }, []);
 
     return (

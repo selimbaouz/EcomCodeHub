@@ -8,7 +8,6 @@ import { useOpenSidebarStore } from "@/store/sidebar";
 import { CgClose } from "react-icons/cg";
 import { signOut } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
-import TiktokPixel from 'tiktok-pixel';
 
 interface SideBarProps {
     isAccount?: boolean;
@@ -127,23 +126,15 @@ export default function SideBar ({
                         target="_blank" 
                         rel="noopener noreferrer"
                         onClick={() => {
-                            TiktokPixel.track('Contact', {
-                                content_id: 'contact',
-                                content_type: 'action',
-                                content_name: 'Contact Click',
-                                description: window.location.pathname,
-                                value: 0,
-                                currency: 'EUR'
-                            });
-                            // Envoi l'event serveur Facebook ! (appel asynchrone)
-                            fetch('/api/fb-contact-click', {
+                            fetch('/api/pixels-contact-click', {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({
                                     eventTime: Math.floor(Date.now() / 1000),
                                     eventSourceUrl: window.location.href,
                                     userAgent: navigator.userAgent,
-                                    pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+                                    fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
+                                    tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
                                     fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1],
                                 })
                             })
