@@ -14,7 +14,7 @@ import { MdLock } from 'react-icons/md';
 import { createCheckoutSessionCart } from '@/actions/stripe';
 import PriceCart from '../PriceCart';
 import { useHideFlashPromoStore } from '@/store/hide-flashpromo';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Cart() {
   const { cart, updateCartItem } = useCartStore();
@@ -22,6 +22,7 @@ export default function Cart() {
    const setCartOpen = useHideFlashPromoStore((state) => state.setCartOpen);
   const quantityRef = useRef(cart?.quantity);
   const [isLoading, setIsLoading] = useState(false);
+  const locale = useLocale();
   const t = useTranslations("fe.cart");
 
   useEffect(() => {
@@ -113,8 +114,8 @@ export default function Cart() {
         quantities,
         variantId,
         type,
-        successUrl: `${window.location.origin}/auth/login`,
-        cancelUrl: `${window.location.origin}/products/pack-pro-conversion-shopify?echec=true`,
+        successUrl: `${window.location.origin}/${locale}/auth/login`,
+        cancelUrl: `${window.location.origin}/${locale}/products/pack-pro-conversion-shopify?echec=true`,
       });
 
       if(res?.data?.url) {

@@ -108,6 +108,22 @@ export async function POST(req: NextRequest) {
         await createShopifyOrder(customerEmail, variantId, lineItems);
       } 
 
+      await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL || "https://tailwindliquid.com"}/api/pixels-purchase`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventTime: Math.floor(Date.now() / 1000),
+          eventSourceUrl: "https://tailwindliquid.com/fr/auth/login", // ou ton URL de confirmation d'achat
+          fbPixelId: process.env.FB_PIXEL_ID,
+          tiktokPixelId: process.env.TIKTOK_PIXEL_ID,
+          value: session?.amount_total ?? 0 / 100, // Stripe retourne en centimes
+          currency: session.currency?.toUpperCase() || "EUR",
+          content_ids: lineItems.data.map(item => item.price?.product), // adapte si tu veux utiliser tes propres IDs Shopify
+          email: customerEmail,
+          fbp: session.metadata?.fbp, // optionnel, si tu passes fbp dans Stripe metadata
+        }),
+      });
+ 
     }
     return NextResponse.json({ received: true, message: "Le Webhook a bien été envoyé !" }, { status: 200 });
   } catch (err) {

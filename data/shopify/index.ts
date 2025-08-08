@@ -334,7 +334,7 @@ export async function createShopifyCustomer(email: string, name: string) {
     const customerInviteInput = {
       customerId,
       to: email,
-      from: "lumea.partner@gmail.com", // Adresse e-mail de ton entreprise
+      from: "tailwindliquid@gmail.com", // Adresse e-mail de ton entreprise
       message: "Bienvenue ! Cliquez sur le lien pour activer votre compte.",
     };
 
