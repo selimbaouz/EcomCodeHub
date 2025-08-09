@@ -122,7 +122,7 @@ export const createUserWithPromo = action
       data: {
         email,
         password: hashedPassword ?? "",
-        credits: 15,
+        credits: 5,
         name,
         plan: "ONE_TIME",
         stripeCustomerId: stripeCustomer.id,
