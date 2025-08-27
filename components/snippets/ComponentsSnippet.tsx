@@ -85,6 +85,7 @@ import FaqColors from './FAQColors/FaqColors';
 import { BestReviewsCarousel } from './BestReviewsCarousel/BestReviewsCarousel';
 import ProductPromoSection from './ProductPromoSection/ProductPromoSection';
 import ProductShowcaseSection from './ProductShowcaseSection/ProductShowcaseSection';
+import ProductStatistics from './ProductStatistics/ProductStatistics';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -172,7 +173,8 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     FaqColors: <FaqColors />,
     BestReviewsCarousel: <BestReviewsCarousel />,
     ProductPromoSection: <ProductPromoSection />,
-    ProductShowcaseSection: <ProductShowcaseSection />
+    ProductShowcaseSection: <ProductShowcaseSection />,
+    ProductStatistics: <ProductStatistics />
   };
 
 export default ComponentsSnippet;
