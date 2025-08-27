@@ -81,6 +81,8 @@ import BenefitsCarousel from './BenefitsCarousel/BenefitsCarousel';
 import ExpertReviewsCarousel from './ExpertReviewsCarousel/ExpertReviewsCarousel';
 import StoreLocatorMarquee from './StoreLocatorMarquee/StoreLocatorMarquee';
 import FaqAccordion from './FaqAccordion/FaqAccordion';
+import FaqColors from './FAQColors/FaqColors';
+import { BestReviewsCarousel } from './BestReviewsCarousel/BestReviewsCarousel';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -164,7 +166,9 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     BenefitsCarousel: <BenefitsCarousel />,
     ExpertReviewsCarousel: <ExpertReviewsCarousel />,
     StoreLocatorMarquee: <StoreLocatorMarquee />,
-    FaqAccordion: <FaqAccordion />
+    FaqAccordion: <FaqAccordion />,
+    FaqColors: <FaqColors />,
+    BestReviewsCarousel: <BestReviewsCarousel />
   };
 
 export default ComponentsSnippet;
