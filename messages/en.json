@@ -218,7 +218,9 @@
           "benefitsFourth": "Benefits",
           "expertApproved": "Expert Approved",
           "findUs": "Find Us",
-          "faq": "Frequently Asked Questions"
+          "faq": "Frequently Asked Questions",
+          "productShowcaseSection": "Product Showcase Section",
+          "productPromoSection": "Product Promo Section"
         }
       }
     },

@@ -1,11 +1,11 @@
 "use client"
-import { BestReviewsCarousel } from '@/components/snippets/BestReviewsCarousel/BestReviewsCarousel';
+import ProductShowcaseSection from '@/components/snippets/ProductShowcaseSection/ProductShowcaseSection';
 import React from 'react';
 
 const Code = () => {
     return (
         <div className='w-full h-screen mx-auto'>
-            <BestReviewsCarousel />
+            <ProductShowcaseSection />
         </div>
     );
 };

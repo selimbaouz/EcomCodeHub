@@ -83,6 +83,8 @@ import StoreLocatorMarquee from './StoreLocatorMarquee/StoreLocatorMarquee';
 import FaqAccordion from './FaqAccordion/FaqAccordion';
 import FaqColors from './FAQColors/FaqColors';
 import { BestReviewsCarousel } from './BestReviewsCarousel/BestReviewsCarousel';
+import ProductPromoSection from './ProductPromoSection/ProductPromoSection';
+import ProductShowcaseSection from './ProductShowcaseSection/ProductShowcaseSection';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -168,7 +170,9 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     StoreLocatorMarquee: <StoreLocatorMarquee />,
     FaqAccordion: <FaqAccordion />,
     FaqColors: <FaqColors />,
-    BestReviewsCarousel: <BestReviewsCarousel />
+    BestReviewsCarousel: <BestReviewsCarousel />,
+    ProductPromoSection: <ProductPromoSection />,
+    ProductShowcaseSection: <ProductShowcaseSection />
   };
 
 export default ComponentsSnippet;

@@ -221,7 +221,9 @@
           "benefitsFourth": "Bénéfices",
           "expertApproved": "Plébiscité par les experts",
           "findUs": "Découvrez où nous trouvez",
-          "faq": "Questions fréquentes"
+          "faq": "Questions fréquentes",
+          "productShowcaseSection": "Section vitrine des produits",
+          "productPromoSection": "Section de promotion des produits"
         }
       }
     },
