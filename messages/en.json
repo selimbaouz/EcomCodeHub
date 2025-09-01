@@ -240,6 +240,7 @@
       "forgotPassword": "Forgot password?",
       "submitLogin": "Log in",
       "submitContinue": "Continue",
+      "checkEmailTitle": "Check your email",
       "checkEmailDesc": "We’re simply sending a verification link to",
       "returnToLogin": "Back to login",
       "footerTitleLogin": "Do you have an account?",
