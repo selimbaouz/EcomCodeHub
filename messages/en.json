@@ -19,6 +19,79 @@
       "noCredits": "You have no credits left",
       "searchPlaceholder": "Search..."
     },
+    "plans": {
+      "beginner": {
+        "title": "Beginner Pack",
+        "price": "20.93",
+        "discount": "-30% savings",
+        "infoPrice": "",
+        "content": "30 credits: Perfect to start, discover how our codes can improve your store.",
+        "options": [
+          "Increase your conversions",
+          "Easy copy-paste",
+          "Time saving",
+          "Quick customization",
+          "Immediate results",
+          "Ready-to-use code",
+          "Professional design",
+          "Enhanced attractiveness",
+          "Boost your sales"
+        ]
+      },
+      "advanced": {
+        "title": "Advanced Pack",
+        "price": "38.43",
+        "discount": "-30% savings",
+        "discountSub": "-7% savings",
+        "infoPrice": "Popular",
+        "content": "60 credits: Boost your sales with advanced codes and give your store a modern look.",
+        "options": [
+          "Increase your conversions",
+          "Easy copy-paste",
+          "Time saving",
+          "Quick customization",
+          "Immediate results",
+          "Ready-to-use code",
+          "Professional design",
+          "Enhanced attractiveness",
+          "Boost your sales"
+        ]
+      },
+      "pro": {
+        "title": "Pro Pack",
+        "price": "55.93",
+        "discount": "-30% savings",
+        "discountSub": "-23% savings",
+        "infoPrice": "",
+        "content": "90 credits: Professional codes for a customized store, ready to sell.",
+        "options": [
+          "Increase your conversions",
+          "Easy copy-paste",
+          "Time saving",
+          "Quick customization",
+          "Immediate results",
+          "Ready-to-use code",
+          "Professional design",
+          "Enhanced attractiveness",
+          "Boost your sales"
+        ]
+      },
+      "modes": {
+        "oneTime": "One-time",
+        "subscription": "Monthly"
+      },
+      "button": {
+        "currentPlan": "Current Plan",
+        "upgrade": "Upgrade",
+        "downgrade": "Downgrade",
+        "getPack": "Get this pack"
+      },
+      "header": {
+        "oneTime": "Order a pack",
+        "subscription": "Subscribe to a plan"
+      },
+      "byMonth": "/month"
+    },
     "navigation": {
       "snippets": "Snippets",
       "installation": "Installation",
@@ -99,7 +172,10 @@
         "notEnoughCredits": "You do not have enough credits.",
         "snippetAlreadyPurchased": "You already own this snippet.",
         "userNotAuthenticated": "User not authenticated.",
-        "snippetUnknownError": "An error occurred while purchasing the snippet."
+        "snippetUnknownError": "An error occurred while purchasing the snippet.",
+        "stripeInvalidRequest": "The request sent to Stripe is invalid. Please check your information and try again.",
+        "stripeCustomerIdMissing": "No Stripe account associated with your profile. Please contact support or try again later.",
+        "subscriptionPaymentIncomplete": "Your initial payment is incomplete. Please complete your payment before changing your subscription."
       },
       "success": {
         "checkEmail": "Please check your email to continue.",

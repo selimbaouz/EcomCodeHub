@@ -24,64 +24,71 @@ import SelectOptions from "@/components/snippets/SelectOptions/SelectOptions";
 import Support from "@/components/content/detailsProduct/Support";
 import PaymentSecurity from "@/components/content/detailsProduct/PaymentSecurity";
 import RefundPolicy from "@/components/content/detailsProduct/RefundPolicy";
+import { useTranslations } from 'next-intl';
 
-export const PricesFixeData = (modeSelected?: number) => [
+export const PricesFixeData = (modeSelected: number, t: ReturnType<typeof useTranslations>) => [
   {
-    title: "Pack Débutant", 
+    title: t('beginner.title'),
     price: modeSelected ? "20.93" : "29.90",
-    discount: modeSelected ? "-30% d'économies" : "",
-    infoPrice: "", 
-    content: "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
+    discount: modeSelected ? t('beginner.discount') : "",
+    infoPrice: t('beginner.infoPrice'),
+    content: t('beginner.content'),
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
     options: [
-      { title: "Augmenter vos conversions" },
-      { title: "Copier-coller facile" },
-      { title: "Gain de temps" },
-      { title: "Personnalisation rapide" },
-      { title: "Résultats immédiats" },
-      { title: "Code prêt à l'emploi" },
-      { title: "Design professionnel" },
-      { title: "Attractivité renforcée" },
-      { title: "Boost vos ventes" },
-    ],
+      { title: t('beginner.options.0') },
+      { title: t('beginner.options.1') },
+      { title: t('beginner.options.2') },
+      { title: t('beginner.options.3') },
+      { title: t('beginner.options.4') },
+      { title: t('beginner.options.5') },
+      { title: t('beginner.options.6') },
+      { title: t('beginner.options.7') },
+      { title: t('beginner.options.8') },
+    ]
   },
   {
-    title: "Pack Avancé", 
-    price:  modeSelected ? "38.43" : "54.90",
-    discount: modeSelected ? "-30% d'économies" : "-7% d'économies",
-    infoPrice: "Populaire",
-    content: "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
+    title: t('advanced.title'),
+    price: modeSelected ? "38.43" : "54.90",
+    discount: modeSelected ? t('advanced.discount') : t('advanced.discountSub'),
+    infoPrice: t('advanced.infoPrice'),
+    content: t('advanced.content'),
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
     options: [
-      { title: "Augmenter vos conversions" },
-      { title: "Copier-coller facile" },
-      { title: "Gain de temps" },
-      { title: "Personnalisation rapide" },
-      { title: "Résultats immédiats" },
-      { title: "Code prêt à l'emploi" },
-      { title: "Design professionnel" },
-      { title: "Attractivité renforcée" },
-      { title: "Boost vos ventes" },
-    ], 
+      { title: t('advanced.options.0') },
+      { title: t('advanced.options.1') },
+      { title: t('advanced.options.2') },
+      { title: t('advanced.options.3') },
+      { title: t('advanced.options.4') },
+      { title: t('advanced.options.5') },
+      { title: t('advanced.options.6') },
+      { title: t('advanced.options.7') },
+      { title: t('advanced.options.8') },
+    ]
   },
   {
-    title: "Pack Pro", 
-    price:  modeSelected ? "55.93" : "79.90",
-    discount: modeSelected ? "-30% d'économies" : "-23% d'économies",
-    infoPrice: "",
-    content: "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
+    title: t('pro.title'),
+    price: modeSelected ? "55.93" : "79.90",
+    discount: modeSelected ? t('pro.discount') : t('pro.discountSub'),
+    infoPrice: t('pro.infoPrice'),
+    content: t('pro.content'),
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
     options: [
-      { title: "Augmenter vos conversions" },
-      { title: "Copier-coller facile" },
-      { title: "Gain de temps" },
-      { title: "Personnalisation rapide" },
-      { title: "Résultats immédiats" },
-      { title: "Code prêt à l'emploi" },
-      { title: "Design professionnel" },
-      { title: "Attractivité renforcée" },
-      { title: "Boost vos ventes" },
-    ], 
+      { title: t('pro.options.0') },
+      { title: t('pro.options.1') },
+      { title: t('pro.options.2') },
+      { title: t('pro.options.3') },
+      { title: t('pro.options.4') },
+      { title: t('pro.options.5') },
+      { title: t('pro.options.6') },
+      { title: t('pro.options.7') },
+      { title: t('pro.options.8') },
+    ]
   },
 ];
 
