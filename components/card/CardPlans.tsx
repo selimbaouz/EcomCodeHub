@@ -39,12 +39,14 @@ const CardPlans: FC<CardPlansProps> = ({
   isCurrentPlan
 }) => {
   const t = useTranslations("fe");
+  const [subError, setSubError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault(); 
+    setSubError(false);
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       if (modeSelected === 0) {
         const test = await buyOneTimePlan({ priceId: link, nameOfPack: nameOfPack });
         if(test?.data?.url) {
@@ -56,6 +58,9 @@ const CardPlans: FC<CardPlansProps> = ({
           toast.success(t(`toast.success.${upgrade?.data?.success}`));
         } else {
           toast.error(t(`toast.errors.${upgrade?.data?.error}`));
+           if (upgrade?.data?.error === "subscriptionPaymentIncomplete") {
+              setSubError(true);
+            }
         }
       }
     } catch (error) {
@@ -83,14 +88,16 @@ const CardPlans: FC<CardPlansProps> = ({
         </div>
         <p className={cn("text-foreground font-normal pb-6")}>{content}</p>
         <Button
-          disabled={isLoading}
+          disabled={isLoading || subError}
           asChild
           className={cn(planId === 1 ? "bg-primary hover:bg-primary/80" : "bg-foreground hover:bg-foreground/80")}
         >
           <Link 
-            href={isCurrentPlan ? "#" : link} 
-            target={isCurrentPlan ? "_self" : "_blank"} 
-            rel="preload" 
+            href={isCurrentPlan || isLoading || subError ? "#" : link}
+            target={isCurrentPlan ? "_self" : "_blank"}
+            rel="preload"
+            aria-disabled={isLoading || subError ? "true" : "false"}
+            tabIndex={isLoading || subError ? -1 : 0}
             className={cn(
             "text-white w-full", 
             "h-12 mx-auto",

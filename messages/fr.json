@@ -175,7 +175,10 @@
         "notEnoughCredits": "Vous n'avez pas assez de crédits.",
         "snippetAlreadyPurchased": "Vous possédez déjà ce snippet.",
         "userNotAuthenticated": "Utilisateur non authentifié.",
-        "snippetUnknownError": "Une erreur est survenue lors de l'achat du snippet."
+        "snippetUnknownError": "Une erreur est survenue lors de l'achat du snippet.",
+        "stripeInvalidRequest": "La requête envoyée à Stripe est invalide. Veuillez vérifier vos informations et réessayer.",
+        "stripeCustomerIdMissing": "Aucun compte Stripe associé à votre profil. Veuillez contacter le support ou réessayer plus tard.",
+        "subscriptionPaymentIncomplete": "Votre paiement initial est incomplet. Veuillez finaliser votre paiement avant de changer d’abonnement."
       },
       "success": {
         "checkEmail": "Veuillez vérifier votre e-mail pour continuer.",
