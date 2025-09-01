@@ -215,7 +215,7 @@ export const upgradeSubscription = action
       }
     } catch (error) {
       console.error("Erreur Stripe :", error);
-      return { error: "stripeUpgradeFailed" };
+      return { error: "stripeNoAccount" };
     }
   });
 

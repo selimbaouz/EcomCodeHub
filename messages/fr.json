@@ -19,6 +19,79 @@
       "noCredits": "Vous n'avez plus de crédit",
       "searchPlaceholder": "Rechercher..."
     }, 
+    "plans": {
+      "beginner": {
+        "title": "Pack Débutant",
+        "price": "20.93",
+        "discount": "-30% d'économies",
+        "infoPrice": "",
+        "content": "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "advanced": {
+        "title": "Pack Avancé",
+        "price": "38.43",
+        "discount": "-30% d'économies",
+        "discountSub": "-7% d'économies",
+        "infoPrice": "Populaire",
+        "content": "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "pro": {
+        "title": "Pack Pro",
+        "price": "55.93",
+        "discount": "-30% d'économies",
+        "discountSub": "-23% d'économies",
+        "infoPrice": "",
+        "content": "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "modes": {
+        "oneTime": "Ponctuel",
+        "subscription": "Mensuel"
+      },
+      "button": {
+        "currentPlan": "Plan actuel",
+        "upgrade": "Mettre à niveau",
+        "downgrade": "Rétrograder",
+        "getPack": "Obtenir ce pack"
+      },
+      "header": {
+        "oneTime": "Commander un pack",
+        "subscription": "Souscrire à un abonnement"
+      },
+      "byMonth": "/mois"
+    },
     "navigation": {
       "snippets": "Snippets",
       "installation": "Installation",
