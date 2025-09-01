@@ -15,11 +15,9 @@ import LocaleSwitcher from "@/components/LocaleSwitcher";
 import { useLocale } from "next-intl";
 
 interface NavBarMobileProps {
-    currentUser: User | undefined;
     isAccount?: boolean;
 }
 const NavBarMobile = ({
-    currentUser,
     isAccount
 }: NavBarMobileProps) => {
     const { cart } = useCartStore();
@@ -48,21 +46,15 @@ const NavBarMobile = ({
                     Tailwind<span className="text-primary">Liquid</span>
                 </Link>
                 </div>
-                <div>
+                <div className={cn("flex items-center gap-2")}>
                     {/* <ToggleMode /> */}
                     <LocaleSwitcher locale={locale} />
-                    {!currentUser ? (
-                        <div className={cn("cursor-pointer flex items-center gap-1")}>
-                        <CgProfile className="text-3xl" onClick={() => router.push("/auth/login")} />
-                    </div>
-                    ) : (
-                        <div className={cn("cursor-pointer flex items-center gap-1")}>
+                    <div className={cn("cursor-pointer flex items-center gap-1")}>
                         <CgProfile className="text-3xl" onClick={() => {
                             router.push("/account"); 
                             setIsOpenAccount(false);
                         }} />
-                        </div>
-                    )}
+                    </div>
                 </div>
             </div>
         )
@@ -81,7 +73,7 @@ const NavBarMobile = ({
                 Tailwind<span className="text-primary">Liquid</span>
             </Link>
             </div>
-            <div className={cn("flex gap-0.5 items-center")}>
+            <div className={cn("flex gap-2 items-center")}>
                 <LocaleSwitcher locale={locale} />
                 <div 
                     className="relative p-2 cursor-pointer group" 

@@ -110,7 +110,7 @@ const onSubmit = (values: Login) => {
         updateOrLogin(values).then((response) => {
           if (response?.data?.error) {
             toast.error(t(`toast.errors.${response?.data?.error}`));
-          }
+          } 
         });
       });
       return;
