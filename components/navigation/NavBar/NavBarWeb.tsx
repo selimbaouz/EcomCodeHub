@@ -13,7 +13,7 @@ import { StaticImageData } from "next/image";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { User } from "next-auth";
 import MenuDropdown from "../MenuDropdown";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { usePathname, useRouter } from "next/navigation";
@@ -23,14 +23,13 @@ import LocaleSwitcher from "@/components/LocaleSwitcher";
 
 interface NavBarWebProps {
   isAccount?: boolean;
-  currentUser: User | undefined;
-  user?: UserType | null;
 }
 
-const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user }) => {
+const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false }) => {
   const classLink = "font-light text-foreground text-base hover:text-primary";
   const locale = useLocale();
   const t = useTranslations("fe.navigation");
+  
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   const [imageInTheme, setImageInTheme] = useState<StaticImageData>();
@@ -82,9 +81,6 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user })
         </div>
         <div className="lg:flex lg:items-center lg:gap-4">
             <LocaleSwitcher locale={locale} />
-          {!currentUser ? (
-            <CgProfile className="text-2xl ml-2 cursor-pointer transition-all ease-in-out hover:scale-110" onClick={() => router.push(`/${locale}/auth/login`)} />
-          ) : (
             <MenuDropdown
               items={[
                 { label: t("buyCredits"), handleClick: () => { setModeSelected(0); router.push(`/${locale}/plans`); } },
@@ -94,14 +90,13 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false, currentUser, user })
                 { href: "https://discord.gg/kGayPFck58", label: t("discord"), separator: true, target: "_blank", rel: "noopener noreferrer" }
               ]}
               handleLogOut={() => signOut()}
-              isLogOut={!!currentUser}
+              isLogOut={!!isAccount}
             >
               <div className={cn("lg:py-2 lg:cursor-pointer lg:flex lg:items-center lg:gap-1")}>
                 <CgProfile className="text-2xl" />
                 <IoIosArrowDown />
               </div>
             </MenuDropdown>
-          )}
         </div>
       </div>
     );
