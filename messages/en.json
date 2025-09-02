@@ -138,6 +138,9 @@
       "unlock": "Unlock",
       "preview": "Preview",
       "code": "Code",
+      "screenMobile": "Mobile View",
+      "screenTablet": "Tablet View",
+      "screenDesktop": "Desktop View",
       "database": {
         "categories": {
           "all": "All",

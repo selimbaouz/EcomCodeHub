@@ -141,6 +141,9 @@
       "unlock": "Débloquez",
       "preview": "Aperçu",
       "code": "Code",
+      "screenMobile": "Vue mobile",
+      "screenTablet": "Vue tablette",
+      "screenDesktop": "Vue bureau",
       "database": {
         "categories": {
           "all": "Tout",
