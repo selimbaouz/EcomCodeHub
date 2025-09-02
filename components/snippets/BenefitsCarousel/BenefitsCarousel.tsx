@@ -1,13 +1,13 @@
 "use client";
-// components/BenefitsCarousel.jsx
 import { useState } from "react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel"; // adapte ce chemin selon ta config
+} from "@/components/ui/carousel";
 import styles from "./benefits-carousel.module.css";
 import { cn } from "@/lib/utils";
+import { useResponsiveStore } from "@/store/responsive-screen";
 
 const benefits = [
   {
@@ -30,70 +30,98 @@ const benefits = [
   },
 ];
 
-export default function BenefitsCarousel() {
+export default function BenefitsCarousel({snippetId}: {snippetId: string}) {
   const [selected, setSelected] = useState(0);
 
+  const view = useResponsiveStore((s) =>
+    s.getView(snippetId)
+  );
+
   return (
-    <div className="flex flex-col justify-center p-4 mx-auto">
-      {/* Mobile Carousel */}
-      <div className="lg:hidden">
-        <h6 className={styles.mobileTitle}>Benefits</h6>
-        <Carousel
-          opts={{ loop: true, align: "start" }}
-          className={styles.carousel}
-        >
-          <CarouselContent className={styles.carouselContent}>
-            {benefits.map(({ title, text, image }, idx) => (
-              <CarouselItem key={idx} className={styles.carouselItem}>
-                <div className={styles.slideContent}>
-                  <div className={styles.slideInner}>
-                    <img
-                      src={image}
-                      alt={title}
-                      className={styles.image}
-                      width={400}
-                      height={447}
-                    />
-                    <div className={styles.slideText}>
+    <div className="flex flex-col justify-center p-4 mx-auto w-full">
+      {view === "mobile" && (
+        <div className={styles.mobileContainer}>
+          <h6 className={styles.mobileTitle}>Benefits</h6>
+          <Carousel
+            opts={{ loop: true, align: "start" }}
+            className={styles.carousel}
+          >
+            <CarouselContent className={styles.carouselContent}>
+              {benefits.map(({ title, text, image }, idx) => (
+                <CarouselItem key={idx} className={styles.carouselItem}>
+                  <div className={styles.slideContent}>
+                    <div className={styles.slideInner}>
+                      <img
+                        src={image}
+                        alt={title}
+                        className={styles.image}
+                        width={400}
+                        height={447}
+                      />
+                      <div className={styles.slideText}>
+                        <h6 className={styles.benefitTitle}>{title}</h6>
+                        <p className={styles.benefitText}>{text}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      )}
+
+      {view === "tablet" && (
+        <div className={styles.tabletContainer}>
+          <h6 className={styles.tabletTitle}>Benefits</h6>
+          <Carousel opts={{ loop: true, align: "start" }} className={styles.carousel}>
+            <CarouselContent className={styles.carouselContent}>
+              {benefits.map(({ title, text, image }, idx) => (
+                <CarouselItem key={idx} className={styles.carouselItemTablet}>
+                  <div className={styles.slideContentTablet}>
+                    <img src={image} alt={title} className={styles.imageTablet} />
+                    <div className={styles.slideTextTablet}>
                       <h6 className={styles.benefitTitle}>{title}</h6>
                       <p className={styles.benefitText}>{text}</p>
                     </div>
                   </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-
-      <div className={styles.desktopGrid}>
-        <div className={styles.tabList}>
-          <h6 className={styles.desktopTitle}>Benefits</h6>
-          {benefits.map(({ title }, i) => (
-            <button
-              key={i}
-              onClick={() => setSelected(i)}
-              className={cn(
-                styles.tabBtn,
-                selected === i && styles.tabBtnActive,
-              )}
-            >
-              {title}
-            </button>
-          ))}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
-        <img
-          id="benefit-image"
-          src={benefits[selected].image}
-          alt="benefit"
-          className={styles.desktopImage}
-          width={400}
-          height={447}
-        />
-        <p id="benefit-text" className={styles.desktopText}>
-          {benefits[selected].text}
-        </p>
-      </div>
+      )}
+
+      {view === "desktop" && (
+        <div className={styles.desktopGrid}>
+          <div className={styles.tabList}>
+            <h6 className={styles.desktopTitle}>Benefits</h6>
+            {benefits.map(({ title }, i) => (
+              <button
+                key={i}
+                onClick={() => setSelected(i)}
+                className={cn(
+                  styles.tabBtn,
+                  selected === i && styles.tabBtnActive
+                )}
+              >
+                {title}
+              </button>
+            ))}
+          </div>
+          <img
+            id="benefit-image"
+            src={benefits[selected].image}
+            alt="benefit"
+            className={styles.desktopImage}
+            width={400}
+            height={447}
+          />
+          <p id="benefit-text" className={styles.desktopText}>
+            {benefits[selected].text}
+          </p>
+        </div>
+      )}
     </div>
   );
 }

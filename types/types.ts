@@ -15,6 +15,8 @@ export type Notifications = z.infer<typeof notificationSchema>;
 export type UpdatePassword = z.infer<typeof updatePasswordSchema>;
 export type UpdateEmail = z.infer<typeof updateEmailSchema>;
 
+export type View = "mobile" | "tablet" | "desktop";
+
 export type Money = {
     amount: string;
     currencyCode: string;
