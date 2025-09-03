@@ -221,7 +221,8 @@
           "faq": "Frequently Asked Questions",
           "productShowcaseSection": "Product Showcase Section",
           "productPromoSection": "Product Promo Section",
-          "productStatistics": "Product Statistics"
+          "productStatistics": "Product Statistics",
+          "collectionGrid": "Collection Grid"
         }
       }
     },

@@ -224,7 +224,8 @@
           "faq": "Questions fréquentes",
           "productShowcaseSection": "Section vitrine des produits",
           "productPromoSection": "Section de promotion des produits",
-          "productStatistics": "Statistiques sur le produit"
+          "productStatistics": "Statistiques sur le produit",
+          "collectionGrid": "Grille de collection"
         }
       }
     },
