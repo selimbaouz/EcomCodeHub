@@ -141,6 +141,26 @@
       "unlock": "Débloquez",
       "preview": "Aperçu",
       "code": "Code",
+      "copy": "Copier le snippet",
+      "edit": "Modifier le snippet",
+      "modal": {
+        "edit": "Modifier {title}",
+        "description": "Modifiez le contenu de {title} dynamiquement. Vous pouvez ajouter, éditer ou supprimer des éléments."
+      },
+      "add": "Ajouter un nouveau champ",
+      "reset": "Réinitialiser par défaut",
+      "save": "Enregistrer",
+      "form": {
+        "sectionTitle": "Titre de la section",
+        "title": "Titre",
+        "content": "Contenu",
+        "image": "URL de l'image",
+        "placeholder": {
+          "title": "Ajouter un titre",
+          "content": "Ajouter un texte",
+          "image": "https://..."
+        }
+      },
       "database": {
         "categories": {
           "all": "Tout",

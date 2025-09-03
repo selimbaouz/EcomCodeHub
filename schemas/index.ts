@@ -22,6 +22,17 @@ export const purchaseSchema = z.object({
   createdAt: z.date(),
 });
 
+export const snippetFieldSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  text: z.string().min(1, "Text is required"),
+  image: z.string().url("Must be a valid URL").optional(),
+});
+
+export const snippetFormSchema = z.object({
+  sectionTitle: z.string().min(1, "SectionTitle is required"),
+  snippets: z.array(snippetFieldSchema).min(1, "At least one benefit is required"),
+});
+
 export const subscriptionIdSchema = z.object({
   subscriptionId: z.string(),
 });

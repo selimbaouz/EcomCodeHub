@@ -138,6 +138,26 @@
       "unlock": "Unlock",
       "preview": "Preview",
       "code": "Code",
+      "copy": "Copy snippet",
+      "edit": "Edit snippet",
+      "add": "Add New Field",
+      "reset": "Reset default",
+      "save": "Save",
+      "form": {
+        "sectionTitle": "Section Title",
+        "title": "Title",
+        "content": "Content",
+        "image": "Image URL",
+        "placeholder": {
+          "title": "Add title",
+          "content": "Add text",
+          "image": "https://..."
+        }
+      },
+      "modal": {
+        "edit": "Edit {title}",
+        "description": "Modify the {title} content dynamically. You can add, edit, or remove items."
+      },
       "database": {
         "categories": {
           "all": "All",
