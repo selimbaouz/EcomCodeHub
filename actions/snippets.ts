@@ -40,9 +40,9 @@ export const onPurchaseSnippet = action
         data: { credits: user.credits - creditPrice },
     });
 
-    await db.purchase.create({
+    const purchase = await db.purchase.create({
         data: { userId, snippetId },
     });
 
-    return { success: "snippetPurchasedSuccess" };
+    return { success: "snippetPurchasedSuccess", purchaseId: purchase.id };
 });
