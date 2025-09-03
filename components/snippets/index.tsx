@@ -7,6 +7,7 @@ import { SnippetsType, UserType } from "@/types/types";
 import { useSnippetsFiltered } from "@/store/snippetsFiltered";
 import { useTranslations } from "next-intl";
 import { PulseLoader } from "react-spinners";
+import { useLoadingMoreStore } from "@/store/loadingMoreSnippet";
 
 interface SnippetsProps {
     user: UserType;
@@ -19,7 +20,7 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     const loaderRef = useRef<HTMLDivElement>(null);
     const [page, setPage] = useState(1);
     const [displayedSnippets, setDisplayedSnippets] = useState<SnippetsType>([]);
-    const [loadingMore, setLoadingMore] = useState(false);
+    const { loadingMore, setLoadingMore } = useLoadingMoreStore();
     const {searchQuery, category} = useSnippetsFiltered(); 
     const t = useTranslations("fe");
     
