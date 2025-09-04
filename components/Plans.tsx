@@ -6,6 +6,7 @@ import CardPlans from './card/CardPlans';
 import { useModalStore } from '@/store/plans';
 import { useCurrentUser } from '@/hook/use-current-user';
 import { redirect } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 interface PlansProps {
   nameOfPlan: string;
@@ -15,6 +16,7 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
   const {modeSelected, setModeSelected} = useModalStore();
   const session = useCurrentUser();
   const [currentPlanIndex, setCurrentPlanIndex] = useState<number | null>(null);
+  const t = useTranslations('fe.plans');
   
   if(!session) {
     redirect("/auth/login")
@@ -22,7 +24,7 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
 
   useEffect(() => {
     if (modeSelected === 1) {
-          const planTitles = PricesFixeData(1).map(plan => plan.title);
+          const planTitles = PricesFixeData(1, t).map(plan => plan.title);
           const index = planTitles.findIndex(title => title === nameOfPlan);
           setCurrentPlanIndex(index !== -1 ? index : null);
     } 
@@ -39,18 +41,18 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
           "text-foreground text-center",
         )}>
           {/* Passer au plan supérieur */}
-          {modeSelected === 0 ? "Commander un pack" : "Souscrire à un abonnement"}
+          {modeSelected === 0 ? t("header.oneTime") : t("header.subscription")}
         </h2>
         <div className={cn("pt-10", "lg:pt-0")}>
           <div className='mx-auto w-max rounded-full flex items-center justify-center bg-foreground  p-2'>
             {[
               {
                 id: 0,
-                title: "Ponctuel"
+                title: t("modes.oneTime")
               },
               {
                 id: 1,
-                title: "Mensuel"
+                title: t("modes.subscription")
               },
             ].map((data, index) => (
               <div key={index} className={cn("py-1.5 px-3 rounded-full cursor-pointer", modeSelected === data.id && "bg-primary")} onClick={() => setModeSelected(data.id)}>
@@ -59,13 +61,13 @@ const Plans: FC<PlansProps> = ({nameOfPlan}) => {
             ))}
           </div>
           <div className={cn("relative pt-7 w-full flex flex-col gap-4", "xl:flex-row xl:items-center xl:justify-center xl:gap-0")}>
-            {PricesFixeData(modeSelected).map((data, index) => {
+            {PricesFixeData(modeSelected, t).map((data, index) => {
               const isCurrentPlan = modeSelected === 1 && currentPlanIndex === index;
               const buttonText = isCurrentPlan 
-                ? "Plan actuel" 
+                ? t("button.currentPlan")
                 : modeSelected === 1
-                  ? (index < currentPlanIndex! ? "Rétrograder" : "Mettre à niveau")
-                  : "Obtenir ce pack";
+                  ? (index < currentPlanIndex! ?  t("button.downgrade") : t("button.upgrade"))
+                  : t("button.getPack");
               
               return (
                 <CardPlans
