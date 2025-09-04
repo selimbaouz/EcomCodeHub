@@ -86,6 +86,7 @@ import { BestReviewsCarousel } from './BestReviewsCarousel/BestReviewsCarousel';
 import ProductPromoSection from './ProductPromoSection/ProductPromoSection';
 import ProductShowcaseSection from './ProductShowcaseSection/ProductShowcaseSection';
 import ProductStatistics from './ProductStatistics/ProductStatistics';
+import CollectionGrid from './CollectonGrid/CollectionGrid';
 
 const ComponentsSnippet: Record<string, React.ReactNode> = {
     ProductTitle: <ProductTitle />,
@@ -174,7 +175,8 @@ const ComponentsSnippet: Record<string, React.ReactNode> = {
     BestReviewsCarousel: <BestReviewsCarousel />,
     ProductPromoSection: <ProductPromoSection />,
     ProductShowcaseSection: <ProductShowcaseSection />,
-    ProductStatistics: <ProductStatistics />
+    ProductStatistics: <ProductStatistics />,
+    CollectionGrid: <CollectionGrid />
   };
 
 export default ComponentsSnippet;
