@@ -357,6 +357,7 @@
         "forgotPassword": "Mot de passe oublié ?",
         "submitLogin": "Se connecter",
         "submitContinue": "Continuer",
+        "checkEmailTitle": "Vérifiez votre email",
         "checkEmailDesc": "Nous envoyons simplement un lien de vérification à",
         "returnToLogin": "Retour à la connexion",
         "footerTitleLogin": "Vous avez un compte ?",
