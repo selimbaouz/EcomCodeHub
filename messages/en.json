@@ -19,6 +19,20 @@
       "noCredits": "You have no credits left",
       "searchPlaceholder": "Search..."
     },
+     "installation": {
+      "title": "TailwindLiquid installation",
+      "description": "To enable TailwindLiquid on your Shopify store, follow the steps below:",
+      "steps": {
+        "1": "Log in to your Shopify admin.",
+        "2": "In the sidebar, click on <strong>«Sales channels»</strong> → <strong>«Themes»</strong>.",
+        "3": "Click the <strong>three dots</strong> next to the «Customize» button and then click <strong>«Edit code»</strong>.",
+        "4": "In the left column, open the <strong>«Layout»</strong> folder then click on <strong>«theme.liquid»</strong>.",
+        "5": "Locate line 30 or just above <code>&lt;script src='constants.js' | asset_url' defer='defer'&gt;&lt;/script&gt;</code>, where other <code>script</code> tags are located.",
+        "6": "Copy and paste the following code:"
+      },
+      "copyNotice": "Once the code is pasted and saved, you can use Tailwind classes with the <code>tw-</code> prefix, for example <code>tw-bg-red-500</code>.",
+      "copyButton": "Copy code"
+    },
     "plans": {
       "beginner": {
         "title": "Beginner Pack",
