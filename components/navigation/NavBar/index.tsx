@@ -33,8 +33,8 @@ export default function NavBar(
 
     return (
         <nav className={cn("bg-background border-b dark:border-white/10 z-[100]")}>
-            <NavBarMobile currentUser={currentUser} isAccount={isAccount} />
-            <NavBarWeb currentUser={currentUser} user={user} isAccount={isAccount} />
+            <NavBarMobile isAccount={isAccount} />
+            <NavBarWeb isAccount={isAccount} />
 
             {/* Panier */}
             <Cart />

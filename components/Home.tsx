@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Category from "@/components/Category";
 import Footer from "@/components/Footer";
 import SearchBar from "@/components/SearchBar";
@@ -13,6 +13,9 @@ import { SnippetsType, UserType } from '@/types/types';
 import { useTranslations } from 'next-intl';
 import NavBar from './navigation/NavBar';
 import useIsMobile from '@/hook/use-is-mobile';
+import { useColorStore } from '@/store/useColor';
+import { SketchPicker } from 'react-color';
+import ColorPicker from './ColorPicker';
 
 interface HomeProps {
     session: Session | null ;
@@ -31,7 +34,7 @@ const Home = ({
 }: HomeProps) => {
     const t = useTranslations("fe.home");    
     const isMobile = useIsMobile();
-
+    
     useEffect(() => {
         fetch('/api/pixels-view-content', {
             method: 'POST',
@@ -97,6 +100,7 @@ const Home = ({
                             <Category categories={categoriesSnippets} />
                         </div>
                     </div>
+                    <ColorPicker />
                     <Snippets user={user} snippets={snippets} />
                 </div>
             </div>

@@ -163,61 +163,63 @@ export const upgradeSubscription = action
 .schema(upgradeSchema)
   .action(async ({ parsedInput: { newPriceId } }) => {
     const session = await auth();
-
-    try {
-      const user = await getUserByEmail(session?.user?.email ?? "");
-      if (!user) {
-        return { error: "stripeUserNotFound" };
-      }
-
-      if (user.subscriptionId) {
-        // 🔄 L'utilisateur a déjà un abonnement → Mise à jour
-        const subscription = await stripe.subscriptions.retrieve(user.subscriptionId);
-        await stripe.subscriptions.update(user.subscriptionId, {
-          items: [
-            {
-              id: subscription.items.data[0].id,
-              price: newPriceId,
-            },
-          ],
-          proration_behavior: "create_prorations",
-        });
-
-        return { success: `subscriptionUpgraded` };
-      } else {
-        // 🆕 L'utilisateur n'a PAS d'abonnement → Création
-        if (!user.stripeCustomerId) {
-          return { error: "stripeNoAccount" };
-        }
-
-        // Création d'un abonnement sur Stripe
-        const subscription = await stripe.subscriptions.create({
-          customer: user.stripeCustomerId,
-          items: [{ price: newPriceId }],
-          payment_behavior: "default_incomplete",
-          expand: ["latest_invoice.payment_intent"],
-        });
-
-        if (!subscription.id) {
-          return { error: "stripeSubscriptionCreateFailed" };
-        }
-
-        // ✅ Mise à jour en BDD via Prisma
-        await db.user.update({
-          where: { id: user.id },
-          data: {
-            plan: "SUBSCRIPTION",
-            subscriptionId: subscription.id,
-          },
-        });
-
-        return { success: `subscriptionCreated` };
-      }
-    } catch (error) {
-      console.error("Erreur Stripe :", error);
-      return { error: "stripeUpgradeFailed" };
+    const user = await getUserByEmail(session?.user?.email ?? "");
+    if (!user) {
+      return { error: "stripeUserNotFound" };
     }
-  });
+
+    if (!user.stripeCustomerId) {
+    // Client Stripe non créé
+      return { error: "stripeCustomerIdMissing" };
+    }
+
+    if (user.subscriptionId && user.subscriptionId.trim() !== "") {
+      // 🔄 L'utilisateur a déjà un abonnement → Mise à jour
+      const subscription = await stripe.subscriptions.retrieve(user.subscriptionId);
+
+      if (subscription.status === "incomplete") {
+        // Interdiction de modifier les items car paiement initial incomplet
+        return { error: "subscriptionPaymentIncomplete" };
+      }
+      
+      // Mise à jour classique de l'abonnement
+      await stripe.subscriptions.update(user.subscriptionId, {
+        items: [
+          {
+            id: subscription.items.data[0].id,
+            price: newPriceId,
+          },
+        ],
+        proration_behavior: "create_prorations",
+      });
+
+      return { success: `subscriptionUpgraded` };
+    } 
+      // 🆕 L'utilisateur n'a PAS d'abonnement → Création
+
+      // Création d'un abonnement sur Stripe
+      const subscription = await stripe.subscriptions.create({
+        customer: user.stripeCustomerId,
+        items: [{ price: newPriceId }],
+        payment_behavior: "default_incomplete",
+        expand: ["latest_invoice.payment_intent"],
+      });
+
+      if (!subscription.id) {
+        return { error: "stripeSubscriptionCreateFailed" };
+      }
+
+      // ✅ Mise à jour en BDD via Prisma
+      await db.user.update({
+        where: { id: user.id },
+        data: {
+          plan: "SUBSCRIPTION",
+          subscriptionId: subscription.id,
+        },
+      });
+
+      return { success: `subscriptionCreated` };
+});
 
 
 export const buyOneTimePlan = action

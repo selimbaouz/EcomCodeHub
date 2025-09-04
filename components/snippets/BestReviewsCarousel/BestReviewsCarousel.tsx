@@ -6,7 +6,6 @@ import Image from 'next/image';
 import GetRatings from '@/lib/fn';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ImQuotesRight } from "react-icons/im";
-import { useTranslations } from "next-intl";
 import styles from './best-reviews-carousel.module.css';
 
 const reviews = [
@@ -38,7 +37,6 @@ export function BestReviewsCarousel() {
   const [current, setCurrent] = React.useState(0);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const t = useTranslations("fe.reviews");
 
   React.useEffect(() => {
     if (!api) {
