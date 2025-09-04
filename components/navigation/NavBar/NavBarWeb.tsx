@@ -13,7 +13,7 @@ import { StaticImageData } from "next/image";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { User } from "next-auth";
 import MenuDropdown from "../MenuDropdown";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { usePathname, useRouter } from "next/navigation";
@@ -29,6 +29,7 @@ const NavBarWeb: FC<NavBarWebProps> = ({ isAccount = false }) => {
   const classLink = "font-light text-foreground text-base hover:text-primary";
   const locale = useLocale();
   const t = useTranslations("fe.navigation");
+  
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
   const [imageInTheme, setImageInTheme] = useState<StaticImageData>();
