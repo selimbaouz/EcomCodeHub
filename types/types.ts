@@ -22,6 +22,8 @@ export type BenefitsSnippet = {
   snippets: Array<{ title: string; text: string; image?: string }>;
 };
 
+export type View = "mobile" | "tablet" | "desktop";
+
 export type Money = {
     amount: string;
     currencyCode: string;

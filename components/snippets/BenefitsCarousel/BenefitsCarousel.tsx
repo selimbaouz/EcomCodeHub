@@ -5,10 +5,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel"; // adapte ce chemin selon ta config
+} from "@/components/ui/carousel";
 import styles from "./benefits-carousel.module.css";
 import { cn } from "@/lib/utils";
 import { useSnippetEditStore } from "@/store/snippetEdit";
+import { useResponsiveStore } from "@/store/responsive-screen";
 
 const defaultBenefits = {
   sectionTitle: "Benefits",
@@ -36,8 +37,12 @@ const defaultBenefits = {
 
 export default function BenefitsCarousel({snippetId}: {snippetId: string}) {
   const [selected, setSelected] = useState(0);
-  const { snippets, setSnippetData } = useSnippetEditStore();
+   const { snippets, setSnippetData } = useSnippetEditStore();
   const benefits = snippets[snippetId] ?? defaultBenefits;
+
+  const view = useResponsiveStore((s) =>
+    s.getView(snippetId)
+  );
 
   useEffect(() => {
   if (!snippets[snippetId]) {
@@ -51,73 +56,98 @@ useEffect(() => {
   }
 }, [benefits, selected]);
 
+
+
   return (
-    <div className="flex flex-col justify-center p-4 mx-auto">
-      {/* Mobile Carousel */}
-      <div className="lg:hidden">
-        <h6 className={styles.mobileTitle}>{benefits.sectionTitle}</h6>
-        <Carousel
-          opts={{ loop: true, align: "start" }}
-          className={styles.carousel}
-        >
-          <CarouselContent className={styles.carouselContent}>
-            {benefits.snippets.map(({ title, text, image }, idx) => (
-              <CarouselItem key={idx} className={styles.carouselItem}>
-                <div className={styles.slideContent}>
-                  <div className={styles.slideInner}>
-                    <img
-                      src={image}
-                      alt={title}
-                      className={styles.image}
-                      width={400}
-                      height={447}
-                    />
-                    <div className={styles.slideText}>
+    <div className="flex flex-col justify-center p-4 mx-auto w-full">
+      {view === "mobile" && (
+        <div className={styles.mobileContainer}>
+          <h6 className={styles.mobileTitle}>{benefits.sectionTitle}</h6>
+          <Carousel
+            opts={{ loop: true, align: "start" }}
+            className={styles.carousel}
+          >
+            <CarouselContent className={styles.carouselContent}>
+              {benefits.snippets.map(({ title, text, image }, idx) => (
+                <CarouselItem key={idx} className={styles.carouselItem}>
+                  <div className={styles.slideContent}>
+                    <div className={styles.slideInner}>
+                      <img
+                        src={image}
+                        alt={title}
+                        className={styles.image}
+                        width={400}
+                        height={447}
+                      />
+                      <div className={styles.slideText}>
+                        <h6 className={styles.benefitTitle}>{title}</h6>
+                        <p className={styles.benefitText}>{text}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      )}
+
+      {view === "tablet" && (
+        <div className={styles.tabletContainer}>
+          <h6 className={styles.tabletTitle}>Benefits</h6>
+          <Carousel opts={{ loop: true, align: "start" }} className={styles.carousel}>
+            <CarouselContent className={styles.carouselContent}>
+              {benefits.snippets.map(({ title, text, image }, idx) => (
+                <CarouselItem key={idx} className={styles.carouselItemTablet}>
+                  <div className={styles.slideContentTablet}>
+                    <img src={image} alt={title} className={styles.imageTablet} />
+                    <div className={styles.slideTextTablet}>
                       <h6 className={styles.benefitTitle}>{title}</h6>
                       <p className={styles.benefitText}>{text}</p>
                     </div>
                   </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      )}
 
-      <div className={styles.desktopGrid}>
-        <div className={styles.tabList}>
-          <h6 className={styles.desktopTitle}>{benefits.sectionTitle}</h6>
-          <div className={styles.tabItemList}>
+      {view === "desktop" && (
+        <div className={styles.desktopGrid}>
+          <div className={styles.tabList}>
+            <h6 className={styles.desktopTitle}>{benefits.sectionTitle}</h6>
             {benefits.snippets.map(({ title }, i) => (
               <button
                 key={i}
                 onClick={() => setSelected(i)}
                 className={cn(
                   styles.tabBtn,
-                  selected === i && styles.tabBtnActive,
+                  selected === i && styles.tabBtnActive
                 )}
               >
                 {title}
               </button>
             ))}
           </div>
+          {benefits.snippets[selected] && (
+            <>
+              <img
+                id="benefit-image"
+                src={benefits.snippets[selected].image || ""}
+                alt="benefit"
+                className={styles.desktopImage}
+                width={400}
+                height={447}
+              />
+              <p id="benefit-text" className={styles.desktopText}>
+                {benefits.snippets[selected].text}
+              </p>
+            </>
+          )}
         </div>
-        {benefits.snippets[selected] && (
-          <>
-            <img
-              id="benefit-image"
-              src={benefits.snippets[selected].image || ""}
-              alt="benefit"
-              className={styles.desktopImage}
-              width={400}
-              height={447}
-            />
-            <p id="benefit-text" className={styles.desktopText}>
-              {benefits.snippets[selected].text}
-            </p>
-          </>
-        )}
-      </div>
+      )}
     </div>
   );
 }
+

@@ -1,4 +1,7 @@
 /* Mobile carousel styles */
+.mobileContainer {
+  @apply max-w-xs mx-auto w-full relative;
+}
 .mobileTitle {
   @apply text-left uppercase font-bold text-xs text-[#F29B5F] mb-2 ml-4;
 }
@@ -30,9 +33,30 @@
   @apply leading-6 text-xs font-medium;
 }
 
+/* Tablette carousel */
+.tabletContainer {
+  @apply max-w-md mx-auto w-full relative; /* un peu plus large que mobile */
+}
+.tabletTitle {
+  @apply text-left uppercase font-bold text-xs text-[#F29B5F] mb-2 ml-4;
+}
+.carouselItemTablet {
+  @apply flex-[0_0_45%] h-auto text-left; /* 2 cartes visibles */
+}
+.slideContentTablet {
+  @apply flex flex-col gap-2 h-full items-start space-y-2;
+}
+.imageTablet {
+  @apply rounded-3xl h-[220px] w-full;
+}
+.slideTextTablet {
+  @apply ml-4;
+}
+
+
 /* Desktop tabs styles */
 .desktopGrid {
-  @apply hidden lg:grid lg:grid-cols-3 lg:justify-center lg:items-center mx-auto min-w-full;
+  @apply lg:grid lg:grid-cols-3 lg:justify-center lg:items-center mx-auto;
 }
 .tabList {
   @apply space-y-[21px] items-start;
@@ -52,7 +76,7 @@
   @apply text-[#59432d];
 }
 .desktopImage {
-  @apply rounded-3xl size-[200px] mx-auto;
+  @apply rounded-3xl size-full mx-auto;
 }
 .desktopText {
   @apply leading-[36px] lg:text-sm lg:ml-10;
