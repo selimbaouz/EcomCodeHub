@@ -32,7 +32,7 @@
 
 /* Desktop tabs styles */
 .desktopGrid {
-  @apply hidden lg:grid lg:grid-cols-3 lg:justify-center lg:items-center mx-auto;
+  @apply hidden lg:grid lg:grid-cols-3 lg:justify-center lg:items-center mx-auto min-w-full;
 }
 .tabList {
   @apply space-y-[21px] items-start;
@@ -40,6 +40,11 @@
 .desktopTitle {
   @apply text-left uppercase font-bold text-xs text-[#F29B5F];
 }
+
+.tabItemList {
+  @apply flex flex-col gap-4 items-start text-left;
+}
+
 .tabBtn {
   @apply lg:text-sm font-bold text-[#BDB2A5] hover:text-[#59432d] transition-colors;
 }
