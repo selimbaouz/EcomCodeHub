@@ -300,22 +300,24 @@ const SnippetCard = ({
           name === "ExpertReviewsCarousel" && "bg-[#F9F6EE]",
         )}
       >
-        {!hasPurchased ? (
-            !isMobile ? (
-                <ResponsiveWrapper snippetId={snippet.id}>
-                    {Component ? <Component snippetId={snippet.id} /> : null}
-                </ResponsiveWrapper>
-            ) : Component ? <Component snippetId={snippet.id} /> : null
-        ) : selectedTab === 0 ? (
-            !isMobile ? (
-                <ResponsiveWrapper snippetId={snippet.id}>
-                    {Component ? <Component snippetId={snippet.id} /> : null}
-                </ResponsiveWrapper>
-            ) : Component ? <Component snippetId={snippet.id} /> : null
-        ) : (
-          <div className="w-full h-[350px] flex-1 py-4">
-            <CodeBlock code={formattedCode} />
+        {isMobile ? (
+          <div className="h-full max-h-[350px] w-full mx-auto overflow-auto py-4">
+            {Component ? <Component snippetId={snippet.id} /> : null}
           </div>
+        ) : (
+          !hasPurchased ? (
+            <ResponsiveWrapper snippetId={snippet.id}>
+              {Component ? <Component snippetId={snippet.id} /> : null}
+            </ResponsiveWrapper>
+          ) : selectedTab === 0 ? (
+            <ResponsiveWrapper snippetId={snippet.id}>
+              {Component ? <Component snippetId={snippet.id} /> : null}
+            </ResponsiveWrapper>
+          ) : (
+            <div className="w-full h-[350px] flex-1 py-4">
+              <CodeBlock code={formattedCode} />
+            </div>
+          )
         )}
       </div>
       {isModalOpen && (
