@@ -19,7 +19,7 @@
       "noCredits": "Vous n'avez plus de crédit",
       "searchPlaceholder": "Rechercher..."
     }, 
-     "installation": {
+    "installation": {
       "title": "Installation de TailwindLiquid",
       "description": "Pour activer TailwindLiquid sur votre boutique Shopify, suivez les étapes ci-dessous :",
       "steps": {
@@ -32,6 +32,79 @@
       },
       "copyNotice": "Une fois le code collé et sauvegardé, vous pouvez utiliser les classes Tailwind avec le préfixe <code>tw-</code>, par exemple <code>tw-bg-red-500</code>.",
       "copyButton": "Copier le code"
+    },
+    "plans": {
+      "beginner": {
+        "title": "Pack Débutant",
+        "price": "20.93",
+        "discount": "-30% d'économies",
+        "infoPrice": "",
+        "content": "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "advanced": {
+        "title": "Pack Avancé",
+        "price": "38.43",
+        "discount": "-30% d'économies",
+        "discountSub": "-7% d'économies",
+        "infoPrice": "Populaire",
+        "content": "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "pro": {
+        "title": "Pack Pro",
+        "price": "55.93",
+        "discount": "-30% d'économies",
+        "discountSub": "-23% d'économies",
+        "infoPrice": "",
+        "content": "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
+        "options": [
+          "Augmenter vos conversions",
+          "Copier-coller facile",
+          "Gain de temps",
+          "Personnalisation rapide",
+          "Résultats immédiats",
+          "Code prêt à l'emploi",
+          "Design professionnel",
+          "Attractivité renforcée",
+          "Boost vos ventes"
+        ]
+      },
+      "modes": {
+        "oneTime": "Ponctuel",
+        "subscription": "Mensuel"
+      },
+      "button": {
+        "currentPlan": "Plan actuel",
+        "upgrade": "Mettre à niveau",
+        "downgrade": "Rétrograder",
+        "getPack": "Obtenir ce pack"
+      },
+      "header": {
+        "oneTime": "Commander un pack",
+        "subscription": "Souscrire à un abonnement"
+      },
+      "byMonth": "/mois"
     },
     "navigation": {
       "snippets": "Snippets",
@@ -116,7 +189,10 @@
         "notEnoughCredits": "Vous n'avez pas assez de crédits.",
         "snippetAlreadyPurchased": "Vous possédez déjà ce snippet.",
         "userNotAuthenticated": "Utilisateur non authentifié.",
-        "snippetUnknownError": "Une erreur est survenue lors de l'achat du snippet."
+        "snippetUnknownError": "Une erreur est survenue lors de l'achat du snippet.",
+        "stripeInvalidRequest": "La requête envoyée à Stripe est invalide. Veuillez vérifier vos informations et réessayer.",
+        "stripeCustomerIdMissing": "Aucun compte Stripe associé à votre profil. Veuillez contacter le support ou réessayer plus tard.",
+        "subscriptionPaymentIncomplete": "Votre paiement initial est incomplet. Veuillez finaliser votre paiement avant de changer d’abonnement."
       },
       "success": {
         "checkEmail": "Veuillez vérifier votre e-mail pour continuer.",
@@ -155,6 +231,29 @@
       "unlock": "Débloquez",
       "preview": "Aperçu",
       "code": "Code",
+       "screenMobile": "Vue mobile",
+      "screenTablet": "Vue tablette",
+      "screenDesktop": "Vue bureau",
+      "copy": "Copier le snippet",
+      "edit": "Modifier le snippet",
+      "modal": {
+        "edit": "Modifier {title}",
+        "description": "Modifiez le contenu de {title} dynamiquement. Vous pouvez ajouter, éditer ou supprimer des éléments."
+      },
+      "add": "Ajouter un nouveau champ",
+      "reset": "Réinitialiser par défaut",
+      "save": "Enregistrer",
+      "form": {
+        "sectionTitle": "Titre de la section",
+        "title": "Titre",
+        "content": "Contenu",
+        "image": "URL de l'image",
+        "placeholder": {
+          "title": "Ajouter un titre",
+          "content": "Ajouter un texte",
+          "image": "https://..."
+        }
+      },
       "database": {
         "categories": {
           "all": "Tout",
@@ -245,15 +344,15 @@
     },
     "form": {
         "titleEmail": "Bienvenue",
-        "descEmail": "Veuillez entrer l'email que vous avez utilisé lors de votre achat sur Stripe.",
+        "descEmail": "Veuillez entrer l’email que vous avez utilisé lors de votre achat sur Stripe.",
         "titlePassword": "Connectez-vous avec votre mot de passe",
-        "descPassword": "Veuillez entrer le mot de passe que vous avez créé lors de votre inscription.",
+        "descPassword": "Veuillez entrer le mot de passe que vous avez créé lors de l’inscription.",
         "titleNewPassword": "Créez un nouveau mot de passe",
         "descNewPassword": "Veuillez créer un nouveau mot de passe pour accéder à votre compte.",
         "twoFactorPlaceholder": "Code à deux facteurs",
         "newPasswordPlaceholder": "Créer un nouveau mot de passe",
-        "email": "Email",
         "emailPlaceholder": "Adresse e-mail",
+        "email": "E-mail",
         "passwordPlaceholder": "Mot de passe",
         "forgotPassword": "Mot de passe oublié ?",
         "submitLogin": "Se connecter",
@@ -267,25 +366,26 @@
         "signupTitle": "Créez votre compte",
         "signupDescription": "Entrez votre e-mail et créez un mot de passe pour accéder à votre compte.",
         "codeTitle": "Débloquez vos crédits gratuits",
-        "codeDescription": "Vous avez reçu une invitation spéciale ?\nEntrez-le ci-dessous pour activer vos crédits.",
+        "codeDescription": "Vous avez une invitation spéciale ?\nEntrez-la ci-dessous pour activer vos crédits.",
         "emailSentTitle": "Vérifiez votre e-mail",
-        "emailSentDescription": "Un lien de vérification vous a été envoyé par email.",
+        "emailSentDescription": "Un lien de vérification a été envoyé à votre e-mail.",
         "confirm": "Confirmer",
         "confirmation": "Confirmation",
-        "register": "S'inscrire",
+        "register": "S’inscrire",
         "footerTitleCode": "Vous avez un code ?",
         "footerLabelCode": "Entrez votre code",
         "deleteTitle": "Supprimer le compte",
         "deleteDescription": "Êtes-vous sûr de vouloir supprimer votre compte ?\nSupprimer votre compte supprimera également tout le contenu associé.",
-        "deleteButton": "Je souhaite supprimer mon compte",
+        "deleteButton": "Je veux supprimer mon compte",
         "deleteModalTitle": "Suppression de votre compte",
-        "deleteModalConfirmTitle": "Souhaitez-vous vraiment supprimer votre compte ?",
-        "deleteModalConfirmDescription": "Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront perdues définitivement.",
-        "deletePlaceholder": "Confirmez avec votre mot de passe",
+        "deleteModalConfirmTitle": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+        "deleteModalConfirmDescription": "Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront définitivement perdues.",
+        "deletePlaceholder": "Confirmer avec votre mot de passe",
         "resetTitle": "Mot de passe oublié ?",
-        "resetDescription": "Veuillez entrer l'adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.",
+        "resetDescription": "Veuillez entrer l’adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.",
         "submitReset": "Envoyer",
-        "emailSentSuccess": "Un lien de réinitialisation vous a été envoyé par e-mail.",
+        "emailSentSuccess": "Un lien de réinitialisation de mot de passe a été envoyé à votre e-mail.",
+        "updatePasswordTitle": "Mot de passe",
         "updatePasswordNewLabel": "Nouveau mot de passe",
         "updatePasswordConfirmLabel": "Confirmer le mot de passe",
         "updatePasswordPlaceholder": "Mot de passe",
@@ -345,7 +445,7 @@
       "emailVerifiedButtonLabel": "Se connecter",
 
       "emailSentTitle": "E-mail envoyé avec succès",
-      "emailSentDescription": "Un lien de vérification a été envoyé à votre e-mail.",
+      "emailSentDescription": "Un e-mail de réinitialisation du mot de passe a été envoyé. Veuillez vérifier votre boîte de réception et suivre les instructions.",
 
       "defaultTitle": "Vérification en cours...",
       "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail.",

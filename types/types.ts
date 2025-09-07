@@ -1,4 +1,4 @@
-import { CodePromoSchema, deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, SignUserWithCodeSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
+import { CodePromoSchema, deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, SignUserWithCodeSchema, snippetFieldSchema, snippetFormSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
 
@@ -14,6 +14,15 @@ export type DeleteAccount = z.infer<typeof deleteAccountSchema>;
 export type Notifications = z.infer<typeof notificationSchema>;
 export type UpdatePassword = z.infer<typeof updatePasswordSchema>;
 export type UpdateEmail = z.infer<typeof updateEmailSchema>;
+export type SnippetField = z.infer<typeof snippetFieldSchema>;
+export type SnippetFormValues = z.infer<typeof snippetFormSchema>;
+
+export type BenefitsSnippet = {
+  sectionTitle: string;
+  snippets: Array<{ title: string; text: string; image?: string }>;
+};
+
+export type View = "mobile" | "tablet" | "desktop";
 
 export type Money = {
     amount: string;

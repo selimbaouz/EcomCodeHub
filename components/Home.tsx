@@ -87,6 +87,13 @@ const Home = ({
                                 : t("noCredits")
                             }
                         </p>
+                        {user?.credits === 0 && (
+                            <Button size="xl" className="text-base lg:text-lg px-6 py-4 rounded-xl" asChild>
+                                <Link href="/products/pack-pro-conversion-shopify">
+                                    {t("heroButton")}
+                                </Link>
+                            </Button>
+                        )}
                     </div>
                   )}
                     

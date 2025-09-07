@@ -46,21 +46,25 @@ export default function SideBar ({
                             title: t("snippets"),
                         },
                         {
-                            path: `/${locale}/ambassador-program`, 
-                            title: t("ambassadorProgram"),
-                        },
-                        {
-                            path: `/${locale}/products/pack-pro-conversion-shopify`, 
-                            title: t("buyCredits"),
-                        },
-                        {
                             path: `/${locale}/installation`, 
                             title: t("installation"),
                         },
                         {
-                            path: `/${locale}/credits-gratuits`, 
-                            title: t("credits"),
-                        }
+                            path: `/${locale}/products/pack-pro-conversion-shopify`, 
+                            title: t("conversionPack"),
+                        },
+                        {
+                            path: `/${locale}/ambassador-program`, 
+                            title: t("ambassadorProgram"),
+                        },
+                        {
+                            path: `/${locale}/account`, 
+                            title: t("account"),
+                        },
+                        {
+                            path: `https://discord.gg/kGayPFck58`, 
+                            title: t("discord"),
+                        },
                     ]?.map((data, i) => (
                         <li key={i} className={cn("border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group", data.path === pathname && "bg-primary")}>
                             <Link 
