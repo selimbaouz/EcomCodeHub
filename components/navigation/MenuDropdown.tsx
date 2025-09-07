@@ -6,51 +6,66 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { Fragment, MouseEventHandler, PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 type MenuDropdownProps = PropsWithChildren<{
-    items: {
-        href?: string;
-        label: string;
-        separator?: boolean;
-        handleClick?: () => void;
-        rel?: string;
-        target?: string;
-    }[];
-    handleLogOut?: MouseEventHandler<HTMLButtonElement>;
-    isLogOut?: boolean;
+  items: {
+    href?: string;
+    label: string;
+    separator?: boolean;
+    handleClick?: () => void;
+    rel?: string;
+    target?: string;
+  }[];
+  handleLogOut?: MouseEventHandler<HTMLButtonElement>;
+  isLogOut?: boolean;
 }>;
 
-const MenuDropdown = (props: MenuDropdownProps) => {
+const MenuDropdown = ({ items, handleLogOut, isLogOut, children }: MenuDropdownProps) => {
+  const t = useTranslations("fe.navigation");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        {props.children}
+        {children}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-52 mr-5">
-        {props.items.map((item, index) => (
-          <>
-            <DropdownMenuItem key={index}>
-              {item.href ? (
-                <Link 
-                  href={item.href} 
+        {items.map((item, index) => (
+          <Fragment key={item.href ?? item.label ?? index}>
+            {item.href ? (
+              <DropdownMenuItem>
+                <Link
+                  href={item.href}
                   className={cn("text-sm font-medium py-1")}
-                  target={item.target} 
+                  target={item.target}
                   rel={item.rel}
                 >
                   {item.label}
                 </Link>
-              ) : (
-                <button onClick={item.handleClick} className={cn("text-sm font-medium py-1")}>{item.label}</button>
-              )}
-            </DropdownMenuItem>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem>
+                <button
+                  onClick={item.handleClick}
+                  className={cn("text-sm font-medium py-1")}
+                >
+                  {item.label}
+                </button>
+              </DropdownMenuItem>
+            )}
             {item.separator && <DropdownMenuSeparator />}
-          </>
+          </Fragment>
         ))}
-        {props.isLogOut && (
+
+        {isLogOut && (
           <DropdownMenuItem>
-            <button onClick={props.handleLogOut} className={cn("text-sm font-medium py-1")}>Se deconnecter</button>
+            <button
+              onClick={handleLogOut}
+              className={cn("text-sm font-medium py-1")}
+            >
+              {t("logout")}
+            </button>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

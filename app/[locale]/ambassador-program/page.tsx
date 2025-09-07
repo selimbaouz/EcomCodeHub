@@ -7,10 +7,13 @@ import StickyBar from '@/components/navigation/StickyBar';
 import { cn } from '@/lib/utils';
 import ReactMarkdown from 'react-markdown';
 import React from 'react';
+import { useSession } from "next-auth/react";
 
 export default function AmbassadorProgram() {
   const t = useTranslations("fe.ambassador");
   const locale = useLocale();
+  const session = useSession();
+  console.log(session);
 
   const formUrl =
   locale === "fr"
@@ -26,7 +29,7 @@ export default function AmbassadorProgram() {
     <div className="relative">
       <div className="sticky top-0 w-full z-50">
         <StickyBar />
-        <NavBar />
+        <NavBar isAccount={session.data?.user ? true : false} />
       </div>
 
       <section className={cn(

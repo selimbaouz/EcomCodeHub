@@ -19,6 +19,20 @@
       "noCredits": "Vous n'avez plus de crédit",
       "searchPlaceholder": "Rechercher..."
     }, 
+     "installation": {
+      "title": "Installation de TailwindLiquid",
+      "description": "Pour activer TailwindLiquid sur votre boutique Shopify, suivez les étapes ci-dessous :",
+      "steps": {
+        "1": "Connectez-vous à votre interface Shopify.",
+        "2": "Dans la barre latérale, cliquez sur <strong>«Canaux de vente»</strong> → <strong>«Thèmes»</strong>.",
+        "3": "Cliquez sur les <strong>trois petits points</strong> à côté du bouton «Personnaliser» puis cliquez sur <strong>«Modifier le code»</strong>.",
+        "4": "Dans la colonne de gauche, ouvrez le dossier <strong>«Layout»</strong> puis cliquez sur <strong>«theme.liquid»</strong>.",
+        "5": "Repérez la ligne 30 ou juste au dessus de <code>&lt;script src='constants.js' | asset_url' defer='defer'&gt;&lt;/script&gt;</code>, là où se trouvent les autres balises <code>script</code>.",
+        "6": "Copiez et collez le code suivant :"
+      },
+      "copyNotice": "Une fois le code collé et sauvegardé, vous pouvez utiliser les classes Tailwind avec le préfixe <code>tw-</code>, par exemple <code>tw-bg-red-500</code>.",
+      "copyButton": "Copier le code"
+    },
     "navigation": {
       "snippets": "Snippets",
       "installation": "Installation",
@@ -224,7 +238,8 @@
           "faq": "Questions fréquentes",
           "productShowcaseSection": "Section vitrine des produits",
           "productPromoSection": "Section de promotion des produits",
-          "productStatistics": "Statistiques sur le produit"
+          "productStatistics": "Statistiques sur le produit",
+          "collectionGrid": "Grille de collection"
         }
       }
     },
@@ -232,8 +247,8 @@
         "titleEmail": "Bienvenue",
         "descEmail": "Veuillez entrer l'email que vous avez utilisé lors de votre achat sur Stripe.",
         "titlePassword": "Connectez-vous avec votre mot de passe",
-        "descPassword": "Veuillez indiquer le mot de passe que vous avez créé lors de votre inscription.",
-        "titleNewPassword": "Créer un nouveau mot de passe",
+        "descPassword": "Veuillez entrer le mot de passe que vous avez créé lors de votre inscription.",
+        "titleNewPassword": "Créez un nouveau mot de passe",
         "descNewPassword": "Veuillez créer un nouveau mot de passe pour accéder à votre compte.",
         "twoFactorPlaceholder": "Code à deux facteurs",
         "newPasswordPlaceholder": "Créer un nouveau mot de passe",
@@ -243,16 +258,17 @@
         "forgotPassword": "Mot de passe oublié ?",
         "submitLogin": "Se connecter",
         "submitContinue": "Continuer",
+        "checkEmailTitle": "Vérifiez votre email",
         "checkEmailDesc": "Nous envoyons simplement un lien de vérification à",
-        "returnToLogin": "Accéder à la connexion",
+        "returnToLogin": "Retour à la connexion",
         "footerTitleLogin": "Vous avez un compte ?",
-        "footerLabelLogin": "Connectez-vous",
-        "insertName": "Insérez votre nom",
+        "footerLabelLogin": "Se connecter",
+        "insertName": "Entrez votre nom",
         "signupTitle": "Créez votre compte",
-        "signupDescription": "Entrez votre adresse email et créez un mot de passe pour accéder à votre compte.",
-        "codeTitle": "Débloquez vos crédits offerts",
+        "signupDescription": "Entrez votre e-mail et créez un mot de passe pour accéder à votre compte.",
+        "codeTitle": "Débloquez vos crédits gratuits",
         "codeDescription": "Vous avez reçu une invitation spéciale ?\nEntrez-le ci-dessous pour activer vos crédits.",
-        "emailSentTitle": "Vérifiez votre Email",
+        "emailSentTitle": "Vérifiez votre e-mail",
         "emailSentDescription": "Un lien de vérification vous a été envoyé par email.",
         "confirm": "Confirmer",
         "confirmation": "Confirmation",
@@ -260,21 +276,25 @@
         "footerTitleCode": "Vous avez un code ?",
         "footerLabelCode": "Entrez votre code",
         "deleteTitle": "Supprimer le compte",
-        "deleteDescription": "Souhaitez-vous vraiment supprimer votre compte ?\nEn supprimant votre compte, vous supprimez tout le contenu qui y est associé.",
+        "deleteDescription": "Êtes-vous sûr de vouloir supprimer votre compte ?\nSupprimer votre compte supprimera également tout le contenu associé.",
         "deleteButton": "Je souhaite supprimer mon compte",
         "deleteModalTitle": "Suppression de votre compte",
         "deleteModalConfirmTitle": "Souhaitez-vous vraiment supprimer votre compte ?",
         "deleteModalConfirmDescription": "Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront perdues définitivement.",
         "deletePlaceholder": "Confirmez avec votre mot de passe",
+        "resetTitle": "Mot de passe oublié ?",
         "resetDescription": "Veuillez entrer l'adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.",
         "submitReset": "Envoyer",
         "emailSentSuccess": "Un lien de réinitialisation vous a été envoyé par e-mail.",
         "updatePasswordNewLabel": "Nouveau mot de passe",
         "updatePasswordConfirmLabel": "Confirmer le mot de passe",
+        "updatePasswordPlaceholder": "Mot de passe",
+        "updatePasswordForgot": "Mot de passe oublié ?",
+        "updatePasswordSubmit": "Enregistrer",
         "titleUpdatePassword": "Mise à jour du mot de passe",
         "resetInstructions": "Pour réinitialiser votre mot de passe, veuillez entrer un nouveau mot de passe dans les champs ci-dessous.",
         "emailCommunication": "Communication par e-mail",
-        "emailCommunicationDescription": "Recevez des emails quand de nouveaux codes sont ajoutés"
+        "emailCommunicationDescription": "Recevoir des e-mails lorsque de nouveaux codes sont ajoutés"
     },
     "content": {
       "tokenMissingTitle": "Lien non cliqué",
@@ -325,7 +345,7 @@
       "emailVerifiedButtonLabel": "Se connecter",
 
       "emailSentTitle": "E-mail envoyé avec succès",
-      "emailSentDescription": "Un e-mail de réinitialisation du mot de passe a été envoyé. Veuillez vérifier votre boîte de réception et suivre les instructions.",
+      "emailSentDescription": "Un lien de vérification a été envoyé à votre e-mail.",
 
       "defaultTitle": "Vérification en cours...",
       "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail.",

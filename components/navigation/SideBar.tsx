@@ -46,6 +46,14 @@ export default function SideBar ({
                             title: t("snippets"),
                         },
                         {
+                            path: `/${locale}/ambassador-program`, 
+                            title: t("ambassadorProgram"),
+                        },
+                        {
+                            path: `/${locale}/products/pack-pro-conversion-shopify`, 
+                            title: t("buyCredits"),
+                        },
+                        {
                             path: `/${locale}/installation`, 
                             title: t("installation"),
                         },

@@ -210,7 +210,13 @@ export default function Cart() {
                     />
                 </span>
             </div>
-            <form action={handleCheckout} className='px-4'>
+            <form 
+              onSubmit={async (e) => {
+                e.preventDefault();
+                await handleCheckout();
+              }}  
+              className='px-4'
+            >
                 <CheckoutButton isLoading={isLoading} quantity={cart.quantity} t={t} />
             </form>
           </div>

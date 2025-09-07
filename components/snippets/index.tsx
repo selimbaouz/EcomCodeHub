@@ -7,6 +7,7 @@ import { SnippetsType, UserType } from "@/types/types";
 import { useSnippetsFiltered } from "@/store/snippetsFiltered";
 import { useTranslations } from "next-intl";
 import { PulseLoader } from "react-spinners";
+import { useLoadingMoreStore } from "@/store/loadingMoreSnippet";
 
 interface SnippetsProps {
     user: UserType;
@@ -19,7 +20,8 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     const loaderRef = useRef<HTMLDivElement>(null);
     const [page, setPage] = useState(1);
     const [displayedSnippets, setDisplayedSnippets] = useState<SnippetsType>([]);
-    const [loadingMore, setLoadingMore] = useState(false);
+    const [isLoadingInitial, setIsLoadingInitial] = useState(true);
+    const { loadingMore, setLoadingMore } = useLoadingMoreStore();
     const {searchQuery, category} = useSnippetsFiltered(); 
     const t = useTranslations("fe");
     
@@ -33,8 +35,13 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
 
     // Charger snippets sur changement de filtre ou reset
     useEffect(() => {
-        setDisplayedSnippets(filteredSnippets.slice(0, PAGE_SIZE));
-        setPage(1);
+        setIsLoadingInitial(true);
+        const timer = setTimeout(() => {
+            setDisplayedSnippets(filteredSnippets.slice(0, PAGE_SIZE));
+            setPage(1);
+            setIsLoadingInitial(false);
+        }, 500); // petit délai pour simuler chargement
+        return () => clearTimeout(timer);
     }, [filteredSnippets]);
 
     // Callback pour charger plus de snippets
@@ -70,18 +77,38 @@ const Snippets: FC<SnippetsProps> = ({user, snippets}) => {
     
     return (
         <div className={cn("w-full space-y-4 py-20", "lg:space-y-0")}>
-            {displayedSnippets.length > 0 ? (
-                <div className={cn("flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4")}>
-                    {displayedSnippets.map((data, index) => (
-                        <SnippetCard key={index} user={user} snippet={data} />
-                    ))}
+            {isLoadingInitial ? (
+            // Loader principal (hydratation / 1er rendu)
+            <div className="flex justify-center items-center w-full h-40">
+                <PulseLoader size={7} />
+            </div>
+            ) : displayedSnippets.length > 0 ? (
+            <div
+                className={cn(
+                "flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-4"
+                )}
+            >
+                {displayedSnippets.map((data, index) => (
+                <SnippetCard key={index} user={user} snippet={data} />
+                ))}
+            </div>
+            ) : (
+            category && (
+                <div className="flex justify-center items-center w-full">
+                {t("snippets.NoSnippetFound")}
                 </div>
-            ) : ( category &&
-                <div className="flex justify-center items-center w-full">{t("snippets.NoSnippetFound")}</div>
+            )
             )}
-            <div ref={loaderRef} className="w-full py-20 flex items-center justify-center col-span-full">
+
+            {/* Loader infini, uniquement si on charge PLUS de snippets */}
+            {!isLoadingInitial && (
+            <div
+                ref={loaderRef}
+                className="w-full py-20 flex items-center justify-center col-span-full"
+            >
                 {loadingMore && <PulseLoader size={7} />}
             </div>
+            )}
         </div>
     );
 };

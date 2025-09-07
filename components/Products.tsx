@@ -14,13 +14,15 @@ import AnnouncementBar from '@/components/AnnouncementBar';
 import ProductImage from '@/components/ProductImage';
 import ImagesGallery from '@/components/ImagesGallery'; 
 import { Product } from '@/types/types';
+import { useSession } from "next-auth/react";
 
 interface ProductsProps {
     product: Product;
 }
 
 const Products: FC<ProductsProps> = ({product}) => {
-
+    const session = useSession();
+    
     useEffect(() => {
        fetch('/api/pixels-view-content', {
             method: 'POST',
@@ -45,7 +47,7 @@ const Products: FC<ProductsProps> = ({product}) => {
         <div className='relative'>
             <div className="sticky top-0 w-full z-50">
                 <StickyBar />
-                <NavBar />
+                <NavBar isAccount={session.data?.user ? true : false}  />
             </div>
 
             <div className="max-w-screen-xl mx-auto w-full">

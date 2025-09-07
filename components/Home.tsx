@@ -47,7 +47,6 @@ const Home = ({
                 content_type: 'home',           // type bien explicite
                 value: 0,
                 currency: "EUR",
-                // value, currency: tu peux les omettre pour la page d'accueil
                 fbp: document.cookie.split('; ').find(row => row.startsWith('_fbp='))?.split('=')[1],
             })
         });
