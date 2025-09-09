@@ -17,7 +17,6 @@ export default function StoreLocatorMarquee() {
 
   return (
     <ContainerSnippet>
-      <h6 className={styles.title}>See what's in store</h6>
       <div className={styles.marqueeWrapper}>
         <span className={styles.marqueeTitle}>
           Finds us <br className="lg:hidden" />near you

@@ -36,6 +36,7 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
 
   return (
      <ContainerSnippet>
+      <div>
         <Carousel 
           setApi={setApi}
           className={`${styles.container} ${productPage ? styles.minWFull : styles.maxWXs} ${styles.mdMaxWLg} ${styles.lgMaxWXs} ${styles.xlMaxWMd} ${styles.x3lMaxWXl}`}
@@ -100,6 +101,7 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
             ))}
           </div>
         </div>
+      </div>
      </ContainerSnippet>
   );
 }

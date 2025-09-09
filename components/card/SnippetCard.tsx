@@ -192,7 +192,7 @@ const SnippetCard = ({
                     <button
                       key={index}
                       className={cn(
-                        "flex items-center gap-2 text-sm font-bold cursor-pointer py-2 px-3 rounded-xl",
+                        "flex items-center gap-2 text-sm font-bold cursor-pointer py-2 px-3 rounded-[10px]",
                         view === data.type
                           ? "bg-white text-foreground"
                           : "text-gray-500",

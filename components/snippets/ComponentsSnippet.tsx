@@ -9,7 +9,6 @@ import FastShipping from './FastShipping/FastShipping';
 import CustomerRecommendations from './CustomerRecommendations/CustomerRecommendations';
 import RefundGuarantees from './RefundGuarantees/RefundGuarantees';
 import DeliveryEstimate from './DeliveryEstimate/DeliveryEstimate';
-import { BestReviews } from '../BestReviews';
 import SelectOptions from './SelectOptions/SelectOptions';
 import SecureBadges from './SecureBadges/SecureBadges';
 import DeliverySteps from './DeliverySteps/DeliverySteps';
@@ -87,6 +86,7 @@ import ProductPromoSection from './ProductPromoSection/ProductPromoSection';
 import ProductShowcaseSection from './ProductShowcaseSection/ProductShowcaseSection';
 import ProductStatistics from './ProductStatistics/ProductStatistics';
 import CollectionGrid from './CollectionGrid/CollectionGrid';
+import { BestReviews } from './BestReviews/BestReviews';
 
 const ComponentsSnippet: Record<string, React.ComponentType<any>> = {
     ProductTitle,
