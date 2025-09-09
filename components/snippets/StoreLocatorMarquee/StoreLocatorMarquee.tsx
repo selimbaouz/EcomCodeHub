@@ -1,4 +1,5 @@
 // components/StoreLocatorMarquee.jsx
+import ContainerSnippet from '../ContainerSnippet';
 import styles from './store-locator-marquee.module.css';
 
 const logos = [
@@ -15,7 +16,7 @@ export default function StoreLocatorMarquee() {
   const marqueeLogos = [...logos, ...logos, ...logos];
 
   return (
-    <div>
+    <ContainerSnippet>
       <h6 className={styles.title}>See what's in store</h6>
       <div className={styles.marqueeWrapper}>
         <span className={styles.marqueeTitle}>
@@ -33,6 +34,6 @@ export default function StoreLocatorMarquee() {
             ))}
             </div>
       </div>
-    </div>
+    </ContainerSnippet>
   );
 }

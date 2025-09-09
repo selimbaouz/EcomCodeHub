@@ -1,6 +1,6 @@
 "use client";
 import { cn } from '@/lib/utils';
-import React, { useState, useTransition } from 'react';
+import React, { useEffect, useState, useTransition } from 'react';
 import {
   FaCheck,
   FaCoins,
@@ -52,7 +52,7 @@ const SnippetCard = ({
     const isLoggedIn = !!user?.id;
     const { setView, getView } = useResponsiveStore();
     const view = getView(snippet.id);
-
+    
     const name = snippet.componentName;
     if(!name) return null;
     const Component = ComponentsSnippet[name] || null;
@@ -62,9 +62,15 @@ const SnippetCard = ({
     
     // Use useState instead of useOptimistic for better control
     const [optimisticPurchases, setOptimisticPurchases] = useState(snippet.purchases);
-
+    
     const hasPurchased = optimisticPurchases.some(p => p.userId === user?.id);
 
+    useEffect(() => {
+      if (isMobile) {
+        setView(snippet.id, "mobile");
+      }
+    }, [])
+    
     const selectSnippetData = [
       {
         title: t("snippets.preview"),
@@ -294,7 +300,7 @@ const SnippetCard = ({
       </div>
       <div
         className={cn(
-          "w-full min-h-[350px] max-h-[350px] flex justify-center items-center",
+          "w-full min-h-[350px] max-h-[350px] flex justify-center items-center rounded-lg",
           isMobile && "border rounded-lg",
           name === "Accordion" && "bg-pink-500",
           name === "ExpertReviewsCarousel" && "bg-[#F9F6EE]",
@@ -302,7 +308,7 @@ const SnippetCard = ({
       >
         {!hasPurchased || selectedTab === 0 ? (
             isMobile ? (
-              <div className="h-full max-h-[350px] w-full mx-auto overflow-auto py-4">
+              <div className="h-full max-h-[350px] w-full mx-auto overflow-auto">
                 {Component ? <Component snippetId={snippet.id} /> : null}
               </div>
             ) : (

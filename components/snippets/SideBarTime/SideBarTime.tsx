@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils';
 import React, { useEffect, useState } from 'react';
 import styles from './sidebar-time.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 const SideBarTime = () => {
     const [timeLeft, setTimeLeft] = useState(3 * 3600 + 25 * 60 + 9); // 3h 25min 9s en secondes
@@ -24,13 +25,15 @@ const SideBarTime = () => {
     };
 
     return (
-        <div className={cn(styles.container)}>
-            <div className={cn(styles.content)}>
-                <h6 className={cn(styles.countdownText)}>
-                    La vente se termine aujourd'hui !  <span className={cn("underline")}>{formatTime(timeLeft)}</span>
-                </h6>
+        <ContainerSnippet>
+            <div className={cn(styles.container)}>
+                <div className={cn(styles.content)}>
+                    <h6 className={cn(styles.countdownText)}>
+                        La vente se termine aujourd'hui !  <span className={cn("underline")}>{formatTime(timeLeft)}</span>
+                    </h6>
+                </div>
             </div>
-        </div>
+        </ContainerSnippet>
     );
 };
 

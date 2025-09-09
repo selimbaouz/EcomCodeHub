@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
 import styles from './customer-review-badge.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 const CustomerReviewBadge = () => {
     const timeRef = useRef<HTMLDivElement>(null);
@@ -26,27 +27,29 @@ const CustomerReviewBadge = () => {
     }, []);
   
     return (
-      <div className={styles.container}>
-        <img
-          src="https://img.freepik.com/free-photo/stylish-african-american-woman-smiling_23-2148770405.jpg"
-          alt="Photo de profil utilisateur"
-          className={styles.image}
-        />
-        <div className={styles.content}>
-          <div className={styles.username}>
-            Michelle
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
-              alt="Badge vérifié"
-              className={styles.icon}
-            />
+      <ContainerSnippet>
+        <div className={styles.container}>
+          <img
+            src="https://img.freepik.com/free-photo/stylish-african-american-woman-smiling_23-2148770405.jpg"
+            alt="Photo de profil utilisateur"
+            className={styles.image}
+          />
+          <div className={styles.content}>
+            <div className={styles.username}>
+              Michelle
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
+                alt="Badge vérifié"
+                className={styles.icon}
+              />
+            </div>
+            <div className={styles.text}>
+              On a combiné les promos du Black Friday et du Nouvel An rien que pour vous. Profitez de 255€ de réduction !
+            </div>
           </div>
-          <div className={styles.text}>
-            On a combiné les promos du Black Friday et du Nouvel An rien que pour vous. Profitez de 255€ de réduction !
-          </div>
+          <div className={styles.time} ref={timeRef}>Temps restant : 00:23:22</div>
         </div>
-        <div className={styles.time} ref={timeRef}>Temps restant : 00:23:22</div>
-      </div>
+      </ContainerSnippet>
     );
   };
 

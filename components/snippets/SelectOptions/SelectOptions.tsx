@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import styles from './select-options.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 export const contentData = (selected: number) => {
     switch (selected) {
@@ -41,6 +42,7 @@ const SelectOptions = () => {
     const [select, setselect] = useState(0);
 
     return (
+      <ContainerSnippet>
         <div className={styles.container}>
             <div className={styles.optionsWrapper}>
                 {[
@@ -68,6 +70,7 @@ const SelectOptions = () => {
                 <p id="description" className={styles.description}>{contentData(select).description}</p>
             </div>
         </div>
+      </ContainerSnippet>
     );
 };
 

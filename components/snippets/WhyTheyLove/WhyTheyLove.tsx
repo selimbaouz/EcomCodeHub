@@ -1,5 +1,7 @@
 "use client";
 
+import ContainerSnippet from "../ContainerSnippet";
+
 const percentages = [
   {
     percentage: "96%",
@@ -76,19 +78,21 @@ function Circle({ percentage }: { percentage: string }) {
 
 export default function WhyTheyLove() {
   return (
-    <div className="py-10 space-y-6 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-6">
-        Pourquoi ils l’adorent ? <span className="text-yellow-500">💛</span>
-      </h2>
-      {percentages.map((item, index) => (
-        <div
-          key={index}
-          className="flex items-center gap-4 border-b border-gray-200 pb-4"
-        >
-          <Circle percentage={item.percentage} />
-          <p className="text-sm text-gray-800 leading-snug">{item.text}</p>
-        </div>
-      ))}
-    </div>
+    <ContainerSnippet>
+      <div className="py-10 space-y-6 max-w-3xl mx-auto">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Pourquoi ils l’adorent ? <span className="text-yellow-500">💛</span>
+        </h2>
+        {percentages.map((item, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-4 border-b border-gray-200 pb-4"
+          >
+            <Circle percentage={item.percentage} />
+            <p className="text-sm text-gray-800 leading-snug">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </ContainerSnippet>
   );
 }

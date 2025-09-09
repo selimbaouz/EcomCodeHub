@@ -1,4 +1,5 @@
 import { FaUsers, FaHeadset, FaMoneyBillWave, FaLock } from "react-icons/fa";
+import ContainerSnippet from "../ContainerSnippet";
 
 const trustBadges = [
   {
@@ -25,16 +26,18 @@ const trustBadges = [
 
 export default function TrustBadges() {
   return (
-    <div className="w-full py-10 bg-white">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center px-4">
-        {trustBadges.map((badge, index) => (
-          <div key={index} className="flex flex-col items-center">
-            <div className="mb-4 text-black">{badge.icon}</div>
-            <h3 className="font-semibold text-sm md:text-base">{badge.title}</h3>
-            <p className="text-xs text-gray-600 mt-2">{badge.description}</p>
-          </div>
-        ))}
+    <ContainerSnippet>
+      <div className="w-full py-10 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center px-4">
+          {trustBadges.map((badge, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="mb-4 text-black">{badge.icon}</div>
+              <h3 className="font-semibold text-sm md:text-base">{badge.title}</h3>
+              <p className="text-xs text-gray-600 mt-2">{badge.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </ContainerSnippet>
   );
 }

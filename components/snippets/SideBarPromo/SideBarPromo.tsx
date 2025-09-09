@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import styles from './sidebar-promo.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 const SideBarPromo = () => {
     const [timeLeft, setTimeLeft] = useState(39 * 60 + 25); // 39 minutes 25 secondes en secondes
@@ -25,20 +26,22 @@ const SideBarPromo = () => {
     };
 
     return (
-        <div className={cn(styles.container)}>
-            <div className={cn(styles.content)}>
-                <div className={cn(styles.countdownText)}>
-                    SEULEMENT {formatTime(timeLeft)} pour obtenir <strong>20% de réduction</strong><br />
-                </div>
-                <div className={cn(styles.codeSection)}>
-                    Utiliser le code <strong>NEW20</strong>
-                    <Link href="#" className={cn(styles.codeLink)}>
-                        Acheter Maintenant
-                        <MdOutlineArrowForwardIos className={cn(styles.icon)} />
-                    </Link>
+        <ContainerSnippet>
+            <div className={cn(styles.container)}>
+                <div className={cn(styles.content)}>
+                    <div className={cn(styles.countdownText)}>
+                        SEULEMENT {formatTime(timeLeft)} pour obtenir <strong>20% de réduction</strong><br />
+                    </div>
+                    <div className={cn(styles.codeSection)}>
+                        Utiliser le code <strong>NEW20</strong>
+                        <Link href="#" className={cn(styles.codeLink)}>
+                            Acheter Maintenant
+                            <MdOutlineArrowForwardIos className={cn(styles.icon)} />
+                        </Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ContainerSnippet>
     );
 };
 

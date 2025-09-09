@@ -1,0 +1,13 @@
+/* limited-offer.module.css */
+
+.limitedOfferWrapper {
+  @apply bg-[#cc8e98] text-center py-6;
+}
+
+.limitedOfferTitle {
+  @apply text-white text-lg sm:text-xl md:text-2xl font-bold tracking-wide;
+}
+
+.limitedOfferSubtitle {
+  @apply text-black text-lg sm:text-xl md:text-2xl font-extrabold mt-2 tracking-wide;
+}

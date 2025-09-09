@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './accordion-snippet.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 const AccordionSnippet = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
@@ -29,19 +30,21 @@ const AccordionSnippet = () => {
   
 
   return (
-    <div className={styles.accordion}>
-      {questions.map((item, index) => (
-        <div className={`${styles.accordionItem} ${activeIndex === index ? styles.active : ''}`} key={index}>
-          <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
-            {item.question}
-            <span className={styles.indicator}>{activeIndex === index ? '-' : '+'}</span>
+    <ContainerSnippet>
+      <div className={styles.accordion}>
+        {questions.map((item, index) => (
+          <div className={`${styles.accordionItem} ${activeIndex === index ? styles.active : ''}`} key={index}>
+            <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
+              {item.question}
+              <span className={styles.indicator}>{activeIndex === index ? '-' : '+'}</span>
+            </div>
+            <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`}>
+              <p>{item.answer}</p>
+            </div>
           </div>
-          <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`}>
-            <p>{item.answer}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </ContainerSnippet>
   );
 };
 

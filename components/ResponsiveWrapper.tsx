@@ -11,21 +11,28 @@ interface ResponsiveWrapperProps {
 
 export default function ResponsiveWrapper({ snippetId, children }: ResponsiveWrapperProps) {
   const view = useResponsiveStore((s) => s.getView(snippetId));
-  const defaultWidth = view === "mobile" ? 375 : view === "tablet" ? 768 : 1280;
+  const setView = useResponsiveStore((s) => s.setView);
 
+  const defaultWidth = view === "mobile" ? 375 : view === "tablet" ? 500 : 795;
   const [width, setWidth] = useState(defaultWidth);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [maxWidth, setMaxWidth] = useState(1500);
+  const [maxWidth, setMaxWidth] = useState(795);
 
+  useEffect(() => {
+  console.log(`Snippet ${snippetId} width: ${width} → view: ${view}`);
+}, [width, view]);
+
+  // Met à jour width par défaut si la view change
   useEffect(() => {
     setWidth(defaultWidth);
   }, [defaultWidth]);
 
+  // Détecte la largeur parent pour maxWidth
   useEffect(() => {
     function updateMaxWidth() {
       if (containerRef.current) {
-        const parentWidth = containerRef.current.parentElement?.clientWidth ?? 1500;
-        setMaxWidth(Math.min(1500, parentWidth));
+        const parentWidth = containerRef.current.parentElement?.clientWidth ?? 795;
+        setMaxWidth(Math.min(795, parentWidth));
       }
     }
     updateMaxWidth();
@@ -46,36 +53,39 @@ export default function ResponsiveWrapper({ snippetId, children }: ResponsiveWra
           maxWidth={maxWidth}
           size={{ width, height: 350 }}
           enableResizing={{ right: true }}
-          onResizeStop={(e, direction, ref) => {
-            setWidth(ref.offsetWidth);
+          onResize={(e, direction, ref) => {
+            const newWidth = ref.offsetWidth;
+            setWidth(newWidth);
+
+            // Mise à jour fluide de la view
+            if (newWidth < 400) setView(snippetId, "mobile");
+            else if (newWidth < 600) setView(snippetId, "tablet");
+            else setView(snippetId, "desktop");
           }}
           disableDragging
           className={cn(
-            "border rounded-lg shadow-sm bg-white dark:bg-neutral-900",
-            "overflow-y-auto",
-            "min-h-[350px]",
-            "max-h-[350px]"
+            "border rounded-lg shadow-sm relative",
+            "min-h-[350px] max-h-[350px]"
           )}
           resizeHandleStyles={{
             right: {
-                background: "#e5e5e5",
-                borderRadius: "4px",
-                width: "8px",
-                marginRight: "-8px",
-                cursor: "ew-resize",
-                height: "60px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                position: "absolute",
-                right: 10, 
-                zIndex: 10,
+              background: "#e5e5e5",
+              borderRadius: "4px",
+              width: "8px",
+              cursor: "ew-resize",
+              height: "30px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              position: "absolute",
+              right: "-14px", 
+              zIndex: 10,
             },
           }}
           style={{
             height: 350,
           }}
         >
-          <div className="w-full h-full flex justify-center items-center">
+          <div className="overflow-y-auto h-full max-h-[350px] w-full mx-auto overflow-auto">
             {children}
           </div>
         </Rnd>

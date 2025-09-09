@@ -1,7 +1,7 @@
 /* best-reviews-carousel.module.css */
 
 .section {
-  @apply px-6 bg-[#FFDAA7] w-full relative py-10 text-center text-[#242627] lg:py-20 lg:px-6 xl:px-0;
+  @apply px-6 bg-[#FFDAA7] w-full relative py-10 text-center text-[#242627] lg:py-20 lg:px-6;
 }
 
 .container {
@@ -13,7 +13,7 @@
 }
 
 .gridDesktop {
-  @apply hidden lg:grid grid-cols-3 items-start gap-4;
+  @apply grid grid-cols-3 items-start gap-4;
 }
 
 .card {
@@ -46,7 +46,7 @@
 
 /* Carousel mobile */
 .carousel {
-  @apply lg:hidden w-full cursor-pointer mx-auto pt-4;
+  @apply size-full cursor-pointer mx-auto pt-4;
 }
 .carouselContent {
   @apply -mx-2 flex pl-2 h-auto;
@@ -84,7 +84,7 @@
 
 /* Carousel navigation */
 .navContainer {
-  @apply flex items-center justify-center gap-2 w-full pt-4 lg:hidden;
+  @apply flex items-center justify-center gap-2 w-full pt-4;
 }
 .navBtn {
   @apply z-10;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './checkout-message.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 const CheckoutMessage: React.FC = () => {
   const [currentCount, setCurrentCount] = useState<number>(5);
@@ -27,9 +28,11 @@ const CheckoutMessage: React.FC = () => {
   }, [currentCount]);
 
   return (
-    <div className={styles.checkoutMessage}>
-      <strong className={styles.changingNumber}>{currentCount}</strong> personnes finalisent leur commande en ce moment
-    </div>
+    <ContainerSnippet>
+      <div className={styles.checkoutMessage}>
+        <strong className={styles.changingNumber}>{currentCount}</strong> personnes finalisent leur commande en ce moment
+      </div>
+    </ContainerSnippet>
   );
 };
 

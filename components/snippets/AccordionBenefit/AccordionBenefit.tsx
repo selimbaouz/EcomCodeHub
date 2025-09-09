@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './accordion-benefit.module.css';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { GoHorizontalRule, GoPlus } from 'react-icons/go';
+import ContainerSnippet from '../ContainerSnippet';
 
 const AccordionBenefit = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
@@ -27,19 +28,21 @@ const AccordionBenefit = () => {
   
 
   return (
-    <div className={styles.accordion}>
-    {questions.map((item, index) => (
-        <div className={`${styles.accordionItem} ${activeIndex === index ? styles.active : ''}`} key={index}>
-        <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
-            {item.question}
-            <span className={styles.indicator}>{activeIndex === index ? <GoHorizontalRule className="text-lg" /> : <GoPlus className="text-xl" />}</span>
-        </div>
-        <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`} style={{paddingLeft: "0px", paddingRight: "0px"}}>
-            <p>{item.answer}</p>
-        </div>
-        </div>
-    ))}
-    </div>
+    <ContainerSnippet>
+      <div className={styles.accordion}>
+      {questions.map((item, index) => (
+          <div className={`${styles.accordionItem} ${activeIndex === index ? styles.active : ''}`} key={index}>
+          <div className={styles.accordionHeader} onClick={() => toggleItem(index)}>
+              {item.question}
+              <span className={styles.indicator}>{activeIndex === index ? <GoHorizontalRule className="text-lg" /> : <GoPlus className="text-xl" />}</span>
+          </div>
+          <div className={`${styles.accordionContent} ${activeIndex === index ? styles.show : ''}`} style={{paddingLeft: "0px", paddingRight: "0px"}}>
+              <p>{item.answer}</p>
+          </div>
+          </div>
+      ))}
+      </div>
+    </ContainerSnippet>
   );
 };
 

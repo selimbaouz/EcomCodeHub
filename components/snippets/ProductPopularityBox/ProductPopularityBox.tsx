@@ -1,4 +1,5 @@
 "use client";
+import ContainerSnippet from '../ContainerSnippet';
 import styles from './product-popularity-box.module.css'
 import { useEffect, useState } from 'react'
 
@@ -22,11 +23,13 @@ export const ProductPopularityBox = () => {
   }, [])
 
   return (
-    <div className={styles.container}>
-      <div className={styles.badge}>Vues</div>
-      <div className={styles.text}>
-        Au cours des dernières 24 heures, ce produit a été consulté <span>{viewCount}</span> fois.
+    <ContainerSnippet>
+      <div className={styles.container}>
+        <div className={styles.badge}>Vues</div>
+        <div className={styles.text}>
+          Au cours des dernières 24 heures, ce produit a été consulté <span>{viewCount}</span> fois.
+        </div>
       </div>
-    </div>
+    </ContainerSnippet>
   )
 }

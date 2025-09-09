@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ContainerSnippet from "../ContainerSnippet";
 
 const words = [
   "confiance",
@@ -43,10 +44,12 @@ export default function TypingEffect() {
   }, [displayText, typing]);
 
   return (
-    <div className="text-center font-bold text-xl md:text-2xl mt-10">
-      Ils ont retrouvé leur{" "}
-      <span className="text-pink-500">{displayText}</span>
-      <span className="animate-blink">|</span>
-    </div>
+    <ContainerSnippet>
+      <div className="text-center font-bold text-xl md:text-2xl mt-10">
+        Ils ont retrouvé leur{" "}
+        <span className="text-pink-500">{displayText}</span>
+        <span className="animate-blink">|</span>
+      </div>
+    </ContainerSnippet>
   );
 }

@@ -1,12 +1,15 @@
 import Transformations from '@/components/content/mode/Transformations';
 import { cn } from '@/lib/utils';
 import React from 'react';
+import ContainerSnippet from '../ContainerSnippet';
 
 const BeforeAfterSlider = () => {
     return (
-        <div className={cn("mx-auto w-max")}>
-            <Transformations />
-        </div>
+        <ContainerSnippet>
+            <div className={cn("mx-auto w-max")}>
+                <Transformations />
+            </div>
+        </ContainerSnippet>
     );
 };
 

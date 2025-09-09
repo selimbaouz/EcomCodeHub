@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './collection-grid.module.css';
+import ContainerSnippet from '../ContainerSnippet';
 
 interface Product {
   id: string;
@@ -42,23 +43,25 @@ const products: Product[] = [
 
 const CollectionGrid = () => {
   return (
-    <div className={styles.collectionGrid}>
-      <div className={styles.gridContainer}>
-        {products.map((product) => (
-          <a key={product.id} href={product.link} className={styles.card}>
-            <div className={styles.cardImageWrapper}>
-              <img
-                src={product.imageUrl}
-                alt={product.title}
-                className={styles.cardImage}
-              />
-            </div>
-            <h3 className={styles.cardTitle}>{product.title}</h3>
-            <p className={styles.cardDescription}>{product.description}</p>
-          </a>
-        ))}
+    <ContainerSnippet>
+      <div className={styles.collectionGrid}>
+        <div className={styles.gridContainer}>
+          {products.map((product) => (
+            <a key={product.id} href={product.link} className={styles.card}>
+              <div className={styles.cardImageWrapper}>
+                <img
+                  src={product.imageUrl}
+                  alt={product.title}
+                  className={styles.cardImage}
+                />
+              </div>
+              <h3 className={styles.cardTitle}>{product.title}</h3>
+              <p className={styles.cardDescription}>{product.description}</p>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+    </ContainerSnippet>
   );
 };
 
