@@ -3,36 +3,25 @@ import "./globals.css";
 import { Providers } from "@/components/Providers";
 import LayoutClient from "@/components/LayoutClient";
 import { auth } from "@/auth";
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
-import Head from "next/head";
 import Image from "next/image";
 import { NextIntlClientProvider } from "next-intl";
 import { Montserrat } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
 
 const montserrat = Montserrat({
-  weight: [
-    "100",
-    "200",
-    "300",
-    "400",
-    "500",
-    "600",
-    "700",
-    "800",
-    "900",
-  ],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
-    template: "%s | TailwindLiquid"
+    default:
+      "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
+    template: "%s | TailwindLiquid",
   },
   description:
     "Libérez tout le potentiel de votre boutique Shopify avec TailwindLiquid : snippets Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
@@ -53,7 +42,7 @@ export const metadata: Metadata = {
     "exemple code shopify",
     "no-code shopify",
     "ux shopify",
-    "ecommerce design"
+    "ecommerce design",
   ],
   authors: [{ name: "selimmersive" }],
   creator: "selimmersive",
@@ -64,7 +53,8 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://tailwindliquid.com",
     siteName: "TailwindLiquid",
-    title: "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
+    title:
+      "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
     description:
       "TailwindLiquid offre aux commerçants Shopify des snippets et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
     images: [
@@ -72,8 +62,8 @@ export const metadata: Metadata = {
         url: "https://tailwindliquid.com/fr/images/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "TailwindLiquid – Code Liquid Shopify"
-      }
+        alt: "TailwindLiquid – Code Liquid Shopify",
+      },
     ],
   },
   twitter: {
@@ -108,7 +98,7 @@ export default async function LocaleLayout({
         <body
           className={`${montserrat.variable} font-montserrat relative text-foreground size-full`}
         >
-          <Head>
+          <head>
             {/* Meta Pixel Code */}
             <script
               dangerouslySetInnerHTML={{
@@ -134,7 +124,8 @@ export default async function LocaleLayout({
                 width="1"
                 style={{ display: "none" }}
                 src="https://www.facebook.com/tr?id=1861317064600077&ev=
-                PageView&noscript=1"/>
+                PageView&noscript=1"
+              />
             </noscript>
             {/* End Meta Pixel Code */}
             {/** Tiktok Pixel Code */}
@@ -152,15 +143,13 @@ export default async function LocaleLayout({
                 `}
             </Script> */}
             {/* End Tiktok Pixel Code */}
-          </Head>
+          </head>
           <Toaster position="bottom-right" />
           <NextIntlClientProvider>
             <SpeedInsights />
             <Analytics />
             <Providers>
-              <LayoutClient>
-                {children}
-              </LayoutClient>
+              <LayoutClient>{children}</LayoutClient>
             </Providers>
           </NextIntlClientProvider>
         </body>

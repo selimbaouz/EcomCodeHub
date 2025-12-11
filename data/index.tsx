@@ -1,4 +1,9 @@
-import { MdOutlineCode, MdOutlineDesignServices, MdOutlineSell, MdVerified } from "react-icons/md";
+import {
+  MdOutlineCode,
+  MdOutlineDesignServices,
+  MdOutlineSell,
+  MdVerified,
+} from "react-icons/md";
 import { FaCheck, FaCopy, FaEye } from "react-icons/fa6";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { BiRocket, BiTimeFive } from "react-icons/bi";
@@ -27,12 +32,15 @@ import RefundPolicy from "@/components/content/detailsProduct/RefundPolicy";
 
 export const PricesFixeData = (modeSelected?: number) => [
   {
-    title: "Pack Débutant", 
+    title: "Pack Débutant",
     price: modeSelected ? "20.93" : "29.90",
     discount: modeSelected ? "-30% d'économies" : "",
-    infoPrice: "", 
-    content: "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
+    infoPrice: "",
+    content:
+      "30 crédits : Idéal pour débuter, découvrez comment nos codes peuvent améliorer votre boutique.",
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_BEGINNER!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_BEGINNER!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -46,12 +54,15 @@ export const PricesFixeData = (modeSelected?: number) => [
     ],
   },
   {
-    title: "Pack Avancé", 
-    price:  modeSelected ? "38.43" : "54.90",
+    title: "Pack Avancé",
+    price: modeSelected ? "38.43" : "54.90",
     discount: modeSelected ? "-30% d'économies" : "-7% d'économies",
     infoPrice: "Populaire",
-    content: "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
+    content:
+      "60 crédits : Boostez vos ventes avec des codes avancés et donnez un look moderne à votre boutique.",
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_ADVANCED!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_ADVANCED!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -62,15 +73,18 @@ export const PricesFixeData = (modeSelected?: number) => [
       { title: "Design professionnel" },
       { title: "Attractivité renforcée" },
       { title: "Boost vos ventes" },
-    ], 
+    ],
   },
   {
-    title: "Pack Pro", 
-    price:  modeSelected ? "55.93" : "79.90",
+    title: "Pack Pro",
+    price: modeSelected ? "55.93" : "79.90",
     discount: modeSelected ? "-30% d'économies" : "-23% d'économies",
     infoPrice: "",
-    content: "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
-    link: modeSelected ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO! : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
+    content:
+      "90 crédits : Des codes professionnels pour une boutique personnalisée, prête à vendre.",
+    link: modeSelected
+      ? process.env.NEXT_PUBLIC_LIVE_PRICE_ID_SUBSCRIPTION_PRO!
+      : process.env.NEXT_PUBLIC_LIVE_PRICE_ID_ONE_TIME_PRO!,
     options: [
       { title: "Augmenter vos conversions" },
       { title: "Copier-coller facile" },
@@ -81,96 +95,149 @@ export const PricesFixeData = (modeSelected?: number) => [
       { title: "Design professionnel" },
       { title: "Attractivité renforcée" },
       { title: "Boost vos ventes" },
-    ], 
+    ],
   },
 ];
 
 export const bestReviewsData = [
   {
-      name: "Anaïs", 
-      picture: [
-        {
-          imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "#"
-        }
-      ],
-      rating: 5,
-      content: "labore ipsum ex enim dolor adipiscing magna eiusmod tempor ullamco consequat consequat ea aliquipxxxx"
+    name: "Ye Yun",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a/ACg8ocIbon2VIJh3uY70c4tTg2vkhYRFUIIUxIk_ZBgd-W1egwCgNQ=s36-c-rp-mo-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "I had a technical question about integrating a snippet and received a clear, prompt answer in less than an hour. Honestly, it's rare to find such support. Hats off for the professionalism!",
   },
   {
-    name: "Jessica", 
-      picture: [
-        {
-          imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "#"
-        }
-      ],
-      rating: 5,
-      content: "labore ipsum ex enim dolor adipiscing magna eiusmod tempor ullamco consequat consequat ea aliquipxxxx"
+    name: "Mickael L.",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a/ACg8ocL_fypM1tC5ji8-zDZ6zLCstbG3wlJWe8EA1mfXQiKb-LvJNQ=s36-c-rp-mo-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "No bugs, everything works perfectly. I was a bit skeptical at first, but all the codes work flawlessly on my theme. No bugs, no slowdown... just new features for my store. Very reassuring.",
   },
   {
-    name: "Marie", 
-      picture: [
-        {
-          imageUrl: "https://avatars.githubusercontent.com/u/16860528",
-          profileUrl: "#"
-        }
-      ],
-      rating: 5,
-      content: "labore ipsum ex enim dolor adipiscing magna eiusmod tempor ullamco consequat consequat ea aliquipxxxx"
+    name: "Marwen L.",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a-/ALV-UjUEpcJed1UyKONsfC6OAWnGjQL4qHozEapgbVvHXuDSI3X31_cg=s36-c-rp-mo-ba2-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and Ecomcodehub was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want.",
   },
-]
+  {
+    name: "Karim H.",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a-/ALV-UjUxWx8tIW00bV805A6r4SXYxB_zws7roPh6M41TW5NJCOhsioJQ=s36-c-rp-mo-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "Excellent value for money. For the price, it's unbeatable. Instead of paying a developer hundreds of euros, I installed premium features on my Shopify site myself. Very satisfied with the result.",
+  },
+  {
+    name: "Gustavo W",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a/ACg8ocLRhOqSOJkCF_zBqSnmdh8RMEkzLGysTRmUkeQYVcNVJ59Ctw=s36-c-rp-mo-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function.",
+  },
+  {
+    name: "Abdelhaq M.",
+    picture: [
+      {
+        imageUrl:
+          "https://lh3.googleusercontent.com/a/ACg8ocLdbdQVy9R_6wjyjVX_FfN-NDSgQJ61EI9os34aD_RAqgeRSA=s36-c-rp-mo-br100",
+        profileUrl: "#",
+      },
+    ],
+    rating: 5,
+    content:
+      "Incredible! It's perfectly designed for quick and easy testing. The credits system lets you choose exactly the snippets you need, without commitments or unnecessary expenses. No bloatware, you only pay for what you use. Highly recommended.",
+  },
+];
 
 export const trustPilotReviewsData = [
   {
     title: "Très satisfait !",
-    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
-    name: "Mélanie D.", 
-    date: "3 Mars 2025"
+    content:
+      "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.",
+    date: "3 Mars 2025",
   },
   {
     title: "Très bonne surprise !",
-    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
-    name: "Jérôme T.", 
-    date: "17 Fév. 2025"
+    content:
+      "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.",
+    date: "17 Fév. 2025",
   },
   {
     title: "Très bon produit !",
-    content: "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
-    name: "Sofia L.", 
-    date: "25 Janv. 2025"
+    content:
+      "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
+    name: "Sofia L.",
+    date: "25 Janv. 2025",
   },
   {
     title: "Très satisfait !",
-    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
-    name: "Mélanie D.", 
-    date: "3 Mars 2025"
+    content:
+      "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.",
+    date: "3 Mars 2025",
   },
   {
     title: "Très bonne surprise !",
-    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
-    name: "Jérôme T.", 
-    date: "17 Fév. 2025"
+    content:
+      "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.",
+    date: "17 Fév. 2025",
   },
   {
     title: "Très bon produit !",
-    content: "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
-    name: "Sofia L.", 
-    date: "25 Janv. 2025"
+    content:
+      "C’est rare de tomber sur un produit aussi bien pensé. Chaque détail est soigné, et on sent que c’est un objet durable. J’ai même recommandé le même à ma sœur tellement j’étais satisfait. Rien à redire, c’est du top niveau !",
+    name: "Sofia L.",
+    date: "25 Janv. 2025",
   },
   {
     title: "Très satisfait !",
-    content: "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
-    name: "Mélanie D.", 
-    date: "3 Mars 2025"
+    content:
+      "Franchement bluffé par la qualité de ce produit. Dès l’ouverture, on sent que les matériaux sont de qualité et que l’emballage a été pensé avec soin. L’utilisation est intuitive, les performances sont au rendez-vous, et le design est vraiment élégant. Je recommande les yeux fermés !",
+    name: "Mélanie D.",
+    date: "3 Mars 2025",
   },
   {
     title: "Très bonne surprise !",
-    content: "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
-    name: "Jérôme T.", 
-    date: "17 Fév. 2025"
+    content:
+      "Livraison ultra rapide, produit conforme à la description, et surtout très efficace ! Je l’utilise tous les jours depuis que je l’ai reçu, et il a largement dépassé mes attentes. Un vrai coup de cœur que je ne regrette pas du tout.",
+    name: "Jérôme T.",
+    date: "17 Fév. 2025",
   },
-]
+];
 
 export const stickyBarData = [
   {
@@ -244,81 +311,81 @@ export const checkProduct = [
     title: "Achat unique ou abonnement avec mises à jour",
     icon: FaCheckSquare,
   },
-]
+];
 
 export const detailsProduct = [
   {
     title: "Présentation et bénéfices du pack",
-    content: <Description />
+    content: <Description />,
   },
   {
     title: "Pourquoi c’est la meilleure solution ?",
-    content: <WhyTL />
+    content: <WhyTL />,
   },
   {
     title: "Comment ça marche ?",
-    content: <HowItWorks />
+    content: <HowItWorks />,
   },
   {
     title: "Assistance et contact",
-    content: <Support />
+    content: <Support />,
   },
   {
     title: "Sécurité et moyens de paiement",
-    content: <PaymentSecurity />
+    content: <PaymentSecurity />,
   },
   {
     title: "Conditions de remboursement",
-    content: <RefundPolicy />
-  }
-]
+    content: <RefundPolicy />,
+  },
+];
 
 export const selectModesData = [
   {
     title: "Transformation",
-    description: "Transformez votre boutique en seulement quelques minutes"
+    description: "Transformez votre boutique en seulement quelques minutes",
   },
   {
     title: "Différences",
-    description: "Ce qui distingue TailwindLiquid des autres"
-  }
-]
+    description: "Ce qui distingue TailwindLiquid des autres",
+  },
+];
 
 export const productModeSelected = (selected: number) => {
   switch (selected) {
-  case 0:
-    return {
-      content: <Transformations />
-    };
-  case 1:
-    return {
-      content: <Difference />
-    };
-  default:
-    return {
-      content: <Transformations />
-    };
+    case 0:
+      return {
+        content: <Transformations />,
+      };
+    case 1:
+      return {
+        content: <Difference />,
+      };
+    default:
+      return {
+        content: <Transformations />,
+      };
   }
 };
 
 export const PacksSelected = (selected: number) => {
   switch (selected) {
-  case 0:
-    return {
-      content: "Pour débloquer des codes simples"
-    };
-  case 1:
-    return {
-      content: "Pour débloquer des codes avancés"
-    };
+    case 0:
+      return {
+        content: "Pour débloquer des codes simples",
+      };
+    case 1:
+      return {
+        content: "Pour débloquer des codes avancés",
+      };
     case 2:
-    return {
-      content: "Pour débloquer des codes pro"
-    };
-  default:
-    return {
-      content: "Pour débloquer des codes simples"
-    };
+      return {
+        content: "Pour débloquer des codes pro",
+      };
+    default:
+      return {
+        content: "Pour débloquer des codes simples",
+      };
   }
 };
 
@@ -387,7 +454,7 @@ export const SnippetSelected = () => [
 </div>
 </div>`,
     unLocked: true,
-  }, 
+  },
   {
     title: "Engagements",
     content: <GuaranteeIcons />,

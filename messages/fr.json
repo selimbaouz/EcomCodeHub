@@ -18,7 +18,7 @@
       "creditsRemaining": "Il vous reste {credits} crédits",
       "noCredits": "Vous n'avez plus de crédit",
       "searchPlaceholder": "Rechercher..."
-    }, 
+    },
     "installation": {
       "title": "Installation de TailwindLiquid",
       "description": "Pour activer TailwindLiquid sur votre boutique Shopify, suivez les étapes ci-dessous :",
@@ -231,7 +231,7 @@
       "unlock": "Débloquez",
       "preview": "Aperçu",
       "code": "Code",
-       "screenMobile": "Vue mobile",
+      "screenMobile": "Vue mobile",
       "screenTablet": "Vue tablette",
       "screenDesktop": "Vue bureau",
       "copy": "Copier le snippet",
@@ -343,58 +343,58 @@
       }
     },
     "form": {
-        "titleEmail": "Bienvenue",
-        "descEmail": "Veuillez entrer l’email que vous avez utilisé lors de votre achat sur Stripe.",
-        "titlePassword": "Connectez-vous avec votre mot de passe",
-        "descPassword": "Veuillez entrer le mot de passe que vous avez créé lors de l’inscription.",
-        "titleNewPassword": "Créez un nouveau mot de passe",
-        "descNewPassword": "Veuillez créer un nouveau mot de passe pour accéder à votre compte.",
-        "twoFactorPlaceholder": "Code à deux facteurs",
-        "newPasswordPlaceholder": "Créer un nouveau mot de passe",
-        "emailPlaceholder": "Adresse e-mail",
-        "email": "E-mail",
-        "passwordPlaceholder": "Mot de passe",
-        "forgotPassword": "Mot de passe oublié ?",
-        "submitLogin": "Se connecter",
-        "submitContinue": "Continuer",
-        "checkEmailTitle": "Vérifiez votre email",
-        "checkEmailDesc": "Nous envoyons simplement un lien de vérification à",
-        "returnToLogin": "Retour à la connexion",
-        "footerTitleLogin": "Vous avez un compte ?",
-        "footerLabelLogin": "Se connecter",
-        "insertName": "Entrez votre nom",
-        "signupTitle": "Créez votre compte",
-        "signupDescription": "Entrez votre e-mail et créez un mot de passe pour accéder à votre compte.",
-        "codeTitle": "Débloquez vos crédits gratuits",
-        "codeDescription": "Vous avez une invitation spéciale ?\nEntrez-la ci-dessous pour activer vos crédits.",
-        "emailSentTitle": "Vérifiez votre e-mail",
-        "emailSentDescription": "Un lien de vérification a été envoyé à votre e-mail.",
-        "confirm": "Confirmer",
-        "confirmation": "Confirmation",
-        "register": "S’inscrire",
-        "footerTitleCode": "Vous avez un code ?",
-        "footerLabelCode": "Entrez votre code",
-        "deleteTitle": "Supprimer le compte",
-        "deleteDescription": "Êtes-vous sûr de vouloir supprimer votre compte ?\nSupprimer votre compte supprimera également tout le contenu associé.",
-        "deleteButton": "Je veux supprimer mon compte",
-        "deleteModalTitle": "Suppression de votre compte",
-        "deleteModalConfirmTitle": "Êtes-vous sûr de vouloir supprimer votre compte ?",
-        "deleteModalConfirmDescription": "Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront définitivement perdues.",
-        "deletePlaceholder": "Confirmer avec votre mot de passe",
-        "resetTitle": "Mot de passe oublié ?",
-        "resetDescription": "Veuillez entrer l’adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.",
-        "submitReset": "Envoyer",
-        "emailSentSuccess": "Un lien de réinitialisation de mot de passe a été envoyé à votre e-mail.",
-        "updatePasswordTitle": "Mot de passe",
-        "updatePasswordNewLabel": "Nouveau mot de passe",
-        "updatePasswordConfirmLabel": "Confirmer le mot de passe",
-        "updatePasswordPlaceholder": "Mot de passe",
-        "updatePasswordForgot": "Mot de passe oublié ?",
-        "updatePasswordSubmit": "Enregistrer",
-        "titleUpdatePassword": "Mise à jour du mot de passe",
-        "resetInstructions": "Pour réinitialiser votre mot de passe, veuillez entrer un nouveau mot de passe dans les champs ci-dessous.",
-        "emailCommunication": "Communication par e-mail",
-        "emailCommunicationDescription": "Recevoir des e-mails lorsque de nouveaux codes sont ajoutés"
+      "titleEmail": "Bienvenue",
+      "descEmail": "Veuillez entrer l’email que vous avez utilisé lors de votre achat sur Stripe.",
+      "titlePassword": "Connectez-vous avec votre mot de passe",
+      "descPassword": "Veuillez entrer le mot de passe que vous avez créé lors de l’inscription.",
+      "titleNewPassword": "Créez un nouveau mot de passe",
+      "descNewPassword": "Veuillez créer un nouveau mot de passe pour accéder à votre compte.",
+      "twoFactorPlaceholder": "Code à deux facteurs",
+      "newPasswordPlaceholder": "Créer un nouveau mot de passe",
+      "emailPlaceholder": "Adresse e-mail",
+      "email": "E-mail",
+      "passwordPlaceholder": "Mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "submitLogin": "Se connecter",
+      "submitContinue": "Continuer",
+      "checkEmailTitle": "Vérifiez votre email",
+      "checkEmailDesc": "Nous envoyons simplement un lien de vérification à",
+      "returnToLogin": "Retour à la connexion",
+      "footerTitleLogin": "Vous avez un compte ?",
+      "footerLabelLogin": "Se connecter",
+      "insertName": "Entrez votre nom",
+      "signupTitle": "Créez votre compte",
+      "signupDescription": "Entrez votre e-mail et créez un mot de passe pour accéder à votre compte.",
+      "codeTitle": "Débloquez vos crédits gratuits",
+      "codeDescription": "Vous avez une invitation spéciale ?\nEntrez-la ci-dessous pour activer vos crédits.",
+      "emailSentTitle": "Vérifiez votre e-mail",
+      "emailSentDescription": "Un lien de vérification a été envoyé à votre e-mail.",
+      "confirm": "Confirmer",
+      "confirmation": "Confirmation",
+      "register": "S’inscrire",
+      "footerTitleCode": "Vous avez un code ?",
+      "footerLabelCode": "Entrez votre code",
+      "deleteTitle": "Supprimer le compte",
+      "deleteDescription": "Êtes-vous sûr de vouloir supprimer votre compte ?\nSupprimer votre compte supprimera également tout le contenu associé.",
+      "deleteButton": "Je veux supprimer mon compte",
+      "deleteModalTitle": "Suppression de votre compte",
+      "deleteModalConfirmTitle": "Êtes-vous sûr de vouloir supprimer votre compte ?",
+      "deleteModalConfirmDescription": "Cette action est irréversible. Une fois votre compte supprimé, toutes vos données seront définitivement perdues.",
+      "deletePlaceholder": "Confirmer avec votre mot de passe",
+      "resetTitle": "Mot de passe oublié ?",
+      "resetDescription": "Veuillez entrer l’adresse e-mail associée à votre compte. Un lien pour réinitialiser votre mot de passe vous sera envoyé par e-mail.",
+      "submitReset": "Envoyer",
+      "emailSentSuccess": "Un lien de réinitialisation de mot de passe a été envoyé à votre e-mail.",
+      "updatePasswordTitle": "Mot de passe",
+      "updatePasswordNewLabel": "Nouveau mot de passe",
+      "updatePasswordConfirmLabel": "Confirmer le mot de passe",
+      "updatePasswordPlaceholder": "Mot de passe",
+      "updatePasswordForgot": "Mot de passe oublié ?",
+      "updatePasswordSubmit": "Enregistrer",
+      "titleUpdatePassword": "Mise à jour du mot de passe",
+      "resetInstructions": "Pour réinitialiser votre mot de passe, veuillez entrer un nouveau mot de passe dans les champs ci-dessous.",
+      "emailCommunication": "Communication par e-mail",
+      "emailCommunicationDescription": "Recevoir des e-mails lorsque de nouveaux codes sont ajoutés"
     },
     "content": {
       "tokenMissingTitle": "Lien non cliqué",
@@ -404,7 +404,7 @@
       "tokenInvalidTitle": "Lien invalide",
       "tokenInvalidDescription": "Il semble que vous n'ayez pas cliqué sur le lien de confirmation envoyé à votre nouvel e-mail. Veuillez vérifier votre boîte de réception et cliquer sur le lien pour confirmer votre changement d'adresse e-mail.",
       "tokenInvalidButtonLabel": "Faire une nouvelle demande",
-      
+
       "tokenRequiredTitle": "Lien non cliqué",
       "tokenRequiredDescription": "Le lien est invalide. Veuillez vérifier votre boîte de réception pour le lien correct ou faire une nouvelle demande.",
       "tokenRequiredButtonLabel": "Ouvrir ma boîte mail",
@@ -439,7 +439,7 @@
 
       "tokenInvalidOrUsedTitle": "Lien invalide ou déjà utilisé",
       "tokenInvalidOrUsedDescription": "Ce lien de vérification est invalide ou a déjà été utilisé. Veuillez en demander un nouveau ou vous connecter si votre e-mail a déjà été confirmé.",
-      
+
       "emailVerifiedTitle": "E-mail vérifié",
       "emailVerifiedDescription": "Votre adresse e-mail a été vérifiée avec succès. Vous pouvez maintenant créer votre mot de passe pour pouvoir accéder à votre compte.",
       "emailVerifiedButtonLabel": "Se connecter",
@@ -504,7 +504,7 @@
     "ambassador": {
       "title": "Programme Ambassadeur",
       "description": "Rejoignez notre programme ambassadeur exclusif et participez à la révolution du développement Shopify !",
-      
+
       "offersTitle": "Ce que nous vous offrons :",
       "offers": [
         "Commission en argent : Pour chaque vente générée par votre recommandation, recevez une commission en euros. Plus vous partagez et plus vous gagnez !",
@@ -646,7 +646,7 @@
           "finalPush": "Renforce la décision d'achat"
         }
       },
-       "howItWorksPage": {
+      "howItWorksPage": {
         "title": "Fini les thèmes hors de prix",
         "subtitle": "La solution abordable pour un design haut de gamme",
         "videoDescription": "C'est incroyablement facile à ajouter sur votre boutique, vous verrez des améliorations instantanément",
@@ -760,9 +760,11 @@
       "close": "Fermer",
       "emptyCart": "Votre panier est vide.",
       "productImageAlt": "Image du produit",
-      "couponInfo": "Code à appliquer à l’étape suivante",
+      "couponInfo": "Code à appliquer à l'étape suivante",
       "totalLabel": "Total",
-      "checkoutButton": "Passez à l’étape suivante"
+      "savingsLabel": "Économies",
+      "youSave": "(Vous économisez {amount})",
+      "checkoutButton": "Passez à l'étape suivante"
     },
     "footer": {
       "aboutTitle": "À propos",
@@ -772,9 +774,18 @@
       "contactHours": "Du lundi au vendredi: 09h00 - 18h00",
       "legalLinks": [
         { "link": "/legals/legal-notice", "label": "Mentions légales" },
-        { "link": "/legals/privacy-policy", "label": "Politique de confidentialité" },
-        { "link": "/legals/terms-and-conditions", "label": "Conditions générales de vente" },
-        { "link": "/legals/terms-and-conditions-of-use", "label": "Conditions générales d'utilisation" }
+        {
+          "link": "/legals/privacy-policy",
+          "label": "Politique de confidentialité"
+        },
+        {
+          "link": "/legals/terms-and-conditions",
+          "label": "Conditions générales de vente"
+        },
+        {
+          "link": "/legals/terms-and-conditions-of-use",
+          "label": "Conditions générales d'utilisation"
+        }
       ]
     },
     "legalpage": {

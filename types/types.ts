@@ -1,4 +1,19 @@
-import { CodePromoSchema, deleteAccountSchema, LoginSchema, NewPasswordSchema, notificationSchema, ResetSchema, SignUserWithCodeSchema, snippetFieldSchema, snippetFormSchema, snippetSchema, snippetsSchema, updateEmailSchema, updatePasswordSchema, userSchema } from "@/schemas";
+import {
+  CodePromoSchema,
+  deleteAccountSchema,
+  LoginSchema,
+  NewPasswordSchema,
+  notificationSchema,
+  ResetSchema,
+  SignUserWithCodeSchema,
+  snippetFieldSchema,
+  snippetFormSchema,
+  snippetSchema,
+  snippetsSchema,
+  updateEmailSchema,
+  updatePasswordSchema,
+  userSchema,
+} from "@/schemas";
 import Stripe from "stripe";
 import { z } from "zod";
 
@@ -25,134 +40,134 @@ export type BenefitsSnippet = {
 export type View = "mobile" | "tablet" | "desktop";
 
 export type Money = {
-    amount: string;
-    currencyCode: string;
-  };
+  amount: string;
+  currencyCode: string;
+};
 
-  export type Connection<T> = {
-    edges: Array<Edge<T>>;
-  };
+export type Connection<T> = {
+  edges: Array<Edge<T>>;
+};
 
-  export type Edge<T> = {
-    node: T;
-  };
+export type Edge<T> = {
+  node: T;
+};
 
-  export type Image = {
-    url: string;
-    altText: string;
-    width: number;
-    height: number;
-  };
-  
-  export type Menu = {
-    title: string;
-    path: string;
-  };
+export type Image = {
+  url: string;
+  altText: string;
+  width: number;
+  height: number;
+};
 
-  export type Page = {
+export type Menu = {
+  title: string;
+  path: string;
+};
+
+export type Page = {
+  id: string;
+  title: string;
+  handle: string;
+  body: string;
+  bodySummary: string;
+  seo?: SEO;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ShopifyPagesOperation = {
+  data: {
+    pages: Connection<Page>;
+  };
+};
+
+export type ShopifyMenuOperation = {
+  data: {
+    menu?: {
+      items: {
+        title: string;
+        url: string;
+      }[];
+    };
+  };
+  variables: {
+    handle: string;
+  };
+};
+
+export type ShopifyPageOperation = {
+  data: { pageByHandle: Page };
+  variables: { handle: string };
+};
+
+export type Cart = Omit<ShopifyCart, "lines"> & {
+  lines: CartItem[];
+};
+
+export type CartProduct = {
+  id: string;
+  handle: string;
+  title: string;
+  featuredImage: ImageProduct;
+};
+
+export type StripePayment = "subscription" | "bundle" | "one_time";
+
+export type VariantsProduct = {
+  node: {
     id: string;
     title: string;
-    handle: string;
-    body: string;
-    bodySummary: string;
-    seo?: SEO;
-    createdAt: string;
-    updatedAt: string;
-  };
-  
-  export type ShopifyPagesOperation = {
-    data: {
-      pages: Connection<Page>;
+    sellingPlanAllocations?: {
+      edges: SellingPlanProduct[];
     };
+    selectedOptions?: {
+      name: string;
+      value: string;
+    }[];
+    price?: Money;
+    compareAtPrice: Money;
   };
+};
 
-  export type ShopifyMenuOperation = {
-    data: {
-      menu?: {
-        items: {
-          title: string;
-          url: string;
-        }[];
+export type SellingPlanProduct = {
+  node: {
+    sellingPlan: {
+      id: string;
+      name: string;
+      options: {
+        name: string;
+        value: string;
       };
     };
-    variables: {
-      handle: string;
-    };
   };
-  
-  export type ShopifyPageOperation = {
-    data: { pageByHandle: Page };
-    variables: { handle: string };
-  };
+};
 
+type Metafield = {
+  value: string | null;
+};
 
-  export type Cart = Omit<ShopifyCart, 'lines'> & {
-    lines: CartItem[];
+export type CartItem = {
+  id: string | undefined;
+  quantity: number;
+  cost: {
+    totalAmount: Money;
   };
-  
-  export type CartProduct = {
+  merchandise: {
     id: string;
-    handle: string;
     title: string;
-    featuredImage: ImageProduct;
+    selectedOptions: {
+      name: string;
+      value: string;
+    }[];
+    product: CartProduct;
+    compareAtPrice?: Money;
   };
-
-  export type StripePayment = "subscription" | "bundle" | "one_time"
-
-  export type VariantsProduct = {
-    node: {
+  sellingPlanAllocation?: {
+    sellingPlan: {
       id: string;
-      title: string;
-      sellingPlanAllocations?: {
-        edges: SellingPlanProduct[];
-      },
-      selectedOptions?: {
-        name: string;
-        value: string;
-      }[];
-      price?: Money;
-      compareAtPrice: Money;
-    }
-  }
-
-  export type SellingPlanProduct = {
-    node: {
-      sellingPlan: {
-        id: string;
-        name: string;
-        options: {
-          name: string;
-          value: string;
-        }
-      }
-    }
-  }
-
-  type Metafield = {
-    value: string | null;
-  };
-  
-  export type CartItem = {
-    id: string | undefined;
-    quantity: number;
-    cost: {
-      totalAmount: Money;
+      name: string;
     };
-    merchandise: {
-      id: string;
-      title: string;
-      selectedOptions: {
-        name: string;
-        value: string;
-      }[];
-      product: CartProduct;
-    };
-    sellingPlanAllocation?: {
-      sellingPlan: {
-        id: string;
-        name: string;
-      };
-      /* priceAdjustments: {
+    /* priceAdjustments: {
         price: {
           amount: string;
         };
@@ -163,9 +178,8 @@ export type Money = {
           amount: string;
         }
       } */
-    },
   };
-
+};
 
 export type SEO = {
   title: string;
@@ -184,7 +198,7 @@ export type Product = {
         options: {
           name: string;
           value: string;
-        }
+        };
         sellingPlans: {
           edges: {
             node: {
@@ -195,12 +209,12 @@ export type Product = {
               options: {
                 name: string;
                 value: string;
-              }
-            }
-          }
-        }
-      }
-    }
+              };
+            };
+          };
+        };
+      };
+    };
   };
   compareAtPriceRange: {
     maxVariantCompareAtPrice: {
@@ -213,21 +227,21 @@ export type Product = {
     };
   };
   priceRange: {
-      maxVariantPrice: {
-          amount: string;
-          currencyCode: string;
-      };
-      minVariantPrice: {
-          amount: string;
-          currencyCode: string;
-      };
+    maxVariantPrice: {
+      amount: string;
+      currencyCode: string;
+    };
+    minVariantPrice: {
+      amount: string;
+      currencyCode: string;
+    };
   };
   variants: {
     edges: VariantsProduct[];
-  }
+  };
   metafield: Metafield | null;
   images: {
-      edges: ImageProduct[];
+    edges: ImageProduct[];
   };
   seo: SEO;
   availableForSale: boolean;
@@ -236,31 +250,31 @@ export type Product = {
 };
 
 export type ShopifyProduct = {
-    data: {
-        productByHandle: Product;
-    };
-    variables: {
-        handle: string;
-    };
+  data: {
+    productByHandle: Product;
+  };
+  variables: {
+    handle: string;
+  };
 };
 
 export type ShopifyProductById = {
   data: {
-      product: Product;
+    product: Product;
   };
   variables: {
-      id: string;
+    id: string;
   };
 };
 
 export type ImageProduct = {
   node: {
-      altText: string;
-      originalSrc: string;
-      width: number;
-      height: number;
-  }
-}
+    altText: string;
+    originalSrc: string;
+    width: number;
+    height: number;
+  };
+};
 
 export type ShopifyCartOperation = {
   data: {
@@ -270,11 +284,11 @@ export type ShopifyCartOperation = {
     cartId: string;
   };
 };
-  
+
 export type ShopifyCreateCartOperation = {
   data: { cartCreate: { cart: ShopifyCart } };
 };
-  
+
 export type ShopifyAddToCartOperation = {
   data: {
     cartLinesAdd: {
@@ -304,22 +318,22 @@ export type ShopifyChekoutUrl = {
 
 export type ShopifyCheckoutCreateUrl = {
   data: {
-      checkoutCreate: {
-          checkout: {
-              webUrl: string; // URL pour accéder au checkout
-          };
-          userErrors: {
-            field: string;
-            message: string;
-        }
+    checkoutCreate: {
+      checkout: {
+        webUrl: string; // URL pour accéder au checkout
       };
+      userErrors: {
+        field: string;
+        message: string;
+      };
+    };
   };
   variables: {
     lineItems: {
       variantId: string;
       quantity: number;
       sellingPlanId?: string;
-    }[],
+    }[];
   };
 };
 
@@ -343,7 +357,7 @@ export type ShopifyCreateCustomer = {
       acceptsMarketing: boolean;
       /* password: string; */
     };
-};
+  };
 };
 
 export type ShopifySendInvite = {
@@ -365,7 +379,7 @@ export type ShopifySendInvite = {
       from: string;
       message: string;
     };
-};
+  };
 };
 
 export type ShopifyOrderCreate = {
@@ -387,7 +401,7 @@ export type ShopifyOrderCreate = {
           nodes: {
             variant: {
               id: string;
-            }
+            };
             id: string;
             title: string;
             quantity: string;
@@ -399,9 +413,9 @@ export type ShopifyOrderCreate = {
                   amount: number;
                   currencyCode: string;
                 };
-              }
-            }
-          }
+              };
+            };
+          };
         }[];
       };
     };
@@ -409,41 +423,43 @@ export type ShopifyOrderCreate = {
   variables: {
     order: {
       currency?: string;
-      lineItems: {
-        title: string;
-        priceSet: {
-          shopMoney: {
-            amount: number;
-            currencyCode: string;
-          };
-        }
-        variantId?: string | Stripe.Product | Stripe.DeletedProduct
-        quantity: number | null;
-        taxLines: {
-          priceSet: {
-            shopMoney: {
-              amount: number;
-              currencyCode: string;
-            }
-          },
-          rate: number,
-          title: string;
-        }[]
-    }[] | undefined
+      lineItems:
+        | {
+            title: string;
+            priceSet: {
+              shopMoney: {
+                amount: number;
+                currencyCode: string;
+              };
+            };
+            variantId?: string | Stripe.Product | Stripe.DeletedProduct;
+            quantity: number | null;
+            taxLines: {
+              priceSet: {
+                shopMoney: {
+                  amount: number;
+                  currencyCode: string;
+                };
+              };
+              rate: number;
+              title: string;
+            }[];
+          }[]
+        | undefined;
       email: string;
       financialStatus: string;
       transactions: {
         kind: string;
         status: string;
-        amountSet: { 
+        amountSet: {
           shopMoney: {
             amount: number;
             currencyCode: string;
-          }
+          };
         };
-      }[]
+      }[];
     };
-};
+  };
 };
 
 export type ShopifyDraftOrder = {
@@ -468,16 +484,17 @@ export type ShopifyDraftOrder = {
   variables: {
     input: {
       email: string;
-      lineItems: {
-        title: string | null;
-        variantId?: string | Stripe.Product | Stripe.DeletedProduct
-        price: number;
-        quantity: number | null;
-    }[] | undefined
+      lineItems:
+        | {
+            title: string | null;
+            variantId?: string | Stripe.Product | Stripe.DeletedProduct;
+            price: number;
+            quantity: number | null;
+          }[]
+        | undefined;
     };
+  };
 };
-};
-
 
 export type ShopifyRemoveFromCartOperation = {
   data: {

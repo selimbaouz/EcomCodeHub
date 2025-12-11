@@ -19,9 +19,9 @@
       "noCredits": "You have no credits left",
       "searchPlaceholder": "Search..."
     },
-     "installation": {
-      "title": "TailwindLiquid installation",
-      "description": "To enable TailwindLiquid on your Shopify store, follow the steps below:",
+    "installation": {
+      "title": "Ecomcodehub installation",
+      "description": "To enable Ecomcodehub on your Shopify store, follow the steps below:",
       "steps": {
         "1": "Log in to your Shopify admin.",
         "2": "In the sidebar, click on <strong>«Sales channels»</strong> → <strong>«Themes»</strong>.",
@@ -228,7 +228,7 @@
       "unlock": "Unlock",
       "preview": "Preview",
       "code": "Code",
-       "screenMobile": "Mobile View",
+      "screenMobile": "Mobile View",
       "screenTablet": "Tablet View",
       "screenDesktop": "Desktop View",
       "copy": "Copy snippet",
@@ -436,22 +436,22 @@
 
       "tokenInvalidOrUsedTitle": "Invalid or Already Used Link",
       "tokenInvalidOrUsedDescription": "This verification link is invalid or has already been used. Please request a new one or log in if your email is already confirmed.",
-      
+
       "emailVerifiedTitle": "Email Verified",
       "emailVerifiedDescription": "Your email address has been successfully verified. You can now create your password to access your account.",
       "emailVerifiedButtonLabel": "Log In",
-      
+
       "emailSentTitle": "Email Sent Successfully",
       "emailSentDescription": "A password reset email has been sent. Please check your inbox and follow the instructions.",
 
       "defaultTitle": "Verification in Progress...",
       "defaultDescription": "Please wait while your email is being verified.",
       "description": {
-        "paragraph1": "<strong>TailwindLiquid is the must-have solution</strong> for Shopify merchants looking to transform their store into <strong>a highly converting shop</strong>. Thanks to optimized and customizable TailwindCSS and Liquid codes, you can <strong>boost your conversions</strong>, provide a smooth user experience, and give your store <strong>a look worthy of the best themes without spending hundreds of euros</strong>.",
-        "paragraph2": "Designed by a <strong>fullstack developer, SEO consultant, and web designer with over 7 years of Shopify store creation experience</strong>, TailwindLiquid follows web standards and <strong>guarantees optimal SEO performance</strong>.",
-        "paragraph3": "<strong>Join our dedicated Discord server</strong>, included with all packs, even one-time purchases, to <strong>ask your technical questions, share feedback</strong>, discover new features first, and <strong>co-build the next TailwindLiquid snippets with the community</strong>.",
+        "paragraph1": "<strong>Ecomcodehub is the must-have solution</strong> for Shopify merchants looking to transform their store into <strong>a highly converting shop</strong>. Thanks to optimized and customizable TailwindCSS and Liquid codes, you can <strong>boost your conversions</strong>, provide a smooth user experience, and give your store <strong>a look worthy of the best themes without spending hundreds of euros</strong>.",
+        "paragraph2": "Designed by a <strong>fullstack developer, SEO consultant, and web designer with over 7 years of Shopify store creation experience</strong>, Ecomcodehub follows web standards and <strong>guarantees optimal SEO performance</strong>.",
+        "paragraph3": "<strong>Join our dedicated Discord server</strong>, included with all packs, even one-time purchases, to <strong>ask your technical questions, share feedback</strong>, discover new features first, and <strong>co-build the next Ecomcodehub snippets with the community</strong>.",
         "paragraph4": "<strong>Shopify design and store audits</strong> will also be regularly proposed to identify improvement points. <strong>These audits will be exclusively reserved for subscribers.</strong>",
-        "paragraph5": "TailwindLiquid's goal is to <strong>bring together an ambitious community of merchants</strong> and succeed together."
+        "paragraph5": "Ecomcodehub's goal is to <strong>bring together an ambitious community of merchants</strong> and succeed together."
       },
       "howItWorks": {
         "items": [
@@ -480,13 +480,13 @@
       "support": {
         "items": [
           "I am available to support you at every step, whether it is a technical issue or a question about installing or using the codes.",
-          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:tailwindliquid@gmail.com' class='text-blue-500 underline'>tailwindliquid@gmail.com</a>"
+          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:Ecomcodehub@gmail.com' class='text-blue-500 underline'>Ecomcodehub@gmail.com</a>"
         ]
       },
       "refundPolicy": {
         "items": [
           "<strong class='underline'>Can I get a refund?</strong> Yes, a refund is possible <strong>only if no credit has been used</strong>. Once a snippet is unlocked, the purchase is considered consumed.",
-          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:tailwindliquid@gmail.com' class='text-foreground underline'>tailwindliquid@gmail.com</a>",
+          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:Ecomcodehub@gmail.com' class='text-foreground underline'>Ecomcodehub@gmail.com</a>",
           "<strong class='underline'>Support at your service:</strong> Before any refund, I am here to help you resolve your technical issue. My goal is your satisfaction."
         ]
       },
@@ -506,19 +506,19 @@
       "offers": [
         "Cash commission: Earn a commission in euros for every sale generated through your referral. The more you share, the more you earn!",
         "Early access: Get early previews of our new snippets and templates to stay ahead of the innovation curve.",
-        "Dedicated marketing tools: Access personalized materials, guides, and content to promote TailwindLiquid on your networks.",
+        "Dedicated marketing tools: Access personalized materials, guides, and content to promote Ecomcodehub on your networks.",
         "Enhanced visibility: Join a community of experts and be featured on our platform and at exclusive events."
       ],
 
       "requirementsTitle": "What We Expect From You:",
       "requirements": [
-        "Sharing and engagement: Spread the word about TailwindLiquid through your social media, blogs, or other channels.",
+        "Sharing and engagement: Spread the word about Ecomcodehub through your social media, blogs, or other channels.",
         "Constructive feedback: Help us improve our products by providing regular insights.",
-        "Active participation: Join online workshops and events to connect with other ambassadors and the TailwindLiquid team."
+        "Active participation: Join online workshops and events to connect with other ambassadors and the Ecomcodehub team."
       ],
 
       "howItWorksTitle": "How It Works",
-      "howItWorksDescription": "To become an ambassador, send us your social media links (Facebook, Twitter, LinkedIn, Instagram, etc.) so we can evaluate your reach and engagement. Once your application is reviewed, you’ll receive instructions on how to promote TailwindLiquid and track your commissions.",
+      "howItWorksDescription": "To become an ambassador, send us your social media links (Facebook, Twitter, LinkedIn, Instagram, etc.) so we can evaluate your reach and engagement. Once your application is reviewed, you’ll receive instructions on how to promote Ecomcodehub and track your commissions.",
 
       "applyTitle": "How to Apply:",
       "applyInstructions": [
@@ -528,23 +528,23 @@
         "A brief introduction about your experience and motivation to join the ambassador program"
       ],
 
-      "closingStatement": "Whether you're a developer, designer, or simply passionate about optimizing Shopify stores, the TailwindLiquid ambassador program gives you the opportunity to turn your expertise into tangible earnings. Together, let's boost store conversions and deliver an exceptional user experience.",
-      "callToAction": "Join the TailwindLiquid movement and start earning today!"
+      "closingStatement": "Whether you're a developer, designer, or simply passionate about optimizing Shopify stores, the Ecomcodehub ambassador program gives you the opportunity to turn your expertise into tangible earnings. Together, let's boost store conversions and deliver an exceptional user experience.",
+      "callToAction": "Join the Ecomcodehub movement and start earning today!"
     },
     "creditsGratuits": {
       "title": "Earn 15 credits in just a few seconds ✨",
-      "subtitle1": "Do you love TailwindLiquid? So do we, and we want the world to know!",
+      "subtitle1": "Do you love Ecomcodehub? So do we, and we want the world to know!",
       "subtitle2Part1": "By sharing your experience, you help us grow, and in return, we thank you with ",
       "strongText": "15 free credits",
       "subtitle2Part2": " to unlock snippets.",
       "step1": {
         "title": "1. Share your review",
-        "description": "Tell us what you liked about TailwindLiquid, how it helped you, or what you expect next. A few words can make a big difference 🙏",
+        "description": "Tell us what you liked about Ecomcodehub, how it helped you, or what you expect next. A few words can make a big difference 🙏",
         "linkText": "👉 Leave a review on Google"
       },
       "step2": {
         "title": "2. Show us your message",
-        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to tailwindliquid@gmail.com, on Discord, or on our Discord server."
+        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to Ecomcodehub@gmail.com, on Discord, or on our Discord server."
       },
       "step3": {
         "title": "3. Receive your credits",
@@ -553,7 +553,7 @@
         "descriptionPart2": " will be added to your account within 24 hours. It’s our way of saying thank you ❤️"
       }
     },
-     "stickyBar": {
+    "stickyBar": {
       "codeReady": "💻 60+ ready-to-use codes",
       "newMonthly": "📅 New additions every month",
       "proRender": "🚀 Professional results in minutes"
@@ -564,10 +564,10 @@
       "retryAdvice": "Please try again or contact your bank if the problem persists."
     },
     "checkProduct": {
-      "benefit1": "+60 Liquid + Tailwind ready-to-use codes",
-      "benefit2": "Copy, paste and boost your conversions",
-      "benefit3": "100% compatible with all Shopify themes",
-      "benefit4": "One-time purchase or subscription with updates"
+      "benefit1": "+500 Shopify Code Snippets ready-to-use",
+      "benefit2": "Copy & Paste, No Experience Needed",
+      "benefit3": "100% Compatible with All Themes",
+      "benefit4": "+37% Average Conversion Rate Increase"
     },
     "detailsProduct": {
       "0": { "title": "Pack presentation and benefits" },
@@ -587,7 +587,7 @@
       "avancé": "Advanced",
       "pro": "Pro"
     },
-     "purchaseMode": {
+    "purchaseMode": {
       "oneTime": "One-time purchase",
       "subscription": "Monthly subscription"
     },
@@ -596,7 +596,7 @@
       "topSeller2025": "Top Seller 2025",
       "incredible": "Amazing",
       "rated5": "Rated 5/5 on",
-      "joinCommunity": "Join our <strong>merchant community</strong> who have <strong>boosted their sales</strong> thanks to our <strong>Conversion Pack</strong> 🚀.",
+      "joinCommunity": "🚨 <strong>347 merchants boosted their sales this month</strong>. Are you next, or will you <strong>watch your competitors win?</strong>\n\nWhile you're reading this, stores using our Conversion Pack are <strong>closing sales you're losing</strong>.",
       "ourPacks": "Our Packs:",
       "frequency": "Frequency:",
       "paymentSecure": "Secure payment – instant access after purchase",
@@ -607,9 +607,9 @@
       "creditsLabel": "Credits",
       "addToCart": "Add to cart - {price} €",
       "exampleStore": {
-        "title": "Imagine your future store",
-        "subtitle": "What you can achieve with your Pro Conversion Pack",
-        "instructions": "(Click on any visual to enlarge and scroll to explore the design in detail)",
+        "title": " Your store will look like this in 48 hours",
+        "subtitle": "(or you will continue to lose sales to websites that are inferior to yours.)",
+        "instructions": "Click on any image to see what you're currently missing out on.",
         "modalAlt": "Enlarge"
       },
       "announcement": {
@@ -629,8 +629,8 @@
         }
       },
       "exampleCodePage": {
-        "title": "More than 60 codes to integrate",
-        "subtitle": "A preview of the many codes included",
+        "title": "500+ emergency codes to boost your sales",
+        "subtitle": "The snippets your competitors are already using to steal your customers. Don't get left behind",
         "images": {
           "proveSatisfaction": "Prove satisfaction",
           "crowdEffect": "Create a crowd effect",
@@ -665,8 +665,8 @@
         }
       },
       "reviewsPage": {
-        "title": "They can't live without it anymore",
-        "subtitle": "Who better than them to talk about the Conversion Pack?",
+        "title": "They stopped losing money",
+        "subtitle": "Discover why over 600 e-commerce businesses can't do without it",
         "googleBadge": "5/5 on",
         "reviews": [
           {
@@ -682,7 +682,7 @@
           {
             "name": "Marwen L.",
             "score": 5,
-            "content": "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and TailwindLiquid was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want."
+            "content": "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and Ecomcodehub was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want."
           },
           {
             "name": "Karim H.",
@@ -690,7 +690,7 @@
             "content": "Excellent value for money. For the price, it's unbeatable. Instead of paying a developer hundreds of euros, I installed premium features on my Shopify site myself. Very satisfied with the result."
           },
           {
-            "name": "Guillaume L.",
+            "name": "Gustavo W",
             "score": 5,
             "content": "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function."
           },
@@ -698,48 +698,33 @@
             "name": "Abdelhaq M.",
             "score": 5,
             "content": "Incredible! It's perfectly designed for quick and easy testing. The credits system lets you choose exactly the snippets you need, without commitments or unnecessary expenses. No bloatware, you only pay for what you use. Highly recommended."
+          },
+          {
+            "name": "A Bbouaz",
+            "score": 5,
+            "content": "Ecomcodehub allowed me to give my Shopify store a real facelift. I highly recommend it."
           }
         ]
       },
       "faq": {
-        "title": "Your Questions",
-        "subtitle": "Find here the answers to the most frequently asked questions to assist you in using your pack",
+        "title": "Frequently asked questions",
+        "subtitle": "Answers to questions asked by those who are still hesitating (and who regret having waited)",
         "items": [
           {
-            "title": "What is a Liquid code?",
-            "content": "Liquid is the programming language used by Shopify to customize and structure online store themes."
+            "title": "What are Shopify liquid codes, and how do they work?",
+            "content": "Shopify liquid codes are snippets of customizable code designed to enhance your Shopify store’s functionality. With our pre-built codes, you can easily add features like custom product filters, dynamic pricing displays, or unique design elements—all without advanced coding knowledge."
           },
           {
-            "title": "What is the Shopify Conversion Pack for?",
-            "content": "The Conversion Pack improves design, enhances user experience, and significantly increases conversion rates."
+            "title": "Do I need coding experience to use your codes?",
+            "content": "Not at all! Our Shopify liquid codes are designed for all skill levels. Each purchase includes step-by-step instructions, so even beginners can implement them with ease."
           },
           {
-            "title": "Do these codes work with all themes?",
-            "content": "Yes, the codes have been tested on a wide range of free and premium themes to ensure perfect integration."
+            "title": "Are your codes compatible with all Shopify themes?",
+            "content": "Yes! Our Shopify liquid codes are tested across a wide range of themes to ensure compatibility."
           },
           {
-            "title": "What kind of features can I add?",
-            "content": "With the Conversion Pack, you can add dynamic customer reviews, social proof, attractive CTAs, trust badges, and much more to improve user experience."
-          },
-          {
-            "title": "Do I need technical skills?",
-            "content": "Not at all! Even a beginner can easily install them. Just copy-paste and replace the text or colors. And if needed, I am here to support you via Discord or email at tailwindliquid@gmail.com."
-          },
-          {
-            "title": "How does code installation work?",
-            "content": "Installation only takes a few seconds. Just follow the instructions on the “Installation” page to ensure everything works perfectly."
-          },
-          {
-            "title": "Can TailwindLiquid slow down my store?",
-            "content": "No. The code is optimized and lightweight. It integrates cleanly with your theme without impacting your store’s performance."
-          },
-          {
-            "title": "Can I get a refund if I am not satisfied?",
-            "content": "Refunds are possible only if no credit has been used. Once a snippet is unlocked, the purchase is considered consumed."
-          },
-          {
-            "title": "What if I have problems?",
-            "content": "I am available to help you at every step. Contact me directly on Discord or by email at tailwindliquid@gmail.com."
+            "title": "What happens if I face issues implementing the codes?",
+            "content": "We’ve got you covered! If you encounter any problems, our dedicated support team is just a message away. Send us a message"
           }
         ]
       }
@@ -759,19 +744,27 @@
       "productImageAlt": "Product image",
       "couponInfo": "Code to apply on next step",
       "totalLabel": "Total",
-      "checkoutButton": "Proceed to next step"
+      "savingsLabel": "Savings",
+      "youSave": "(You save {amount})",
+      "checkoutButton": "Check out"
     },
     "footer": {
       "aboutTitle": "About",
-      "aboutText": "I launched <strong>TailwindLiquid</strong> to offer Shopify merchants powerful and accessible tools to transform their stores into true conversion engines.",
+      "aboutText": "As a Shopify developer at a CRO agency, I optimize stores that generate millions of euros in revenue. I created <strong>EcomCodeHub</strong> to make the conversion codes and techniques used by major brands accessible to everyone, without having to pay a developer thousands of euros.",
       "legalPagesTitle": "Legal Pages",
       "contactTitle": "Contact Us",
       "contactHours": "Monday to Friday: 9:00 AM - 6:00 PM",
       "legalLinks": [
         { "link": "/legals/legal-notice", "label": "Legal Notice" },
         { "link": "/legals/privacy-policy", "label": "Privacy Policy" },
-        { "link": "/legals/terms-and-conditions", "label": "Terms and Conditions of Sale" },
-        { "link": "/legals/terms-and-conditions-of-use", "label": "Terms of Use" }
+        {
+          "link": "/legals/terms-and-conditions",
+          "label": "Terms and Conditions of Sale"
+        },
+        {
+          "link": "/legals/terms-and-conditions-of-use",
+          "label": "Terms of Use"
+        }
       ]
     },
     "legalpage": {
@@ -780,11 +773,11 @@
         "data": [
           {
             "title": "Last updated: 02/04/2025",
-            "content": "Welcome to TailwindLiquid. By accessing and using our website, you agree to these Terms of Use. If you do not agree with these terms, please do not use our site."
+            "content": "Welcome to Ecomcodehub. By accessing and using our website, you agree to these Terms of Use. If you do not agree with these terms, please do not use our site."
           },
           {
             "title": "1. Purpose",
-            "content": "These Terms of Use define the usage conditions of the TailwindLiquid website and the services provided."
+            "content": "These Terms of Use define the usage conditions of the Ecomcodehub website and the services provided."
           },
           {
             "title": "2. Access to the Site",
@@ -792,7 +785,7 @@
           },
           {
             "title": "3. Intellectual Property",
-            "content": "All content and code (snippets) on this site are the exclusive property of TailwindLiquid and are protected by intellectual property laws."
+            "content": "All content and code (snippets) on this site are the exclusive property of Ecomcodehub and are protected by intellectual property laws."
           },
           {
             "title": "4. Responsibilities",
@@ -809,11 +802,11 @@
         "data": [
           {
             "title": "Last updated: 02/04/2025",
-            "content": "These General Terms and Conditions of Sale govern the sales of products and services on the TailwindLiquid website."
+            "content": "These General Terms and Conditions of Sale govern the sales of products and services on the Ecomcodehub website."
           },
           {
             "title": "1. Products and Services",
-            "content": "TailwindLiquid offers ready-to-use Liquid & TailwindCSS snippets to improve Shopify stores. Access to these snippets is via a credit system, which can be purchased in packs."
+            "content": "Ecomcodehub offers ready-to-use Liquid & TailwindCSS snippets to improve Shopify stores. Access to these snippets is via a credit system, which can be purchased in packs."
           },
           {
             "title": "2. Packs and Subscriptions",
@@ -850,7 +843,7 @@
         "data": [
           {
             "title": "Last updated: 02/04/2025",
-            "content": "At TailwindLiquid, we attach great importance to protecting your personal data."
+            "content": "At Ecomcodehub, we attach great importance to protecting your personal data."
           },
           {
             "title": "1. Information Collection",
@@ -875,11 +868,11 @@
         "data": [
           {
             "title": "Last updated: 02/04/2025",
-            "content": "Legal information about the TailwindLiquid website."
+            "content": "Legal information about the Ecomcodehub website."
           },
           {
             "title": "1. Site Publisher",
-            "content": "TailwindLiquid\nDesigned and developed by Selim Baouz (Selimmersive)\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: tailwindliquid@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz (Selimmersive)"
+            "content": "Ecomcodehub\nDesigned and developed by Selim Baouz (Selimmersive)\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: Ecomcodehub@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz (Selimmersive)"
           },
           {
             "title": "2. Hosting",
@@ -887,11 +880,11 @@
           },
           {
             "title": "3. Intellectual Property",
-            "content": "All content and code (snippets) on this site are the exclusive property of TailwindLiquid and are protected by French intellectual property laws."
+            "content": "All content and code (snippets) on this site are the exclusive property of Ecomcodehub and are protected by French intellectual property laws."
           },
           {
             "title": "4. Contact",
-            "content": "For any questions or information requests regarding the site, please contact us at: tailwindliquid@gmail.com."
+            "content": "For any questions or information requests regarding the site, please contact us at: Ecomcodehub@gmail.com."
           }
         ]
       },

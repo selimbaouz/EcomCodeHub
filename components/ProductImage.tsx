@@ -1,309 +1,137 @@
 "use client";
-import { removeSuffix } from "@/lib/fn";
 import { cn } from "@/lib/utils";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { Product } from "@/types/types";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { AddToCart } from "./cart/add-to-cart";
 import { BestReviews } from "./BestReviews";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { CheckIcon } from "lucide-react";
 import { StarFilledIcon } from "@radix-ui/react-icons";
 import SecureBadges from "./snippets/SecureBadges/SecureBadges";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { FaCheckSquare } from "react-icons/fa";
-import Description from "./content/detailsProduct/Description";
-import WhyTL from "./content/detailsProduct/WhyTL";
-import HowItWorks from "./content/detailsProduct/HowItWorks";
-import Support from "./content/detailsProduct/Support";
-import PaymentSecurity from "./content/detailsProduct/PaymentSecurity";
-import RefundPolicy from "./content/detailsProduct/RefundPolicy";
 
 interface ProductImageProps {
-    product: Product;
-    bundle?: Product | undefined
+  product: Product;
+  bundle?: Product | undefined;
 }
 
-const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
-    const [bundleActive, setBundleActive] = useState(false);
-    const [selectedPack, setSelectedPack] = useState(1);
-    const [selectedPackName, setSelectedPackName] = useState("Avancé");
-    const filteredVariant = product.variants.edges.filter(v => v.node.title.includes(selectedPackName));
-    const t = useTranslations("fe");
-    const [selectedVariant, setSelectedVariant] = useState({
-        title: filteredVariant[0].node.title,
-        price: filteredVariant[0].node.price?.amount
-    });
+const ProductImage: FC<ProductImageProps> = ({ product, bundle }) => {
+  const [bundleActive, setBundleActive] = useState(false);
+  const t = useTranslations("fe");
 
-    const packs = [
-        { title: "Débutant", credits: 30 },
-        { title: "Avancé", credits: 60, discount: "-7%" },
-        { title: "Pro", credits: 90, discount: "-11%" },
-    ];
+  // Utiliser directement la première variante du produit
+  const firstVariant = product.variants.edges[0]?.node;
+  const [selectedVariant, setSelectedVariant] = useState({
+    title: firstVariant?.title || "",
+    price: firstVariant?.price?.amount || "0",
+  });
 
-    const checkProduct = [
-      {
-        title: t("checkProduct.benefit1"),
-        icon: FaCheckSquare,
-      },
-      {
-        title: t("checkProduct.benefit2"),
-        icon: FaCheckSquare,
-      },
-      {
-        title: t("checkProduct.benefit3"),
-        icon: FaCheckSquare,
-      },
-      {
-        title: t("checkProduct.benefit4"),
-        icon: FaCheckSquare,
-      },
-    ]
+  const checkProduct = [
+    {
+      title: t("checkProduct.benefit1"),
+      icon: FaCheckSquare,
+    },
+    {
+      title: t("checkProduct.benefit2"),
+      icon: FaCheckSquare,
+    },
+    {
+      title: t("checkProduct.benefit3"),
+      icon: FaCheckSquare,
+    },
+    {
+      title: t("checkProduct.benefit4"),
+      icon: FaCheckSquare,
+    },
+  ];
 
-    const detailsProduct = [
-        {
-            title: t("detailsProduct.0.title"),
-            content: <Description />
-        },
-        {
-            title: t("detailsProduct.1.title"),
-            content: <WhyTL />
-        },
-        {
-            title: t("detailsProduct.2.title"),
-            content: <HowItWorks />
-        },
-        {
-            title: t("detailsProduct.3.title"),
-            content: <Support />
-        },
-        {
-            title: t("detailsProduct.4.title"),
-            content: <PaymentSecurity />
-        },
-        {
-            title: t("detailsProduct.5.title"),
-            content: <RefundPolicy />
-        }
-    ]
+  return (
+    <div className={cn("space-y-4 py-6 lg:py-12 lg:space-y-5 max-w-xl")}>
+      <div className={cn("space-y-2 lg:space-y-3")}>
+        <div className={cn("flex items-center gap-2")}>
+          <div
+            className={cn(
+              "text-xs text-white font-semibold bg-primary px-2 py-1 rounded-lg"
+            )}
+          >
+            {t("productImage.instantAccess")}
+          </div>
+          <div
+            className={cn(
+              "text-xs text-background font-semibold bg-foreground px-2 py-1 rounded-lg"
+            )}
+          >
+            {t("productImage.topSeller2025")}
+          </div>
+        </div>
+        <h3
+          className={cn(
+            "text-left text-2xl font-bold pointer-events-none whitespace-pre-wrap text-foreground",
+            "lg:text-3xl",
+            "xl:text-4xl"
+          )}
+        >
+          {product.title}
+        </h3>
+        <div className="flex items-center justify-start border border-dashed border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2">
+          <div className="text-[13px] font-semibold">
+            {t("productImage.incredible")}
+          </div>
+          <div className="flex items-center">
+            <StarFilledIcon className="text-sm text-primary" />
+            <StarFilledIcon className="text-sm text-primary" />
+            <StarFilledIcon className="text-sm text-primary" />
+            <StarFilledIcon className="text-sm text-primary" />
+            <StarFilledIcon className="text-sm text-primary" />
+          </div>
+          <div className="text-xs font-semibold text-foreground">
+            {t("productImage.rated5")}
+          </div>
+          <img
+            className="w-[45px] mt-[2px]"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
+            alt="Logo Google"
+          />
+        </div>
+      </div>
+      <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>
+        {t.rich("productImage.joinCommunity", {
+          strong: (chunks) => <strong>{chunks}</strong>,
+        })}
+      </p>
 
-    const PacksSelected = (selected: number) => {
-        switch (selected) {
-        case 0:
-            return {
-            content: t("packsSelected.0")
-            };
-        case 1:
-            return {
-            content: t("packsSelected.1")
-            };
-            case 2:
-            return {
-            content: t("packsSelected.2")
-            };
-        default:
-            return {
-            content: t("packsSelected.0")
-            };
-        }
-    };
-
-    useEffect(() => {
-        if (removeSuffix(selectedVariant.title) === "Abonnement mensuel") {
-            setBundleActive(false);
-        }
-    }, [selectedVariant.title]);
-
-    /* useEffect(() => {
-        if (filteredVariant.length > 0 && !filteredVariant.some(v => v.node.title === selectedVariant.title)) {
-            setSelectedVariant({
-                title: filteredVariant[0].node.title,
-                price: filteredVariant[0].node.price?.amount,
-            });
-        }
-    }, [filteredVariant, selectedPackName]); */
-
-    useEffect(() => {
-        const matchingVariant = product.variants.edges.find(v => v.node.title.includes(selectedPackName));
-        if (matchingVariant) {
-            setSelectedVariant({
-                title: matchingVariant.node.title,
-                price: matchingVariant.node.price?.amount
-            });
-        }
-    }, [selectedPackName]);
-
-    return (
-        <div className={cn("space-y-6 py-6 lg:py-12 lg:space-y-5 max-w-xl")}>
-            <div className={cn("space-y-2")}>
-                <div className={cn("flex items-center gap-2")}>
-                    <div className={cn("text-xs text-white font-semibold bg-primary px-2 py-1 rounded-lg")}>
-                        {t("productImage.instantAccess")}
-                    </div>
-                    <div className={cn("text-xs text-background font-semibold bg-foreground px-2 py-1 rounded-lg")}>
-                        {t("productImage.topSeller2025")}
-                    </div>
-                </div>
-                <h3 className={cn("text-left text-2xl font-bold pointer-events-none whitespace-pre-wrap text-foreground", "lg:text-3xl", "xl:text-4xl")}>
-                    {product.title}
-                </h3>
-               <Link 
-                    href="https://www.google.com/search?nfpr=1&q=avis+sur+tailwindliquid+toulon&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzxCAX6Y-MYBdJ0ccMN9jN6O3luQYWsCh1ZGoHrBO0TmH8se3GhEtOTHRS4jHKd-1G7rIAi-UJbWYyHBd1lVI2Y08ulWT3urDb1OwkTXjLCoGX2iH3UaDvy6wJvHpJeEg92T5jMGFzaHf1ec5dXHEukjzS_tg&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9EshZX3GWIEXaoNNU90bh_GkICpSnqz5VUaDlBAC5fxsnm6iIVGvzaFMLWZfBRgqgBEygDDBMl7G1_cupIIhwZfW6StRuL_Mn7-82Co5iLLhlcbLw%3D%3D&stq=1&cs=1&lei=VJpMaOPKMKHX7M8PtqWQgQo&safe=strict" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center justify-start border border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2"
-                >
-                    <div className="text-[13px] font-semibold">{t("productImage.incredible")}</div>
-                    <div className="flex items-center">
-                        <StarFilledIcon className="text-sm text-primary"/>
-                        <StarFilledIcon className="text-sm text-primary"/>
-                        <StarFilledIcon className="text-sm text-primary"/>
-                        <StarFilledIcon className="text-sm text-primary"/>
-                        <StarFilledIcon className="text-sm text-primary"/>
-                    </div>
-                    <div className="text-xs font-semibold text-foreground">{t("productImage.rated5")}</div>
-                    <img
-                        className="w-[45px] mt-[2px]"
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png"
-                        alt="Logo Google"
-                    />
-                </Link>
-            </div>
-            <p 
-                className={cn("text-sm", "sm:text-base", "xl:text-lg")}>
-                   {t.rich("productImage.joinCommunity", {
-                        strong: (chunks) => <strong>{chunks}</strong>
-                    })}
+      <ul className={cn("flex flex-col pt-2 gap-4")}>
+        {checkProduct.map((data, index) => (
+          <li
+            key={index}
+            className={cn(
+              "bg-secondary/30 flex w-max flex-wrap px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#324e58] rounded-lg"
+            )}
+          >
+            <data.icon className={cn("text-lg text-foreground rounded-lg")} />
+            <p
+              className={cn(
+                "text-xs text-foreground font-medium",
+                "xs:text-sm"
+              )}
+            >
+              {data.title}
             </p>
-
-            <ul className={cn("flex flex-col py-4 gap-4")}>
-                {checkProduct.map((data, index) => (
-                    <li key={index} className={cn("bg-secondary/30 flex w-max flex-wrap px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#324e58] rounded-lg")}>
-                        <data.icon className={cn("text-lg text-foreground rounded-lg")} />
-                        <p className={cn("text-xs text-foreground font-medium", "xs:text-sm")}>{data.title}</p>
-                    </li>
-                ))}
-            </ul>
-            <div className={cn("space-y-10 py-4")}>    
-                <div className={cn("space-y-6")}>
-                    <div className={cn("flex items-center justify-between")}>
-                        <h6 className={cn("font-bold uppercase")}>{t("productImage.ourPacks")}</h6>
-                        <p className={cn("text-[13px] font-medium", "lg:text-sm")}>{PacksSelected(selectedPack).content}</p>
-                    </div>
-                    <div className={cn("relative w-full flex items-center justify-stretch gap-2")}>
-                        {packs.map((data, index) => (
-                        <div 
-                            key={index} 
-                            onClick={() => {
-                                setSelectedPack(index);
-                                setSelectedPackName(data?.title)
-                            }} 
-                            className={cn(
-                                "flex items-center font-semibold uppercase py-4 justify-center text-center rounded-md w-full border-2 cursor-pointer",
-                                selectedPack !== index ? "bg-background border-gray-200 dark:border-gray-200/10" : "border-2 border-r-2 border-l-2 bg-secondary/30 dark:bg-[#324e58] border-primary"
-                            )}
-                            >
-                                {data.discount && <div className={cn("absolute -top-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{data.discount}</div>}
-                            <div className="space-y-1">
-                                <h6 className={cn("text-sm", "lg:text-base")}>
-                                    {t(`packTitles.${data.title.toLocaleLowerCase()}`)}
-                                </h6>
-                                <p className={cn("text-xs font-medium", "lg:text-sm")}>
-                                    {data.credits} {t("productImage.creditsLabel")}
-                                </p>
-                            </div>
-                        </div>
-
-                        ))}
-                    </div>
-                    <h6 className={cn("font-bold uppercase")}>{t("productImage.frequency")}</h6>
-                    <RadioGroup 
-                        value={selectedVariant.title}
-                        className={cn("flex flex-col items-center justify-between text-center gap-0")}
-                        >
-                        {filteredVariant.map((data, index) => {
-                            const cleanedTitle = removeSuffix(data.node.title);
-                            return (
-                                <div key={index} className={cn(
-                                    "p-4 md:p-5 w-full flex items-start gap-4 cursor-pointer relative", 
-                                    selectedVariant.title !== data.node.title && index === 0 ? "border-t-2 border-r-2 border-l-2" : "border-b-2 border-r-2 border-l-2" , 
-                                    selectedVariant.title !== data.node.title ? "bg-background border-gray-200 dark:border-gray-200/10" : "border-2 border-r-2 border-l-2 bg-secondary/30 dark:bg-[#324e58] border-primary", 
-                                    index === 0 ? "rounded-t-lg" : "rounded-b-lg")} 
-                                    onClick={() => setSelectedVariant({
-                                        title: data.node.title,
-                                        price: data.node.price?.amount
-                                    })}>
-                                    <RadioGroupItem 
-                                        value={data.node.title} 
-                                        id={data.node.title} 
-                                        checked={selectedVariant.title === data.node.title} 
-                                        onChange={(e) => setSelectedVariant({
-                                            title: e.currentTarget.value,
-                                            price: data.node.price?.amount
-                                        })}
-                                    />
-                                    <div className="flex items-center w-full">
-                                    {selectedPack !== 0 && index !== 0 && <div className={cn("absolute -top-4 right-3 text-xs px-2 py-1 bg-primary rounded-md text-background", "lg:text-sm lg:-top-4")}>{selectedPack === 1 ? t("productImage.mostPopular") : t("productImage.mostProfitable")}</div>}
-                                        <div className={cn("flex flex-col items-start text-left w-full")}>
-                                            <div className={cn(index !== 0 && "flex items-center w-full justify-between")}>
-                                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}>
-                                                    {parseFloat(data.node.price?.amount ?? "").toFixed(2)} € - {
-                                                        cleanedTitle === "Achat ponctuel"
-                                                            ? t("purchaseMode.oneTime")
-                                                            : cleanedTitle === "Abonnement mensuel"
-                                                            ? t("purchaseMode.subscription")
-                                                            : cleanedTitle
-                                                    }
-                                                </h4>
-                                                {data.node.compareAtPrice && index !== 0 && (
-                                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>
-                                                        {parseFloat(data.node.compareAtPrice.amount).toFixed(2)}€
-                                                    </p>
-                                                )}
-                                            </div>
-                                            {index !== 0 && (
-                                                <div>
-                                                    {/* {selectedPackName === "Pro" && <p className="text-sm font-bold text-primary">+ Boutique offerte</p>} */}
-                                                    <p className="text-sm">{t("productImage.noCommit")}</p>
-                                                    {selectedVariant.title === data.node.title && (
-                                                        <div className="space-y-1 pt-4">
-                                                            {[
-                                                                {title: t("packBenefits.save30")},
-                                                                {title: t("packBenefits.cancelAnytime")},
-                                                                {title: t("packBenefits.prioritySupport")},
-                                                                {title: t("packBenefits.discordAccess")},
-                                                                {title: t("packBenefits.receiveCodes")},
-                                                                {title: t("packBenefits.shopAudits")},
-                                                            ].map((data, index) => (
-                                                                <div key={index}>
-                                                                    <div className="flex gap-2 items-center">
-                                                                        <div>
-                                                                            <CheckIcon className="text-primary size-5"/>
-                                                                        </div>
-                                                                        <p className={cn("text-sm font-bold text-primary dark:text-foreground")}>{data.title}</p>
-                                                                    </div>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </RadioGroup>
-                    <AddToCart
-                        state={selectedVariant} 
-                        product={product} 
-                        bundle={bundleActive ? bundle : undefined}  
-                        size="fullWidth" 
-                    />
-                    <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">{t("productImage.paymentSecure")}</p>
-                    <SecureBadges />
-                    {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
+          </li>
+        ))}
+      </ul>
+      <div className={cn("space-y-10 py-4")}>
+        <div className={cn("space-y-6")}>
+          <AddToCart
+            state={selectedVariant}
+            product={product}
+            bundle={bundleActive ? bundle : undefined}
+            size="fullWidth"
+          />
+          {/* <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">
+            {t("productImage.paymentSecure")}
+          </p> */}
+          <SecureBadges />
+          {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
                         <div className={cn("gap-2 flex items-center justify-start")}>
                             <div>
                                 <ImageLoader
@@ -334,26 +162,27 @@ const ProductImage: FC<ProductImageProps> = ({product, bundle}) => {
                             disabled={removeSuffix(selectedVariant.title) === "Abonnement mensuel"}
                         />
                     </div> */}
-                </div>
-                <Accordion type="single" collapsible className="w-full">
-                    {detailsProduct.map((data, index) => (
-                        <AccordionItem key={index} value={`item-${index}`} className={cn("border-foreground py-1 whitespace-pre-line")}>
-                            <AccordionTrigger className={cn("text-sm", "lg:text-base")}>
-                                {data.title}
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                {data.content}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-            </div>
-            <div className={cn("space-y-4 pb-5")}>
-                <p className="font-bold underline">{t("productImage.exampleCode")}</p>
-                <BestReviews productPage />
-            </div>  
         </div>
-    );
+        {/* <Accordion type="single" collapsible className="w-full">
+          {detailsProduct.map((data, index) => (
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className={cn("border-foreground py-1 whitespace-pre-line")}
+            >
+              <AccordionTrigger className={cn("text-sm", "lg:text-base")}>
+                {data.title}
+              </AccordionTrigger>
+              <AccordionContent>{data.content}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion> */}
+      </div>
+      <div className={cn("space-y-6 pb-10")}>
+        <BestReviews productPage />
+      </div>
+    </div>
+  );
 };
 
 export default ProductImage;
