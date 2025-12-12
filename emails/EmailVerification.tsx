@@ -1,14 +1,23 @@
 import * as React from "react";
-import { Button, Container, Section, Text, Hr, Tailwind, Link, Head } from "@react-email/components";
+import {
+  Button,
+  Container,
+  Section,
+  Text,
+  Hr,
+  Tailwind,
+  Link,
+  Head,
+} from "@react-email/components";
 import { cn } from "@/lib/utils";
 
 interface EmailVerificationProps {
-    token: string;
-    isChange?: boolean;
+  token: string;
+  isChange?: boolean;
 }
 const EmailVerification = ({
   token,
-  isChange = false
+  isChange = false,
 }: EmailVerificationProps) => {
   return (
     <Tailwind>
@@ -27,66 +36,97 @@ const EmailVerification = ({
         </style>
       </Head>
       <Container className="mx-auto w-full text-center font-montserrat text-foreground">
-        <Section> 
+        <Section>
           <Section className="my-14">
-            <Text className='text-8xl text-foreground font-medium'>
-                TailwindLiquid
+            <Text className="text-8xl text-foreground font-medium">
+              EcomCodeHub
             </Text>
-            <Text className='text-3xl mt-8 text-foreground font-medium'>
-                {!isChange ? "Confirmez votre adresse e-mail" : "Confirmez le changement de votre adresse e-mail"}
+            <Text className="text-3xl mt-8 text-foreground font-medium">
+              {!isChange
+                ? "Confirmez votre adresse e-mail"
+                : "Confirmez le changement de votre adresse e-mail"}
             </Text>
           </Section>
           <Hr />
-          <Section className='mt-10 mb-10 text-center font-medium w-full'>
-            <Text className='text-base text-left mb:mb-5'>
-            Bonjour,
-            </Text>
+          <Section className="mt-10 mb-10 text-center font-medium w-full">
+            <Text className="text-base text-left mb:mb-5">Bonjour,</Text>
             {isChange ? (
-               <Text className='text-base text-left mb-5'>
-               Vous avez demandé à modifier votre adresse e-mail. Pour finaliser ce changement, veuillez confirmer votre nouvelle adresse en cliquant sur le bouton ci-dessous :
-             </Text>
+              <Text className="text-base text-left mb-5">
+                Vous avez demandé à modifier votre adresse e-mail. Pour
+                finaliser ce changement, veuillez confirmer votre nouvelle
+                adresse en cliquant sur le bouton ci-dessous :
+              </Text>
             ) : (
               <>
-                <Text className='text-base text-left mb:mb-5'>
-                Bienvenue dans la communauté TailwindLiquid ! Nous sommes ravis de vous compter parmi nous.
+                <Text className="text-base text-left mb:mb-5">
+                  Bienvenue dans la communauté EcomCodeHub ! Nous sommes ravis
+                  de vous compter parmi nous.
                 </Text>
-                <Text className='text-base text-left mb:mb-5'>
-                Pour finaliser votre inscription et commencer à utiliser votre compte, veuillez confirmer votre adresse e-mail en cliquant sur le bouton ci-dessous :
+                <Text className="text-base text-left mb:mb-5">
+                  Pour finaliser votre inscription et commencer à utiliser votre
+                  compte, veuillez confirmer votre adresse e-mail en cliquant
+                  sur le bouton ci-dessous :
                 </Text>
               </>
             )}
-            <Button href={`https://tailwindliquid.com/auth/new-verification?token=${token}`} className={cn('bg-[#259d93] dark:bg-[#259d93] text-white w-full text-center mx-auto shadow text-base hover:bg-primary/90 p-4 lg:px-6 lg:py-4 rounded-md font-medium mt-4 mb-10')}>Confirmer mon adresse e-mail</Button>
-            <Text className='text-base text-left mb:mb-5'>
-              Ce lien est valable pendant 30 minutes. Si vous n'avez pas demandé cette vérification, veuillez ignorer ce message ou contacter notre support à l'adresse {" "}
-              <Link href="mailto:tailwindliquid@gmail.com" target="_blank" className='underline'>
-              tailwindliquid@gmail.com
-              </Link>.
+            <Button
+              href={`https://ecomcodehub.com/auth/new-verification?token=${token}`}
+              className={cn(
+                "bg-primary text-white w-full text-center mx-auto shadow text-base hover:bg-primary/90 p-4 lg:px-6 lg:py-4 rounded-md font-medium mt-4 mb-10"
+              )}
+            >
+              Confirmer mon adresse e-mail
+            </Button>
+            <Text className="text-base text-left mb:mb-5">
+              Ce lien est valable pendant 30 minutes. Si vous n'avez pas demandé
+              cette vérification, veuillez ignorer ce message ou contacter notre
+              support à l'adresse{" "}
+              <Link
+                href="mailto:slmrsv.bz@gmail.com"
+                target="_blank"
+                className="underline"
+              >
+                slmrsv.bz@gmail.com
+              </Link>
+              .
             </Text>
-            <Text className='text-base text-left mb:mb-5'>
-            Merci de votre confiance,
+            <Text className="text-base text-left mb:mb-5">
+              Merci de votre confiance,
             </Text>
-            <Text className='text-base text-left mb:mb-5'>
-            L'équipe TailwindLiquid
+            <Text className="text-base text-left mb:mb-5">
+              L'équipe EcomCodeHub
             </Text>
           </Section>
           <Hr />
         </Section>
         <Section className="text-left leading-[24px] mb-10">
-          <Text className='text-[12px]'>
-          TailwindLiquid ne vous demandera jamais de divulguer ou de vérifier votre mot de passe, votre carte de crédit ou votre numéro de compte bancaire.
+          <Text className="text-[12px]">
+            EcomCodeHub ne vous demandera jamais de divulguer ou de vérifier
+            votre mot de passe, votre carte de crédit ou votre numéro de compte
+            bancaire.
           </Text>
-          <Text className='text-[12px]'>
-          Ce message a été produit et distribué par <Link href="https://tailwindliquid.com" target="_blank" className='underline'>TailwindLiquid</Link>. 
-          </Text>
-          <Text className='text-[12px]'>
-          Tous droits réservés. 
-          </Text>
-          <Text className='text-[12px]'>
-          Voir notre{" "}
-            <Link href={`https://tailindliquid.com/legal/privacy`} target="_blank" className='underline'>
-            politique de confidentialité
+          <Text className="text-[12px]">
+            Ce message a été produit et distribué par{" "}
+            <Link
+              href="https://ecomcodehub.com"
+              target="_blank"
+              className="underline"
+            >
+              EcomCodeHub
             </Link>
-          .
+            .
+          </Text>
+          <Text className="text-[12px]">Tous droits réservés.</Text>
+          <Text className="text-[12px]">
+            Voir notre{" "}
+            <Link
+              href={`https://ecomcodehub.com/en/legals/privacy-policy`}
+              target="_blank"
+              className="underline"
+            >
+              politique de confidentialité
+            </Link>
+            .
           </Text>
         </Section>
       </Container>
@@ -95,4 +135,3 @@ const EmailVerification = ({
 };
 
 export default EmailVerification;
-

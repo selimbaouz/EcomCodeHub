@@ -1,23 +1,23 @@
-import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-import { PulseLoader } from 'react-spinners';
+import { PulseLoader } from "react-spinners";
 
 export const VerificationContent = (
-   messageKey: string | undefined,
-   locale: string,
-   t: (key: string) => string
+  messageKey: string | undefined,
+  locale: string,
+  t: (key: string) => string
 ) => {
   switch (messageKey) {
-    case 'tokenRequired':
+    case "tokenRequired":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenMissingTitle"),
         description: t("content.tokenMissingDescription"),
         buttonLabel: t("content.tokenMissingButtonLabel"),
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
-        targetHref: "_blank"
+        targetHref: "_blank",
       };
-    case 'tokenExpired':
+    case "tokenExpired":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenExpiredTitle"),
@@ -25,24 +25,26 @@ export const VerificationContent = (
         buttonLabel: t("content.tokenExpiredButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'tokenInvalidOrUsed':
+    case "tokenInvalidOrUsed":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
-        title: t("content.tokenInvalidOrUsedTitle") || t("content.tokenInvalidTitle"),
+        title:
+          t("content.tokenInvalidOrUsedTitle") ||
+          t("content.tokenInvalidTitle"),
         description: t("content.tokenInvalidOrUsedDescription"),
         buttonLabel: t("content.tokenInvalidButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'emailNotExist':
+    case "emailNotExist":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.emailNotExistTitle"),
         description: t("content.emailNotExistDescription"),
         buttonLabel: t("content.emailNotExistButtonLabel"),
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
-        targetHref: "_blank"
+        targetHref: "_blank",
       };
-    case 'emailVerified':
+    case "emailVerified":
       return {
         icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
         title: t("content.emailVerifiedTitle"),
@@ -50,13 +52,13 @@ export const VerificationContent = (
         buttonLabel: t("content.emailVerifiedButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'somethingWentWrong':
+    case "somethingWentWrong":
       return {
         icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.somethingWentWrongTitle"),
         description: t("content.somethingWentWrongDescription"),
         buttonLabel: t("content.somethingWentWrongButtonLabel"),
-        buttonHref: "mailto:tailwindliquid@gmail.com",
+        buttonHref: "mailto:slmrsv.bz@gmail.com",
       };
     default:
       return {

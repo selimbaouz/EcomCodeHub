@@ -20,11 +20,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: {
     default:
-      "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
-    template: "%s | TailwindLiquid",
+      "EcomCodeHub – snippets Liquid Shopify pour booster votre boutique",
+    template: "%s | EcomCodeHub",
   },
   description:
-    "Libérez tout le potentiel de votre boutique Shopify avec TailwindLiquid : snippets Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
+    "Libérez tout le potentiel de votre boutique Shopify avec EcomCodeHub : snippets Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
   keywords: [
     "shopify liquid code",
     "code liquid shopify",
@@ -51,18 +51,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://tailwindliquid.com",
-    siteName: "TailwindLiquid",
-    title:
-      "TailwindLiquid – snippets Liquid Shopify pour booster votre boutique",
+    url: "https://ecomcodehub.com",
+    siteName: "EcomCodeHub",
+    title: "EcomCodeHub – snippets Liquid Shopify pour booster votre boutique",
     description:
-      "TailwindLiquid offre aux commerçants Shopify des snippets et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
+      "EcomCodeHub offre aux commerçants Shopify des snippets et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
     images: [
       {
-        url: "https://tailwindliquid.com/fr/images/og-image.webp",
+        url: "https://ecomcodehub.com/en/images/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "TailwindLiquid – Code Liquid Shopify",
+        alt: "EcomCodeHub – Code Liquid Shopify",
       },
     ],
   },
@@ -70,16 +69,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@selimmersive",
     creator: "@selimmersive",
-    title: "TailwindLiquid – snippets Liquid Shopify",
+    title: "EcomCodeHub – snippets Liquid Shopify",
     description:
       "Code Liquid Shopify, composants UI clé-en-main et blocs TailwindCSS pour améliorer rapidement le design et la conversion de votre boutique.",
-    images: ["https://tailwindliquid.com/fr/images/og-image.webp"],
+    images: ["https://ecomcodehub.com/en/images/og-image.webp"],
   },
   verification: {
     google: "",
   },
   alternates: {
-    canonical: "https://tailwindliquid.com",
+    canonical: "https://ecomcodehub.com",
   },
 };
 

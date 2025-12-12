@@ -1,8 +1,8 @@
 "use client";
-import { useTranslations } from 'next-intl';
-import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { useTranslations } from "next-intl";
+import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-import { PulseLoader } from 'react-spinners';
+import { PulseLoader } from "react-spinners";
 
 const PasswordContent = (
   messageKey: string | undefined,
@@ -10,32 +10,32 @@ const PasswordContent = (
   t: (key: string) => string
 ) => {
   switch (messageKey) {
-    case 'tokenMissing':
+    case "tokenMissing":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenMissingTitle"),
         description: t("content.tokenMissingDescription"),
         buttonLabel: t("content.tokenMissingButtonLabel"),
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
-        targetHref: "_blank"
+        targetHref: "_blank",
       };
-    case 'tokenInvalid':
+    case "tokenInvalid":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenInvalidTitle"),
         description: t("content.tokenInvalidDescription"),
         buttonLabel: t("content.tokenInvalidButtonLabel"),
-        buttonHref: `https://tailwindliquid.com/auth/reset`,
+        buttonHref: `https://ecomcodehub.com/auth/reset`,
       };
-    case 'tokenExpired':
+    case "tokenExpired":
       return {
         icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenExpiredTitle"),
         description: t("content.tokenExpiredDescription"),
         buttonLabel: t("content.tokenExpiredButtonLabel"),
-        buttonHref: `https://tailwindliquid.com/auth/reset`,
+        buttonHref: `https://ecomcodehub.com/auth/reset`,
       };
-    case 'emailNotExist':
+    case "emailNotExist":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.emailNotExistTitle"),
@@ -43,7 +43,7 @@ const PasswordContent = (
         buttonLabel: t("content.emailNotExistButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'passwordUpdated':
+    case "passwordUpdated":
       return {
         icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
         title: t("content.passwordUpdatedTitle"),
@@ -51,13 +51,13 @@ const PasswordContent = (
         buttonLabel: t("content.passwordUpdatedButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'server':
+    case "server":
       return {
         icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.serverErrorTitle"),
         description: t("content.serverErrorDescription"),
         buttonLabel: t("content.serverErrorButtonLabel"),
-        buttonHref: "mailto:tailwindliquid@gmail.com",
+        buttonHref: "mailto:slmrsv.bz@gmail.com",
       };
     default:
       return {

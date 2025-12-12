@@ -1,6 +1,6 @@
-import { FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-import { PulseLoader } from 'react-spinners';
+import { PulseLoader } from "react-spinners";
 
 export const EmailChangeConfirmationContent = (
   messageKey: string | undefined,
@@ -8,16 +8,16 @@ export const EmailChangeConfirmationContent = (
   t: (key: string) => string
 ) => {
   switch (messageKey) {
-    case 'tokenRequired':
+    case "tokenRequired":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenRequiredTitle"),
         description: t("content.tokenRequiredDescription"),
         buttonLabel: t("content.tokenRequiredButtonLabel"),
         buttonHref: `https://mail.google.com/mail/u/0/#inbox`,
-        targetHref: "_blank"
+        targetHref: "_blank",
       };
-    case 'tokenInvalid':
+    case "tokenInvalid":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenInvalidTitle"),
@@ -25,15 +25,15 @@ export const EmailChangeConfirmationContent = (
         buttonLabel: t("content.tokenInvalidButtonLabel"),
         buttonHref: `/${locale}/account`,
       };
-    case 'tokenExpired':
+    case "tokenExpired":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.tokenExpiredTitle"),
-        description: t("content.tokenExpiredDescription"),  
+        description: t("content.tokenExpiredDescription"),
         buttonLabel: t("content.tokenExpiredButtonLabel"),
         buttonHref: `/${locale}/account`,
       };
-    case 'emailChanged':
+    case "emailChanged":
       return {
         icon: <FaCheckCircle className="text-green-500 text-6xl mb-4" />,
         title: t("content.emailChangedTitle"),
@@ -41,7 +41,7 @@ export const EmailChangeConfirmationContent = (
         buttonLabel: t("content.emailChangedButtonLabel"),
         buttonHref: `/${locale}/auth/login`,
       };
-    case 'userNotFound':
+    case "userNotFound":
       return {
         icon: <FaExclamationCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.userNotFoundTitle"),
@@ -49,13 +49,13 @@ export const EmailChangeConfirmationContent = (
         buttonLabel: t("content.userNotFoundButtonLabel"),
         buttonHref: `/${locale}/account`,
       };
-    case 'somethingWentWrong':
+    case "somethingWentWrong":
       return {
         icon: <IoIosCloseCircle className="text-red-500 text-6xl mb-4" />,
         title: t("content.somethingWentWrongTitle"),
         description: t("content.somethingWentWrongDescription"),
         buttonLabel: t("content.somethingWentWrongButtonLabel"),
-        buttonHref: "mailto:tailwindliquid@gmail.com",
+        buttonHref: "mailto:slmrsv.bz@gmail.com",
       };
     default:
       return {

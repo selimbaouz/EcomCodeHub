@@ -1,35 +1,35 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://tailwindliquid.com/en',
+      url: "https://ecomcodehub.com/en",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: 'https://tailwindliquid.com/en/legals/legal-notice',
+      url: "https://ecomcodehub.com/en/legals/legal-notice",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://tailwindliquid.com/en/legals/privacy-policy',
+      url: "https://ecomcodehub.com/en/legals/privacy-policy",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://tailwindliquid.com/en/legals/terms-and-conditions',
+      url: "https://ecomcodehub.com/en/legals/terms-and-conditions",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://tailwindliquid.com/en/legals/terms-and-conditions-of-use',
+      url: "https://ecomcodehub.com/en/legals/terms-and-conditions-of-use",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
   ];

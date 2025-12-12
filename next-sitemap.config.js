@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://tailwindliquid.com",
+  siteUrl: "https://ecomcodehub.com",
   generateRobotsTxt: true,
   sitemapSize: 7000,
 };

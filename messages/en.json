@@ -480,13 +480,13 @@
       "support": {
         "items": [
           "I am available to support you at every step, whether it is a technical issue or a question about installing or using the codes.",
-          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:Ecomcodehub@gmail.com' class='text-blue-500 underline'>Ecomcodehub@gmail.com</a>"
+          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:slmrsv.bz@gmail.com' class='text-blue-500 underline'>slmrsv.bz@gmail.com</a>"
         ]
       },
       "refundPolicy": {
         "items": [
           "<strong class='underline'>Can I get a refund?</strong> Yes, a refund is possible <strong>only if no credit has been used</strong>. Once a snippet is unlocked, the purchase is considered consumed.",
-          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:Ecomcodehub@gmail.com' class='text-foreground underline'>Ecomcodehub@gmail.com</a>",
+          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:slmrsv.bz@gmail.com' class='text-foreground underline'>slmrsv.bz@gmail.com</a>",
           "<strong class='underline'>Support at your service:</strong> Before any refund, I am here to help you resolve your technical issue. My goal is your satisfaction."
         ]
       },
@@ -544,7 +544,7 @@
       },
       "step2": {
         "title": "2. Show us your message",
-        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to Ecomcodehub@gmail.com, on Discord, or on our Discord server."
+        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to slmrsv.bz@gmail.com, on Discord, or on our Discord server."
       },
       "step3": {
         "title": "3. Receive your credits",
@@ -554,20 +554,17 @@
       }
     },
     "stickyBar": {
-      "codeReady": "💻 60+ ready-to-use codes",
-      "newMonthly": "📅 New additions every month",
-      "proRender": "🚀 Professional results in minutes"
+      "payOnce": "💰 Pay once, use forever",
+      "codeReady": "💻 500+ codes (worth €2000)",
+      "newMonthly": "🎁 Free updates forever",
+      "proRender": "⚡ Ready in 5 minutes",
+      "supportIncluded": "✅ Setup help included",
+      "timeSaving": "🚀 No coding required"
     },
     "paymentErrorModal": {
       "title": "Payment failed",
       "mainMessage": "An error occurred while processing your payment.",
       "retryAdvice": "Please try again or contact your bank if the problem persists."
-    },
-    "checkProduct": {
-      "benefit1": "+500 Shopify Code Snippets ready-to-use",
-      "benefit2": "Copy & Paste, No Experience Needed",
-      "benefit3": "100% Compatible with All Themes",
-      "benefit4": "+37% Average Conversion Rate Increase"
     },
     "detailsProduct": {
       "0": { "title": "Pack presentation and benefits" },
@@ -594,9 +591,9 @@
     "productImage": {
       "instantAccess": "Instant access",
       "topSeller2025": "Top Seller 2025",
+      "joinCommunity": "Your store looks <strong>cheap</strong>. Your visitors see it in <strong>2 seconds</strong>. They buy elsewhere. At your <strong>competitor</strong>. These <strong>500+ codes</strong> fix it in <strong>5 minutes</strong>",
       "incredible": "Amazing",
       "rated5": "Rated 5/5 on",
-      "joinCommunity": "🚨 <strong>347 merchants boosted their sales this month</strong>. Are you next, or will you <strong>watch your competitors win?</strong>\n\nWhile you're reading this, stores using our Conversion Pack are <strong>closing sales you're losing</strong>.",
       "ourPacks": "Our Packs:",
       "frequency": "Frequency:",
       "paymentSecure": "Secure payment – instant access after purchase",
@@ -605,68 +602,68 @@
       "mostProfitable": "Most profitable",
       "noCommit": "No commitment",
       "creditsLabel": "Credits",
-      "addToCart": "Add to cart - {price} €",
+      "addToCart": "Get instant access - {price} €",
       "exampleStore": {
-        "title": " Your store will look like this in 48 hours",
-        "subtitle": "(or you will continue to lose sales to websites that are inferior to yours.)",
-        "instructions": "Click on any image to see what you're currently missing out on.",
+        "title": "Your store will look like this in 5 minutes",
+        "subtitle": "(or you'll keep losing sales to stores that aren't better than yours—they just look more convincing)",
+        "instructions": "Click on any visual to see what's currently costing you sales",
         "modalAlt": "Enlarge"
       },
       "announcement": {
         "trustsDataGroup1": {
-          "increaseConversions": "Increase your conversions",
-          "easyCopyPaste": "Easy copy-paste",
-          "saveTime": "Save time",
-          "fastPersonalization": "Fast personalization",
-          "instantResults": "Instant results"
+          "increaseConversions": "Boost conversions instantly",
+          "easyCopyPaste": "Copy-paste in 5 minutes",
+          "saveTime": "Save 20+ hours of coding",
+          "fastPersonalization": "Customize without limits",
+          "instantResults": "See results immediately"
         },
         "trustsDataGroup2": {
-          "readyToUse": "Ready-to-use code",
-          "proDesign": "Professional design",
-          "higherAttractiveness": "Higher attractiveness",
-          "guaranteedSuccess": "Guaranteed success",
-          "boostSales": "Boost your sales"
+          "readyToUse": "Production-ready code",
+          "proDesign": "Agency-level design",
+          "higherAttractiveness": "Stand out from competitors",
+          "guaranteedSuccess": "Used by 7-figure stores",
+          "boostSales": "Turn visitors into buyers"
         }
       },
       "exampleCodePage": {
-        "title": "500+ emergency codes to boost your sales",
-        "subtitle": "The snippets your competitors are already using to steal your customers. Don't get left behind",
+        "title": "500+ conversion codes your competitors are already using",
+        "subtitle": "The exact snippets that turn browsers into buyers. Every day without them is money left on the table.",
         "images": {
           "proveSatisfaction": "Prove satisfaction",
-          "crowdEffect": "Create a crowd effect",
-          "credibility": "Reinforce credibility",
-          "urgency": "Create urgency",
-          "valueOffer": "Showcase the offer",
-          "eliminateRisk": "Eliminate risk",
-          "clearExpectation": "Set a clear expectation",
-          "reassureSecure": "Reassure and secure",
-          "finalPush": "Strengthen the buying decision"
+          "crowdEffect": "Create social proof",
+          "credibility": "Build instant trust",
+          "urgency": "Trigger urgency",
+          "valueOffer": "Highlight value",
+          "eliminateRisk": "Remove hesitation",
+          "clearExpectation": "Set expectations",
+          "reassureSecure": "Reassure buyers",
+          "finalPush": "Close the sale"
         }
       },
       "howItWorksPage": {
-        "title": "No more overpriced themes",
-        "subtitle": "The affordable solution for a premium design",
-        "videoDescription": "It's incredibly easy to add to your store, you'll see improvements instantly",
+        "title": "Stop paying $350 for premium themes",
+        "subtitle": "Get the same results for $29.90—no recurring fees, no limitations",
+        "videoDescription": "Install in under 5 minutes. No developer required. See the difference instantly.",
         "left": {
-          "noMoreApps": "No more apps needed",
-          "convertingDesign": "A design that converts",
-          "buildCredibility": "Builds your store’s credibility",
-          "easyToInstall": "Easy to install",
-          "saveTime": "Saves time",
-          "noSkillsNeeded": "No skills required"
+          "noMoreApps": "Replace expensive apps",
+          "convertingDesign": "Designs that convert",
+          "buildCredibility": "Build trust instantly",
+          "easyToInstall": "Install in 5 minutes",
+          "saveTime": "Save 20+ hours",
+          "noSkillsNeeded": "Zero coding required"
         },
         "right": {
-          "noPremiumTheme": "No more premium themes",
-          "unlimitedCustomization": "Unlimited customization",
-          "proLook": "Professional look",
-          "compatibleAllThemes": "Compatible with all themes",
-          "boostConversions": "Boosts conversions",
-          "regularUpdates": "Regular updates"
+          "noPremiumTheme": "No $350 theme needed",
+          "unlimitedCustomization": "Customize anything",
+          "proLook": "Agency-level quality",
+          "compatibleAllThemes": "Works on any theme",
+          "boostConversions": "Increase sales",
+          "regularUpdates": "Free updates forever"
         }
       },
       "reviewsPage": {
-        "title": "They stopped losing money",
-        "subtitle": "Discover why over 600 e-commerce businesses can't do without it",
+        "title": "Real merchants, real results",
+        "subtitle": "See why Shopify store owners chose this over hiring a developer",
         "googleBadge": "5/5 on",
         "reviews": [
           {
@@ -695,9 +692,9 @@
             "content": "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function."
           },
           {
-            "name": "Abdelhaq M.",
+            "name": "Bagy Bagy",
             "score": 5,
-            "content": "Incredible! It's perfectly designed for quick and easy testing. The credits system lets you choose exactly the snippets you need, without commitments or unnecessary expenses. No bloatware, you only pay for what you use. Highly recommended."
+            "content": "Very good value for money"
           },
           {
             "name": "A Bbouaz",
@@ -707,27 +704,45 @@
         ]
       },
       "faq": {
-        "title": "Frequently asked questions",
-        "subtitle": "Answers to questions asked by those who are still hesitating (and who regret having waited)",
+        "title": "Your questions answered",
+        "subtitle": "Everything you need to know before joining hundreds of merchants who transformed their stores",
         "items": [
           {
+            "title": "How do I access the codes after purchase?",
+            "content": "After payment, your email is automatically registered in our system. You'll receive instant access to create your account on our platform. Once logged in, you can browse all 500+ code snippets, copy any code you want, and paste it directly into your Shopify store—instantly. No waiting, no downloads, just immediate access."
+          },
+          {
             "title": "What are Shopify liquid codes, and how do they work?",
-            "content": "Shopify liquid codes are snippets of customizable code designed to enhance your Shopify store’s functionality. With our pre-built codes, you can easily add features like custom product filters, dynamic pricing displays, or unique design elements—all without advanced coding knowledge."
+            "content": "Liquid codes are Shopify's native language for customization. Our snippets are pre-built, tested code blocks that add professional features to your store—like trust badges, countdown timers, social proof, and more. Just copy, paste, and watch your conversions improve."
           },
           {
-            "title": "Do I need coding experience to use your codes?",
-            "content": "Not at all! Our Shopify liquid codes are designed for all skill levels. Each purchase includes step-by-step instructions, so even beginners can implement them with ease."
+            "title": "Do I need coding experience to use these?",
+            "content": "Absolutely not. If you can copy and paste, you can use these snippets. Each one comes with step-by-step instructions and video tutorials. Most merchants install their first snippet in under 5 minutes."
           },
           {
-            "title": "Are your codes compatible with all Shopify themes?",
-            "content": "Yes! Our Shopify liquid codes are tested across a wide range of themes to ensure compatibility."
+            "title": "Will these work with my Shopify theme?",
+            "content": "Yes. Our snippets are built with Shopify's native Liquid language and tested across 200+ themes including Dawn, Impulse, Prestige, Debut, and custom themes. If you encounter any compatibility issue, our support team will help you fix it."
           },
           {
-            "title": "What happens if I face issues implementing the codes?",
-            "content": "We’ve got you covered! If you encounter any problems, our dedicated support team is just a message away. Send us a message"
+            "title": "What if I need help installing a snippet?",
+            "content": "We include free installation support with every purchase. If you get stuck, just send us a message and we'll guide you through it. Average response time: under 2 hours."
+          },
+          {
+            "title": "How is this different from buying a premium theme or hiring a developer?",
+            "content": "Premium themes cost €250-400 and lock you into their design. Developers charge €50-150/hour (that's €1,200+ for 20 custom snippets). With our pack, you get 500+ snippets for €29.90, install them yourself in 5 minutes, and own them forever. You save over €2,000."
+          },
+          {
+            "title": "Do I get updates when you add new snippets?",
+            "content": "Yes, 100% free forever. We add new snippets every month based on the latest e-commerce trends and CRO techniques. Once you buy, you get access to everything we release—no extra fees, ever."
           }
         ]
       }
+    },
+    "checkProduct": {
+      "benefit1": "500+ Professional Code Snippets",
+      "benefit2": "Zero Coding Required (Just Copy-Paste)",
+      "benefit3": "Works with ALL Shopify Themes ",
+      "benefit4": "Built by a Shopify Developer"
     },
     "packBenefits": {
       "save30": "Save 30% on each order",
@@ -746,7 +761,7 @@
       "totalLabel": "Total",
       "savingsLabel": "Savings",
       "youSave": "(You save {amount})",
-      "checkoutButton": "Check out"
+      "checkoutButton": "Stop Losing Sales - Checkout"
     },
     "footer": {
       "aboutTitle": "About",
@@ -872,7 +887,7 @@
           },
           {
             "title": "1. Site Publisher",
-            "content": "Ecomcodehub\nDesigned and developed by Selim Baouz (Selimmersive)\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: Ecomcodehub@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz (Selimmersive)"
+            "content": "Ecomcodehub\nDesigned and developed by Selim Baouz\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: slmrsv.bz@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz\nWebsite: https://selimbaouz.com"
           },
           {
             "title": "2. Hosting",
@@ -884,7 +899,7 @@
           },
           {
             "title": "4. Contact",
-            "content": "For any questions or information requests regarding the site, please contact us at: Ecomcodehub@gmail.com."
+            "content": "For any questions or information requests regarding the site, please contact us at: slmrsv.bz@gmail.com."
           }
         ]
       },

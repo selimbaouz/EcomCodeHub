@@ -70,11 +70,11 @@ const ProductImage: FC<ProductImageProps> = ({ product, bundle }) => {
             "xl:text-4xl"
           )}
         >
-          {product.title}
+          Shopify Pro Codes Bundle (Limited Offer)
         </h3>
         <div className="flex items-center justify-start border border-dashed border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2">
           <div className="text-[13px] font-semibold">
-            {t("productImage.incredible")}
+            "{t("productImage.incredible")}"
           </div>
           <div className="flex items-center">
             <StarFilledIcon className="text-sm text-primary" />

@@ -165,19 +165,6 @@ export const bestReviewsData = [
     content:
       "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function.",
   },
-  {
-    name: "Abdelhaq M.",
-    picture: [
-      {
-        imageUrl:
-          "https://lh3.googleusercontent.com/a/ACg8ocLdbdQVy9R_6wjyjVX_FfN-NDSgQJ61EI9os34aD_RAqgeRSA=s36-c-rp-mo-br100",
-        profileUrl: "#",
-      },
-    ],
-    rating: 5,
-    content:
-      "Incredible! It's perfectly designed for quick and easy testing. The credits system lets you choose exactly the snippets you need, without commitments or unnecessary expenses. No bloatware, you only pay for what you use. Highly recommended.",
-  },
 ];
 
 export const trustPilotReviewsData = [
@@ -347,7 +334,7 @@ export const selectModesData = [
   },
   {
     title: "Différences",
-    description: "Ce qui distingue TailwindLiquid des autres",
+    description: "Ce qui distingue EcomCodeHub des autres",
   },
 ];
 

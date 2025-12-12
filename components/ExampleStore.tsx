@@ -59,7 +59,7 @@ const ExampleStore = () => {
           "xl:text-4xl"
         )}
       >
-        <div className={cn("space-y-3 pb-4 max-w-screen- mx-auto")}>
+        <div className={cn("space-y-3 pb-4 max-w-screen-lg mx-auto")}>
           <h3 className="mx-auto xl:text-6xl uppercase">
             {t("exampleStore.title")}
           </h3>

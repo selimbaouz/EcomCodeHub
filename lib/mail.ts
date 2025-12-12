@@ -12,161 +12,167 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendTwoFactorTokenEmail = async (
-  email: string,
-  token: string
-) => {
+export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: email,
-      subject: "Code à 2 facteurs (2FA)",
-      react: TwoFactorEmail({token})
+      subject: "2FA Code",
+      react: TwoFactorEmail({ token }),
     });
 
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
-export const sendPasswordResetEmail = async (
-  email: string,
-  token: string,
-) => {
+export const sendPasswordResetEmail = async (email: string, token: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: "Réinitialiser votre mot de passe",
-      react: ResetPassword({token})
+      subject: "Reset your password",
+      react: ResetPassword({ token }),
     });
 
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
 export const sendSuccessPasswordChanged = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Votre mot de passe a été modifié',
-      react: PasswordChanged()
+      subject: "Your password has been modified",
+      react: PasswordChanged(),
     });
-    
+
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
-export const sendVerificationEmail = async (email: string, token: string, isChange?: boolean) => {
+export const sendVerificationEmail = async (
+  email: string,
+  token: string,
+  isChange?: boolean
+) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: isChange ? 'Confirmez votre nouvelle adresse e-mail' : 'Confirmez votre email',
-      react: EmailVerification({token, isChange})
+      subject: isChange
+        ? "Confirm your new email address"
+        : "Confirm your email address",
+      react: EmailVerification({ token, isChange }),
     });
-    
+
     return data;
-    
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
 export const sendSuccessEmailVerified = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Votre adresse e-mail a été vérifiée',
-      react: EmailVerified()
+      subject: "Your email has been verified",
+      react: EmailVerified(),
     });
-    
+
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
-export const sendEmailChangeConfirmation = async (email: string, token: string) => {
+export const sendEmailChangeConfirmation = async (
+  email: string,
+  token: string
+) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Confirmez votre demande de changement de boite mail',
-      react: EmailChangeConfirmation({token})
+      subject: "Confirm your request to change your email address",
+      react: EmailChangeConfirmation({ token }),
     });
-    
+
     return data;
-    
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
 export const sendSuccessEmailChanged = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Votre adresse e-mail a été modifié',
-      react: EmailChanged()
+      subject: "Your email has been modified",
+      react: EmailChanged(),
     });
-    
+
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
-export const sendEmailDeleteAccountConfirmation = async (email: string, token: string) => {
+export const sendEmailDeleteAccountConfirmation = async (
+  email: string,
+  token: string
+) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Confirmez votre demande de suppression de compte',
-      react: EmailDeleteAccountConfirmation({token})
+      subject: "Confirm your request to delete your account",
+      react: EmailDeleteAccountConfirmation({ token }),
     });
-    
+
     return data;
-    
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
 export const sendSuccessAccountDeleted = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${email}`,
-      subject: 'Votre compte a été supprimé',
-      react: AccountDeleted()
+      subject: "Your account has been deleted",
+      react: AccountDeleted(),
     });
-    
+
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };
 
-export const sendNotificationNewCodes = async (codeCount: number, emails: (string | null)[]) => {
+export const sendNotificationNewCodes = async (
+  codeCount: number,
+  emails: (string | null)[]
+) => {
   try {
     const data = await resend.emails.send({
-      from: 'TailwindLiquid <no-reply@tailwindliquid.com>',
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
       to: `${emails}`,
-      subject: `${codeCount} nouveaux codes disponibles sur TailwindLiquid !`,
-      react: NewCodes({codeCount})
+      subject: `${codeCount} nouveaux codes disponibles sur EcomCodeHub !`,
+      react: NewCodes({ codeCount }),
     });
-    
+
     return data;
   } catch (error) {
-    throw new Error("L'envoi d'email a échoué");
+    throw new Error("Email sending failed");
   }
 };

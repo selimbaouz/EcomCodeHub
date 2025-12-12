@@ -14,28 +14,26 @@ const benefits = [
     title: "Sustained energy and satiation",
     text: "No more afternoon slumps. Plant-based protein helps you to feel full and satisfied. This protein blend packs a nourishing punch so you can take on anything today throws your way.",
     image:
-      "https://res.cloudinary.com/tailwindliquid/image/upload/v1748782377/Prot%C3%A9ine_v%C3%A9g%C3%A9tale_Orga_Sigmatic_et_cacao_szradp.png",
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1748782377/Prot%C3%A9ine_v%C3%A9g%C3%A9tale_Orga_Sigmatic_et_cacao_szradp.png",
   },
   {
     title: "Stress relief adaptogens",
     text: "Unwind and decompress with a carefully curated blend of powerful adaptogen extracts (1500 mg to be exact!) to help you de-stress.",
     image:
-      "https://res.cloudinary.com/tailwindliquid/image/upload/v1748958399/ChatGPT_Image_29_mai_2025_18_21_37_uceupz.png",
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1748958399/ChatGPT_Image_29_mai_2025_18_21_37_uceupz.png",
   },
   {
     title: "Immune system & wellness",
     text: "Functional mushrooms help support mind and body wellness, but especially your immune system. Each scoop has a special blend of immune supporting filler grain-free chaga, cordyceps.",
     image:
-      "https://res.cloudinary.com/tailwindliquid/image/upload/v1748958400/ChatGPT_Image_29_mai_2025_18_22_22_fzs2oz.png",
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1748958400/ChatGPT_Image_29_mai_2025_18_22_22_fzs2oz.png",
   },
 ];
 
-export default function BenefitsCarousel({snippetId}: {snippetId: string}) {
+export default function BenefitsCarousel({ snippetId }: { snippetId: string }) {
   const [selected, setSelected] = useState(0);
 
-  const view = useResponsiveStore((s) =>
-    s.getView(snippetId)
-  );
+  const view = useResponsiveStore((s) => s.getView(snippetId));
 
   return (
     <div className="flex flex-col justify-center p-4 mx-auto w-full">
@@ -74,12 +72,19 @@ export default function BenefitsCarousel({snippetId}: {snippetId: string}) {
       {view === "tablet" && (
         <div className={styles.tabletContainer}>
           <h6 className={styles.tabletTitle}>Benefits</h6>
-          <Carousel opts={{ loop: true, align: "start" }} className={styles.carousel}>
+          <Carousel
+            opts={{ loop: true, align: "start" }}
+            className={styles.carousel}
+          >
             <CarouselContent className={styles.carouselContent}>
               {benefits.map(({ title, text, image }, idx) => (
                 <CarouselItem key={idx} className={styles.carouselItemTablet}>
                   <div className={styles.slideContentTablet}>
-                    <img src={image} alt={title} className={styles.imageTablet} />
+                    <img
+                      src={image}
+                      alt={title}
+                      className={styles.imageTablet}
+                    />
                     <div className={styles.slideTextTablet}>
                       <h6 className={styles.benefitTitle}>{title}</h6>
                       <p className={styles.benefitText}>{text}</p>

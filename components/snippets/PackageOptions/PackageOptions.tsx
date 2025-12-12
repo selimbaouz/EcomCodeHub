@@ -7,19 +7,22 @@ const packages = [
   {
     portions: "30 PORTIONS",
     pricePer: "1.30€/café",
-    image: "https://res.cloudinary.com/tailwindliquid/image/upload/v1747998469/bag1_fwtnww.png", // à remplacer par ton image
+    image:
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1747998469/bag1_fwtnww.png", // à remplacer par ton image
     highlight: null,
   },
   {
     portions: "60 PORTIONS",
     pricePer: "1.15€/café",
-    image: "https://res.cloudinary.com/tailwindliquid/image/upload/v1747998470/bag2_fnztmb.png",
+    image:
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1747998470/bag2_fnztmb.png",
     highlight: "N°1 des ventes",
   },
   {
     portions: "90 PORTIONS",
     pricePer: "1.10€/café",
-    image: "https://res.cloudinary.com/tailwindliquid/image/upload/v1747998469/bag3_xyi1ll.png",
+    image:
+      "https://res.cloudinary.com/ecomcodehub/image/upload/v1747998469/bag3_xyi1ll.png",
     highlight: "Le plus rentable",
   },
 ];

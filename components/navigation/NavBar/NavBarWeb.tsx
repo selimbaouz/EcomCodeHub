@@ -3,16 +3,10 @@ import { cn } from "@/lib/utils";
 import { useCartStore, useOpenCartStore } from "@/store/cart";
 import Link from "next/link";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import { FC, useEffect, useState } from "react";
-import Logo from "@/public/images/Logo.png";
-import LogoDark from "@/public/images/LogoDark.png";
-import { useTheme } from "next-themes";
-import { StaticImageData } from "next/image";
+import { FC } from "react";
 import { useIsHydrated } from "@/hook/useIsHydrated";
-import { CgProfile } from "react-icons/cg";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-/* import LocaleSwitcher from "@/components/LocaleSwitcher"; */
 
 interface NavBarWebProps {
   isAccount?: boolean;
@@ -22,9 +16,6 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
   const classLink = "font-light text-foreground text-base hover:text-primary";
   const locale = useLocale();
   const t = useTranslations("fe.navigation");
-  const { systemTheme, theme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
-  const [imageInTheme, setImageInTheme] = useState<StaticImageData>();
   const { cart } = useCartStore();
   const { setIsOpenCart } = useOpenCartStore();
   const router = useRouter();
@@ -32,11 +23,6 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
   const pathname = usePathname();
   const pathnameOfProduct =
     pathname === `/${locale}/products/pack-pro-conversion-shopify`;
-
-  useEffect(() => {
-    const images = currentTheme === "dark" ? LogoDark : Logo;
-    setImageInTheme(images);
-  }, [currentTheme]);
 
   if (!isHydrated) return;
 

@@ -20,8 +20,8 @@
       "searchPlaceholder": "Rechercher..."
     },
     "installation": {
-      "title": "Installation de TailwindLiquid",
-      "description": "Pour activer TailwindLiquid sur votre boutique Shopify, suivez les étapes ci-dessous :",
+      "title": "Installation de EcomCodeHub",
+      "description": "Pour activer EcomCodeHub sur votre boutique Shopify, suivez les étapes ci-dessous :",
       "steps": {
         "1": "Connectez-vous à votre interface Shopify.",
         "2": "Dans la barre latérale, cliquez sur <strong>«Canaux de vente»</strong> → <strong>«Thèmes»</strong>.",
@@ -450,11 +450,11 @@
       "defaultTitle": "Vérification en cours...",
       "defaultDescription": "Merci de patienter pendant la vérification de votre e-mail.",
       "description": {
-        "paragraph1": "<strong>TailwindLiquid est la solution incontournable</strong> pour les e-commerçants Shopify souhaitant transformer leur boutique en <strong>une boutique à fort taux de conversion</strong>. Grâce à des codes TailwindCSS et Liquid optimisés et personnalisables, vous pouvez <strong>améliorer vos conversions</strong>, offrir une expérience utilisateur fluide et donner à votre boutique <strong>une apparence digne des meilleurs thèmes, sans dépenser des centaines d’euros</strong>.",
-        "paragraph2": "Conçu par un <strong>développeur fullstack, consultant SEO et designer web avec plus de 7 ans d’expérience</strong> dans la création de boutiques Shopify, TailwindLiquid respecte les standards du web et <strong>garantit des performances optimales pour le SEO</strong>.",
-        "paragraph3": "<strong>Rejoignez notre serveur Discord dédié</strong>, inclus avec tous les packs, même ponctuels, pour <strong>poser vos questions techniques, partager vos retours</strong>, découvrir les nouveautés en avant-première, et <strong>co-construire avec la communauté les prochains snippets </strong> TailwindLiquid.",
+        "paragraph1": "<strong>EcomCodeHub est la solution incontournable</strong> pour les e-commerçants Shopify souhaitant transformer leur boutique en <strong>une boutique à fort taux de conversion</strong>. Grâce à des codes TailwindCSS et Liquid optimisés et personnalisables, vous pouvez <strong>améliorer vos conversions</strong>, offrir une expérience utilisateur fluide et donner à votre boutique <strong>une apparence digne des meilleurs thèmes, sans dépenser des centaines d’euros</strong>.",
+        "paragraph2": "Conçu par un <strong>développeur fullstack, consultant SEO et designer web avec plus de 7 ans d’expérience</strong> dans la création de boutiques Shopify, EcomCodeHub respecte les standards du web et <strong>garantit des performances optimales pour le SEO</strong>.",
+        "paragraph3": "<strong>Rejoignez notre serveur Discord dédié</strong>, inclus avec tous les packs, même ponctuels, pour <strong>poser vos questions techniques, partager vos retours</strong>, découvrir les nouveautés en avant-première, et <strong>co-construire avec la communauté les prochains snippets </strong> EcomCodeHub.",
         "paragraph4": "Des <strong>audits de design et de boutique Shopify</strong> seront également proposés régulièrement afin d’identifier les points d'amélioration. <strong>Ces audits seront exclusivement réservés aux abonnés.</strong>",
-        "paragraph5": "L’objectif de TailwindLiquid est de <strong>réunir une communauté ambitieuse d’e-commerçants</strong> et de réussir ensemble."
+        "paragraph5": "L’objectif de EcomCodeHub est de <strong>réunir une communauté ambitieuse d’e-commerçants</strong> et de réussir ensemble."
       },
       "howItWorks": {
         "items": [
@@ -483,13 +483,13 @@
       "support": {
         "items": [
           "Je suis disponible pour vous accompagner à chaque étape, que ce soit pour un problème technique ou une question sur l'installation ou l'utilisation des codes.",
-          "<strong class='underline'>Contactez-moi directement :</strong> Par Discord ou par email : <a href='mailto:tailwindliquid@gmail.com' class='text-blue-500 underline'>tailwindliquid@gmail.com</a>"
+          "<strong class='underline'>Contactez-moi directement :</strong> Par Discord ou par email : <a href='mailto:slmrsv.bz@gmail.com' class='text-blue-500 underline'>slmrsv.bz@gmail.com</a>"
         ]
       },
       "refundPolicy": {
         "items": [
           "<strong class='underline'>Puis-je être remboursé ?</strong> Oui, un remboursement est possible <strong>uniquement si aucun crédit n’a été utilisé</strong>. Dès qu’un snippet est débloqué, l’achat est considéré comme consommé.",
-          "<strong class='underline'>Comment demander un remboursement ?</strong> Il suffit de me contacter par email avec l’adresse utilisée pour l’achat : <a href='mailto:tailwindliquid@gmail.com' class='text-foreground underline'>tailwindliquid@gmail.com</a>",
+          "<strong class='underline'>Comment demander un remboursement ?</strong> Il suffit de me contacter par email avec l’adresse utilisée pour l’achat : <a href='mailto:slmrsv.bz@gmail.com' class='text-foreground underline'>slmrsv.bz@gmail.com</a>",
           "<strong class='underline'>Support à l'écoute :</strong> Avant tout remboursement, je suis là pour vous aider à résoudre votre problème technique. Mon objectif : que vous soyez satisfait."
         ]
       },
@@ -509,19 +509,19 @@
       "offers": [
         "Commission en argent : Pour chaque vente générée par votre recommandation, recevez une commission en euros. Plus vous partagez et plus vous gagnez !",
         "Accès anticipé : Profitez en avant-première de nos nouveautés – snippets et templates – pour rester à la pointe de l'innovation.",
-        "Outils marketing dédiés : Bénéficiez de supports, guides et contenus personnalisés pour promouvoir TailwindLiquid sur vos réseaux.",
+        "Outils marketing dédiés : Bénéficiez de supports, guides et contenus personnalisés pour promouvoir EcomCodeHub sur vos réseaux.",
         "Visibilité renforcée : Intégrez une communauté d'experts et soyez mis en avant sur notre plateforme ainsi que lors d'événements exclusifs."
       ],
 
       "requirementsTitle": "Ce que nous attendons de vous :",
       "requirements": [
-        "Partage et engagement : Diffusez votre expérience et vos conseils autour de TailwindLiquid via vos réseaux sociaux, blogs ou autres canaux.",
+        "Partage et engagement : Diffusez votre expérience et vos conseils autour de EcomCodeHub via vos réseaux sociaux, blogs ou autres canaux.",
         "Feedback constructif : Aidez nous à améliorer nos produits en fournissant des retours réguliers.",
-        "Participation active : Prenez part à des ateliers et événements en ligne pour échanger avec d'autres ambassadeurs et l'équipe TailwindLiquid."
+        "Participation active : Prenez part à des ateliers et événements en ligne pour échanger avec d'autres ambassadeurs et l'équipe EcomCodeHub."
       ],
 
       "howItWorksTitle": "Comment ça fonctionne ?",
-      "howItWorksDescription": "Pour devenir ambassadeur, vous devez nous fournir les liens vers vos réseaux sociaux (Facebook, Twitter, LinkedIn, Instagram, etc.) afin que nous puissions évaluer votre influence et votre engagement. Une fois votre candidature examinée, vous recevrez des instructions sur la manière de promouvoir TailwindLiquid et de suivre vos commissions.",
+      "howItWorksDescription": "Pour devenir ambassadeur, vous devez nous fournir les liens vers vos réseaux sociaux (Facebook, Twitter, LinkedIn, Instagram, etc.) afin que nous puissions évaluer votre influence et votre engagement. Une fois votre candidature examinée, vous recevrez des instructions sur la manière de promouvoir EcomCodeHub et de suivre vos commissions.",
 
       "applyTitle": "Pour candidater :",
       "applyInstructions": [
@@ -531,23 +531,23 @@
         "Une brève présentation de votre expérience et de votre motivation à rejoindre le programme ambassadeur"
       ],
 
-      "closingStatement": "Que vous soyez développeur, designer ou passionné par l’optimisation des boutiques Shopify, le programme ambassadeur TailwindLiquid vous offre l'opportunité de transformer votre expertise en revenus concrets. Ensemble, contribuons à booster la conversion des boutiques et à offrir une expérience utilisateur exceptionnelle.",
-      "callToAction": "Rejoignez le mouvement TailwindLiquid et commencez à gagner de l'argent dès aujourd'hui !"
+      "closingStatement": "Que vous soyez développeur, designer ou passionné par l’optimisation des boutiques Shopify, le programme ambassadeur EcomCodeHub vous offre l'opportunité de transformer votre expertise en revenus concrets. Ensemble, contribuons à booster la conversion des boutiques et à offrir une expérience utilisateur exceptionnelle.",
+      "callToAction": "Rejoignez le mouvement EcomCodeHub et commencez à gagner de l'argent dès aujourd'hui !"
     },
     "creditsGratuits": {
       "title": "Gagnez 15 crédits en quelques secondes ✨",
-      "subtitle1": "Vous aimez TailwindLiquid ? Nous aussi, et on aimerait que le monde le sache !",
+      "subtitle1": "Vous aimez EcomCodeHub ? Nous aussi, et on aimerait que le monde le sache !",
       "subtitle2Part1": "En partageant votre expérience, vous nous aidez à grandir, et en retour, on vous remercie avec ",
       "strongText": "15 crédits gratuits",
       "subtitle2Part2": " à utiliser pour débloquer des snippets.",
       "step1": {
         "title": "1. Partagez votre avis",
-        "description": "Racontez ce que vous avez aimé sur TailwindLiquid, comment cela vous a aidé, ou ce que vous attendez de la suite. Un petit mot peut faire une grande différence 🙏",
+        "description": "Racontez ce que vous avez aimé sur EcomCodeHub, comment cela vous a aidé, ou ce que vous attendez de la suite. Un petit mot peut faire une grande différence 🙏",
         "linkText": "👉 Laisser un avis sur Google"
       },
       "step2": {
         "title": "2. Montrez-nous votre message",
-        "description": "Une fois l’avis publié, prenez une capture d’écran (avec la date visible) et envoyez-la par e-mail à l'adresse : tailwindliquid@gmail.com, sur Discord ou sur notre serveur Discord."
+        "description": "Une fois l’avis publié, prenez une capture d’écran (avec la date visible) et envoyez-la par e-mail à l'adresse : slmrsv.bz@gmail.com, sur Discord ou sur notre serveur Discord."
       },
       "step3": {
         "title": "3. Recevez vos crédits",
@@ -685,7 +685,7 @@
           {
             "name": "Marwen L.",
             "score": 5,
-            "content": "Je cherchais un moyen d'améliorer l'apparence de ma boutique Shopify sans me ruiner, et TailwindLiquid était la solution parfaite. Leurs snippets sont super faciles à mettre en œuvre et à personnaliser, ce qui me permet d'adapter mon design exactement à mes besoins."
+            "content": "Je cherchais un moyen d'améliorer l'apparence de ma boutique Shopify sans me ruiner, et EcomCodeHub était la solution parfaite. Leurs snippets sont super faciles à mettre en œuvre et à personnaliser, ce qui me permet d'adapter mon design exactement à mes besoins."
           },
           {
             "name": "Karim H.",
@@ -726,14 +726,14 @@
           },
           {
             "title": "Ai-je besoin de compétences techniques ?",
-            "content": "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Discord ou par email à tailwindliquid@gmail.com."
+            "content": "Pas du tout ! Même un débutant peut facilement les installer. Il suffit juste de copier-coller et de remplacer le texte ou les couleurs. Et si besoin, je suis là pour vous accompagner via Discord ou par email à slmrsv.bz@gmail.com."
           },
           {
             "title": "Comment fonctionne l'installation des codes ?",
             "content": "L'installation prend seulement quelques secondes. Il suffit de suivre les instructions disponibles sur la page “Installation” pour que tout fonctionne parfaitement."
           },
           {
-            "title": "TailwindLiquid peut-il ralentir ma boutique ?",
+            "title": "EcomCodeHub peut-il ralentir ma boutique ?",
             "content": "Non. Le code est optimisé et léger. Il s’intègre proprement à votre thème sans impacter les performances de votre boutique."
           },
           {
@@ -742,7 +742,7 @@
           },
           {
             "title": "Que faire si j'ai des problèmes ?",
-            "content": "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Discord ou par email à tailwindliquid@gmail.com."
+            "content": "Je suis disponible pour vous aider à chaque étape. Contactez-moi directement sur Discord ou par email à slmrsv.bz@gmail.com."
           }
         ]
       }
@@ -768,7 +768,7 @@
     },
     "footer": {
       "aboutTitle": "À propos",
-      "aboutText": "J'ai lancé <strong>TailwindLiquid</strong> pour offrir aux e-commerçants Shopify des outils puissants et accessibles pour transformer leurs boutiques en véritables moteurs de conversions.",
+      "aboutText": "J'ai lancé <strong>EcomCodeHub</strong> pour offrir aux e-commerçants Shopify des outils puissants et accessibles pour transformer leurs boutiques en véritables moteurs de conversions.",
       "legalPagesTitle": "Pages Légales",
       "contactTitle": "Contactez-nous",
       "contactHours": "Du lundi au vendredi: 09h00 - 18h00",
@@ -794,11 +794,11 @@
         "data": [
           {
             "title": "Dernière mise à jour : 02/04/2025",
-            "content": "Bienvenue sur TailwindLiquid. En accédant et en utilisant notre site web, vous acceptez les présentes Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site."
+            "content": "Bienvenue sur EcomCodeHub. En accédant et en utilisant notre site web, vous acceptez les présentes Conditions Générales d'Utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site."
           },
           {
             "title": "1. Objet",
-            "content": "Les présentes CGU définissent les conditions d'utilisation du site TailwindLiquid et des services proposés."
+            "content": "Les présentes CGU définissent les conditions d'utilisation du site EcomCodeHub et des services proposés."
           },
           {
             "title": "2. Accès au site",
@@ -806,7 +806,7 @@
           },
           {
             "title": "3. Propriété intellectuelle",
-            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois sur la propriété intellectuelle."
+            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de EcomCodeHub et sont protégés par les lois sur la propriété intellectuelle."
           },
           {
             "title": "4. Responsabilités",
@@ -823,11 +823,11 @@
         "data": [
           {
             "title": "Dernière mise à jour : 02/04/2025",
-            "content": "Les présentes Conditions Générales de Vente régissent les ventes de produits et services effectuées sur le site TailwindLiquid."
+            "content": "Les présentes Conditions Générales de Vente régissent les ventes de produits et services effectuées sur le site EcomCodeHub."
           },
           {
             "title": "1. Produits et services",
-            "content": "TailwindLiquid propose des snippets Liquid & TailwindCSS prêts à l'emploi pour améliorer les boutiques Shopify. L'accès à ces snippets se fait via un système de crédits, qui peuvent être achetés sous forme de packs."
+            "content": "EcomCodeHub propose des snippets Liquid & TailwindCSS prêts à l'emploi pour améliorer les boutiques Shopify. L'accès à ces snippets se fait via un système de crédits, qui peuvent être achetés sous forme de packs."
           },
           {
             "title": "2. Packs et abonnements",
@@ -864,7 +864,7 @@
         "data": [
           {
             "title": "Dernière mise à jour : 02/04/2025",
-            "content": "Chez TailwindLiquid, nous attachons une grande importance à la protection de vos données personnelles."
+            "content": "Chez EcomCodeHub, nous attachons une grande importance à la protection de vos données personnelles."
           },
           {
             "title": "1. Collecte des informations",
@@ -889,11 +889,11 @@
         "data": [
           {
             "title": "Dernière mise à jour : 02/04/2025",
-            "content": "Informations légales du site TailwindLiquid."
+            "content": "Informations légales du site EcomCodeHub."
           },
           {
             "title": "1. Éditeur du site",
-            "content": "TailwindLiquid\nConçu et développé par Selim Baouz (Selimmersive)\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : tailwindliquid@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz (Selimmersive)"
+            "content": "EcomCodeHub\nConçu et développé par Selim Baouz (Selimmersive)\nSiège social : 5 rue Marcel Sembat 83200 Toulon\nEmail : slmrsv.bz@gmail.com\nNuméro SIRET : 83012126500037\nDirecteur de la publication : Selim Baouz (Selimmersive)"
           },
           {
             "title": "2. Hébergement",
@@ -901,11 +901,11 @@
           },
           {
             "title": "3. Propriété intellectuelle",
-            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de TailwindLiquid et sont protégés par les lois françaises relatives à la propriété intellectuelle. "
+            "content": "Tous les contenus et codes (snippets) présents sur ce site sont la propriété exclusive de EcomCodeHub et sont protégés par les lois françaises relatives à la propriété intellectuelle. "
           },
           {
             "title": "4. Contact",
-            "content": "Pour toute question ou demande d'information concernant le site, contactez nous à : tailwindliquid@gmail.com."
+            "content": "Pour toute question ou demande d'information concernant le site, contactez nous à : slmrsv.bz@gmail.com."
           }
         ]
       },

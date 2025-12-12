@@ -6,25 +6,24 @@ import { NextRequest, NextResponse } from "next/server";
 
 const getCredits = (pack: string) => {
   switch (pack) {
-  case "Débutant":
-    return {
-      credits: 30
-    };
-  case "Avancé":
-    return {
-      credits: 60
-    };
-  case "Pro":
-    return {
-      credits: 90
-    };
-  default:
-    return {
-      credits: 30
-    };
+    case "Débutant":
+      return {
+        credits: 30,
+      };
+    case "Avancé":
+      return {
+        credits: 60,
+      };
+    case "Pro":
+      return {
+        credits: 90,
+      };
+    default:
+      return {
+        credits: 30,
+      };
   }
 };
-
 
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature")!;
@@ -37,7 +36,10 @@ export async function POST(req: NextRequest) {
       process.env.STRIPE_WEBHOOK_LIVE_SECRET!
     );
   } catch (err) {
-    return NextResponse.json({ error: `Webhook Error: ${err}` }, { status: 400 });
+    return NextResponse.json(
+      { error: `Webhook Error: ${err}` },
+      { status: 400 }
+    );
   }
 
   try {
@@ -48,32 +50,49 @@ export async function POST(req: NextRequest) {
       const customerName = session.customer_details?.name;
       const variantId = session.metadata?.variantId;
       const packName = session.metadata?.packName;
-      const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
+      const lineItems = await stripe.checkout.sessions.listLineItems(
+        session.id
+      );
       const subscription = session.subscription ? true : false; // Si c'est un abonnement
 
-      if(!customerEmail) {
-        return NextResponse.json({ error: `Aucun email fourni` }, { status: 400 });
+      if (!customerEmail) {
+        return NextResponse.json(
+          { error: `Aucun email fourni` },
+          { status: 400 }
+        );
       }
 
-      if(!packName) {
-        return NextResponse.json({ error: `Aucun montant fourni` }, { status: 400 });
+      if (!packName) {
+        return NextResponse.json(
+          { error: `Aucun montant fourni` },
+          { status: 400 }
+        );
       }
 
       // Obtenir le bon nombre de crédits en fonction du pack acheté
       const credits = getCredits(packName).credits;
       if (!credits) {
-        return NextResponse.json({ error: "Montant invalide" }, { status: 400 });
+        return NextResponse.json(
+          { error: "Montant invalide" },
+          { status: 400 }
+        );
       }
-      
+
       let user = await db.user.findUnique({ where: { email: customerEmail } });
 
       let stripeCustomerId = user?.stripeCustomerId;
 
       if (!stripeCustomerId) {
-        const stripeCustomer = await createCustomerInStripe({ email: customerEmail, name: customerName ?? "" });
+        const stripeCustomer = await createCustomerInStripe({
+          email: customerEmail,
+          name: customerName ?? "",
+        });
 
         if (!stripeCustomer) {
-          return NextResponse.json({ error: "Erreur dans la création de compte sur Stripe" }, { status: 400 });
+          return NextResponse.json(
+            { error: "Erreur dans la création de compte sur Stripe" },
+            { status: 400 }
+          );
         }
 
         stripeCustomerId = stripeCustomer.id;
@@ -85,49 +104,60 @@ export async function POST(req: NextRequest) {
             email: customerEmail,
             name: customerName,
             stripeCustomerId: stripeCustomerId,
-            subscriptionId: subscription ? session.subscription?.toString() : null,
+            subscriptionId: subscription
+              ? session.subscription?.toString()
+              : null,
             credits: credits,
             plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
           },
         });
       } else {
-          await db.user.update({
-            where: { email: customerEmail },
-            data: {
-              email:  customerEmail,
-              name:  customerName,
-              stripeCustomerId: stripeCustomerId,
-              subscriptionId: subscription ? session.subscription?.toString() : null,
-              credits: user.credits + credits,
-              plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
-             }, 
-          });
-        }
-      if(variantId) {
+        await db.user.update({
+          where: { email: customerEmail },
+          data: {
+            email: customerEmail,
+            name: customerName,
+            stripeCustomerId: stripeCustomerId,
+            subscriptionId: subscription
+              ? session.subscription?.toString()
+              : null,
+            credits: user.credits + credits,
+            plan: subscription ? "SUBSCRIPTION" : "ONE_TIME",
+          },
+        });
+      }
+      if (variantId) {
         // ➜ Créer une commande sur Shopify
         await createShopifyOrder(customerEmail, variantId, lineItems);
-      } 
+      }
 
-      await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL || "https://tailwindliquid.com"}/api/pixels-purchase`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          eventTime: Math.floor(Date.now() / 1000),
-          eventSourceUrl: "https://tailwindliquid.com/fr/auth/login", // ou ton URL de confirmation d'achat
-          fbPixelId: process.env.FB_PIXEL_ID,
-          tiktokPixelId: process.env.TIKTOK_PIXEL_ID,
-          value: session?.amount_total ?? 0 / 100, // Stripe retourne en centimes
-          currency: session.currency?.toUpperCase() || "EUR",
-          content_ids: lineItems.data.map(item => item.price?.product), // adapte si tu veux utiliser tes propres IDs Shopify
-          email: customerEmail,
-          fbp: session.metadata?.fbp, // optionnel, si tu passes fbp dans Stripe metadata
-        }),
-      });
- 
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LOCAL_URL || "https://ecomcodehub.com"}/api/pixels-purchase`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            eventTime: Math.floor(Date.now() / 1000),
+            eventSourceUrl: "https://ecomcodehub.com/en/auth/login", // ou ton URL de confirmation d'achat
+            fbPixelId: process.env.FB_PIXEL_ID,
+            tiktokPixelId: process.env.TIKTOK_PIXEL_ID,
+            value: session?.amount_total ?? 0 / 100, // Stripe retourne en centimes
+            currency: session.currency?.toUpperCase() || "EUR",
+            content_ids: lineItems.data.map((item) => item.price?.product), // adapte si tu veux utiliser tes propres IDs Shopify
+            email: customerEmail,
+            fbp: session.metadata?.fbp, // optionnel, si tu passes fbp dans Stripe metadata
+          }),
+        }
+      );
     }
-    return NextResponse.json({ received: true, message: "Le Webhook a bien été envoyé !" }, { status: 200 });
+    return NextResponse.json(
+      { received: true, message: "Le Webhook a bien été envoyé !" },
+      { status: 200 }
+    );
   } catch (err) {
-    return NextResponse.json({ error: `Webhook Catch Error: ${JSON.stringify(err, null, 2)}` }, { status: 500 });
+    return NextResponse.json(
+      { error: `Webhook Catch Error: ${JSON.stringify(err, null, 2)}` },
+      { status: 500 }
+    );
   }
-
 }

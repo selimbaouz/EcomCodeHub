@@ -155,7 +155,7 @@ export function BestReviews({ productPage }: { productPage?: boolean }) {
             <div
               key={index}
               className={cn(
-                "rounded-full w-8 py-1",
+                "rounded-full w-8 py-0.5",
                 "xl:w-10",
                 "3xl:w-14",
                 current - 1 === index ? "bg-primary" : "bg-secondary/30"

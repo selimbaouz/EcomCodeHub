@@ -8,6 +8,9 @@ const StickyBar = () => {
 
   const stickyBarData = [
     {
+      title: t("stickyBar.payOnce"),
+    },
+    {
       title: t("stickyBar.codeReady"),
     },
     {
@@ -15,6 +18,12 @@ const StickyBar = () => {
     },
     {
       title: t("stickyBar.proRender"),
+    },
+    {
+      title: t("stickyBar.supportIncluded"),
+    },
+    {
+      title: t("stickyBar.timeSaving"),
     },
   ];
 

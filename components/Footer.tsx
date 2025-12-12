@@ -80,15 +80,27 @@ const Footer = ({ className }: FooterProps) => {
               <h6 className={cn("lg:text-xl font-medium")}>
                 {t("contactTitle")}
               </h6>
-              <div className="leading-relaxed space-y-2 text-sm">
-                <span>Contact me on</span>{" "}
-                <Link
-                  href="https://wa.me/0745473667"
-                  target="_blank"
-                  className={cn(classLink, "underline")}
-                >
-                  WhatsApp
-                </Link>
+              <div className="leading-relaxed text-sm flex flex-col gap-2 items-start">
+                <div className="flex items-center gap-1">
+                  <span>Contact me by</span>
+                  <Link
+                    href="mailto:slmrsv.bz@gmail.com"
+                    target="_blank"
+                    className={cn(classLink, "underline")}
+                  >
+                    Email
+                  </Link>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span>or on</span>
+                  <Link
+                    href="https://wa.me/0745473667"
+                    target="_blank"
+                    className={cn(classLink, "underline")}
+                  >
+                    WhatsApp
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -98,6 +110,13 @@ const Footer = ({ className }: FooterProps) => {
           <p className={cn("text-center text-[13px]")}>
             © 2025, EcomCodeHub. All rights reserved.
           </p>
+          <Link
+            href="https://selimbaouz.com"
+            target="_blank"
+            className={cn("text-center text-[13px] hover:underline")}
+          >
+            Made with ❤️ by Selim Baouz
+          </Link>
         </div>
       </footer>
     </div>
