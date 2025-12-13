@@ -119,7 +119,7 @@ const ProductImage: FC<ProductImageProps> = ({ product }) => {
         ))}
       </ul>
       <div className={cn("space-y-10 py-4")}>
-        <div className={cn("space-y-6")}>
+        <div id="add-to-cart-anchor" className={cn("space-y-6")}>
           <AddToCart
             state={selectedVariant}
             product={product}

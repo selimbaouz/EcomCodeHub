@@ -16,6 +16,8 @@ import ImagesGallery from "@/components/ImagesGallery";
 import { Product } from "@/types/types";
 import { Session } from "next-auth";
 import FlashPromo from "./FlashPromo";
+import { useVisibleFloatingCartStore } from "@/store/cart";
+import FloatingBar from "./navigation/FloatingBar";
 
 interface ProductsProps {
   product: Product;
@@ -23,7 +25,7 @@ interface ProductsProps {
 }
 
 const Products: FC<ProductsProps> = ({ product, session }) => {
-  /* const { isVisible } = useVisibleFloatingCartStore(); */
+  const { isVisible } = useVisibleFloatingCartStore();
 
   useEffect(() => {
     fetch("/api/pixels-view-content", {
@@ -80,7 +82,7 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
       <Footer />
       {/*  <Discord /> */}
       {/* <PurchasePopup /> */}
-      {/* {!isVisible && <FloatingBar product={product} />} */}
+      {!isVisible && <FloatingBar product={product} />}
     </div>
   );
 };

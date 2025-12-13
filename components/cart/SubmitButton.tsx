@@ -16,6 +16,7 @@ interface SubmitButtonProps {
   price?: string;
   variant: VariantsProduct;
   product: Product;
+  floatingBar?: boolean;
 }
 
 export function SubmitButtonClient({
@@ -23,6 +24,7 @@ export function SubmitButtonClient({
   price,
   variant,
   product,
+  floatingBar = false,
 }: SubmitButtonProps) {
   const buttonRef = useRef(null);
   const t = useTranslations("fe");
@@ -50,9 +52,11 @@ export function SubmitButtonClient({
       type="submit"
       ref={buttonRef}
       className={cn(
-        "py-4 px-2 lg:px-6 rounded-lg bg-primary hover:bg-primary/80 text-white font-medium text-base border-t",
+        "rounded-lg font-medium border-t",
         size === "fullWidth" ? "min-w-full" : "w-max",
-        "hover:bg-gradient-to-tr"
+        floatingBar
+          ? "bg-background hover:bg-background/80 text-primary text-sm py-3 px-2 lg:px-6"
+          : " bg-primary hover:bg-primary/80 text-white text-base py-4 px-2 lg:px-6"
       )}
       onClick={async () => {
         addCartItem(variant, product);
@@ -75,20 +79,26 @@ export function SubmitButtonClient({
         });
       }}
     >
-      <div className={cn("flex items-center justify-center gap-2")}>
-        <p className={cn("uppercase")}>
-          {t("productImage.addToCart", {
-            price: parseFloat(price ?? "").toFixed(2),
-          })}
-        </p>
-        <p className="line-through text-white/70">
-          {t("productImage.compareAtPrice", {
-            compareAtPrice: parseFloat(
-              variant?.node?.compareAtPrice?.amount ?? ""
-            ).toFixed(2),
-          })}
-        </p>
-      </div>
+      {floatingBar ? (
+        <>
+          <p className={cn("uppercase font-bold")}>Add to cart</p>
+        </>
+      ) : (
+        <div className={cn("flex items-center justify-center gap-2")}>
+          <p className={cn("uppercase")}>
+            {t("productImage.addToCart", {
+              price: parseFloat(price ?? "").toFixed(2),
+            })}
+          </p>
+          <p className="line-through text-white/70">
+            {t("productImage.compareAtPrice", {
+              compareAtPrice: parseFloat(
+                variant?.node?.compareAtPrice?.amount ?? ""
+              ).toFixed(2),
+            })}
+          </p>
+        </div>
+      )}
     </button>
   );
 }

@@ -5,6 +5,7 @@ export function AddToCart({
   product,
   size = "initial",
   state,
+  floatingBar = false,
 }: {
   product: Product;
   size?: "fullWidth" | "initial";
@@ -12,6 +13,7 @@ export function AddToCart({
     title: string;
     price?: string;
   };
+  floatingBar?: boolean;
 }) {
   const variants = product.variants.edges;
   const variant = variants[0];
@@ -24,6 +26,7 @@ export function AddToCart({
       price={updatedPrice}
       variant={variant}
       product={product}
+      floatingBar={floatingBar}
     />
   );
 }

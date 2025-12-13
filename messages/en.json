@@ -472,7 +472,7 @@
       "whyTL": {
         "items": [
           "<strong class='underline'>Easy to use:</strong> No technical skills needed ;), just copy, paste, and you're ready!",
-          "<strong class='underline'>Affordable:</strong> A cost-effective alternative to expensive Shopify themes (up to €350).",
+          "<strong class='underline'>Affordable:</strong> A cost-effective alternative to expensive Shopify themes (up to 350€).",
           "<strong class='underline'>SEO optimized:</strong> Lightweight and efficient code to improve your store's visibility.",
           "<strong class='underline'>Compatible with all Shopify themes:</strong> Works perfectly regardless of your current design."
         ]
@@ -555,7 +555,7 @@
     },
     "stickyBar": {
       "payOnce": "💰 Pay once, use forever",
-      "codeReady": "💻 500+ codes (worth €2000)",
+      "codeReady": "💻 500+ codes (worth 2000€)",
       "newMonthly": "🎁 Free updates forever",
       "proRender": "⚡ Ready in 5 minutes",
       "supportIncluded": "✅ Setup help included",
@@ -642,8 +642,8 @@
         }
       },
       "howItWorksPage": {
-        "title": "Stop paying $350 for premium themes",
-        "subtitle": "Get the same results for $29.90—no recurring fees, no limitations",
+        "title": "Stop paying 350€ for premium themes",
+        "subtitle": "Get the same results for 29.90€—no recurring fees, no limitations",
         "videoDescription": "Install in under 5 minutes. No developer required. See the difference instantly.",
         "left": {
           "noMoreApps": "Replace expensive apps",
@@ -654,7 +654,7 @@
           "noSkillsNeeded": "Zero coding required"
         },
         "right": {
-          "noPremiumTheme": "No $350 theme needed",
+          "noPremiumTheme": "No 350€ theme needed",
           "unlimitedCustomization": "Customize anything",
           "proLook": "Agency-level quality",
           "compatibleAllThemes": "Works on any theme",
@@ -730,7 +730,7 @@
           },
           {
             "title": "How is this different from buying a premium theme or hiring a developer?",
-            "content": "Premium themes cost €250-400 and lock you into their design. Developers charge €50-150/hour (that's €1,200+ for 20 custom snippets). With our pack, you get 500+ snippets for €29.90, install them yourself in 5 minutes, and own them forever. You save over €2,000."
+            "content": "Premium themes cost 250-400€ and lock you into their design. Developers charge 50-150€/hour (that's 1,200€+ for 20 custom snippets). With our pack, you get 500+ snippets for 29.90€, install them yourself in 5 minutes, and own them forever. You save over 2,000€."
           },
           {
             "title": "Do I get updates when you add new snippets?",
@@ -762,7 +762,7 @@
       "totalLabel": "Total",
       "savingsLabel": "Savings",
       "youSave": "(You save {amount})",
-      "checkoutButton": "Get instant access now"
+      "checkoutButton": "Buy now"
     },
     "footer": {
       "aboutTitle": "About",

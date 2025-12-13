@@ -475,7 +475,7 @@
       "whyTL": {
         "items": [
           "<strong class='underline'>Facile à utiliser :</strong> Aucun besoin de compétences techniques ;), copiez, collez, et c’est prêt !",
-          "<strong class='underline'>Économique :</strong> Une alternative abordable aux thèmes Shopify coûteux (jusqu’à 350 €).",
+          "<strong class='underline'>Économique :</strong> Une alternative abordable aux thèmes Shopify coûteux (jusqu’à 350€).",
           "<strong class='underline'>Optimisé pour le SEO :</strong> Des codes légers et performants pour améliorer la visibilité de votre boutique.",
           "<strong class='underline'>Compatible avec tous les thèmes Shopify :</strong> Fonctionne parfaitement, quel que soit votre design actuel."
         ]
@@ -764,7 +764,7 @@
       "totalLabel": "Total",
       "savingsLabel": "Économies",
       "youSave": "(Vous économisez {amount})",
-      "checkoutButton": "Passez à l'étape suivante"
+      "checkoutButton": "Acheter maintenant"
     },
     "footer": {
       "aboutTitle": "À propos",
