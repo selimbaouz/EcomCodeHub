@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             eventTime: Math.floor(Date.now() / 1000),
-            eventSourceUrl: `${window.location.origin}/en/products/pack-pro-conversion-shopify?success=true`,
+            eventSourceUrl: `${window.location.origin}/en/products/shopify-pro-codes-bundle?success=true`,
             fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
             tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
             value: session?.amount_total ?? 0 / 100, // Stripe retourne en centimes

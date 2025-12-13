@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import LayoutClient from "@/components/LayoutClient";
-import { auth } from "@/auth";
-import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
 import Image from "next/image";
 import { NextIntlClientProvider } from "next-intl";
@@ -44,9 +42,9 @@ export const metadata: Metadata = {
     "ux shopify",
     "ecommerce design",
   ],
-  authors: [{ name: "selimmersive" }],
-  creator: "selimmersive",
-  publisher: "selimmersive",
+  authors: [{ name: "selimbaouz" }],
+  creator: "selimbaouz",
+  publisher: "selimbaouz",
   robots: "index, follow",
   openGraph: {
     type: "website",
@@ -67,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@selimmersive",
-    creator: "@selimmersive",
+    site: "@selimbaouz",
+    creator: "@selimbaouz",
     title: "EcomCodeHub – snippets Liquid Shopify",
     description:
       "Code Liquid Shopify, composants UI clé-en-main et blocs TailwindCSS pour améliorer rapidement le design et la conversion de votre boutique.",
@@ -89,19 +87,16 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const session = await auth();
-
   return (
-    <SessionProvider session={session}>
-      <html lang={locale}>
-        <body
-          className={`${montserrat.variable} font-montserrat relative text-foreground size-full`}
-        >
-          <head>
-            {/* Meta Pixel Code */}
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
+    <html lang={locale}>
+      <body
+        className={`${montserrat.variable} font-montserrat relative text-foreground size-full`}
+      >
+        <head>
+          {/* Meta Pixel Code */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
                   !function(f,b,e,v,n,t,s)
                   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                         
                   n.callMethod.apply(n,arguments):n.queue.push   
@@ -114,21 +109,21 @@ export default async function LocaleLayout({
                   fbq('init', '1861317064600077');
                   fbq('track', 'PageView');
                 `,
-              }}
-            />
-            <noscript>
-              <Image
-                alt="pixel fb"
-                height="1"
-                width="1"
-                style={{ display: "none" }}
-                src="https://www.facebook.com/tr?id=1861317064600077&ev=
+            }}
+          />
+          <noscript>
+            <Image
+              alt="pixel fb"
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              src="https://www.facebook.com/tr?id=1861317064600077&ev=
                 PageView&noscript=1"
-              />
-            </noscript>
-            {/* End Meta Pixel Code */}
-            {/** Tiktok Pixel Code */}
-            {/* <Script strategy="lazyOnload">
+            />
+          </noscript>
+          {/* End Meta Pixel Code */}
+          {/** Tiktok Pixel Code */}
+          {/* <Script strategy="lazyOnload">
               {`
                 !function (w, d, t) {
                   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
@@ -141,18 +136,17 @@ export default async function LocaleLayout({
                 }(window, document, 'ttq');
                 `}
             </Script> */}
-            {/* End Tiktok Pixel Code */}
-          </head>
-          <Toaster position="bottom-right" />
-          <NextIntlClientProvider>
-            <SpeedInsights />
-            <Analytics />
-            <Providers>
-              <LayoutClient>{children}</LayoutClient>
-            </Providers>
-          </NextIntlClientProvider>
-        </body>
-      </html>
-    </SessionProvider>
+          {/* End Tiktok Pixel Code */}
+        </head>
+        <Toaster position="bottom-right" />
+        <NextIntlClientProvider>
+          <SpeedInsights />
+          <Analytics />
+          <Providers>
+            <LayoutClient>{children}</LayoutClient>
+          </Providers>
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

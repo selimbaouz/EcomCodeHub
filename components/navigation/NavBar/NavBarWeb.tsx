@@ -22,7 +22,7 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
   const isHydrated = useIsHydrated();
   const pathname = usePathname();
   const pathnameOfProduct =
-    pathname === `/${locale}/products/pack-pro-conversion-shopify`;
+    pathname === `/${locale}/products/shopify-pro-codes-bundle`;
 
   if (!isHydrated) return;
 
@@ -52,7 +52,7 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
         <ul className={cn("flex items-center gap-5", "xl:gap-6")}>
           {[
             {
-              path: `/${locale}/products/pack-pro-conversion-shopify`,
+              path: `/${locale}/products/shopify-pro-codes-bundle`,
               title: t("conversionPack"),
             },
             {

@@ -1,8 +1,0 @@
-.checkoutMessage {
-    @apply text-[13px] text-center bg-[#dff7f4] rounded w-max mx-auto px-2 py-[1px] text-[#218d8b] leading-[22px];
-  }
-  
-  .changingNumber {
-    @apply text-[14px] font-extrabold;
-  }
-  

@@ -16,12 +16,11 @@ import {
 } from "../ui/sheet";
 import { cn } from "@/lib/utils";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { MdLock } from "react-icons/md";
 import { createCheckoutSessionCart } from "@/actions/stripe";
 import PriceCart from "../PriceCart";
 import { useHideFlashPromoStore } from "@/store/hide-flashpromo";
 import { useLocale, useTranslations } from "next-intl";
-import SecureBadges from "../snippets/SecureBadges/SecureBadges";
+import SecureBadges from "@/components/SecureBadges";
 
 export default function Cart() {
   const { cart, updateCartItem } = useCartStore();
@@ -51,31 +50,6 @@ export default function Cart() {
       quantityRef.current = cart?.quantity;
     }
   }, [isOpenCart, cart?.quantity, quantityRef, setIsOpenCart]);
-
-  /* const handleRedirectToCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setIsLoading(true);
-
-    
-    try {
-      const cartItem = cart.lines[0];
-      const variantId = cartItem.merchandise.id;
-      const quantity = cart.quantity;
-      const sellingPlanId = cartItem.sellingPlanAllocation?.sellingPlan.id;
-      
-        const url = await redirectToCheckoutUrl(variantId, quantity, sellingPlanId);
-        if (url) {
-          window.location.href = url;
-          } else {
-            console.error("L'URL de redirection est indéfinie.");
-            setIsLoading(false);
-          }
-      } catch (error) {
-        console.error("Erreur lors de la redirection vers le checkout:", error); 
-        setIsLoading(false);
-      }
-      setIsLoading(false);
-  } */
 
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -113,8 +87,8 @@ export default function Cart() {
       const res = await createCheckoutSessionCart({
         quantities,
         variantId,
-        successUrl: `${window.location.origin}/${locale}/products/pack-pro-conversion-shopify?success=true`,
-        cancelUrl: `${window.location.origin}/${locale}/products/pack-pro-conversion-shopify?echec=true`,
+        successUrl: `${window.location.origin}/${locale}/products/shopify-pro-codes-bundle?success=true`,
+        cancelUrl: `${window.location.origin}/${locale}/products/shopify-pro-codes-bundle?echec=true`,
       });
 
       if (res?.data?.url) {
@@ -244,11 +218,10 @@ export default function Cart() {
                               {savings > 0 && (
                                 <p className="text-sm text-foreground font-semibold">
                                   {t("youSave", {
-                                    amount: new Intl.NumberFormat(locale, {
-                                      style: "currency",
-                                      currency:
-                                        item.cost.totalAmount.currencyCode,
-                                    }).format(savings),
+                                    amount: `${new Intl.NumberFormat(locale, {
+                                      minimumFractionDigits: 2,
+                                      maximumFractionDigits: 2,
+                                    }).format(savings)}€`,
                                   })}
                                 </p>
                               )}
@@ -285,9 +258,10 @@ export default function Cart() {
                   <p className="text-lg font-extrabold text-primary">
                     -
                     {new Intl.NumberFormat(locale, {
-                      style: "currency",
-                      currency: cart.cost.totalAmount.currencyCode,
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
                     }).format(totalSavings)}
+                    €
                   </p>
                 </div>
               ) : null;

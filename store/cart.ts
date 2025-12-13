@@ -1,4 +1,4 @@
-import { Cart, CartItem, Product, VariantsProduct } from "@/types/types";
+import { Cart, CartItem } from "@/types/types";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 
@@ -6,7 +6,7 @@ type UpdateType = "plus" | "minus" | "delete";
 
 interface CartState {
   cart: Cart;
-  addCartItem: (variant: VariantsProduct, product: Product) => void;
+  addCartItem: () => void;
   updateCartItem: (merchandiseId: string, updateType: UpdateType) => void;
   clearCart: () => void;
   timeLeft: number;
@@ -63,19 +63,12 @@ function updateCartItem(
   };
 }
 
-function createOrUpdateCartItem(
-  existingItem: CartItem | undefined,
-  variant: VariantsProduct,
-  product: Product
-): CartItem {
+function createOrUpdateCartItem(existingItem: CartItem | undefined): CartItem {
   const quantity = existingItem ? existingItem.quantity + 1 : 1;
   const totalAmount = calculateItemCost(
     quantity,
-    variant.node.price?.amount ?? ""
+    parseFloat("29.90").toFixed(2)
   );
-  const sellingPlanAllocation =
-    variant.node.sellingPlanAllocations?.edges[0]?.node;
-  const hasSellingPlan = !!sellingPlanAllocation;
 
   return {
     id: existingItem?.id,
@@ -83,29 +76,31 @@ function createOrUpdateCartItem(
     cost: {
       totalAmount: {
         amount: totalAmount,
-        currencyCode: variant.node.price?.currencyCode ?? "",
+        currencyCode: "EUR",
       },
     },
     merchandise: {
-      id: variant.node.id,
-      title: variant.node.title,
-      selectedOptions: variant.node.selectedOptions!,
+      id: "prod_shopify_pro_bundle",
+      title: "Shopify Pro Codes Bundle",
+      selectedOptions: [],
       product: {
-        id: product.id,
-        handle: product.handle,
-        title: product.title,
-        featuredImage: product.images.edges[0],
-      },
-      compareAtPrice: variant.node.compareAtPrice,
-    },
-    sellingPlanAllocation: hasSellingPlan
-      ? {
-          sellingPlan: {
-            id: sellingPlanAllocation.sellingPlan.id,
-            name: sellingPlanAllocation.sellingPlan.name,
+        id: "shopify-pro-codes-bundle",
+        handle: "shopify-pro-codes-bundle",
+        title: "Shopify Pro Codes Bundle",
+        featuredImage: {
+          node: {
+            originalSrc: "/images/product-1.png",
+            altText: "Shopify Pro Codes Bundle",
+            width: 500,
+            height: 500,
           },
-        }
-      : undefined,
+        },
+      },
+      compareAtPrice: {
+        amount: "150.00",
+        currencyCode: "EUR",
+      },
+    },
   };
 }
 
@@ -172,21 +167,19 @@ export const useCartStore = create<CartState>()(
           cart: createEmptyCart(),
           timeLeft: 0,
         })),
-      addCartItem: (variant, product) =>
+      addCartItem: () =>
         set((state) => {
           const currentCart = state.cart || createEmptyCart();
           const existingItem = currentCart.lines.find(
-            (item) => item.merchandise.id === variant.node.id
+            (item) => item.merchandise.id === "prod_shopify_pro_bundle"
           );
-          const updatedItem = createOrUpdateCartItem(
-            existingItem,
-            variant,
-            product
-          );
+          const updatedItem = createOrUpdateCartItem(existingItem);
 
           const updatedLines = existingItem
             ? currentCart.lines.map((item) =>
-                item.merchandise.id === variant.node.id ? updatedItem : item
+                item.merchandise.id === "prod_shopify_pro_bundle"
+                  ? updatedItem
+                  : item
               )
             : [...currentCart.lines, updatedItem];
 

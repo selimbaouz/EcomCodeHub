@@ -1,19 +1,18 @@
-
 const PriceCart = ({
   amount,
   className,
-  currencyCode = 'EUR',
+  currencyCode = "EUR",
 }: {
   amount: string;
   className?: string;
   currencyCode: string;
   currencyCodeClassName?: string;
-} & React.ComponentProps<'p'>) => (
+} & React.ComponentProps<"p">) => (
   <p suppressHydrationWarning={true} className={className}>
     {`${new Intl.NumberFormat(undefined, {
-      style: 'currency',
+      style: "currency",
       currency: currencyCode,
-      currencyDisplay: 'narrowSymbol'
+      currencyDisplay: "narrowSymbol",
     }).format(parseFloat(amount))}`}
   </p>
 );

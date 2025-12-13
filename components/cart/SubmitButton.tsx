@@ -8,22 +8,15 @@ import {
 } from "@/store/cart";
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Product, VariantsProduct } from "@/types/types";
 import { useTranslations } from "next-intl";
 
 interface SubmitButtonProps {
   size?: "fullWidth" | "initial";
-  price?: string;
-  variant: VariantsProduct;
-  product: Product;
   floatingBar?: boolean;
 }
 
 export function SubmitButtonClient({
   size = "initial",
-  price,
-  variant,
-  product,
   floatingBar = false,
 }: SubmitButtonProps) {
   const buttonRef = useRef(null);
@@ -59,7 +52,7 @@ export function SubmitButtonClient({
           : " bg-primary hover:bg-primary/80 text-white text-base py-4 px-2 lg:px-6"
       )}
       onClick={async () => {
-        addCartItem(variant, product);
+        addCartItem();
         setIsOpenCart(true);
         await fetch("/api/pixels-add-to-cart", {
           method: "POST",
@@ -70,10 +63,10 @@ export function SubmitButtonClient({
             userAgent: navigator.userAgent,
             fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
             tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
-            content_ids: [variant.node.id],
-            content_name: variant.node.title,
+            content_ids: ["prod_shopify_pro_bundle"],
+            content_name: "Shopify Pro Codes Bundle (Limited Offer)",
             content_type: "product",
-            value: variant?.node?.price?.amount,
+            value: parseFloat("29.90").toFixed(2),
             currency: "EUR",
           }),
         });
@@ -87,14 +80,12 @@ export function SubmitButtonClient({
         <div className={cn("flex items-center justify-center gap-2")}>
           <p className={cn("uppercase")}>
             {t("productImage.addToCart", {
-              price: parseFloat(price ?? "").toFixed(2),
+              price: parseFloat("29.90").toFixed(2),
             })}
           </p>
           <p className="line-through text-white/70">
             {t("productImage.compareAtPrice", {
-              compareAtPrice: parseFloat(
-                variant?.node?.compareAtPrice?.amount ?? ""
-              ).toFixed(2),
+              compareAtPrice: parseFloat("150.00").toFixed(2),
             })}
           </p>
         </div>

@@ -1,7 +1,0 @@
-.container {
-    @apply mx-auto w-max overflow-hidden max-w-[100px] h-full;
-}
-
-.asSeenOn {
-    @apply flex flex-col items-center gap-2 bg-violet-600 bg-center bg-no-repeat bg-cover py-6 px-10 w-max lg:w-full mx-auto lg:flex-row;
-}

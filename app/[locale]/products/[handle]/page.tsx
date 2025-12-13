@@ -1,8 +1,6 @@
-import { getHandleOfProduct } from "@/data/shopify";
-import { redirect } from "next/navigation";
 import Products from "@/components/Products";
 import { Metadata } from "next";
-import { auth } from "@/auth";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { handle: string };
@@ -40,13 +38,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const product = await getHandleOfProduct(params.handle);
-  const session = await auth();
-
-  if (!product) {
-    redirect("/");
+  if (params.handle != "shopify-pro-codes-bundle") {
+    return notFound();
   }
-  /* const bundle = await getProductById(product?.metafield?.value ?? ""); */
 
-  return <Products product={product} session={session} />;
+  return <Products />;
 }

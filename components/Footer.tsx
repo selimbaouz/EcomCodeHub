@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SecureBadges from "./snippets/SecureBadges/SecureBadges";
+import SecureBadges from "./SecureBadges";
 
 type FooterData = {
   link: string;

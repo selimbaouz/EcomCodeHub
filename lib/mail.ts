@@ -16,7 +16,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const sendSuccessPurchase = async (email: string, name: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Thank you for your purchase",
       react: SuccessPurchase({ name }),
@@ -31,7 +31,7 @@ export const sendSuccessPurchase = async (email: string, name: string) => {
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: email,
       subject: "2FA Code",
       react: TwoFactorEmail({ token }),
@@ -46,7 +46,7 @@ export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
 export const sendPasswordResetEmail = async (email: string, token: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Reset your password",
       react: ResetPassword({ token }),
@@ -61,7 +61,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 export const sendSuccessPasswordChanged = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Your password has been modified",
       react: PasswordChanged(),
@@ -80,7 +80,7 @@ export const sendVerificationEmail = async (
 ) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: isChange
         ? "Confirm your new email address"
@@ -97,7 +97,7 @@ export const sendVerificationEmail = async (
 export const sendSuccessEmailVerified = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Your email has been verified",
       react: EmailVerified(),
@@ -115,7 +115,7 @@ export const sendEmailChangeConfirmation = async (
 ) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Confirm your request to change your email address",
       react: EmailChangeConfirmation({ token }),
@@ -130,7 +130,7 @@ export const sendEmailChangeConfirmation = async (
 export const sendSuccessEmailChanged = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Your email has been modified",
       react: EmailChanged(),
@@ -148,7 +148,7 @@ export const sendEmailDeleteAccountConfirmation = async (
 ) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Confirm your request to delete your account",
       react: EmailDeleteAccountConfirmation({ token }),
@@ -163,7 +163,7 @@ export const sendEmailDeleteAccountConfirmation = async (
 export const sendSuccessAccountDeleted = async (email: string) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${email}`,
       subject: "Your account has been deleted",
       react: AccountDeleted(),
@@ -181,7 +181,7 @@ export const sendNotificationNewCodes = async (
 ) => {
   try {
     const data = await resend.emails.send({
-      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      from: "EcomCodeHub <notifications@ecomcodehub.com>",
       to: `${emails}`,
       subject: `${codeCount} nouveaux codes disponibles sur EcomCodeHub !`,
       react: NewCodes({ codeCount }),

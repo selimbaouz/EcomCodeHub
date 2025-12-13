@@ -13,18 +13,14 @@ import ExampleCode from "@/components/ExampleCode";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import ProductImage from "@/components/ProductImage";
 import ImagesGallery from "@/components/ImagesGallery";
-import { Product } from "@/types/types";
-import { Session } from "next-auth";
 import FlashPromo from "./FlashPromo";
 import { useVisibleFloatingCartStore } from "@/store/cart";
 import FloatingBar from "./navigation/FloatingBar";
+import Image1 from "@/public/images/product-1.png";
+import Image2 from "@/public/images/product-2.png";
+import Image3 from "@/public/images/product-3.png";
 
-interface ProductsProps {
-  product: Product;
-  session: Session | null;
-}
-
-const Products: FC<ProductsProps> = ({ product, session }) => {
+const Products: FC = () => {
   const { isVisible } = useVisibleFloatingCartStore();
 
   useEffect(() => {
@@ -37,10 +33,10 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
         userAgent: navigator.userAgent,
         fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
         tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
-        content_ids: [product.id],
-        content_name: product.title,
+        content_ids: ["prod_shopify_pro_bundle"],
+        content_name: "Shopify Pro Codes Bundle",
         content_type: "product",
-        value: product.priceRange.minVariantPrice.amount,
+        value: "29.90",
         currency: "EUR",
         fbp: document.cookie
           .split("; ")
@@ -48,13 +44,13 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
           ?.split("=")[1],
       }),
     });
-  }, [product]);
+  }, []);
 
   return (
     <div className="relative">
       <div className="sticky top-0 w-full z-50">
         <StickyBar />
-        <NavBar isAccount={session?.user ? true : false} />
+        <NavBar />
         <FlashPromo />
       </div>
 
@@ -66,10 +62,37 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
           className={cn("w-full text-left mx-auto", "lg:grid lg:grid-cols-2")}
         >
           <div className="lg:flex lg:justify-center xl:pl-40 bg-secondary/30 dark:bg-[#324e58] lg:h-screen lg:sticky lg:top-24">
-            <ImagesGallery images={product?.images.edges ?? []} />
+            <ImagesGallery
+              images={[
+                {
+                  node: {
+                    altText: "Product 1",
+                    originalSrc: Image1.src,
+                    width: Image1.width,
+                    height: Image1.height,
+                  },
+                },
+                {
+                  node: {
+                    altText: "Product 2",
+                    originalSrc: Image2.src,
+                    width: Image2.width,
+                    height: Image2.height,
+                  },
+                },
+                {
+                  node: {
+                    altText: "Product 3",
+                    originalSrc: Image3.src,
+                    width: Image3.width,
+                    height: Image3.height,
+                  },
+                },
+              ]}
+            />
           </div>
           <div className={cn("px-4", "lg:pl-10", "xl:pl-20")}>
-            <ProductImage product={product!} />
+            <ProductImage />
           </div>
         </section>
       </div>
@@ -82,7 +105,7 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
       <Footer />
       {/*  <Discord /> */}
       {/* <PurchasePopup /> */}
-      {!isVisible && <FloatingBar product={product} />}
+      {!isVisible && <FloatingBar />}
     </div>
   );
 };

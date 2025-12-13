@@ -1,24 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { FC } from "react";
+import React from "react";
 import { AddToCart } from "../cart/add-to-cart";
-import { Product } from "@/types/types";
 import { useIsHydrated } from "@/hook/useIsHydrated";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useOpenCartStore } from "@/store/cart";
 import Image from "next/image";
+import Image1 from "@/public/images/product-1.png";
 
-interface FloatingBarProps {
-  product: Product;
-}
-
-const FloatingBar: FC<FloatingBarProps> = ({ product }) => {
+const FloatingBar = () => {
   const isHydrated = useIsHydrated();
   const { isOpenCart } = useOpenCartStore();
-  const firstVariant = product.variants.edges[0]?.node;
-  const variantPrice = firstVariant?.price?.amount;
-  const compareAtPrice = firstVariant?.compareAtPrice?.amount;
-  const productImage = product.images.edges[0]?.node.originalSrc;
 
   if (!isHydrated) {
     return null;
@@ -47,18 +39,16 @@ const FloatingBar: FC<FloatingBarProps> = ({ product }) => {
           {/* Left side - Product image and info */}
           <div className={cn("flex items-center gap-3")}>
             {/* Product Image */}
-            {productImage && (
-              <Image
-                src={productImage}
-                alt={product.title}
-                width={60}
-                height={60}
-                className={cn(
-                  "rounded-lg object-cover w-12 h-12",
-                  "lg:w-16 lg:h-16"
-                )}
-              />
-            )}
+            <Image
+              src={Image1.src}
+              alt="Shopify Pro Codes Bundle"
+              width={60}
+              height={60}
+              className={cn(
+                "rounded-lg object-cover w-12 h-12",
+                "lg:w-16 lg:h-16"
+              )}
+            />
             {/* Product Info */}
             <div
               className={cn(
@@ -76,43 +66,35 @@ const FloatingBar: FC<FloatingBarProps> = ({ product }) => {
               </h6>
               <div className={cn("items-center gap-2 lg:flex hidden")}>
                 <p className={cn("font-bold text-base", "lg:text-lg")}>
-                  {variantPrice ? parseFloat(variantPrice).toFixed(2) : "29.90"}
+                  29.90 €
+                </p>
+                <p
+                  className={cn(
+                    "text-sm line-through text-white/60",
+                    "lg:text-base"
+                  )}
+                >
+                  {`${new Intl.NumberFormat(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(parseFloat("150.00"))}`}
                   €
                 </p>
-                {compareAtPrice && (
-                  <p
-                    className={cn(
-                      "text-sm line-through text-white/60",
-                      "lg:text-base"
-                    )}
-                  >
-                    {parseFloat(compareAtPrice).toFixed(2)}€
-                  </p>
-                )}
-                {compareAtPrice && variantPrice && (
-                  <span
-                    className={cn(
-                      "text-xs font-semibold bg-white/20 px-2 py-0.5 rounded",
-                      "lg:text-sm"
-                    )}
-                  >
-                    Save{" "}
-                    {(
-                      parseFloat(compareAtPrice) - parseFloat(variantPrice)
-                    ).toFixed(0)}
-                    €
-                  </span>
-                )}
+                <span
+                  className={cn(
+                    "text-xs font-semibold bg-white/20 px-2 py-0.5 rounded",
+                    "lg:text-sm"
+                  )}
+                >
+                  Save {(parseFloat("150.00") - parseFloat("29.90")).toFixed(0)}
+                  €
+                </span>
               </div>
             </div>
           </div>
 
           {/* Right side - CTA Button */}
-          <AddToCart
-            state={{ title: product.title, price: variantPrice }}
-            product={product}
-            floatingBar
-          />
+          <AddToCart floatingBar />
         </div>
       </motion.div>
     </motion.div>

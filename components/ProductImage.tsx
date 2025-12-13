@@ -1,28 +1,15 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Product } from "@/types/types";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { AddToCart } from "./cart/add-to-cart";
 import { BestReviews } from "./BestReviews";
 import { StarFilledIcon } from "@radix-ui/react-icons";
-import SecureBadges from "./snippets/SecureBadges/SecureBadges";
+import SecureBadges from "./SecureBadges";
 import { useTranslations } from "next-intl";
 import { FaCheckSquare } from "react-icons/fa";
 
-interface ProductImageProps {
-  product: Product;
-  bundle?: Product | undefined;
-}
-
-const ProductImage: FC<ProductImageProps> = ({ product }) => {
+const ProductImage: FC = () => {
   const t = useTranslations("fe");
-
-  // Utiliser directement la première variante du produit
-  const firstVariant = product.variants.edges[0]?.node;
-  const [selectedVariant, setSelectedVariant] = useState({
-    title: firstVariant?.title || "",
-    price: firstVariant?.price?.amount || "0",
-  });
 
   const checkProduct = [
     {
@@ -120,61 +107,9 @@ const ProductImage: FC<ProductImageProps> = ({ product }) => {
       </ul>
       <div className={cn("space-y-10 py-4")}>
         <div id="add-to-cart-anchor" className={cn("space-y-6")}>
-          <AddToCart
-            state={selectedVariant}
-            product={product}
-            size="fullWidth"
-          />
-          {/* <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">
-            {t("productImage.paymentSecure")}
-          </p> */}
+          <AddToCart size="fullWidth" />
           <SecureBadges />
-          {/* <div className={cn("px-4 py-2 rounded-lg border-2 border-foreground/10 bg-gray-100 dark:bg-[#2c4049] flex items-center justify-between")}>
-                        <div className={cn("gap-2 flex items-center justify-start")}>
-                            <div>
-                                <ImageLoader
-                                    src={bundle?.images?.edges?.[0].node.originalSrc ?? ""}
-                                    alt={`Uploaded image`}
-                                    width={bundle?.images?.edges?.[0].node.width ?? 500}
-                                    height={bundle?.images?.edges?.[0].node.height ?? 500}
-                                    loading="lazy"
-                                    className={cn(
-                                        "size-20 object-cover rounded-lg", 
-                                    )}
-                                />
-                            </div>
-                            <div className={cn("p-2 max-w-sm space-y-1", "lg:p-4")}>
-                                <h4 className={cn("text-sm font-semibold", "lg:text-lg")}> {bundle?.title}</h4>
-                                <div className="flex items-center gap-2 lg:gap-3">
-                                    <p className={cn("text-sm font-semibold", "lg:text-lg")}>
-                                    {parseFloat(bundle?.priceRange.maxVariantPrice.amount ?? "").toFixed(2)}€
-                                    </p>
-                                    <p className={cn("text-sm font-medium line-through text-foreground/50", "lg:text-base")}>{parseFloat(bundle?.variants?.edges?.[0]?.node?.compareAtPrice?.amount ?? "").toFixed(2)}€</p>
-                                </div>
-                            </div>
-                        </div>
-                        <Switch 
-                            className="dark:b-[#2c4049]" 
-                            checked={bundleActive}
-                            onCheckedChange={setBundleActive}
-                            disabled={removeSuffix(selectedVariant.title) === "Abonnement mensuel"}
-                        />
-                    </div> */}
         </div>
-        {/* <Accordion type="single" collapsible className="w-full">
-          {detailsProduct.map((data, index) => (
-            <AccordionItem
-              key={index}
-              value={`item-${index}`}
-              className={cn("border-foreground py-1 whitespace-pre-line")}
-            >
-              <AccordionTrigger className={cn("text-sm", "lg:text-base")}>
-                {data.title}
-              </AccordionTrigger>
-              <AccordionContent>{data.content}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion> */}
       </div>
       <div className={cn("space-y-6 pb-10")}>
         <BestReviews productPage />

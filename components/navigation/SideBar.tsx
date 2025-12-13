@@ -45,7 +45,7 @@ export default function SideBar({ isAccount }: SideBarProps) {
         <ul className={cn("cursor-pointer")}>
           {[
             {
-              path: `/${locale}/products/pack-pro-conversion-shopify`,
+              path: `/${locale}/products/shopify-pro-codes-bundle`,
               title: t("conversionPack"),
             },
             {
