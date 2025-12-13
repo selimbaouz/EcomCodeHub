@@ -5,7 +5,7 @@ import Link from "next/link";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import { FC } from "react";
 import { useIsHydrated } from "@/hook/useIsHydrated";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 interface NavBarWebProps {
@@ -18,7 +18,6 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
   const t = useTranslations("fe.navigation");
   const { cart } = useCartStore();
   const { setIsOpenCart } = useOpenCartStore();
-  const router = useRouter();
   const isHydrated = useIsHydrated();
   const pathname = usePathname();
   const pathnameOfProduct =
