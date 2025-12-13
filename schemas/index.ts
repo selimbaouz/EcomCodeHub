@@ -1,19 +1,21 @@
 import { z } from "zod";
 
-export const userSchema = z.object({
-  id: z.string(),
-  name: z.string().nullable(),
-  email: z.string().email().nullable(),
-  password: z.string().nullable(),
-  emailVerified: z.date().nullable(),
-  emailNotifications: z.boolean().default(false).nullable(),
-  stripeCustomerId: z.string().nullable(),
-  credits: z.number(),
-  plan: z.enum(["ONE_TIME", "SUBSCRIPTION"]).nullable(),
-  isTwoFactorEnabled: z.boolean(),
-  created_at: z.date(),
-  updatedAt: z.date(),
-}).nullable();
+export const userSchema = z
+  .object({
+    id: z.string(),
+    name: z.string().nullable(),
+    email: z.string().email().nullable(),
+    password: z.string().nullable(),
+    emailVerified: z.date().nullable(),
+    emailNotifications: z.boolean().default(false).nullable(),
+    stripeCustomerId: z.string().nullable(),
+    credits: z.number(),
+    plan: z.enum(["ONE_TIME", "SUBSCRIPTION"]).nullable(),
+    isTwoFactorEnabled: z.boolean(),
+    created_at: z.date(),
+    updatedAt: z.date(),
+  })
+  .nullable();
 
 export const purchaseSchema = z.object({
   id: z.string(),
@@ -30,7 +32,9 @@ export const snippetFieldSchema = z.object({
 
 export const snippetFormSchema = z.object({
   sectionTitle: z.string().min(1, "SectionTitle is required"),
-  snippets: z.array(snippetFieldSchema).min(1, "At least one benefit is required"),
+  snippets: z
+    .array(snippetFieldSchema)
+    .min(1, "At least one benefit is required"),
 });
 
 export const subscriptionIdSchema = z.object({
@@ -65,16 +69,14 @@ export const userInvoicesSchema = z.object({
 });
 
 export const onPurchaseSnippetSchema = z.object({
-  snippetId: z.string(), 
-  userId: z.string(), 
-  creditPrice: z.number()
+  snippetId: z.string(),
+  userId: z.string(),
+  creditPrice: z.number(),
 });
 
 export const createCheckoutSessionSchema = z.object({
-  packNameWithBundle: z.string(),
   quantities: z.array(z.number()),
   variantId: z.string(),
-  type: z.string(),
   successUrl: z.string(),
   cancelUrl: z.string(),
 });
@@ -106,7 +108,7 @@ export const LoginSchema = z.object({
   twoFactorCode: z.string().optional(),
   isChange: z.boolean().optional(),
   locale: z.string().optional(),
-})
+});
 
 // Schéma pour la première étape : code uniquement
 export const CodePromoSchema = z.object({
@@ -117,7 +119,9 @@ export const CodePromoSchema = z.object({
 export const SignUserWithCodeSchema = z.object({
   name: z.string().min(1, "Le nom est requis"),
   email: z.string().email("L'email doit être valide"),
-  password: z.string().min(6, "Le mot de passe doit faire au moins 6 caractères"),
+  password: z
+    .string()
+    .min(6, "Le mot de passe doit faire au moins 6 caractères"),
   promoId: z.string().min(1, "Le code promo est requis"),
 });
 
@@ -139,7 +143,9 @@ export const notificationSchema = z.object({
 });
 
 export const deleteAccountSchema = z.object({
-  password: z.string().min(6, "Le mot de passe est requis pour supprimer le compte"),
+  password: z
+    .string()
+    .min(6, "Le mot de passe est requis pour supprimer le compte"),
 });
 
 export const updateEmailSchema = z.object({
@@ -151,26 +157,34 @@ export const NewVerificationEmailSchema = z.object({
   token: z.string(),
 });
 
-export const updatePasswordSchema = z.object({
-  newPassword: z.string().min(6, "Le nouveau mot de passe doit contenir au moins 6 caractères"),
-  confirmPassword: z.string().min(6, "Confirmez le nouveau mot de passe"),
-}).refine(data => data.newPassword === data.confirmPassword, {
-  message: "Les mots de passe ne correspondent pas",
-  path: ["confirmPassword"]
-});
+export const updatePasswordSchema = z
+  .object({
+    newPassword: z
+      .string()
+      .min(6, "Le nouveau mot de passe doit contenir au moins 6 caractères"),
+    confirmPassword: z.string().min(6, "Confirmez le nouveau mot de passe"),
+  })
+  .refine((data) => data.newPassword === data.confirmPassword, {
+    message: "Les mots de passe ne correspondent pas",
+    path: ["confirmPassword"],
+  });
 
-export const NewPasswordSchema = z.object({
-  token: z.string().optional(),
-  password: z.string().min(6, {
-    message: "Minimum de 6 caractères requis",
-  }),
-  confirmPassword: z.optional(z.string().min(6, {
-    message: "Minimum de 6 caractères requis",
-  })),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Les mots de passe doivent correspondre",
-  path: ["confirmPassword"],
-});
+export const NewPasswordSchema = z
+  .object({
+    token: z.string().optional(),
+    password: z.string().min(6, {
+      message: "Minimum de 6 caractères requis",
+    }),
+    confirmPassword: z.optional(
+      z.string().min(6, {
+        message: "Minimum de 6 caractères requis",
+      })
+    ),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Les mots de passe doivent correspondre",
+    path: ["confirmPassword"],
+  });
 
 export const NewVerificationSchema = z.object({
   token: z.string(),

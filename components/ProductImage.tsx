@@ -14,8 +14,7 @@ interface ProductImageProps {
   bundle?: Product | undefined;
 }
 
-const ProductImage: FC<ProductImageProps> = ({ product, bundle }) => {
-  const [bundleActive, setBundleActive] = useState(false);
+const ProductImage: FC<ProductImageProps> = ({ product }) => {
   const t = useTranslations("fe");
 
   // Utiliser directement la première variante du produit
@@ -124,7 +123,6 @@ const ProductImage: FC<ProductImageProps> = ({ product, bundle }) => {
           <AddToCart
             state={selectedVariant}
             product={product}
-            bundle={bundleActive ? bundle : undefined}
             size="fullWidth"
           />
           {/* <p className="text-center text-xs text-foreground font-medium xs:text-sm lg:text-base">

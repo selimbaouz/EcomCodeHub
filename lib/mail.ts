@@ -7,10 +7,26 @@ import EmailVerified from "@/emails/EmailVerified";
 import NewCodes from "@/emails/NewCodes";
 import PasswordChanged from "@/emails/PasswordChanged";
 import ResetPassword from "@/emails/ResetPassword";
+import SuccessPurchase from "@/emails/SuccessPurchase";
 import TwoFactorEmail from "@/emails/TwoFactorEmail";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+export const sendSuccessPurchase = async (email: string, name: string) => {
+  try {
+    const data = await resend.emails.send({
+      from: "EcomCodeHub <no-reply@ecomcodehub.com>",
+      to: `${email}`,
+      subject: "Thank you for your purchase",
+      react: SuccessPurchase({ name }),
+    });
+
+    return data;
+  } catch (error) {
+    throw new Error("Email sending failed");
+  }
+};
 
 export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
   try {

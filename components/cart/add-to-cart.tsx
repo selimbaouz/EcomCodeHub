@@ -1,37 +1,27 @@
-import { Product } from '@/types/types';
-import { useFormState } from 'react-dom';
-import { addItem } from './actions';
-import { useCartStore } from '@/store/cart';
-import { SubmitButtonClient } from './SubmitButton';
+import { Product } from "@/types/types";
+import { SubmitButtonClient } from "./SubmitButton";
 
-export function AddToCart({ 
-  product, 
-  bundle,
-  size = "initial", 
-  state 
-}: { 
-  product: Product, 
-  bundle?: Product,
-  size?: "fullWidth" | "initial", 
-  color?: "gradient" | "foreground", 
+export function AddToCart({
+  product,
+  size = "initial",
+  state,
+}: {
+  product: Product;
+  size?: "fullWidth" | "initial";
   state?: {
-  title: string,
-  price?: string;
-} }) {
+    title: string;
+    price?: string;
+  };
+}) {
   const variants = product.variants.edges;
-  const stateValues = state?.title.split(" / ").map(s => s.trim());
-  const variant = variants.find(v =>
-    v.node.selectedOptions?.map(o => o.value.trim().toLowerCase()).join(" / ") === stateValues?.join(" / ").toLowerCase()
-  ) || variants[0];
+  const variant = variants[0];
 
-  const updatedPrice = bundle
-    ? (parseFloat(state?.price ?? "0") + parseFloat(bundle.priceRange.maxVariantPrice.amount)).toFixed(2)
-    : state?.price;
-  
+  const updatedPrice = state?.price;
+
   return (
-    <SubmitButtonClient 
-      size={size} 
-      price={updatedPrice} 
+    <SubmitButtonClient
+      size={size}
+      price={updatedPrice}
       variant={variant}
       product={product}
     />

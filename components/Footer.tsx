@@ -110,13 +110,13 @@ const Footer = ({ className }: FooterProps) => {
           <p className={cn("text-center text-[13px]")}>
             © 2025, EcomCodeHub. All rights reserved.
           </p>
-          <Link
+          {/*  <Link
             href="https://selimbaouz.com"
             target="_blank"
             className={cn("text-center text-[13px] hover:underline")}
           >
             Made with ❤️ by Selim Baouz
-          </Link>
+          </Link> */}
         </div>
       </footer>
     </div>

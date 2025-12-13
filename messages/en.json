@@ -602,7 +602,8 @@
       "mostProfitable": "Most profitable",
       "noCommit": "No commitment",
       "creditsLabel": "Credits",
-      "addToCart": "Get instant access - {price} €",
+      "addToCart": "Add to cart - {price}€",
+      "compareAtPrice": " - {compareAtPrice}€",
       "exampleStore": {
         "title": "Your store will look like this in 5 minutes",
         "subtitle": "(or you'll keep losing sales to stores that aren't better than yours—they just look more convincing)",
@@ -709,7 +710,7 @@
         "items": [
           {
             "title": "How do I access the codes after purchase?",
-            "content": "After payment, your email is automatically registered in our system. You'll receive instant access to create your account on our platform. Once logged in, you can browse all 500+ code snippets, copy any code you want, and paste it directly into your Shopify store—instantly. No waiting, no downloads, just immediate access."
+            "content": "After your payment is confirmed, you'll receive an email containing a private Notion link within 24 hours. I manually validate each access to ensure security and prevent unauthorized sharing. Simply click the link, create or log in to your Notion account (it's free), and you'll have instant access to all 500+ organized snippets ready to copy-paste. If you haven't received your access link within 24 hours, contact me directly and I'll prioritize your access."
           },
           {
             "title": "What are Shopify liquid codes, and how do they work?",
@@ -761,7 +762,7 @@
       "totalLabel": "Total",
       "savingsLabel": "Savings",
       "youSave": "(You save {amount})",
-      "checkoutButton": "Stop Losing Sales - Checkout"
+      "checkoutButton": "Get instant access now"
     },
     "footer": {
       "aboutTitle": "About",

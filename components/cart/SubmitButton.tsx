@@ -75,11 +75,20 @@ export function SubmitButtonClient({
         });
       }}
     >
-      <p className={cn("uppercase")}>
-        {t("productImage.addToCart", {
-          price: parseFloat(price ?? "").toFixed(2),
-        })}
-      </p>
+      <div className={cn("flex items-center justify-center gap-2")}>
+        <p className={cn("uppercase")}>
+          {t("productImage.addToCart", {
+            price: parseFloat(price ?? "").toFixed(2),
+          })}
+        </p>
+        <p className="line-through text-white/70">
+          {t("productImage.compareAtPrice", {
+            compareAtPrice: parseFloat(
+              variant?.node?.compareAtPrice?.amount ?? ""
+            ).toFixed(2),
+          })}
+        </p>
+      </div>
     </button>
   );
 }

@@ -15,6 +15,7 @@ import ProductImage from "@/components/ProductImage";
 import ImagesGallery from "@/components/ImagesGallery";
 import { Product } from "@/types/types";
 import { Session } from "next-auth";
+import FlashPromo from "./FlashPromo";
 
 interface ProductsProps {
   product: Product;
@@ -22,6 +23,8 @@ interface ProductsProps {
 }
 
 const Products: FC<ProductsProps> = ({ product, session }) => {
+  /* const { isVisible } = useVisibleFloatingCartStore(); */
+
   useEffect(() => {
     fetch("/api/pixels-view-content", {
       method: "POST",
@@ -50,6 +53,7 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
       <div className="sticky top-0 w-full z-50">
         <StickyBar />
         <NavBar isAccount={session?.user ? true : false} />
+        <FlashPromo />
       </div>
 
       <div className="max-w-screen-xl mx-auto w-full">
@@ -76,6 +80,7 @@ const Products: FC<ProductsProps> = ({ product, session }) => {
       <Footer />
       {/*  <Discord /> */}
       {/* <PurchasePopup /> */}
+      {/* {!isVisible && <FloatingBar product={product} />} */}
     </div>
   );
 };
