@@ -589,8 +589,8 @@
       "subscription": "Monthly subscription"
     },
     "productImage": {
+      "lifetimeUpdates": "Lifetime updates",
       "instantAccess": "Instant access",
-      "topSeller2025": "Top Seller 2025",
       "joinCommunity": "Your store looks <strong>cheap</strong>. Your visitors see it in <strong>2 seconds</strong>. They buy elsewhere. At your <strong>competitor</strong>. These <strong>500+ codes</strong> fix it in <strong>5 minutes</strong>",
       "incredible": "Amazing",
       "rated5": "Rated 5/5 on",
@@ -714,27 +714,19 @@
           },
           {
             "title": "What are Shopify liquid codes, and how do they work?",
-            "content": "Liquid codes are Shopify's native language for customization. Our snippets are pre-built, tested code blocks that add professional features to your store—like trust badges, countdown timers, social proof, and more. Just copy, paste, and watch your conversions improve."
+            "content": "Shopify liquid codes are snippets of customizable code designed to enhance your Shopify store’s functionality. With our pre-built codes, you can easily add features like custom product filters, dynamic pricing displays, or unique design elements—all without advanced coding knowledge."
           },
           {
             "title": "Do I need coding experience to use these?",
-            "content": "Absolutely not. If you can copy and paste, you can use these snippets. Each one comes with step-by-step instructions and video tutorials. Most merchants install their first snippet in under 5 minutes."
+            "content": "Absolutely not. If you can copy and paste, you can use these snippets. Most merchants install their first snippet in under 5 minutes."
           },
           {
             "title": "Will these work with my Shopify theme?",
             "content": "Yes. Our snippets are built with Shopify's native Liquid language and tested across 200+ themes including Dawn, Impulse, Prestige, Debut, and custom themes. If you encounter any compatibility issue, our support team will help you fix it."
           },
           {
-            "title": "What if I need help installing a snippet?",
-            "content": "We include free installation support with every purchase. If you get stuck, just send us a message and we'll guide you through it. Average response time: under 2 hours."
-          },
-          {
-            "title": "How is this different from buying a premium theme or hiring a developer?",
-            "content": "Premium themes cost 250-400€ and lock you into their design. Developers charge 50-150€/hour (that's 1,200€+ for 20 custom snippets). With our pack, you get 500+ snippets for 29.90€, install them yourself in 5 minutes, and own them forever. You save over 2,000€."
-          },
-          {
-            "title": "Do I get updates when you add new snippets?",
-            "content": "Yes, 100% free forever. We add new snippets every month based on the latest e-commerce trends and CRO techniques. Once you buy, you get access to everything we release—no extra fees, ever."
+            "title": "What happens if I encounter any problems?",
+            "content": "We’ve got you covered! If you encounter any problems, just send me a message at slmrsv.bz@gmail.com and I'll help you fix it."
           }
         ]
       }
@@ -754,7 +746,7 @@
       "shopAudits": "Shop audits and advice to improve your store"
     },
     "cart": {
-      "title": "Your Cart",
+      "title": "Cart",
       "close": "Close",
       "emptyCart": "Your cart is empty.",
       "productImageAlt": "Product image",
@@ -817,40 +809,68 @@
         "title": "General Terms and Conditions of Sale (GTCS)",
         "data": [
           {
-            "title": "Last updated: 02/04/2025",
-            "content": "These General Terms and Conditions of Sale govern the sales of products and services on the Ecomcodehub website."
+            "title": "Last updated: 12/15/2024",
+            "content": "These General Terms and Conditions of Sale govern the sales of digital products on the EcomCodeHub website (https://ecomcodehub.com)."
           },
           {
             "title": "1. Products and Services",
-            "content": "Ecomcodehub offers ready-to-use Liquid & TailwindCSS snippets to improve Shopify stores. Access to these snippets is via a credit system, which can be purchased in packs."
+            "content": "EcomCodeHub offers a collection of 500+ ready-to-use Liquid code snippets designed to enhance Shopify stores. Upon purchase, customers receive access to a private Notion workspace containing all snippets, organized and ready to copy-paste."
           },
           {
-            "title": "2. Packs and Subscriptions",
-            "content": "We offer three credit packs used to unlock snippets:\n- 1 credit\n- 3 credits\n- 5 credits\nThese credits can be obtained through a one-time purchase or a monthly subscription."
+            "title": "2. Product Description",
+            "content": "The Pro Conversion Pack includes:\n- 500+ Shopify code snippets (Liquid)\n- Lifetime access to the Notion workspace\n- Free updates with new snippets\n- Technical support for installation assistance"
           },
           {
             "title": "3. Pricing",
-            "content": "Prices for packs and subscriptions are listed in euros, including all taxes. We reserve the right to modify our prices at any time."
+            "content": "All prices are displayed in euros (€) and include all applicable taxes. We reserve the right to modify prices at any time. However, orders already placed will not be affected by price changes."
           },
           {
-            "title": "4. Orders",
-            "content": "You can place orders directly on our site. Confirmation of your order implies full acceptance of these GTCS."
+            "title": "4. Orders and Payment",
+            "content": "Orders are placed directly on our website. Payment is processed immediately via Stripe, a secure payment platform. Confirmation of your order constitutes full acceptance of these Terms and Conditions. Supported payment methods include credit cards, debit cards, and other methods available through Stripe."
           },
           {
-            "title": "5. Payment",
-            "content": "Payment is due immediately at the time of ordering. Payments are processed via Stripe."
+            "title": "5. Access Delivery Process",
+            "content": "After successful payment confirmation:\n1. You will receive a confirmation email within minutes\n2. This email will contain a private link to our Notion workspace\n3. You must create a Notion account (free) or log in if you already have one\n4. Access to the snippets will be manually validated within 24 hours maximum for security purposes\n5. Most customers receive access within a few hours\n\nIf you haven't received access after 24 hours, please contact us at slmrsv.bz@gmail.com and we will prioritize your access immediately."
           },
           {
-            "title": "6. Delivery",
-            "content": "Credits purchased are added to your account immediately after payment confirmation."
+            "title": "6. Account Security",
+            "content": "Access to the Notion workspace is personal and non-transferable. Each purchase grants access to one individual user only. Sharing your access credentials or the workspace link with third parties is strictly prohibited and may result in immediate access revocation without refund. We manually validate each access to ensure security and prevent unauthorized sharing."
           },
           {
             "title": "7. Right of Withdrawal",
-            "content": "According to applicable laws, the right of withdrawal cannot be exercised for digital content not supplied on a physical support."
+            "content": "In accordance with Article L221-28 of the French Consumer Code, the right of withdrawal does not apply to digital content supplied in non-material form once delivery has begun with the consumer's prior express consent and acknowledgment that they thereby lose their right of withdrawal. By purchasing and accessing our digital products, you expressly agree to immediate access and waive your right of withdrawal."
           },
           {
-            "title": "8. Liability",
-            "content": "We cannot be held liable for damages resulting from the misuse of our products."
+            "title": "8. Intellectual Property",
+            "content": "All code snippets, documentation, and content provided through EcomCodeHub remain the intellectual property of EcomCodeHub. You are granted a non-exclusive, non-transferable license to use the snippets in your own Shopify projects (personal or client projects). You may not:\n- Resell, redistribute, or share the snippets\n- Claim ownership of the code\n- Include the snippets in competing products or code libraries\n- Share your Notion workspace access with others"
+          },
+          {
+            "title": "9. Warranties and Liability",
+            "content": "We strive to provide high-quality, tested code snippets compatible with Shopify themes. However, we cannot guarantee that all snippets will work perfectly with every custom theme or configuration. We provide installation support to help resolve compatibility issues. EcomCodeHub cannot be held liable for:\n- Damages resulting from improper implementation of snippets\n- Issues caused by conflicts with custom code or third-party apps\n- Loss of data or revenue\n- Any indirect or consequential damages\n\nOur total liability is limited to the amount paid for the product."
+          },
+          {
+            "title": "10. Technical Support",
+            "content": "Technical support is included with your purchase for installation assistance and compatibility questions. Support is provided via email at slmrsv.bz@gmail.com. We aim to respond within 24-48 hours during business days. Support does not include custom development or modifications beyond the provided snippets."
+          },
+          {
+            "title": "11. Updates and Modifications",
+            "content": "We regularly add new snippets to the collection at no additional cost to existing customers. We reserve the right to modify, update, or discontinue snippets as needed. Customers with lifetime access will continue to have access to all current and future snippets."
+          },
+          {
+            "title": "12. Refund Policy",
+            "content": "Due to the digital nature of our product and immediate access delivery, we generally do not offer refunds. However, if you experience technical issues preventing you from accessing the Notion workspace, or if the snippets are fundamentally incompatible with Shopify despite our support efforts, please contact us at slmrsv.bz@gmail.com within 14 days of purchase. We will evaluate refund requests on a case-by-case basis."
+          },
+          {
+            "title": "13. Personal Data",
+            "content": "Your personal data (name, email address) is collected solely for order processing, access delivery, and customer support. We do not share your data with third parties except our payment processor (Stripe). For more information, please refer to our Privacy Policy."
+          },
+          {
+            "title": "14. Applicable Law and Jurisdiction",
+            "content": "These Terms and Conditions are governed by French law. In case of dispute, and after seeking an amicable solution, the courts of France shall have exclusive jurisdiction."
+          },
+          {
+            "title": "15. Contact",
+            "content": "For any questions regarding these Terms and Conditions or our products, please contact us at:\nEmail: slmrsv.bz@gmail.com\nWebsite: https://ecomcodehub.com"
           }
         ]
       },

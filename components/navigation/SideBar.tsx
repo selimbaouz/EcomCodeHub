@@ -74,7 +74,7 @@ export default function SideBar({ isAccount }: SideBarProps) {
           ))}
           <li className="border-t dark:border-[#324e58] py-3 pl-4 hover:bg-primary group">
             <Link
-              href="https://wa.me/0745473667"
+              href="mailto:slmrsv.bz@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

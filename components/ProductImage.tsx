@@ -46,7 +46,7 @@ const ProductImage: FC = () => {
               "text-xs text-background font-semibold bg-foreground px-2 py-1 rounded-lg"
             )}
           >
-            {t("productImage.topSeller2025")}
+            {t("productImage.lifetimeUpdates")}
           </div>
         </div>
         <h3

@@ -94,7 +94,7 @@ const Footer = ({ className }: FooterProps) => {
                 <div className="flex items-center gap-1">
                   <span>or on</span>
                   <Link
-                    href="https://wa.me/0745473667"
+                    href="https://wa.me/+33745473667"
                     target="_blank"
                     className={cn(classLink, "underline")}
                   >

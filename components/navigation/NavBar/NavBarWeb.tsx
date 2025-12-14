@@ -73,7 +73,7 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
           ))}
           <li>
             <Link
-              href="ttps://wa.me/0745473667"
+              href="mailto:slmrsv.bz@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
