@@ -561,10 +561,44 @@
       "supportIncluded": "✅ Setup help included",
       "timeSaving": "🚀 No coding required"
     },
+    "paymentSuccessModal": {
+      "title": "Payment Successful! 🎉",
+      "subtitle": "Your order has been confirmed",
+      "nextSteps": "What happens next:",
+
+      "step1Title": "1. Check your email",
+      "step1Description": "You'll receive an email within minutes with your Notion workspace link.",
+
+      "step2Title": "2. Sign up on Notion",
+      "step2Description": "Click the link and create your free Notion account (or log in if you already have one).",
+
+      "step3Title": "3. Access validated within 24h",
+      "step3Description": "I manually validate each access for security. Most customers get access within a few hours.",
+
+      "importantNote": "Haven't received the email after 24 hours? Contact me at slmrsv.bz@gmail.com and I'll prioritize your access.",
+
+      "closeButton": "Got it, thanks!"
+    },
+
     "paymentErrorModal": {
-      "title": "Payment failed",
-      "mainMessage": "An error occurred while processing your payment.",
-      "retryAdvice": "Please try again or contact your bank if the problem persists."
+      "errorTitle": "Payment Failed",
+      "errorSubtitle": "Something went wrong with your payment",
+      "cancelTitle": "Payment Cancelled",
+      "cancelSubtitle": "You cancelled the checkout process",
+
+      "errorMessage": "Your payment couldn't be processed. Don't worry, you haven't been charged.",
+      "cancelMessage": "No worries! Your cart is still here if you'd like to complete your purchase.",
+
+      "commonIssuesTitle": "Common issues:",
+      "issue1": "Insufficient funds or card limit reached",
+      "issue2": "Incorrect card information",
+      "issue3": "Bank security blocking online purchases",
+
+      "retryButton": "Try Again",
+      "closeButton": "Close",
+
+      "needHelp": "Need help?",
+      "contactSupport": "Contact support"
     },
     "detailsProduct": {
       "0": { "title": "Pack presentation and benefits" },
@@ -603,7 +637,7 @@
       "noCommit": "No commitment",
       "creditsLabel": "Credits",
       "addToCart": "Add to cart - {price}€",
-      "compareAtPrice": " - {compareAtPrice}€",
+      "compareAtPrice": " {compareAtPrice}€",
       "exampleStore": {
         "title": "Your store will look like this in 5 minutes",
         "subtitle": "(or you'll keep losing sales to stores that aren't better than yours—they just look more convincing)",

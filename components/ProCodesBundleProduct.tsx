@@ -9,6 +9,7 @@ import ExampleStore from "@/components/ExampleStore";
 import HowItWorks from "@/components/HowItWorks";
 import { Reviews } from "@/components/Reviews";
 import { PaymentErrorModal } from "@/components/PaymentErrorModal";
+import { PaymentSuccessModal } from "@/components/PaymentSuccessModal";
 import ExampleCode from "@/components/ExampleCode";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import ProductImage from "@/components/ProductImage";
@@ -20,7 +21,7 @@ import Image1 from "@/public/images/product-1.png";
 import Image2 from "@/public/images/product-2.png";
 import Image3 from "@/public/images/product-3.png";
 
-const Products: FC = () => {
+const ProCodesBundleProduct: FC = () => {
   const { isVisible } = useVisibleFloatingCartStore();
 
   useEffect(() => {
@@ -56,6 +57,7 @@ const Products: FC = () => {
 
       <div className="max-w-screen-xl mx-auto w-full">
         <PaymentErrorModal />
+        <PaymentSuccessModal />
       </div>
       <div>
         <section
@@ -110,4 +112,4 @@ const Products: FC = () => {
   );
 };
 
-export default Products;
+export default ProCodesBundleProduct;

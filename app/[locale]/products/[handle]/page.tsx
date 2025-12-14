@@ -1,4 +1,5 @@
-import Products from "@/components/Products";
+import ProCodesBundleProduct from "@/components/ProCodesBundleProduct";
+import Products from "@/components/ProCodesBundleProduct";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -14,7 +15,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     .replace(/\b\w/g, (l) => l.toUpperCase());
 
   return {
-    title: `${productName} | EcomCodeHub`,
+    title: `${productName}`,
     description: `Découvrez le snippet "${productName}" pour Shopify : améliorez votre boutique avec un code Liquid optimisé EcomCodeHub. Facile à installer, rapide, et conçu pour booster vos conversions.`,
     alternates: {
       canonical: `https://www.ecomcodehub.com/en/products/${params.handle}`,
@@ -37,10 +38,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
+const PRODUCT_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  "shopify-pro-codes-bundle": ProCodesBundleProduct,
+};
+
 export default async function ProductPage({ params }: Props) {
-  if (params.handle != "shopify-pro-codes-bundle") {
+  const ProductComponent = PRODUCT_COMPONENTS[params.handle];
+
+  if (!ProductComponent) {
     return notFound();
   }
 
-  return <Products />;
+  return <ProductComponent />;
 }
