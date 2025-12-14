@@ -30,7 +30,7 @@ const NavBarWeb = () => {
         pathnameOfProduct ? "max-w-screen-xl" : "max-w-screen-2xl"
       )}
     >
-      <div className="flex items-center gap-14">
+      <div className="flex items-center gap-6">
         <div className="flex items-center gap-4">
           <Link
             href={`/${locale}`}
