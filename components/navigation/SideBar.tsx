@@ -14,11 +14,7 @@ import { useOpenSidebarStore } from "@/store/sidebar";
 import { CgClose } from "react-icons/cg";
 import { useLocale, useTranslations } from "next-intl";
 
-interface SideBarProps {
-  isAccount?: boolean;
-}
-
-export default function SideBar({ isAccount }: SideBarProps) {
+export default function SideBar() {
   const classLink =
     "font-light text-base text-foreground lg:text-sm xl:text-base group-hover:text-background";
   const pathname = usePathname();

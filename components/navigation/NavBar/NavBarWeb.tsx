@@ -3,16 +3,12 @@ import { cn } from "@/lib/utils";
 import { useCartStore, useOpenCartStore } from "@/store/cart";
 import Link from "next/link";
 import { RiShoppingBag3Fill } from "react-icons/ri";
-import { FC } from "react";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
-interface NavBarWebProps {
-  isAccount?: boolean;
-}
-
-const NavBarWeb: FC<NavBarWebProps> = () => {
+const NavBarWeb = () => {
   const classLink = "font-light text-foreground text-base hover:text-primary";
   const locale = useLocale();
   const t = useTranslations("fe.navigation");
@@ -44,8 +40,14 @@ const NavBarWeb: FC<NavBarWebProps> = () => {
               "xl:text-2xl"
             )}
           >
-            {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} className={cn("lg:w-32", "xl:w-44")} /> */}
-            Ecom<span className="text-primary">Code</span>Hub
+            <Image
+              src="/images/Logo.png"
+              alt="Logo of EcomCodeHub"
+              width={1600}
+              height={36}
+              className={cn("lg:w-36 object-contain")}
+            />
+            {/*  Ecom<span className="text-primary">Code</span>Hub */}
           </Link>
         </div>
         <ul className={cn("flex items-center gap-5", "xl:gap-6")}>

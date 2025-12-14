@@ -5,20 +5,14 @@ import { useCartStore, useOpenCartStore } from "@/store/cart";
 import { RiShoppingBag3Fill } from "react-icons/ri";
 import Link from "next/link";
 import { useIsHydrated } from "@/hook/useIsHydrated";
-import { useRouter } from "next/navigation";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { useOpenSidebarStore } from "@/store/sidebar";
-/* import LocaleSwitcher from "@/components/LocaleSwitcher";
-import { useLocale } from "next-intl"; */
+import Image from "next/image";
 
-interface NavBarMobileProps {
-  isAccount?: boolean;
-}
-const NavBarMobile = ({ isAccount }: NavBarMobileProps) => {
+const NavBarMobile = () => {
   const { cart } = useCartStore();
   const { setIsOpenCart } = useOpenCartStore();
   const { setIsOpenSidebar } = useOpenSidebarStore();
-  const router = useRouter();
   const isHydrated = useIsHydrated();
 
   if (!isHydrated) {
@@ -47,11 +41,17 @@ const NavBarMobile = ({ isAccount }: NavBarMobileProps) => {
           className="xs:absolute xs:left-1/2 xs:transform xs:-translate-x-1/2 cursor-pointer text-lg font-bold xs:text-xl sm:text-2xl"
         >
           {/* <Image src={Logo} alt="Logo of HelloPurly" width={170} height={36} /> */}
-          Ecom<span className="text-primary">Code</span>Hub
+          <Image
+            src="/images/Logo.png"
+            alt="Logo of EcomCodeHub"
+            width={1600}
+            height={36}
+            className={cn("w-36 object-contain")}
+          />
+          {/* Ecom<span className="text-primary">Code</span>Hub */}
         </Link>
       </div>
       <div className={cn("flex gap-2 items-center")}>
-        {/* <LocaleSwitcher locale={locale} /> */}
         <div
           className="relative p-2 cursor-pointer group"
           onClick={() => setIsOpenCart(true)}

@@ -5,18 +5,15 @@ import NavBarWeb from "./NavBarWeb";
 import { cn } from "@/lib/utils";
 import Cart from "@/components/cart/Cart";
 
-interface NavBarProps {
-  isAccount?: boolean;
-}
-export default function NavBar({ isAccount }: NavBarProps) {
+export default function NavBar() {
   return (
     <nav className={cn("bg-background border-b dark:border-white/10 z-[100]")}>
-      <NavBarMobile isAccount={isAccount} />
-      <NavBarWeb isAccount={isAccount} />
+      <NavBarMobile />
+      <NavBarWeb />
       {/* Panier */}
       <Cart />
       {/* Liens */}
-      <SideBar isAccount={isAccount} />
+      <SideBar />
     </nav>
   );
 }
