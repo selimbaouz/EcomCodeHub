@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
             eventSourceUrl: `${window.location.origin}/en/products/shopify-pro-codes-bundle?success=true`,
             fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
             tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
-            value: session?.amount_total ?? 0 / 100, // Stripe retourne en centimes
+            value: (session?.amount_total ?? 0) / 100, // Stripe retourne en centimes
             currency: session.currency?.toUpperCase() || "EUR",
             content_ids: lineItems.data.map((item) => item.price?.product),
             email: customerEmail,

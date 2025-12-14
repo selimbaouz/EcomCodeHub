@@ -18,66 +18,76 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: {
     default:
-      "EcomCodeHub – snippets Liquid Shopify pour booster votre boutique",
+      "EcomCodeHub – 500+ Shopify Liquid Code Snippets to Boost Conversions",
     template: "%s | EcomCodeHub",
   },
   description:
-    "Libérez tout le potentiel de votre boutique Shopify avec EcomCodeHub : snippets Liquid et composants UI prêts à l’emploi, pour améliorer votre design, augmenter vos ventes et optimiser vos conversions—sans coder ni acheter de thème coûteux.",
+    "Access 500+ ready-to-use Shopify Liquid & TailwindCSS code snippets. Boost conversions, enhance design, and customize your store without hiring a developer. Copy-paste in 2 minutes. One-time payment, lifetime access.",
   keywords: [
     "shopify liquid code",
-    "code liquid shopify",
-    "code shopify",
-    "liquid shopify",
-    "code shopify liquid",
-    "extrait code shopify",
-    "snippets shopify",
-    "conversion shopify",
+    "shopify code snippets",
+    "shopify liquid snippets",
+    "shopify conversion code",
+    "shopify customization",
+    "shopify liquid templates",
     "tailwindcss shopify",
-    "design boutique shopify",
-    "ui shopify",
-    "code personnalisé shopify",
-    "shopify composants",
-    "exemple code shopify",
+    "shopify code library",
+    "shopify snippets pack",
+    "custom shopify code",
+    "shopify ui components",
+    "shopify design snippets",
+    "shopify liquid examples",
+    "increase shopify conversion",
+    "shopify store optimization",
     "no-code shopify",
-    "ux shopify",
-    "ecommerce design",
+    "shopify theme customization",
+    "shopify development snippets",
   ],
-  authors: [{ name: "selimbaouz" }],
-  creator: "selimbaouz",
-  publisher: "selimbaouz",
-  robots: "index, follow",
+  authors: [{ name: "Selim Baouz" }],
+  creator: "Selim Baouz",
+  publisher: "EcomCodeHub",
+  robots:
+    "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   openGraph: {
     type: "website",
-    locale: "fr_FR",
+    locale: "en_US",
     url: "https://ecomcodehub.com",
     siteName: "EcomCodeHub",
-    title: "EcomCodeHub – snippets Liquid Shopify pour booster votre boutique",
+    title:
+      "500+ Shopify Liquid Code Snippets | Boost Conversions Without a Developer",
     description:
-      "EcomCodeHub offre aux commerçants Shopify des snippets et composants TailwindCSS puissants et prêts à l’emploi pour personnaliser leur boutique et booster la conversion — sans compétences techniques.",
+      "Get instant access to 500+ professional Shopify Liquid & TailwindCSS code snippets. Increase conversions, customize your store, and save $1,200+ on developer fees. Copy-paste ready. Lifetime updates included.",
     images: [
       {
-        url: "https://ecomcodehub.com/en/images/og-image.webp",
+        url: "https://ecomcodehub.com/images/og-image.webp",
         width: 1200,
         height: 630,
-        alt: "EcomCodeHub – Code Liquid Shopify",
+        alt: "EcomCodeHub - 500+ Shopify Liquid Code Snippets",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@selimbaouz",
+    site: "@ecomcodehub",
     creator: "@selimbaouz",
-    title: "EcomCodeHub – snippets Liquid Shopify",
+    title: "500+ Shopify Liquid Code Snippets | EcomCodeHub",
     description:
-      "Code Liquid Shopify, composants UI clé-en-main et blocs TailwindCSS pour améliorer rapidement le design et la conversion de votre boutique.",
-    images: ["https://ecomcodehub.com/en/images/og-image.webp"],
+      "Professional Shopify code snippets to boost conversions. Copy-paste ready. No coding required. Save $1,200+ vs hiring a developer. Lifetime access.",
+    images: ["https://ecomcodehub.com/images/og-image.webp"],
   },
   verification: {
-    google: "",
+    google: "your-google-verification-code", // À remplacer par ton code Google Search Console
   },
   alternates: {
     canonical: "https://ecomcodehub.com",
+    languages: {
+      en: "https://ecomcodehub.com/en",
+      fr: "https://ecomcodehub.com/fr",
+    },
   },
+  metadataBase: new URL("https://ecomcodehub.com"),
+  category: "technology",
+  classification: "Business",
 };
 
 export default async function LocaleLayout({
