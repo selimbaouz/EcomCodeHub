@@ -1,13 +1,7 @@
 "use server";
 
 import { stripe } from "@/lib/stripe";
-import {
-  createCheckoutSessionSchema,
-  customerIdSchema,
-  oneTimePurchaseIdSchema,
-  subscriptionIdSchema,
-  upgradeSchema,
-} from "@/schemas";
+import { createCheckoutSessionSchema } from "@/schemas";
 import { action } from "@/lib/safe-action";
 
 export const createCheckoutSessionCart = action
@@ -17,11 +11,11 @@ export const createCheckoutSessionCart = action
 
     const lineItems = priceId.map((id, index) => ({
       price: id,
-      quantity: data.quantities[index] ?? 1, // On prend la quantité associée
+      quantity: data.quantities[index] ?? 1,
     }));
 
-    const getsession = async () => {
-      return await stripe.checkout.sessions.create({
+    try {
+      const session = await stripe.checkout.sessions.create({
         invoice_creation: { enabled: true },
         payment_method_types: ["card"],
         line_items: lineItems,
@@ -33,22 +27,33 @@ export const createCheckoutSessionCart = action
         },
         allow_promotion_codes: true,
       });
-    };
 
-    try {
-      const session = await getsession();
-      if (typeof session.invoice === "string") {
-        await stripe.invoices.finalizeInvoice(session.invoice);
-      } else {
-        console.error(
-          "L'ID de la facture n'est pas une chaîne valide :",
-          session.invoice
-        );
+      // Finaliser la facture si elle existe
+      if (session.invoice && typeof session.invoice === "string") {
+        try {
+          await stripe.invoices.finalizeInvoice(session.invoice);
+        } catch (invoiceError) {
+          // On log l'erreur mais on ne bloque pas le paiement
+          console.error("Erreur lors de la finalisation de la facture:", {
+            message:
+              invoiceError instanceof Error
+                ? invoiceError.message
+                : "Erreur inconnue",
+            invoiceId: session.invoice,
+          });
+        }
       }
 
       return { url: session.url };
     } catch (error) {
-      console.error("Erreur lors de la création de la session :", error);
+      // ✅ Protection contre les erreurs null/undefined
+      console.error("Erreur lors de la création de la session Stripe:", {
+        message: error instanceof Error ? error.message : "Erreur inconnue",
+        type: error instanceof Error ? error.constructor.name : typeof error,
+        // Évite d'accéder à .stack si error est null
+        stack: error instanceof Error ? error.stack : undefined,
+      });
+
       return { error: "stripeSessionFailed" };
     }
   });
@@ -66,7 +71,11 @@ export const createCustomerInStripe = async ({
       name,
     });
     return stripeCustomer;
-  } catch {
+  } catch (error) {
+    console.error("Erreur lors de la création du customer Stripe:", {
+      message: error instanceof Error ? error.message : "Erreur inconnue",
+      email,
+    });
     return null;
   }
 };

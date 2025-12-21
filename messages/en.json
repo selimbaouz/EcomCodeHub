@@ -568,6 +568,7 @@
 
       "step1Title": "1. Check your email",
       "step1Description": "You'll receive an email within minutes with your Notion workspace link.",
+      "checkSpam": "Don't forget to check your spam folder if you don't see it in your inbox.",
 
       "step2Title": "2. Sign up on Notion",
       "step2Description": "Click the link and create your free Notion account (or log in if you already have one).",

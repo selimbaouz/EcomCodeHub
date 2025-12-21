@@ -7,6 +7,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { useVisibleFloatingCartStore } from "@/store/cart";
+import { usePaymentModalStore } from "@/store/payment-modal";
 
 export function PaymentSuccessModal() {
   const searchParams = useSearchParams();
@@ -14,23 +16,29 @@ export function PaymentSuccessModal() {
   const paymentSuccess = searchParams.get("success");
   const t = useTranslations("fe");
 
+  const { setIsVisible } = useVisibleFloatingCartStore();
+  const { setIsPaymentModalOpen } = usePaymentModalStore();
   const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
   useEffect(() => {
     if (paymentSuccess === "true") {
       setIsPaymentSuccess(true);
+      setIsVisible(false);
+      setIsPaymentModalOpen(true);
     }
-  }, [paymentSuccess]);
+  }, [paymentSuccess, setIsVisible, setIsPaymentModalOpen]);
 
   const handleClose = () => {
     setIsPaymentSuccess(false);
     // Nettoyer l'URL
     router.push(window.location.pathname);
+    setIsVisible(true);
+    setIsPaymentModalOpen(false);
   };
 
   return (
     <Dialog open={isPaymentSuccess} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md p-0 border-none shadow-none">
+      <DialogContent className="max-w-md p-0 border-none shadow-none rounded-xl">
         <Card className="shadow-2xl border-primary/20">
           <CardHeader className="text-center space-y-4 pb-4">
             <div className="mx-auto w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
@@ -67,6 +75,9 @@ export function PaymentSuccessModal() {
                   </p>
                   <p className="text-xs text-muted-foreground">
                     {t("paymentSuccessModal.step1Description")}
+                  </p>
+                  <p className="text-xs text-amber-600 dark:text-amber-500 font-medium mt-1">
+                    ⚠️ {t("paymentSuccessModal.checkSpam")}
                   </p>
                 </div>
               </div>

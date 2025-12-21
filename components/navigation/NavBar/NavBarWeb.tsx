@@ -25,7 +25,7 @@ const NavBarWeb = () => {
     <div
       className={cn(
         "hidden",
-        "relative lg:p-6 lg:flex lg:justify-between lg:items-center lg:mx-auto lg:py-2 lg:h-20",
+        "relative lg:px-6 lg:py-2 lg:flex lg:justify-between lg:items-center lg:mx-auto lg:h-20",
         "xl:px-0",
         pathnameOfProduct ? "max-w-screen-xl" : "max-w-screen-2xl"
       )}

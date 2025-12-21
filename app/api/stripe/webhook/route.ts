@@ -23,11 +23,18 @@ export async function POST(req: NextRequest) {
   try {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
+      const sessionId = session.id;
+
+      // ✅ Vérifier si l'email a déjà été envoyé via les métadonnées
+      if (session.metadata?.email_sent === "true") {
+        return NextResponse.json(
+          { received: true, message: "Email déjà envoyé pour cette session" },
+          { status: 200 }
+        );
+      }
+
       const customerEmail = session.customer_details?.email;
       const customerName = session.customer_details?.name;
-      const lineItems = await stripe.checkout.sessions.listLineItems(
-        session.id
-      );
 
       if (!customerEmail) {
         return NextResponse.json(
@@ -48,8 +55,18 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      // Envoyer l'email de confirmation
       await sendSuccessPurchase(customerEmail, customerName ?? "");
 
+      // ✅ Marquer l'email comme envoyé dans les métadonnées de la session
+      await stripe.checkout.sessions.update(sessionId, {
+        metadata: { email_sent: "true" },
+      });
+
+      // Récupérer les line items pour les pixels
+      const lineItems = await stripe.checkout.sessions.listLineItems(sessionId);
+
+      // Envoyer les données aux pixels
       await fetch(
         `${process.env.NEXT_PUBLIC_LOCAL_URL || "https://ecomcodehub.com"}/api/pixels-purchase`,
         {
@@ -57,10 +74,10 @@ export async function POST(req: NextRequest) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             eventTime: Math.floor(Date.now() / 1000),
-            eventSourceUrl: `${window.location.origin}/en/products/shopify-pro-codes-bundle?success=true`,
+            eventSourceUrl: `${process.env.NEXT_PUBLIC_LOCAL_URL || "https://ecomcodehub.com"}/en/products/shopify-pro-codes-bundle?success=true`,
             fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
             tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
-            value: (session?.amount_total ?? 0) / 100, // Stripe retourne en centimes
+            value: (session?.amount_total ?? 0) / 100,
             currency: session.currency?.toUpperCase() || "EUR",
             content_ids: lineItems.data.map((item) => item.price?.product),
             email: customerEmail,
@@ -69,6 +86,7 @@ export async function POST(req: NextRequest) {
         }
       );
     }
+
     return NextResponse.json(
       { received: true, message: "Le Webhook a bien été envoyé !" },
       { status: 200 }

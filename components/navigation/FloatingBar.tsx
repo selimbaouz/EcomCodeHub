@@ -5,19 +5,20 @@ import { AddToCart } from "../cart/add-to-cart";
 import { useIsHydrated } from "@/hook/useIsHydrated";
 import { motion } from "framer-motion";
 import { useOpenCartStore } from "@/store/cart";
+import { usePaymentModalStore } from "@/store/payment-modal";
 import Image from "next/image";
 import Image1 from "@/public/images/product-1.png";
 
 const FloatingBar = () => {
   const isHydrated = useIsHydrated();
   const { isOpenCart } = useOpenCartStore();
+  const { isPaymentModalOpen } = usePaymentModalStore();
 
   if (!isHydrated) {
     return null;
   }
 
-  // Cacher le FloatingBar si le panier est ouvert
-  if (isOpenCart) {
+  if (isOpenCart || isPaymentModalOpen) {
     return null;
   }
 

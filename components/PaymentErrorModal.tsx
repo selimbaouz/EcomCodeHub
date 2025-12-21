@@ -7,6 +7,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { useVisibleFloatingCartStore } from "@/store/cart";
+import { usePaymentModalStore } from "@/store/payment-modal";
 
 export function PaymentErrorModal() {
   const searchParams = useSearchParams();
@@ -14,22 +16,29 @@ export function PaymentErrorModal() {
   const paymentError = searchParams.get("echec") || searchParams.get("cancel");
   const t = useTranslations("fe");
 
+  const { setIsVisible } = useVisibleFloatingCartStore();
+  const { setIsPaymentModalOpen } = usePaymentModalStore();
   const [isPaymentError, setIsPaymentError] = useState(false);
 
   useEffect(() => {
     if (paymentError) {
       setIsPaymentError(true);
+      setIsVisible(false);
+      setIsPaymentModalOpen(true);
     }
-  }, [paymentError]);
+  }, [paymentError, setIsVisible, setIsPaymentModalOpen]);
 
   const handleClose = () => {
     setIsPaymentError(false);
     // Nettoyer l'URL
     router.push(window.location.pathname);
+    setIsVisible(true);
+    setIsPaymentModalOpen(false);
   };
 
   const handleRetry = () => {
     setIsPaymentError(false);
+    setIsPaymentModalOpen(false);
     // Scroll vers le bouton Add to Cart
     const addToCartButton = document.querySelector("[data-add-to-cart]");
     addToCartButton?.scrollIntoView({ behavior: "smooth", block: "center" });
