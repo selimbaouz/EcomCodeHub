@@ -3,7 +3,6 @@ import { useCartStore, useOpenCartStore } from "../../store/cart";
 import { ShoppingCartIcon } from "lucide-react";
 import { DeleteItemButton } from "@/components/cart/delete-item-button";
 import { EditItemQuantityButton } from "./edit-item-quantity-button";
-import { createCartAndSetCookie } from "./actions";
 import { PulseLoader } from "react-spinners";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -11,6 +10,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
@@ -21,21 +21,16 @@ import PriceCart from "../PriceCart";
 import { useHideFlashPromoStore } from "@/store/hide-flashpromo";
 import { useLocale, useTranslations } from "next-intl";
 import SecureBadges from "@/components/SecureBadges";
+import { FB_PIXEL_ID } from "@/lib/constants";
 
 export default function Cart() {
-  const { cart, updateCartItem } = useCartStore();
+  const { cart } = useCartStore();
   const { isOpenCart, setIsOpenCart } = useOpenCartStore();
   const setCartOpen = useHideFlashPromoStore((state) => state.setCartOpen);
   const quantityRef = useRef(cart?.quantity);
   const [isLoading, setIsLoading] = useState(false);
   const locale = useLocale();
   const t = useTranslations("fe.cart");
-
-  useEffect(() => {
-    if (cart.lines.length > 0 && isOpenCart) {
-      createCartAndSetCookie();
-    }
-  }, [cart, isOpenCart]);
 
   useEffect(() => {
     if (
@@ -49,7 +44,7 @@ export default function Cart() {
       }
       quantityRef.current = cart?.quantity;
     }
-  }, [isOpenCart, cart?.quantity, quantityRef, setIsOpenCart]);
+  }, [isOpenCart, cart?.quantity, quantityRef, setIsOpenCart, setCartOpen]);
 
   const handleCheckout = async () => {
     setIsLoading(true);
@@ -71,8 +66,7 @@ export default function Cart() {
           eventTime: Math.floor(Date.now() / 1000),
           eventSourceUrl: window.location.href,
           userAgent: navigator.userAgent,
-          fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-          tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+          fbPixelId: FB_PIXEL_ID,
           value: cart.cost.totalAmount.amount,
           currency: cart.cost.totalAmount.currencyCode,
           content_ids: cart.lines.map((line) => line.merchandise.id),
@@ -110,6 +104,9 @@ export default function Cart() {
             <SheetTitle className="text-foreground text-lg font-medium">
               {t("title")}
             </SheetTitle>
+            <SheetDescription className="sr-only">
+              {t("emptyCart")}
+            </SheetDescription>
             <SheetClose>
               <Cross2Icon className="size-5" />
               <span className="sr-only">{t("close")}</span>
@@ -173,16 +170,11 @@ export default function Cart() {
                               <EditItemQuantityButton
                                 item={item}
                                 type="minus"
-                                optimisticUpdate={updateCartItem}
                               />
                               <span className="px-4 py-1 text-sm font-bold bg-primary text-white">
                                 {item.quantity}
                               </span>
-                              <EditItemQuantityButton
-                                item={item}
-                                type="plus"
-                                optimisticUpdate={updateCartItem}
-                              />
+                              <EditItemQuantityButton item={item} type="plus" />
                             </div>
                           </div>
                           <div
@@ -190,10 +182,7 @@ export default function Cart() {
                               "flex flex-col justify-between h-auto items-end"
                             )}
                           >
-                            <DeleteItemButton
-                              item={item}
-                              optimisticUpdate={updateCartItem}
-                            />
+                            <DeleteItemButton item={item} />
                             <div className="text-right space-y-0.5 w-full">
                               <div className="flex items-center justify-end gap-2">
                                 {compareAtAmount && (

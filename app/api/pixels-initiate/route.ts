@@ -6,7 +6,6 @@ interface InitiateCheckoutPayload {
   eventSourceUrl: string;
   userAgent: string;
   fbPixelId: string;
-  tiktokPixelId: string;
   value: number | string;
   currency: string;
   content_ids: string[];
@@ -28,7 +27,6 @@ export async function POST(req: NextRequest) {
     eventSourceUrl,
     userAgent,
     fbPixelId,
-    tiktokPixelId,
     value,
     currency,
     content_ids,
@@ -38,11 +36,12 @@ export async function POST(req: NextRequest) {
   }: InitiateCheckoutPayload = await req.json();
 
   const tokenFB = process.env.FB_PIXEL_EVENT_ACCESS_TOKEN;
-  const tokenTiktok = process.env.TIKTOK_PIXEL_EVENT_ACCESS_TOKEN;
-  const ip: string | undefined =
-    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const ip: string | undefined = req.headers
+    .get("x-forwarded-for")
+    ?.split(",")[0]
+    ?.trim();
 
-  if (!tokenFB || !tokenTiktok || !fbPixelId || !tiktokPixelId) {
+  if (!tokenFB || !fbPixelId) {
     return NextResponse.json(
       { error: "Missing access token or pixel id" },
       { status: 400 }
@@ -76,24 +75,8 @@ export async function POST(req: NextRequest) {
     ],
   };
 
-  // TikTok payload
-  const tiktokPayload = {
-    pixel_code: tiktokPixelId,
-    event: "InitiateCheckout",
-    timestamp: Math.floor(eventTime),
-    properties: {
-      content_ids,
-      content_name: Array.isArray(content_ids) ? content_ids.join(",") : undefined,
-      content_type: "product",
-      currency,
-      value,
-      num_items,
-    },
-  };
-
   const fbApiVersion = "v19.0";
   const fbEndpoint = `https://graph.facebook.com/${fbApiVersion}/${fbPixelId}/events?access_token=${tokenFB}`;
-  const tiktokEndpoint = "https://business-api.tiktok.com/open_api/v1.3/event/track/";
 
   try {
     // Facebook API call
@@ -104,22 +87,7 @@ export async function POST(req: NextRequest) {
     });
     const fbData = await fbRes.json();
 
-    // TikTok API call
-    const tiktokRes = await fetch(tiktokEndpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Token": tokenTiktok,
-      },
-      body: JSON.stringify(tiktokPayload),
-    });
-    const tiktokData = await tiktokRes.json();
-
-    // Renvoie les résultats des deux trackers (debug/log)
-    return NextResponse.json(
-      { facebook: fbData, tiktok: tiktokData },
-      { status: 200 }
-    );
+    return NextResponse.json({ facebook: fbData }, { status: 200 });
   } catch (err) {
     return NextResponse.json(
       { error: "Internal server error", details: err },

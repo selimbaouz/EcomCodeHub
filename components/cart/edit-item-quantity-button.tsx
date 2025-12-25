@@ -3,13 +3,23 @@
 import { CartItem } from "@/types/types";
 import clsx from "clsx";
 import { MinusIcon, PlusIcon } from "lucide-react";
-import { useFormState } from "react-dom";
-import { updateItemQuantity } from "./actions";
+import { useCartStore } from "@/store/cart";
 
-function SubmitButton({ type }: { type: "plus" | "minus" }) {
+export function EditItemQuantityButton({
+  item,
+  type,
+}: {
+  item: CartItem;
+  type: "plus" | "minus";
+}) {
+  const { updateCartItem } = useCartStore();
+  const merchandiseId = item.merchandise.id;
+
   return (
     <button
-      type="submit"
+      onClick={() => {
+        updateCartItem(merchandiseId, type);
+      }}
       aria-label={
         type === "plus" ? "Increase item quantity" : "Reduce item quantity"
       }
@@ -27,37 +37,5 @@ function SubmitButton({ type }: { type: "plus" | "minus" }) {
         <MinusIcon className="size-3 text-white" />
       )}
     </button>
-  );
-}
-
-export function EditItemQuantityButton({
-  item,
-  type,
-  optimisticUpdate,
-}: {
-  item: CartItem;
-  type: "plus" | "minus";
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  optimisticUpdate: any;
-}) {
-  const [message, formAction] = useFormState(updateItemQuantity, null);
-  const payload = {
-    merchandiseId: item.merchandise.id,
-    quantity: type === "plus" ? item.quantity + 1 : item.quantity - 1,
-  };
-  const actionWithVariant = formAction.bind(null, payload);
-
-  return (
-    <form
-      action={async () => {
-        optimisticUpdate(payload.merchandiseId, type);
-        await actionWithVariant();
-      }}
-    >
-      <SubmitButton type={type} />
-      <p aria-live="polite" className="sr-only" role="status">
-        {message}
-      </p>
-    </form>
   );
 }

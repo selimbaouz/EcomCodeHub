@@ -9,6 +9,7 @@ import {
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { FB_PIXEL_ID } from "@/lib/constants";
 
 interface SubmitButtonProps {
   size?: "fullWidth" | "initial";
@@ -61,8 +62,7 @@ export function SubmitButtonClient({
             eventTime: Math.floor(Date.now() / 1000),
             eventSourceUrl: window.location.href,
             userAgent: navigator.userAgent,
-            fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-            tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+            fbPixelId: FB_PIXEL_ID,
             content_ids: ["prod_shopify_pro_bundle"],
             content_name: "Shopify Pro Codes Bundle (Limited Offer)",
             content_type: "product",

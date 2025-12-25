@@ -13,6 +13,7 @@ import { usePathname } from "next/navigation";
 import { useOpenSidebarStore } from "@/store/sidebar";
 import { CgClose } from "react-icons/cg";
 import { useLocale, useTranslations } from "next-intl";
+import { FB_PIXEL_ID } from "@/lib/constants";
 
 export default function SideBar() {
   const classLink =
@@ -81,8 +82,7 @@ export default function SideBar() {
                     eventTime: Math.floor(Date.now() / 1000),
                     eventSourceUrl: window.location.href,
                     userAgent: navigator.userAgent,
-                    fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-                    tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+                    fbPixelId: FB_PIXEL_ID,
                     fbp: document.cookie
                       .split("; ")
                       .find((row) => row.startsWith("_fbp="))

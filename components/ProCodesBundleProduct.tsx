@@ -20,6 +20,7 @@ import FloatingBar from "./navigation/FloatingBar";
 import Image1 from "@/public/images/product-1.png";
 import Image2 from "@/public/images/product-2.png";
 import Image3 from "@/public/images/product-3.png";
+import { FB_PIXEL_ID } from "@/lib/constants";
 
 const ProCodesBundleProduct: FC = () => {
   const { isVisible } = useVisibleFloatingCartStore();
@@ -32,8 +33,7 @@ const ProCodesBundleProduct: FC = () => {
         eventTime: Math.floor(Date.now() / 1000),
         eventSourceUrl: window.location.href,
         userAgent: navigator.userAgent,
-        fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-        tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+        fbPixelId: FB_PIXEL_ID,
         content_ids: ["prod_shopify_pro_bundle"],
         content_name: "Shopify Pro Codes Bundle",
         content_type: "product",

@@ -7,7 +7,6 @@ const nextConfig = {
     loader: "default",
     domains: [
       "res.cloudinary.com",
-      "cdn.shopify.com",
       "lh3.googleusercontent.com",
       "facebook.com",
     ],

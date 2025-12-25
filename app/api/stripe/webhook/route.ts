@@ -76,7 +76,6 @@ export async function POST(req: NextRequest) {
             eventTime: Math.floor(Date.now() / 1000),
             eventSourceUrl: `${process.env.NEXT_PUBLIC_LOCAL_URL || "https://ecomcodehub.com"}/en/products/shopify-pro-codes-bundle?success=true`,
             fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-            tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
             value: (session?.amount_total ?? 0) / 100,
             currency: session.currency?.toUpperCase() || "EUR",
             content_ids: lineItems.data.map((item) => item.price?.product),

@@ -7,6 +7,7 @@ import { useIsHydrated } from "@/hook/useIsHydrated";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
+import { FB_PIXEL_ID } from "@/lib/constants";
 
 const NavBarWeb = () => {
   const classLink = "font-light text-foreground text-base hover:text-primary";
@@ -86,8 +87,7 @@ const NavBarWeb = () => {
                     eventTime: Math.floor(Date.now() / 1000),
                     eventSourceUrl: window.location.href,
                     userAgent: navigator.userAgent,
-                    fbPixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
-                    tiktokPixelId: process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID,
+                    fbPixelId: FB_PIXEL_ID,
                     fbp: document.cookie
                       .split("; ")
                       .find((row) => row.startsWith("_fbp="))
