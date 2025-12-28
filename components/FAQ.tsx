@@ -6,14 +6,11 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { useTranslations } from "next-intl";
+import { FAQData, FAQItem } from "@/types/product";
 
-type FAQData = {
-  title: string;
-  content: string;
-};
-const FAQ = () => {
-  const t = useTranslations("fe.productImage.faq");
-  const faqData = t.raw("items");
+const FAQ = ({ data }: { data: FAQData }) => {
+  const t = useTranslations("fe");
+  const faqData = data.items;
 
   return (
     <div className="dark:bg-[#2c4049]">
@@ -26,10 +23,10 @@ const FAQ = () => {
       >
         <div className={cn("space-y-6 pb-4 lg:pb-6 text-center")}>
           <h3 className="mx-auto xl:text-6xl uppercase max-w-screen-lg">
-            {t("title")}
+            {t(data.title as any)}
           </h3>
           <p className="text-base font-medium lg:text-xl max-w-4xl mx-auto">
-            {t("subtitle")}
+            {t(data.subtitle as any)}
           </p>
         </div>
         <Accordion
@@ -37,7 +34,7 @@ const FAQ = () => {
           collapsible
           className="w-full text-left space-y-2"
         >
-          {faqData.map((data: FAQData, index: number) => (
+          {faqData.map((item: FAQItem, index: number) => (
             <AccordionItem
               key={index}
               value={`item-${index}`}
@@ -50,14 +47,14 @@ const FAQ = () => {
                   "text-sm lg:text-base xl:text-lg font-semibold text-left text-foreground"
                 )}
               >
-                {data.title}
+                {t(item.title as any)}
               </AccordionTrigger>
               <AccordionContent
                 className={cn(
                   "text-sm lg:text-base pb-4 font-normal whitespace-pre-line"
                 )}
               >
-                {data.content}
+                {t(item.content as any)}
               </AccordionContent>
             </AccordionItem>
           ))}

@@ -3,29 +3,26 @@ import React from "react";
 import ImageLoader from "./ImageLoader";
 import Demo from "@/public/images/demo-video.gif";
 import { FaCheckSquare } from "react-icons/fa";
-import { cp } from "fs";
 import { useTranslations } from "next-intl";
+import { HowItWorksData } from "@/types/product";
+import { IconType } from "react-icons";
 
-const HowItWorks = () => {
-  const t = useTranslations("fe.productImage.howItWorksPage");
+const iconMap: Record<string, IconType> = {
+  FaCheckSquare: FaCheckSquare,
+};
 
-  const HowItWorks1 = [
-    { title: t("left.noMoreApps"), icon: FaCheckSquare },
-    { title: t("left.convertingDesign"), icon: FaCheckSquare },
-    { title: t("left.buildCredibility"), icon: FaCheckSquare },
-    { title: t("left.easyToInstall"), icon: FaCheckSquare },
-    { title: t("left.saveTime"), icon: FaCheckSquare },
-    { title: t("left.noSkillsNeeded"), icon: FaCheckSquare },
-  ];
+const HowItWorks = ({ data }: { data: HowItWorksData }) => {
+  const t = useTranslations("fe");
 
-  const HowItWorks2 = [
-    { title: t("right.noPremiumTheme"), icon: FaCheckSquare },
-    { title: t("right.unlimitedCustomization"), icon: FaCheckSquare },
-    { title: t("right.proLook"), icon: FaCheckSquare },
-    { title: t("right.compatibleAllThemes"), icon: FaCheckSquare },
-    { title: t("right.boostConversions"), icon: FaCheckSquare },
-    { title: t("right.regularUpdates"), icon: FaCheckSquare },
-  ];
+  const HowItWorks1 = data.leftBenefits.map((benefit) => ({
+    title: t(benefit.title as string),
+    Icon: iconMap[benefit.icon] || FaCheckSquare,
+  }));
+
+  const HowItWorks2 = data.rightBenefits.map((benefit) => ({
+    title: t(benefit.title as string),
+    Icon: iconMap[benefit.icon] || FaCheckSquare,
+  }));
 
   return (
     <section
@@ -36,11 +33,11 @@ const HowItWorks = () => {
       )}
     >
       <div className={cn("space-y-3 pb-4 max-w-screen-xl mx-auto")}>
-        <h3 className="mx-auto xl:text-6xl uppercase max-w-screen-lg mx-auto">
-          {t("title")}
+        <h3 className="mx-auto xl:text-6xl uppercase max-w-screen-lg">
+          {t(data.title as string)}
         </h3>
         <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">
-          {t("subtitle")}
+          {t(data.subtitle as string)}
         </p>
         <div
           className={cn(
@@ -56,7 +53,7 @@ const HowItWorks = () => {
                   "bg-secondary/30 flex w-max px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#2c4049] rounded-lg"
                 )}
               >
-                <data.icon
+                <data.Icon
                   className={cn(
                     "text-lg lg:text-xl text-foreground rounded-lg"
                   )}
@@ -87,7 +84,7 @@ const HowItWorks = () => {
               className="border rounded-2xl h-full"
             />
             <p className="text-base lg:text-xl font-medium max-w-5xl mx-auto">
-              {t("videoDescription")}
+              {t(data.videoDescription as string)}
             </p>
           </div>
           <ul className={cn("order-3 flex flex-col pt-4 gap-4", "lg:pt-0")}>
@@ -98,7 +95,7 @@ const HowItWorks = () => {
                   "bg-secondary/30 flex w-max px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#2c4049] rounded-lg"
                 )}
               >
-                <data.icon
+                <data.Icon
                   className={cn(
                     "text-lg lg:text-xl text-foreground rounded-lg"
                   )}

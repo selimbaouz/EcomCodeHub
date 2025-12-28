@@ -121,7 +121,7 @@ export function PaymentErrorModal() {
               <p className="text-xs text-muted-foreground">
                 {t("paymentErrorModal.needHelp")}{" "}
                 <a
-                  href="mailto:slmrsv.bz@gmail.com"
+                  href="mailto:ecomcodehub.team@gmail.com"
                   className="text-primary hover:underline font-medium"
                 >
                   {t("paymentErrorModal.contactSupport")}

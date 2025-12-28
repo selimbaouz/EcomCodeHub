@@ -89,7 +89,7 @@ function createOrUpdateCartItem(existingItem: CartItem | undefined): CartItem {
         title: "Shopify Pro Codes Bundle",
         featuredImage: {
           node: {
-            originalSrc: "/images/product-1.png",
+            originalSrc: "/images/pro-codes-product-1.png",
             altText: "Shopify Pro Codes Bundle",
             width: 500,
             height: 500,

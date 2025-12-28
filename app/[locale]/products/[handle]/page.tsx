@@ -1,5 +1,5 @@
-import ProCodesBundleProduct from "@/components/ProCodesBundleProduct";
-import Products from "@/components/ProCodesBundleProduct";
+import ProductPage from "@/components/ProductPage";
+import { getProductTemplate } from "@/templates";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -38,16 +38,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-const PRODUCT_COMPONENTS: Record<string, React.ComponentType<any>> = {
-  "shopify-pro-codes-bundle": ProCodesBundleProduct,
-};
+export default async function ProductHandlePage({
+  params,
+}: {
+  params: { handle: string; locale: string };
+}) {
+  const resolvedParams = await params;
+  const product = getProductTemplate(resolvedParams.handle);
 
-export default async function ProductPage({ params }: Props) {
-  const ProductComponent = PRODUCT_COMPONENTS[params.handle];
-
-  if (!ProductComponent) {
+  if (!product) {
     return notFound();
   }
 
-  return <ProductComponent />;
+  return <ProductPage data={product} />;
 }

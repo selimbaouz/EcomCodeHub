@@ -10,23 +10,23 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
-import Design1 from "@/public/images/design1.png";
-import Design2 from "@/public/images/design2.png";
-import Design3 from "@/public/images/design3.png";
-import Design4 from "@/public/images/design4.png";
 import ImageLoader from "./ImageLoader";
-import { StaticImageData } from "next/image";
 import { MdClose } from "react-icons/md";
 import { useTranslations } from "next-intl";
+import { ExampleStoreData, ProductImage } from "@/types/product";
 
-const ExampleStore = () => {
+const ExampleStore = ({
+  data: exampleStoreData,
+}: {
+  data: ExampleStoreData;
+}) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const images = [Design3, Design1, Design2, Design4];
-  const [selectedImage, setSelectedImage] = useState<StaticImageData>();
+  const images = exampleStoreData.images;
+  const [selectedImage, setSelectedImage] = useState<ProductImage>();
   const clonedImages = [...images, ...images];
   const totalSlides = images.length;
-  const t = useTranslations("fe.productImage");
+  const t = useTranslations("fe");
 
   useEffect(() => {
     if (!api) {
@@ -61,13 +61,13 @@ const ExampleStore = () => {
       >
         <div className={cn("space-y-3 pb-4 max-w-screen-lg mx-auto")}>
           <h3 className="mx-auto xl:text-6xl uppercase">
-            {t("exampleStore.title")}
+            {t(exampleStoreData.title as string)}
           </h3>
           <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto">
-            {t("exampleStore.subtitle")}
+            {t(exampleStoreData.subtitle as string)}
           </p>
           <p className="text-sm font-normal">
-            {t("exampleStore.instructions")}
+            {t(exampleStoreData.instructions as string)}
           </p>
         </div>
         <div className="lg:h-[650px]">
@@ -80,13 +80,13 @@ const ExampleStore = () => {
             className={cn("w-full cursor-pointer mx-auto max-w-screen-lg")}
           >
             <CarouselContent>
-              {clonedImages.map((data, index) => (
+              {clonedImages.map((image, index) => (
                 <CarouselItem
                   key={index}
                   className="lg:basis-1/3 flex items-center py-6 lg:py-14 w-[calc(100%/3)] flex-shrink-0"
                 >
                   <div
-                    onClick={() => setSelectedImage(data)}
+                    onClick={() => setSelectedImage(image)}
                     className={cn(
                       "cursor-pointer p-2 w-96 rounded-2xl mx-auto border border-gray-300 shadow-lg h-[550px]",
                       "lg:transition-all lg:duration-700 lg:ease-in-out lg:transform",
@@ -103,10 +103,10 @@ const ExampleStore = () => {
                       )}
                     >
                       <ImageLoader
-                        src={data.src}
-                        alt={t("exampleStore.modalAlt")}
-                        width={data.width}
-                        height={data.height}
+                        src={image.src}
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
                         loading="lazy"
                         className={cn(
                           "w-full h-full object-cover object-top bg-top"

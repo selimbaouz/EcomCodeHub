@@ -7,28 +7,32 @@ import { StarFilledIcon } from "@radix-ui/react-icons";
 import SecureBadges from "./SecureBadges";
 import { useTranslations } from "next-intl";
 import { FaCheckSquare } from "react-icons/fa";
+import { IconType } from "react-icons";
 
-const ProductImage: FC = () => {
+interface ProductImageProps {
+  checkProduct: {
+    title: string | React.ReactNode;
+    icon: string;
+  }[];
+  title: string;
+  description: string | React.ReactNode;
+}
+
+const iconMap = {
+  FaCheckSquare: FaCheckSquare,
+  // Ajoute tous les icons utilisés
+};
+
+const ProductImage: FC<ProductImageProps> = ({
+  checkProduct,
+  title,
+  description,
+}) => {
   const t = useTranslations("fe");
 
-  const checkProduct = [
-    {
-      title: t("checkProduct.benefit1"),
-      icon: FaCheckSquare,
-    },
-    {
-      title: t("checkProduct.benefit2"),
-      icon: FaCheckSquare,
-    },
-    {
-      title: t("checkProduct.benefit3"),
-      icon: FaCheckSquare,
-    },
-    {
-      title: t("checkProduct.benefit4"),
-      icon: FaCheckSquare,
-    },
-  ];
+  const IconComponent = iconMap[
+    checkProduct[0].icon as keyof typeof iconMap
+  ] as IconType;
 
   return (
     <div className={cn("space-y-4 py-6 lg:py-12 lg:space-y-5 max-w-xl")}>
@@ -56,7 +60,7 @@ const ProductImage: FC = () => {
             "xl:text-4xl"
           )}
         >
-          Shopify Pro Codes Bundle (Limited Offer)
+          {t(title as any)}
         </h3>
         <div className="flex items-center justify-start border border-dashed border-primary bg-secondary/30 rounded-sm mt-2 px-6 py-[2px] w-max gap-2">
           <div className="text-[13px] font-semibold">
@@ -80,7 +84,7 @@ const ProductImage: FC = () => {
         </div>
       </div>
       <p className={cn("text-sm", "sm:text-base", "xl:text-lg")}>
-        {t.rich("productImage.joinCommunity", {
+        {t.rich(description as any, {
           strong: (chunks) => <strong>{chunks}</strong>,
         })}
       </p>
@@ -93,14 +97,16 @@ const ProductImage: FC = () => {
               "bg-secondary/30 flex w-max flex-wrap px-2 py-1 gap-2 items-center text-center dark:text-white dark:bg-[#324e58] rounded-lg"
             )}
           >
-            <data.icon className={cn("text-lg text-foreground rounded-lg")} />
+            <IconComponent
+              className={cn("text-lg text-foreground rounded-lg")}
+            />
             <p
               className={cn(
                 "text-xs text-foreground font-medium",
                 "xs:text-sm"
               )}
             >
-              {data.title}
+              {t(data.title as any)}
             </p>
           </li>
         ))}

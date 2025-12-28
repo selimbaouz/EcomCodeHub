@@ -11,22 +11,17 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import ReviewCard from "./card/ReviewCard";
-import Link from "next/link";
 import { GoStarFill } from "react-icons/go";
 import { useTranslations } from "next-intl";
+import { Review, ReviewsData } from "@/types/product";
 
-type ReviewsData = {
-  name: string;
-  content: string;
-  score: number;
-};
-export function Reviews() {
+export function Reviews({ data }: { data: ReviewsData }) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const t = useTranslations("fe.productImage.reviewsPage");
+  const t = useTranslations("fe");
 
-  const reviewsData = t.raw("reviews");
+  const reviewsData = data.reviews;
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,8 +47,8 @@ export function Reviews() {
   }, [api]);
 
   const totalBullets = isMobile
-    ? reviewsData.length
-    : Math.ceil(reviewsData.length / 4);
+    ? data.reviews.length
+    : Math.ceil(data.reviews.length / 4);
 
   return (
     <div>
@@ -66,15 +61,15 @@ export function Reviews() {
       >
         <div className={cn("space-y-4 max-w-screen-lg mx-auto")}>
           <h3 className="mx-auto xl:text-6xl uppercase text-white">
-            {t("title")}
+            {t(data.title as any)}
           </h3>
           <p className="text-base font-medium lg:text-xl max-w-5xl mx-auto pb-4 text-white">
-            {t("subtitle")}
+            {t(data.subtitle as any)}
           </p>
           <div className="flex items-center justify-center mx-auto rounded-full shadow-md bg-white px-6 py-2 w-max gap-2">
             <GoStarFill className="text-lg text-primary" />
             <div className="text-sm font-semibold text-foreground">
-              {t("googleBadge")}
+              {t(data.googleBadge as any)}
             </div>
             <img
               className="w-[60px]"
@@ -91,15 +86,15 @@ export function Reviews() {
           className={cn("w-full lg:p-6 cursor-pointer mx-auto max-w-screen-xl")}
         >
           <CarouselContent>
-            {reviewsData.map((data: ReviewsData, index: number) => (
+            {data.reviews.map((review: Review, index: number) => (
               <CarouselItem
                 key={index}
                 className={cn("lg:basis-1/4 flex items-center py-4")}
               >
                 <ReviewCard
-                  content={data.content}
-                  name={data.name}
-                  score={data.score}
+                  content={t(review.content as any)}
+                  name={review.name}
+                  score={review.score}
                 />
               </CarouselItem>
             ))}

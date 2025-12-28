@@ -70,11 +70,11 @@ const SuccessPurchase = ({ name }: { name: string }) => {
               <strong>⚠️ Haven't received access after 24 hours?</strong>{" "}
               Contact me directly at{" "}
               <Link
-                href="mailto:slmrsv.bz@gmail.com"
+                href="mailto:ecomcodehub.team@gmail.com"
                 target="_blank"
                 className="underline"
               >
-                slmrsv.bz@gmail.com
+                ecomcodehub.team@gmail.com
               </Link>{" "}
               and I'll prioritize your access immediately.
             </Text>

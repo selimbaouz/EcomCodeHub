@@ -18,22 +18,18 @@ import Component5 from "@/public/images/component5.png";
 import Component6 from "@/public/images/component6.png";
 import Component7 from "@/public/images/component7.png";
 import { useTranslations } from "next-intl";
+import { ExampleCodeData, ProductImage } from "@/types/product";
 
-const ExampleCode = () => {
+const ExampleCode = ({ data }: { data: ExampleCodeData }) => {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
-  const t = useTranslations("fe.productImage.exampleCodePage");
+  const t = useTranslations("fe");
 
-  const images = [
-    { title: t("images.crowdEffect"), image: Component1 }, // 600 people bought (beige)
-    { title: t("images.proveSatisfaction"), image: Component2 }, // Témoignage client avec photo (menthe)
-    { title: t("images.credibility"), image: Component3 }, // Ships by + FREE Shipping (vert/bleu)
-    { title: t("images.crowdEffect"), image: Component4 }, // Loved by 1,000 Customers (violet)
-    { title: t("images.urgency"), image: Component5 }, // Just 5 items left (jaune)
-    { title: t("images.proveSatisfaction"), image: Component6 }, // Rated 4.9/5 by 100+ (menthe)
-    { title: t("images.urgency"), image: Component7 }, // 8 items left at this price (rose)
-  ];
+  const images = data.images.map((image) => ({
+    title: t(image.title as any),
+    image: image.image,
+  }));
 
   useEffect(() => {
     const handleResize = () => {
@@ -71,9 +67,11 @@ const ExampleCode = () => {
       <div
         className={cn("space-y-3 pb-4 text-foreground max-w-screen-lg mx-auto")}
       >
-        <h3 className="mx-auto xl:text-6xl uppercase">{t("title")}</h3>
+        <h3 className="mx-auto xl:text-6xl uppercase">
+          {t(data.title as any)}
+        </h3>
         <p className="text-base font-medium lg:text-xl max-w-4xl mx-auto">
-          {t("subtitle")}
+          {t(data.subtitle as any)}
         </p>
       </div>
       <Carousel

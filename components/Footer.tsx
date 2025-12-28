@@ -84,7 +84,7 @@ const Footer = ({ className }: FooterProps) => {
                 <div className="flex items-center gap-1">
                   <span>Contact me by</span>
                   <Link
-                    href="mailto:slmrsv.bz@gmail.com"
+                    href="mailto:ecomcodehub.team@gmail.com"
                     target="_blank"
                     className={cn(classLink, "underline")}
                   >

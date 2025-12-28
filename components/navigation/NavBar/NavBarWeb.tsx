@@ -76,7 +76,7 @@ const NavBarWeb = () => {
           ))}
           <li>
             <Link
-              href="mailto:slmrsv.bz@gmail.com"
+              href="mailto:ecomcodehub.team@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

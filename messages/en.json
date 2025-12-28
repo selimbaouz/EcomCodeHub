@@ -6,106 +6,6 @@
       "es": "Spanish",
       "pt": "Portuguese"
     },
-    "home": {
-      "heroTitleWeb": "The ultimate snippet\nlibrary for Shopify",
-      "heroTitleMobile": "The ultimate snippet library for Shopify",
-      "heroDescription": "Ready-to-use Tailwindcss snippets for Shopify.\nSave time, copy, paste, it’s live.",
-      "herotitleAuth": "Welcome",
-      "heroDescriptionAuth": "Please enter the email you used during the Stripe purchase.",
-      "heroButton": "Buy a pack",
-      "startInstallation": "Start with installation",
-      "greeting": "Hello",
-      "creditsRemaining": "You have {credits} credits remaining",
-      "noCredits": "You have no credits left",
-      "searchPlaceholder": "Search..."
-    },
-    "installation": {
-      "title": "Ecomcodehub installation",
-      "description": "To enable Ecomcodehub on your Shopify store, follow the steps below:",
-      "steps": {
-        "1": "Log in to your Shopify admin.",
-        "2": "In the sidebar, click on <strong>«Sales channels»</strong> → <strong>«Themes»</strong>.",
-        "3": "Click the <strong>three dots</strong> next to the «Customize» button and then click <strong>«Edit code»</strong>.",
-        "4": "In the left column, open the <strong>«Layout»</strong> folder then click on <strong>«theme.liquid»</strong>.",
-        "5": "Locate line 30 or just above <code>&lt;script src='constants.js' | asset_url' defer='defer'&gt;&lt;/script&gt;</code>, where other <code>script</code> tags are located.",
-        "6": "Copy and paste the following code:"
-      },
-      "copyNotice": "Once the code is pasted and saved, you can use Tailwind classes with the <code>tw-</code> prefix, for example <code>tw-bg-red-500</code>.",
-      "copyButton": "Copy code"
-    },
-    "plans": {
-      "beginner": {
-        "title": "Beginner Pack",
-        "price": "20.93",
-        "discount": "-30% savings",
-        "infoPrice": "",
-        "content": "30 credits: Perfect to start, discover how our codes can improve your store.",
-        "options": [
-          "Increase your conversions",
-          "Easy copy-paste",
-          "Time saving",
-          "Quick customization",
-          "Immediate results",
-          "Ready-to-use code",
-          "Professional design",
-          "Enhanced attractiveness",
-          "Boost your sales"
-        ]
-      },
-      "advanced": {
-        "title": "Advanced Pack",
-        "price": "38.43",
-        "discount": "-30% savings",
-        "discountSub": "-7% savings",
-        "infoPrice": "Popular",
-        "content": "60 credits: Boost your sales with advanced codes and give your store a modern look.",
-        "options": [
-          "Increase your conversions",
-          "Easy copy-paste",
-          "Time saving",
-          "Quick customization",
-          "Immediate results",
-          "Ready-to-use code",
-          "Professional design",
-          "Enhanced attractiveness",
-          "Boost your sales"
-        ]
-      },
-      "pro": {
-        "title": "Pro Pack",
-        "price": "55.93",
-        "discount": "-30% savings",
-        "discountSub": "-23% savings",
-        "infoPrice": "",
-        "content": "90 credits: Professional codes for a customized store, ready to sell.",
-        "options": [
-          "Increase your conversions",
-          "Easy copy-paste",
-          "Time saving",
-          "Quick customization",
-          "Immediate results",
-          "Ready-to-use code",
-          "Professional design",
-          "Enhanced attractiveness",
-          "Boost your sales"
-        ]
-      },
-      "modes": {
-        "oneTime": "One-time",
-        "subscription": "Monthly"
-      },
-      "button": {
-        "currentPlan": "Current Plan",
-        "upgrade": "Upgrade",
-        "downgrade": "Downgrade",
-        "getPack": "Get this pack"
-      },
-      "header": {
-        "oneTime": "Order a pack",
-        "subscription": "Subscribe to a plan"
-      },
-      "byMonth": "/month"
-    },
     "navigation": {
       "snippets": "Snippets",
       "installation": "Installation",
@@ -114,338 +14,11 @@
       "subscribe": "Subscribe",
       "ambassador": "Become Ambassador",
       "account": "Account",
-      "discord": "Discord Server",
       "conversionPack": "Pro Codes Bundle",
       "ambassadorProgram": "Ambassador Program",
-      "contact": "Contact",
-      "login": "Login",
-      "logout": "Logout"
-    },
-    "schemas": {
-      "emailInvalid": "Email must be valid",
-      "codePromoCodeRequired": "Code is required",
-      "signUserNameRequired": "Name is required",
-      "signUserPasswordMinLength": "Password must be at least 6 characters",
-      "signUserPromoRequired": "Promo code is required",
-      "deleteAccountPasswordRequired": "Password is required to delete the account",
-      "updateEmailEmailInvalid": "Invalid email address",
-      "newVerificationEmailEmailInvalid": "Invalid email address",
-      "updatePasswordNewPasswordMinLength": "New password must be at least 6 characters",
-      "updatePasswordConfirmPasswordMinLength": "Confirm the new password",
-      "updatePasswordPasswordsMustMatch": "Passwords must match",
-      "newPasswordMinLength": "Minimum 6 characters required",
-      "newPasswordPasswordsMustMatch": "Passwords must match",
-      "resetEmailRequired": "Email is required"
-    },
-    "toast": {
-      "errors": {
-        "emailNotExist": "This email does not exist!",
-        "planRequired": "Please subscribe to a plan to use your account.",
-        "invalidCode": "Invalid or expired code.",
-        "emailError": "Error while sending the email.",
-        "somethingWrong": "Something went wrong. Please try again later or contact support if the problem persists.",
-        "userNotFound": "User not found.",
-        "userNotConnected": "Unauthenticated user.",
-        "incorrectCurrentPassword": "Current password is incorrect.",
-        "unauthenticated": "You must be logged in to perform this action.",
-        "emailAlreadyUsed": "This email is already associated with your account.",
-        "emailAlreadyVerified": "The email has already been verified.",
-        "tokenExpired": "The confirmation link has expired.",
-        "incorrectPassword": "Incorrect password.",
-        "emailNotExistError": "E-mail address not found. Please check the e-mail address entered.",
-        "userNotFoundError": "User not found. Please check your input.",
-        "invalidFieldsError": "Some fields are invalid. Please check and try again.",
-        "invalidVerificationCodeError": "The verification code is invalid. Please check and try again.",
-        "expiredVerificationCodeError": "The verification code has expired. Please request a new one.",
-        "incorrectPasswordError": "The password is incorrect. Please try again.",
-        "loginInvalidCredentialsError": "Invalid credentials.",
-        "genericError": "Something went wrong. Please try again later.",
-        "twoFactorRequired": "Two-factor authentication required.",
-        "notificationToggleFailed": "An error occurred while updating your email notification preferences. Please try again.",
-        "noUsersSubscribedNotification": "No users are subscribed to notifications.",
-        "notificationEmailSendFailed": "Error while sending notification emails.",
-        "promoNetworkBlocked": "Your network appears to be using a VPN or is blocked. Please try again.",
-        "promoIpAlreadyUsed": "This IP has already been used for another code.",
-        "promoIpCheckFailed": "IP verification failed.",
-        "promoInvalid": "Invalid code.",
-        "promoAlreadyUsed": "This promo code has already been used.",
-        "promoAccountExists": "An account already exists with this email.",
-        "promoStripeError": "Error creating account on Stripe.",
-        "promoAccountCreationFailed": "Account creation failed.",
-        "promoUserNotFound": "This email does not exist. Please check the entered email address.",
-        "promoAlreadyVerified": "This email has already been verified.",
-        "stripeRecurringPriceRequired": "Subscription mode requires at least one recurring price.",
-        "stripeSessionFailed": "Failed to create checkout session.",
-        "stripeCancelFailed": "Failed to cancel the subscription. Please try again later or contact support.",
-        "stripeUpgradeFailed": "Failed to update subscription. Please try again later or contact support.",
-        "stripeNoAccount": "No Stripe account found. Please contact support.",
-        "stripeSubscriptionCreateFailed": "Error creating subscription.",
-        "stripeUserNotFound": "User not found.",
-        "errorBuyStripe": "Error during purchase, please try again or contact support.",
-        "errorServerStripe": "An error has occurred. Please try again.",
-        "notEnoughCredits": "You do not have enough credits.",
-        "snippetAlreadyPurchased": "You already own this snippet.",
-        "userNotAuthenticated": "User not authenticated.",
-        "snippetUnknownError": "An error occurred while purchasing the snippet.",
-        "stripeInvalidRequest": "The request sent to Stripe is invalid. Please check your information and try again.",
-        "stripeCustomerIdMissing": "No Stripe account associated with your profile. Please contact support or try again later.",
-        "subscriptionPaymentIncomplete": "Your initial payment is incomplete. Please complete your payment before changing your subscription."
-      },
-      "success": {
-        "checkEmail": "Please check your email to continue.",
-        "emailSuccess": "Verification email sent successfully.",
-        "passwordUpdated": "Password updated successfully.",
-        "confirmationEmailSent": "A confirmation email has been sent.",
-        "emailUpdatedAndConfirmationSent": "Email updated and confirmation email sent.",
-        "accountDeleted": "Account deleted successfully.",
-        "emailConfirmationSent": "Confirmation email sent.",
-        "emailVerified": "Your e-mail has been successfully verified.",
-        "notificationsEnabled": "Notifications enabled.",
-        "notificationsDisabled": "Notifications disabled.",
-        "notificationEmailSent": "Notification email sent.",
-        "emailResetPasswordSuccess": "Password reset e-mail sent.",
-        "promoCodeValid": "Promo code is valid. Registration possible.",
-        "promoAccountCreated": "Account created successfully. Check your email to confirm your registration.",
-        "promoVerificationSent": "Confirmation email sent.",
-        "stripeSessionCreated": "Checkout session created. Redirecting...",
-        "subscriptionCanceled": "Subscription successfully canceled.",
-        "subscriptionCancelAtPeriodEnd": "The subscription will be canceled at the end of the period.",
-        "subscriptionUpgraded": "The subscription has been updated.",
-        "subscriptionCreated": "Subscription successfully created.",
-        "planPurchased": "Plan purchased successfully.",
-        "snippetPurchasedSuccess": "Congratulations! You have unlocked the snippet."
-      }
-    },
-    "snippets": {
-      "NoSnippetFound": "No snippet found",
-      "unlockCode": "Unlock the code",
-      "unlockSnippet": "Unlock the snippet",
-      "accessRequired": "Access required",
-      "buyPackAndLogin": "You must buy a credit pack and log in to unlock this snippet with your credits.",
-      "confirmUnlock": "This snippet costs {creditPrice} credits and you have {userCredits} credits left. Are you sure you want to unlock this snippet?",
-      "cancel": "Cancel",
-      "buyPack": "Buy a pack",
-      "unlock": "Unlock",
-      "preview": "Preview",
-      "code": "Code",
-      "screenMobile": "Mobile View",
-      "screenTablet": "Tablet View",
-      "screenDesktop": "Desktop View",
-      "copy": "Copy snippet",
-      "edit": "Edit snippet",
-      "add": "Add New Field",
-      "reset": "Reset default",
-      "save": "Save",
-      "form": {
-        "sectionTitle": "Section Title",
-        "title": "Title",
-        "content": "Content",
-        "image": "Image URL",
-        "placeholder": {
-          "title": "Add title",
-          "content": "Add text",
-          "image": "https://..."
-        }
-      },
-      "modal": {
-        "edit": "Edit {title}",
-        "description": "Modify the {title} content dynamically. You can add, edit, or remove items."
-      },
-      "database": {
-        "categories": {
-          "all": "All",
-          "banners": "Promo Bars",
-          "badges": "Badges",
-          "headings": "Headings",
-          "reviews": "Reviews",
-          "features": "Features",
-          "steps": "Steps",
-          "product": "Product",
-          "metrics": "Metrics",
-          "social": "Social",
-          "faq": "FAQ"
-        },
-        "title": {
-          "getAdditionalOff": "Get a Discount",
-          "badge": "Badge",
-          "productTitle": "Product Title",
-          "globalRating": "Global Rating",
-          "benefitsFirst": "Benefits",
-          "commitmentsFirst": "Commitments",
-          "commitmentsSecond": "Commitments",
-          "fastShipping": "Fast Shipping",
-          "recommendations": "Recommendations",
-          "refundGuarantee": "Refund Guarantee",
-          "deliveryEstimate": "Delivery Estimate",
-          "selectOptions": "Select Options",
-          "bestReviews": "Best Reviews",
-          "securityBadges": "Security Badges",
-          "deliveryStep": "Delivery Step",
-          "happyClientsBadge": "Happy Clients Badge",
-          "verifiedPurchaseBadge": "Verified Purchase Badge",
-          "satisfactionGuarantee": "Satisfaction Guarantee",
-          "trustpilotBadge": "Trustpilot Badge",
-          "frequencyBadge": "Purchase Frequency Badge",
-          "reviewBadge": "Review Badge",
-          "moneyBackBadge": "Money Back Badge",
-          "accordionFirst": "Accordion",
-          "scrollingBanner": "Scrolling Promo Bar",
-          "gradientTitle": "Gradient Title",
-          "googleReviewBadge": "Google Review Badge",
-          "shopifyReviewBadge": "Shopify Review Badge",
-          "authorBadge": "Author Badge",
-          "ongoingOrders": "Ongoing Orders",
-          "scrollingBadge": "Scrolling Badge",
-          "securityBadge": "Security Badge",
-          "promoCode": "Promo Code",
-          "limitedOffer": "Limited Offer",
-          "expressDelivery": "Express Delivery",
-          "xmasSpecialOffer": "Christmas Special Offer",
-          "deliveryInfo": "Delivery Information",
-          "viewCounter": "View Counter",
-          "ourBenefits": "Our Benefits",
-          "limitedStock": "Limited Stock",
-          "clientStats": "Client Statistics",
-          "averageRating": "Average Rating",
-          "seenOnInstagram": "Seen on Instagram",
-          "seenOnTiktok": "Seen on Tiktok",
-          "followOnInstagram": "Follow on Instagram",
-          "followOnTiktok": "Follow on Tiktok",
-          "seenInPress": "Seen in the Press",
-          "mediaApproved": "Media Approved",
-          "trustpilotReviews": "Trustpilot Reviews",
-          "trustpilotBadgeAlt": "Trustpilot Review Badge",
-          "promoBarFirst": "Promo Bar",
-          "flashPromo": "Flash Promo",
-          "benefitsSecond": "Benefits",
-          "promoBarSecond": "Promo Bar",
-          "announcementBar": "Announcement Bar",
-          "accordionSecond": "Accordion",
-          "howItWorksVideo": "How It Works Video",
-          "benefitsThird": "Benefits",
-          "accordionThird": "Accordion",
-          "viralOnTiktok": "Went Viral on Tiktok",
-          "cognitiveBenefits": "Cognitive Benefits",
-          "quickFacts": "Quick Facts",
-          "productFeatures": "Product Features",
-          "benefitsFourth": "Benefits",
-          "expertApproved": "Expert Approved",
-          "findUs": "Find Us",
-          "faq": "Frequently Asked Questions",
-          "productShowcaseSection": "Product Showcase Section",
-          "productPromoSection": "Product Promo Section",
-          "productStatistics": "Product Statistics",
-          "collectionGrid": "Collection Grid"
-        }
-      }
-    },
-    "form": {
-      "titleEmail": "Welcome",
-      "descEmail": "Please enter the email you used during your purchase on Stripe.",
-      "titlePassword": "Log in with your password",
-      "descPassword": "Please enter the password you created during registration.",
-      "titleNewPassword": "Create a new password",
-      "descNewPassword": "Please create a new password to access your account.",
-      "twoFactorPlaceholder": "Two-factor code",
-      "newPasswordPlaceholder": "Create new password",
-      "emailPlaceholder": "Email address",
-      "email": "Email",
-      "passwordPlaceholder": "Password",
-      "forgotPassword": "Forgot password?",
-      "submitLogin": "Log in",
-      "submitContinue": "Continue",
-      "checkEmailTitle": "Check your email",
-      "checkEmailDesc": "We’re simply sending a verification link to",
-      "returnToLogin": "Back to login",
-      "footerTitleLogin": "Do you have an account?",
-      "footerLabelLogin": "Log in",
-      "insertName": "Enter your name",
-      "signupTitle": "Create your account",
-      "signupDescription": "Enter your email and create a password to access your account.",
-      "codeTitle": "Unlock your free credits",
-      "codeDescription": "Got a special invite?\nEnter it below to activate your credits.",
-      "emailSentTitle": "Check your email",
-      "emailSentDescription": "A verification link has been sent to your email.",
-      "confirm": "Confirm",
-      "confirmation": "Confirmation",
-      "register": "Register",
-      "footerTitleCode": "Have a code?",
-      "footerLabelCode": "Enter your code",
-      "deleteTitle": "Delete Account",
-      "deleteDescription": "Are you sure you want to delete your account?\nDeleting your account will also delete all associated content.",
-      "deleteButton": "I want to delete my account",
-      "deleteModalTitle": "Deleting your account",
-      "deleteModalConfirmTitle": "Are you sure you want to delete your account?",
-      "deleteModalConfirmDescription": "This action is irreversible. Once your account is deleted, all your data will be permanently lost.",
-      "deletePlaceholder": "Confirm with your password",
-      "resetTitle": "Forgot your password?",
-      "resetDescription": "Please enter the email address associated with your account. A link to reset your password will be sent to you by email.",
-      "submitReset": "Send",
-      "emailSentSuccess": "A password reset link has been sent to your email.",
-      "updatePasswordTitle": "Password",
-      "updatePasswordNewLabel": "New password",
-      "updatePasswordConfirmLabel": "Confirm password",
-      "updatePasswordPlaceholder": "Password",
-      "updatePasswordForgot": "Forgot your password?",
-      "updatePasswordSubmit": "Save",
-      "titleUpdatePassword": "Password update",
-      "resetInstructions": "To reset your password, please enter a new password in the fields below.",
-      "emailCommunication": "Email Communication",
-      "emailCommunicationDescription": "Receive emails when new codes are added"
+      "contact": "Contact"
     },
     "content": {
-      "tokenMissingTitle": "Link Not Clicked",
-      "tokenMissingDescription": "It seems you haven't clicked the link in the email. Please check your inbox and click the link to reset your password.",
-      "tokenMissingButtonLabel": "Open My Mailbox",
-
-      "tokenInvalidTitle": "Invalid Link",
-      "tokenInvalidDescription": "The link is invalid. Please check your inbox for the correct link or request a new one.",
-      "tokenInvalidButtonLabel": "Make a New Request",
-
-      "tokenRequiredTitle": "Link not clicked",
-      "tokenRequiredDescription": "The link is invalid. Please check your inbox for the correct link or make a new request.",
-      "tokenRequiredButtonLabel": "Open my mailbox",
-
-      "tokenExpiredTitle": "Expired Link",
-      "tokenExpiredDescription": "The link has expired. Please make a new request to continue.",
-      "tokenExpiredButtonLabel": "Make a New Request",
-
-      "emailNotExistTitle": "Email Not Found",
-      "emailNotExistDescription": "This email does not exist. Please check the email address or create a new account.",
-      "emailNotExistButtonLabel": "Create an Account",
-
-      "emailChangedTitle": "Email Updated",
-      "emailChangedDescription": "Your email address has been successfully changed. You can now log in with your new address.",
-      "emailChangedButtonLabel": "Log In",
-
-      "passwordUpdatedTitle": "Password Updated",
-      "passwordUpdatedDescription": "Your password has been successfully updated. You can now log in with your new password.",
-      "passwordUpdatedButtonLabel": "Log In",
-
-      "userNotFoundTitle": "User Not Found",
-      "userNotFoundDescription": "Unable to find the corresponding user. Please log in again and try.",
-      "userNotFoundButtonLabel": "Return to Settings",
-
-      "serverErrorTitle": "Server Error",
-      "serverErrorDescription": "Something went wrong. Please try again later or contact support if the issue persists.",
-      "serverErrorButtonLabel": "Contact Support",
-
-      "somethingWentWrongTitle": "Error",
-      "somethingWentWrongDescription": "An error occurred. Please try again later or contact support if the problem persists.",
-      "somethingWentWrongButtonLabel": "Contact Support",
-
-      "tokenInvalidOrUsedTitle": "Invalid or Already Used Link",
-      "tokenInvalidOrUsedDescription": "This verification link is invalid or has already been used. Please request a new one or log in if your email is already confirmed.",
-
-      "emailVerifiedTitle": "Email Verified",
-      "emailVerifiedDescription": "Your email address has been successfully verified. You can now create your password to access your account.",
-      "emailVerifiedButtonLabel": "Log In",
-
-      "emailSentTitle": "Email Sent Successfully",
-      "emailSentDescription": "A password reset email has been sent. Please check your inbox and follow the instructions.",
-
-      "defaultTitle": "Verification in Progress...",
-      "defaultDescription": "Please wait while your email is being verified.",
       "description": {
         "paragraph1": "<strong>Ecomcodehub is the must-have solution</strong> for Shopify merchants looking to transform their store into <strong>a highly converting shop</strong>. Thanks to optimized and customizable TailwindCSS and Liquid codes, you can <strong>boost your conversions</strong>, provide a smooth user experience, and give your store <strong>a look worthy of the best themes without spending hundreds of euros</strong>.",
         "paragraph2": "Designed by a <strong>fullstack developer, SEO consultant, and web designer with over 7 years of Shopify store creation experience</strong>, Ecomcodehub follows web standards and <strong>guarantees optimal SEO performance</strong>.",
@@ -480,13 +53,13 @@
       "support": {
         "items": [
           "I am available to support you at every step, whether it is a technical issue or a question about installing or using the codes.",
-          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:slmrsv.bz@gmail.com' class='text-blue-500 underline'>slmrsv.bz@gmail.com</a>"
+          "<strong class='underline'>Contact me directly:</strong> Via Discord or by email: <a href='mailto:ecomcodehub.team@gmail.com' class='text-blue-500 underline'>ecomcodehub.team@gmail.com</a>"
         ]
       },
       "refundPolicy": {
         "items": [
           "<strong class='underline'>Can I get a refund?</strong> Yes, a refund is possible <strong>only if no credit has been used</strong>. Once a snippet is unlocked, the purchase is considered consumed.",
-          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:slmrsv.bz@gmail.com' class='text-foreground underline'>slmrsv.bz@gmail.com</a>",
+          "<strong class='underline'>How to request a refund?</strong> Just contact me by email with the address used for the purchase: <a href='mailto:ecomcodehub.team@gmail.com' class='text-foreground underline'>ecomcodehub.team@gmail.com</a>",
           "<strong class='underline'>Support at your service:</strong> Before any refund, I am here to help you resolve your technical issue. My goal is your satisfaction."
         ]
       },
@@ -522,7 +95,7 @@
 
       "applyTitle": "How to Apply:",
       "applyInstructions": [
-        "Send me a email at slmrsv.bz@gmail.com with the following information:",
+        "Send me a email at ecomcodehub.team@gmail.com with the following information:",
         "Your contact details (name, email, etc.)",
         "Links to your social media profiles and pages",
         "A brief introduction about your experience and motivation to join the ambassador program"
@@ -544,7 +117,7 @@
       },
       "step2": {
         "title": "2. Show us your message",
-        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to slmrsv.bz@gmail.com, on Discord, or on our Discord server."
+        "description": "Once the review is published, take a screenshot (with the date visible) and send it by email to ecomcodehub.team@gmail.com, on Discord, or on our Discord server."
       },
       "step3": {
         "title": "3. Receive your credits",
@@ -576,7 +149,7 @@
       "step3Title": "3. Access validated within 24h",
       "step3Description": "I manually validate each access for security. Most customers get access within a few hours.",
 
-      "importantNote": "Haven't received the email after 24 hours? Contact me at slmrsv.bz@gmail.com and I'll prioritize your access.",
+      "importantNote": "Haven't received the email after 24 hours? Contact me at ecomcodehub.team@gmail.com and I'll prioritize your access.",
 
       "closeButton": "Got it, thanks!"
     },
@@ -601,42 +174,11 @@
       "needHelp": "Need help?",
       "contactSupport": "Contact support"
     },
-    "detailsProduct": {
-      "0": { "title": "Pack presentation and benefits" },
-      "1": { "title": "Why is this the best solution?" },
-      "2": { "title": "How does it work?" },
-      "3": { "title": "Support and contact" },
-      "4": { "title": "Security and payment methods" },
-      "5": { "title": "Refund conditions" }
-    },
-    "packsSelected": {
-      "0": "To unlock simple codes",
-      "1": "To unlock advanced codes",
-      "2": "To unlock pro codes"
-    },
-    "packTitles": {
-      "débutant": "Beginner",
-      "avancé": "Advanced",
-      "pro": "Pro"
-    },
-    "purchaseMode": {
-      "oneTime": "One-time purchase",
-      "subscription": "Monthly subscription"
-    },
     "productImage": {
       "lifetimeUpdates": "Lifetime updates",
       "instantAccess": "Instant access",
-      "joinCommunity": "Your store looks <strong>cheap</strong>. Your visitors see it in <strong>2 seconds</strong>. They buy elsewhere. At your <strong>competitor</strong>. These <strong>500+ codes</strong> fix it in <strong>5 minutes</strong>",
       "incredible": "Amazing",
       "rated5": "Rated 5/5 on",
-      "ourPacks": "Our Packs:",
-      "frequency": "Frequency:",
-      "paymentSecure": "Secure payment – instant access after purchase",
-      "exampleCode": "Code example (your best reviews)",
-      "mostPopular": "Most popular",
-      "mostProfitable": "Most profitable",
-      "noCommit": "No commitment",
-      "creditsLabel": "Credits",
       "addToCart": "Add to cart - {price}€",
       "compareAtPrice": " {compareAtPrice}€",
       "exampleStore": {
@@ -660,125 +202,220 @@
           "guaranteedSuccess": "Used by 7-figure stores",
           "boostSales": "Turn visitors into buyers"
         }
-      },
-      "exampleCodePage": {
-        "title": "500+ conversion codes your competitors are already using",
-        "subtitle": "The exact snippets that turn browsers into buyers. Every day without them is money left on the table.",
-        "images": {
-          "proveSatisfaction": "Prove satisfaction",
-          "crowdEffect": "Create social proof",
-          "credibility": "Build instant trust",
-          "urgency": "Trigger urgency",
-          "valueOffer": "Highlight value",
-          "eliminateRisk": "Remove hesitation",
-          "clearExpectation": "Set expectations",
-          "reassureSecure": "Reassure buyers",
-          "finalPush": "Close the sale"
-        }
-      },
-      "howItWorksPage": {
-        "title": "Stop paying 350€ for premium themes",
-        "subtitle": "Get the same results for 29.90€—no recurring fees, no limitations",
-        "videoDescription": "Install in under 5 minutes. No developer required. See the difference instantly.",
-        "left": {
-          "noMoreApps": "Replace expensive apps",
-          "convertingDesign": "Designs that convert",
-          "buildCredibility": "Build trust instantly",
-          "easyToInstall": "Install in 5 minutes",
-          "saveTime": "Save 20+ hours",
-          "noSkillsNeeded": "Zero coding required"
-        },
-        "right": {
-          "noPremiumTheme": "No 350€ theme needed",
-          "unlimitedCustomization": "Customize anything",
-          "proLook": "Agency-level quality",
-          "compatibleAllThemes": "Works on any theme",
-          "boostConversions": "Increase sales",
-          "regularUpdates": "Free updates forever"
-        }
-      },
-      "reviewsPage": {
-        "title": "Real merchants, real results",
-        "subtitle": "See why Shopify store owners chose this over hiring a developer",
-        "googleBadge": "5/5 on",
-        "reviews": [
-          {
-            "name": "Ye Yun",
-            "score": 5,
-            "content": "I had a technical question about integrating a snippet and received a clear, prompt answer in less than an hour. Honestly, it's rare to find such support. Hats off for the professionalism!"
-          },
-          {
-            "name": "Mickael L.",
-            "score": 5,
-            "content": "No bugs, everything works perfectly. I was a bit skeptical at first, but all the codes work flawlessly on my theme. No bugs, no slowdown... just new features for my store. Very reassuring."
-          },
-          {
-            "name": "Marwen L.",
-            "score": 5,
-            "content": "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and Ecomcodehub was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want."
-          },
-          {
-            "name": "Karim H.",
-            "score": 5,
-            "content": "Excellent value for money. For the price, it's unbeatable. Instead of paying a developer hundreds of euros, I installed premium features on my Shopify site myself. Very satisfied with the result."
-          },
-          {
-            "name": "Gustavo W",
-            "score": 5,
-            "content": "Unique features found nowhere else. Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function."
-          },
-          {
-            "name": "Bagy Bagy",
-            "score": 5,
-            "content": "Very good value for money"
-          },
-          {
-            "name": "A Bbouaz",
-            "score": 5,
-            "content": "Ecomcodehub allowed me to give my Shopify store a real facelift. I highly recommend it."
-          }
-        ]
-      },
-      "faq": {
-        "title": "Your questions answered",
-        "subtitle": "Everything you need to know before joining hundreds of merchants who transformed their stores",
-        "items": [
-          {
-            "title": "How do I access the codes after purchase?",
-            "content": "After your payment is confirmed, you'll receive an email containing a private Notion link within 24 hours. I manually validate each access to ensure security and prevent unauthorized sharing. Simply click the link, create or log in to your Notion account (it's free), and you'll have instant access to all 500+ organized snippets ready to copy-paste. If you haven't received your access link within 24 hours, contact me directly and I'll prioritize your access."
-          },
-          {
-            "title": "What are Shopify liquid codes, and how do they work?",
-            "content": "Shopify liquid codes are snippets of customizable code designed to enhance your Shopify store’s functionality. With our pre-built codes, you can easily add features like custom product filters, dynamic pricing displays, or unique design elements—all without advanced coding knowledge."
-          },
-          {
-            "title": "Do I need coding experience to use these?",
-            "content": "Absolutely not. If you can copy and paste, you can use these snippets. Most merchants install their first snippet in under 5 minutes."
-          },
-          {
-            "title": "Will these work with my Shopify theme?",
-            "content": "Yes. Our snippets are built with Shopify's native Liquid language and tested across 200+ themes including Dawn, Impulse, Prestige, Debut, and custom themes. If you encounter any compatibility issue, our support team will help you fix it."
-          },
-          {
-            "title": "What happens if I encounter any problems?",
-            "content": "We’ve got you covered! If you encounter any problems, just send me a message at slmrsv.bz@gmail.com and I'll help you fix it."
-          }
-        ]
       }
     },
-    "checkProduct": {
-      "benefit1": "500+ Professional Code Snippets",
-      "benefit2": "Zero Coding Required (Just Copy-Paste)",
-      "benefit3": "Works with ALL Shopify Themes ",
-      "benefit4": "Built by a Shopify Developer"
-    },
-    "packBenefits": {
-      "save30": "Save 30% on each order",
-      "cancelAnytime": "Cancel, change, or pause anytime",
-      "prioritySupport": "Priority customer support",
-      "discordAccess": "Access to our Discord server",
-      "receiveCodes": "Receive new codes every month",
-      "shopAudits": "Shop audits and advice to improve your store"
+    "products": {
+      "shopifyProBundle": {
+        "name": "Shopify Pro Bundle",
+        "title": "Shopify Pro Codes Bundle (Limited Offer)",
+        "description": "Your store looks <strong>cheap</strong>. Your visitors see it in <strong>2 seconds</strong>. They buy elsewhere. At your <strong>competitor</strong>. These <strong>500+ codes</strong> fix it in <strong>5 minutes</strong>",
+        "benefits": {
+          "benefit1": "500+ Professional Code Snippets",
+          "benefit2": "Zero Coding Required (Just Copy-Paste)",
+          "benefit3": "Works with ALL Shopify Themes ",
+          "benefit4": "Built by a Shopify Developer"
+        },
+        "exampleStore": {
+          "title": "Your store will look like this in 5 minutes",
+          "subtitle": "(or you'll keep losing sales to stores that aren't better than yours—they just look more convincing)",
+          "instructions": "Click on any visual to see what's currently costing you sales",
+          "modalAlt": "Enlarge"
+        },
+        "exampleCode": {
+          "title": "500+ conversion codes your competitors are already using",
+          "subtitle": "The exact snippets that turn browsers into buyers. Every day without them is money left on the table.",
+          "images": {
+            "proveSatisfaction": "Prove satisfaction",
+            "crowdEffect": "Create social proof",
+            "credibility": "Build instant trust",
+            "urgency": "Trigger urgency"
+          }
+        },
+        "howItWorks": {
+          "title": "Stop paying 350€ for premium themes",
+          "subtitle": "Get the same results for 29.90€—no recurring fees, no limitations",
+          "videoDescription": "Install in under 5 minutes. No developer required. See the difference instantly.",
+          "left": {
+            "noMoreApps": "Replace expensive apps",
+            "convertingDesign": "Designs that convert",
+            "buildCredibility": "Build trust instantly",
+            "easyToInstall": "Install in 5 minutes",
+            "saveTime": "Save 20+ hours",
+            "noSkillsNeeded": "Zero coding required"
+          },
+          "right": {
+            "noPremiumTheme": "No 350€ theme needed",
+            "unlimitedCustomization": "Customize anything",
+            "proLook": "Agency-level quality",
+            "compatibleAllThemes": "Works on any theme",
+            "boostConversions": "Increase sales",
+            "regularUpdates": "Free updates forever"
+          }
+        },
+        "faq": {
+          "title": "Your questions answered",
+          "subtitle": "Everything you need to know before joining hundreds of merchants who transformed their stores",
+          "items": {
+            "0": {
+              "title": "How do I access the codes after purchase?",
+              "content": "After your payment is confirmed, you'll receive an email containing a private Notion link within 24 hours. I manually validate each access to ensure security and prevent unauthorized sharing. Simply click the link, create or log in to your Notion account (it's free), and you'll have instant access to all 500+ organized snippets ready to copy-paste. If you haven't received your access link within 24 hours, contact me directly and I'll prioritize your access."
+            },
+            "1": {
+              "title": "What are Shopify liquid codes, and how do they work?",
+              "content": "Shopify liquid codes are snippets of customizable code designed to enhance your Shopify store's functionality. With our pre-built codes, you can easily add features like custom product filters, dynamic pricing displays, or unique design elements—all without advanced coding knowledge."
+            },
+            "2": {
+              "title": "Do I need coding experience to use these?",
+              "content": "Absolutely not. If you can copy and paste, you can use these snippets. Most merchants install their first snippet in under 5 minutes."
+            },
+            "3": {
+              "title": "Will these work with my Shopify theme?",
+              "content": "Yes. Our snippets are built with Shopify's native Liquid language and tested across 200+ themes including Dawn, Impulse, Prestige, Debut, and custom themes. If you encounter any compatibility issue, our support team will help you fix it."
+            },
+            "4": {
+              "title": "What happens if I encounter any problems?",
+              "content": "We've got you covered! If you encounter any problems, just send me a message at ecomcodehub.team@gmail.com and I'll help you fix it."
+            }
+          }
+        },
+        "reviews": {
+          "title": "Real merchants, real results",
+          "subtitle": "See why Shopify store owners chose this over hiring a developer",
+          "googleBadge": "5/5 on",
+          "items": {
+            "0": {
+              "name": "Ye Yun",
+              "score": 5,
+              "content": "I had a technical question about integrating a snippet and received a clear, prompt answer in less than an hour. Honestly, it's rare to find such support. Hats off for the professionalism!"
+            },
+            "1": {
+              "name": "Mickael L.",
+              "score": 5,
+              "content": "No bugs, everything works perfectly. I was a bit skeptical at first, but all the codes work flawlessly on my theme. No bugs, no slowdown... just new features for my store. Very reassuring."
+            },
+            "2": {
+              "name": "Marwen L.",
+              "score": 5,
+              "content": "I was looking for a way to improve my Shopify store's appearance without breaking the bank, and Ecomcodehub was the perfect solution. Their snippets are super easy to implement and customize, letting me tailor the design exactly as I want."
+            },
+            "3": {
+              "name": "Karim H.",
+              "score": 5,
+              "content": "Excellent value for money. For the price, it's unbeatable. Instead of paying a developer hundreds of euros, I installed premium features on my Shopify site myself. Very satisfied with the result."
+            },
+            "4": {
+              "name": "Gustavo W",
+              "score": 5,
+              "content": "Some snippets add options I couldn't find in any Shopify app. It's super practical and lightweight—no need to install a whole app for a single function."
+            },
+            "5": {
+              "name": "Bagy Bagy",
+              "score": 5,
+              "content": "Very good value for money"
+            },
+            "6": {
+              "name": "A Bbouaz",
+              "score": 5,
+              "content": "Ecomcodehub allowed me to give my Shopify store a real facelift. I highly recommend it."
+            }
+          }
+        }
+      },
+      "highConvertingDesigns": {
+        "name": "300 High-Converting Product Pages",
+        "title": "300 High-Converting Product Pages",
+        "description": "Steal the highest-converting product page elements from e-commerce giants. Get instant access to 300 screenshots that show you exactly what's working right now.",
+        "benefits": {
+          "benefit1": "300 product page screenshots",
+          "benefit2": "Organized in Figma by industry",
+          "benefit3": "Direct links to all stores",
+          "benefit4": "Lifetime access & updates"
+        },
+        "exampleStore": {
+          "title": "Stop Trying to Reinvent the Wheel",
+          "subtitle": "These companies have already invested millions in testing and optimization—leverage their insights to achieve results faster",
+          "instructions": "Real product pages from brands generating millions in revenue",
+          "modalAlt": "High-converting product page example"
+        },
+        "exampleCode": {
+          "title": "300 Real-Life Product Pages Making Millions Right Now",
+          "subtitle": "Stop guessing—simply replicate the proven strategies of successful businesses and adapt them",
+          "images": {
+            "fashion": "Fashion & Apparel (60)",
+            "beauty": "Beauty & Cosmetics (50)",
+            "tech": "Tech & Gadgets (30)",
+            "home": "Home & Lifestyle (50)",
+            "food": "Food & Beverage (40)",
+            "pets": "Pets (20)",
+            "other": "Other Industries (50)"
+          }
+        },
+        "howItWorks": {
+          "title": "Here's How This Collection Will Transform Your Product Pages",
+          "subtitle": "Get the exact blueprint successful brands use to convert visitors into buyers",
+          "videoDescription": "See exactly how these brands have designed pages that convert visitors into buyers and maximize profit per transaction",
+          "left": {
+            "improveConversion": "Improve your conversion rates",
+            "increaseAOV": "Increase your average order value",
+            "optimizeROAS": "Optimize your ROAS",
+            "saveTime": "Save hours of guesswork",
+            "learnFromBrands": "Learn from successful brands",
+            "copyImplement": "Just copy and implement"
+          },
+          "right": {
+            "seeWhatWorks": "See what actually works",
+            "buttonPlacements": "Button placements that convert",
+            "upsellTechniques": "Upsell & cross-sell techniques",
+            "trustElements": "Trust-building elements",
+            "organizedIndustry": "Organized by industry",
+            "accessFigma": "Access in Figma instantly"
+          }
+        },
+        "faq": {
+          "title": "Got Some Questions?",
+          "subtitle": "Everything you need to know before you buy",
+          "items": {
+            "0": {
+              "title": "How do I access the product pages after purchase?",
+              "content": "You'll receive instant access to a Figma file containing all 300 product page screenshots, organized by industry. Everything is ready to browse and analyze immediately."
+            },
+            "1": {
+              "title": "What makes this different from browsing Google?",
+              "content": "Hours of curation. Every store in this collection is a successful e-commerce brand generating significant revenue. Instead of spending hours searching and screenshotting random stores, you get 300 proven examples organized and ready to use. We've done the research so you don't have to."
+            },
+            "2": {
+              "title": "Can I use these designs for my store?",
+              "content": "Absolutely! Use them for inspiration, analyze the patterns, implement the strategies on your store or for your clients. The only restriction is you can't resell the screenshots themselves as your own product."
+            },
+            "3": {
+              "title": "Is this suitable for my industry?",
+              "content": "Yes! The collection covers 10 major e-commerce industries: Fashion & Apparel, Beauty & Cosmetics, Home & Lifestyle, Food & Beverage, Tech & Gadgets, Pets, Baby & Kids, Sustainability, and more. You'll find relevant examples for your niche."
+            },
+            "4": {
+              "title": "What format will I receive?",
+              "content": "Figma file with all 300 screenshots organized by industry. Each page includes the store name and direct link. You can zoom in, analyze details, and navigate easily between categories."
+            },
+            "5": {
+              "title": "Do you update the collection?",
+              "content": "Yes! We regularly add new high-converting stores to the collection. You get lifetime access to all updates at no extra cost."
+            },
+            "6": {
+              "title": "What if I don't find it useful?",
+              "content": "14-day money-back guarantee. If you're not satisfied with the collection, simply message us and we'll refund 100% of your money. Your success is our priority."
+            },
+            "7": {
+              "title": "Can I share this with my team or clients?",
+              "content": "Yes! Use it internally with your team or as a research tool for client projects. Perfect for agencies showing clients what's working in their industry."
+            }
+          }
+        },
+        "reviews": {
+          "title": "What Our Customers Say",
+          "subtitle": "Join successful store owners who transformed their product pages",
+          "googleBadge": "5/5 on",
+          "items": {}
+        }
+      }
     },
     "cart": {
       "title": "Cart",
@@ -865,7 +502,7 @@
           },
           {
             "title": "5. Access Delivery Process",
-            "content": "After successful payment confirmation:\n1. You will receive a confirmation email within minutes\n2. This email will contain a private link to our Notion workspace\n3. You must create a Notion account (free) or log in if you already have one\n4. Access to the snippets will be manually validated within 24 hours maximum for security purposes\n5. Most customers receive access within a few hours\n\nIf you haven't received access after 24 hours, please contact us at slmrsv.bz@gmail.com and we will prioritize your access immediately."
+            "content": "After successful payment confirmation:\n1. You will receive a confirmation email within minutes\n2. This email will contain a private link to our Notion workspace\n3. You must create a Notion account (free) or log in if you already have one\n4. Access to the snippets will be manually validated within 24 hours maximum for security purposes\n5. Most customers receive access within a few hours\n\nIf you haven't received access after 24 hours, please contact us at ecomcodehub.team@gmail.com and we will prioritize your access immediately."
           },
           {
             "title": "6. Account Security",
@@ -885,7 +522,7 @@
           },
           {
             "title": "10. Technical Support",
-            "content": "Technical support is included with your purchase for installation assistance and compatibility questions. Support is provided via email at slmrsv.bz@gmail.com. We aim to respond within 24-48 hours during business days. Support does not include custom development or modifications beyond the provided snippets."
+            "content": "Technical support is included with your purchase for installation assistance and compatibility questions. Support is provided via email at ecomcodehub.team@gmail.com. We aim to respond within 24-48 hours during business days. Support does not include custom development or modifications beyond the provided snippets."
           },
           {
             "title": "11. Updates and Modifications",
@@ -893,7 +530,7 @@
           },
           {
             "title": "12. Refund Policy",
-            "content": "Due to the digital nature of our product and immediate access delivery, we generally do not offer refunds. However, if you experience technical issues preventing you from accessing the Notion workspace, or if the snippets are fundamentally incompatible with Shopify despite our support efforts, please contact us at slmrsv.bz@gmail.com within 14 days of purchase. We will evaluate refund requests on a case-by-case basis."
+            "content": "Due to the digital nature of our product and immediate access delivery, we generally do not offer refunds. However, if you experience technical issues preventing you from accessing the Notion workspace, or if the snippets are fundamentally incompatible with Shopify despite our support efforts, please contact us at ecomcodehub.team@gmail.com within 14 days of purchase. We will evaluate refund requests on a case-by-case basis."
           },
           {
             "title": "13. Personal Data",
@@ -905,7 +542,7 @@
           },
           {
             "title": "15. Contact",
-            "content": "For any questions regarding these Terms and Conditions or our products, please contact us at:\nEmail: slmrsv.bz@gmail.com\nWebsite: https://ecomcodehub.com"
+            "content": "For any questions regarding these Terms and Conditions or our products, please contact us at:\nEmail: ecomcodehub.team@gmail.com\nWebsite: https://ecomcodehub.com"
           }
         ]
       },
@@ -943,7 +580,7 @@
           },
           {
             "title": "1. Site Publisher",
-            "content": "Ecomcodehub\nDesigned and developed by Selim Baouz\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: slmrsv.bz@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz\nWebsite: https://selimbaouz.com"
+            "content": "Ecomcodehub\nDesigned and developed by Selim Baouz\nRegistered office: 5 rue Marcel Sembat 83200 Toulon\nEmail: ecomcodehub.team@gmail.com\nSIRET Number: 83012126500037\nPublication Director: Selim Baouz\nWebsite: https://selimbaouz.com"
           },
           {
             "title": "2. Hosting",
@@ -955,7 +592,7 @@
           },
           {
             "title": "4. Contact",
-            "content": "For any questions or information requests regarding the site, please contact us at: slmrsv.bz@gmail.com."
+            "content": "For any questions or information requests regarding the site, please contact us at: ecomcodehub.team@gmail.com."
           }
         ]
       },

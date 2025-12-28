@@ -1,6 +1,7 @@
 "use client";
 import React, { FC, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useProductStore } from "@/store/product";
 import StickyBar from "@/components/navigation/StickyBar";
 import NavBar from "@/components/navigation/NavBar";
 import FAQ from "@/components/FAQ";
@@ -14,18 +15,26 @@ import ExampleCode from "@/components/ExampleCode";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import ProductImage from "@/components/ProductImage";
 import ImagesGallery from "@/components/ImagesGallery";
-import FlashPromo from "./FlashPromo";
+import FlashPromo from "@/components/FlashPromo";
 import { useVisibleFloatingCartStore } from "@/store/cart";
-import FloatingBar from "./navigation/FloatingBar";
-import Image1 from "@/public/images/product-1.png";
-import Image2 from "@/public/images/product-2.png";
-import Image3 from "@/public/images/product-3.png";
+import FloatingBar from "@/components/navigation/FloatingBar";
 import { FB_PIXEL_ID } from "@/lib/constants";
+import { notFound } from "next/navigation";
+import { Product } from "@/types/product";
+import StickyBarPromo from "./navigation/StickyBarPromo";
 
-const ProCodesBundleProduct: FC = () => {
+const ProductPage: FC<{ data: Product }> = ({ data }) => {
+  const product = data;
   const { isVisible } = useVisibleFloatingCartStore();
+  const { setCurrentProduct } = useProductStore();
 
   useEffect(() => {
+    if (!product) return;
+
+    // Set le produit dans le store
+    setCurrentProduct(product);
+
+    // Facebook Pixel tracking
     fetch("/api/pixels-view-content", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -34,23 +43,27 @@ const ProCodesBundleProduct: FC = () => {
         eventSourceUrl: window.location.href,
         userAgent: navigator.userAgent,
         fbPixelId: FB_PIXEL_ID,
-        content_ids: ["prod_shopify_pro_bundle"],
-        content_name: "Shopify Pro Codes Bundle",
+        content_ids: [product.fbPixelContentId],
+        content_name: product.name,
         content_type: "product",
-        value: "29.90",
-        currency: "EUR",
+        value: product.price.toFixed(2),
+        currency: product.currency,
         fbp: document.cookie
           .split("; ")
           .find((row) => row.startsWith("_fbp="))
           ?.split("=")[1],
       }),
     });
-  }, []);
+  }, [product, setCurrentProduct]);
+
+  if (!product) {
+    notFound();
+  }
 
   return (
     <div className="relative">
       <div className="sticky top-0 w-full z-50">
-        <StickyBar />
+        <StickyBarPromo />
         <NavBar />
         <FlashPromo />
       </div>
@@ -59,57 +72,51 @@ const ProCodesBundleProduct: FC = () => {
         <PaymentErrorModal />
         <PaymentSuccessModal />
       </div>
+
       <div>
         <section
           className={cn("w-full text-left mx-auto", "lg:grid lg:grid-cols-2")}
         >
           <div className="lg:flex lg:justify-center xl:pl-40 bg-secondary/30 dark:bg-[#324e58] lg:h-screen lg:sticky lg:top-24">
             <ImagesGallery
-              images={[
-                {
-                  node: {
-                    altText: "Product 1",
-                    originalSrc: Image1.src,
-                    width: Image1.width,
-                    height: Image1.height,
-                  },
+              images={product.images.map((img) => ({
+                node: {
+                  altText: img.alt,
+                  originalSrc:
+                    typeof img.src === "string" ? img.src : img.src.src,
+                  width: img.width,
+                  height: img.height,
                 },
-                {
-                  node: {
-                    altText: "Product 2",
-                    originalSrc: Image2.src,
-                    width: Image2.width,
-                    height: Image2.height,
-                  },
-                },
-                {
-                  node: {
-                    altText: "Product 3",
-                    originalSrc: Image3.src,
-                    width: Image3.width,
-                    height: Image3.height,
-                  },
-                },
-              ]}
+              }))}
             />
           </div>
           <div className={cn("px-4", "lg:pl-10", "xl:pl-20")}>
-            <ProductImage />
+            <ProductImage
+              checkProduct={product.benefits}
+              title={product.title}
+              description={product.description as string}
+            />
           </div>
         </section>
       </div>
-      <ExampleStore />
+
+      {product.exampleStore && <ExampleStore data={product.exampleStore} />}
+
       <AnnouncementBar />
-      <ExampleCode />
-      <HowItWorks />
-      <Reviews />
-      <FAQ />
+
+      {product.exampleCode && <ExampleCode data={product.exampleCode} />}
+
+      {product.howItWorks && <HowItWorks data={product.howItWorks} />}
+
+      {product.reviews && <Reviews data={product.reviews} />}
+
+      {product.faq && <FAQ data={product.faq} />}
+
       <Footer />
-      {/*  <Discord /> */}
-      {/* <PurchasePopup /> */}
+
       {!isVisible && <FloatingBar />}
     </div>
   );
 };
 
-export default ProCodesBundleProduct;
+export default ProductPage;
